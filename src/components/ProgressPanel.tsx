@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { QuestionTable } from "@/components/QuestionTable";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { questions, totalQuestions } from "@/data/questions";
 
-type ProgressPanelProps = {
-  tab: "done" | "starred";
-};
-
-export function ProgressPanel({ tab }: ProgressPanelProps) {
+export function ProgressPanel() {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab") === "starred" ? "starred" : "done";
   const { ready, done, starred } = useProgressSets();
   const doneItems = questions.filter((item) => done.has(item.id));
   const starredItems = questions.filter((item) => starred.has(item.id));

@@ -1,16 +1,12 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
-import { FilterLinks } from "@/components/FilterLinks";
-import { QuestionTable } from "@/components/QuestionTable";
-import { SearchForm } from "@/components/SearchForm";
+import { QuestionBrowser } from "@/components/QuestionBrowser";
 import { categories, categoryById, isCategoryId } from "@/lib/categories";
-import { filterQuestions } from "@/data/questions";
-import type { Difficulty } from "@/lib/types";
 
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ difficulty?: string; mark?: string; q?: string }>;
 };
 
 export function generateStaticParams() {
@@ -23,9 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: category ? category.name : "分类" };
 }
 
-export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
+export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const query = await searchParams;
 
   if (!isCategoryId(slug)) {
     notFound();
@@ -35,17 +30,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   if (!category) {
     notFound();
   }
-
-  const difficulty =
-    query.difficulty === "foundation" || query.difficulty === "applied" || query.difficulty === "system"
-      ? (query.difficulty as Difficulty)
-      : "all";
-  const mark = query.mark ?? "all";
-  const items = filterQuestions({
-    category: slug,
-    difficulty,
-    q: query.q,
-  });
 
   return (
     <AppShell current="home">
@@ -60,23 +44,17 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         <h1>{category.name}</h1>
         <p className="lead">{category.summary}</p>
       </header>
-      <SearchForm action={`/category/${slug}`} query={query.q ?? ""} />
-      <FilterLinks
-        basePath={`/category/${slug}`}
-        query={query.q}
-        category={slug}
-        difficulty={difficulty}
-        mark={mark}
-        showCategory={false}
-      />
-      <QuestionTable
-        items={items}
-        mark={mark}
-        emptyTitle="这个分类下没有匹配"
-        emptyBody="换难度，或清掉搜索词。"
-        emptyHref={`/category/${slug}`}
-        emptyAction="查看该分类全部"
-      />
+      <Suspense fallback={<div className="skel" aria-busy="true" />}>
+        <QuestionBrowser
+          basePath={`/category/${slug}`}
+          lockedCategory={slug}
+          showCategory={false}
+          emptyTitle="这个分类下没有匹配"
+          emptyBody="换难度，或清掉搜索词。"
+          emptyHref={`/category/${slug}`}
+          emptyAction="查看该分类全部"
+        />
+      </Suspense>
     </AppShell>
   );
 }

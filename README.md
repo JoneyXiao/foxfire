@@ -31,3 +31,18 @@ npm run build && npm start
 - 进度仅存在本机
 
 样例题为原创面试提纲，不是任何课程或付费专栏的原文。
+
+
+## GitHub Pages
+
+合并到 `main` 后，Actions 会构建静态站并发布。
+
+1. 仓库 Settings → Pages → Build and deployment → Source 选 **GitHub Actions**
+2. 站点地址：https://joneyxiao.github.io/foxfire/
+
+本地预览静态导出：
+
+```bash
+GITHUB_PAGES=true npm run build
+npx serve out
+```
