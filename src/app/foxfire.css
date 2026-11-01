@@ -21,10 +21,7 @@
   display: flex;
   flex-direction: column;
   color: var(--color-ink);
-  background:
-    radial-gradient(ellipse 90% 42% at 8% -6%, var(--color-wash), transparent 58%),
-    radial-gradient(ellipse 55% 32% at 100% 0%, color-mix(in oklab, var(--color-wash) 55%, transparent), transparent 52%),
-    var(--color-paper);
+  background: var(--color-paper);
 }
 
 .topbar {
@@ -167,21 +164,6 @@
   margin-bottom: var(--space-xl);
   padding-block: var(--space-md) var(--space-lg);
   position: relative;
-}
-
-.mast::before {
-  content: "";
-  position: absolute;
-  inset: -8% -4% auto;
-  height: 140%;
-  pointer-events: none;
-  background: radial-gradient(ellipse 70% 80% at 0% 20%, var(--color-wash), transparent 62%);
-  z-index: 0;
-}
-
-.mast > * {
-  position: relative;
-  z-index: 1;
 }
 
 .mast__kicker {
@@ -729,13 +711,7 @@
 .skel-line {
   height: 14px;
   border-radius: var(--radius-part);
-  background: linear-gradient(
-    90deg,
-    var(--color-paper-3),
-    color-mix(in oklab, var(--color-accent-soft) 55%, var(--color-paper-3)),
-    var(--color-paper-3)
-  );
-  background-size: 200% 100%;
+  background: var(--color-paper-3);
 }
 
 .skel-line--title {
