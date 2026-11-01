@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { badgeVariants } from "@/components/ui/badge";
 import { QuestionTable } from "@/components/QuestionTable";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { questions, totalQuestions } from "@/data/questions";
+import { cn } from "@/lib/utils";
 
 export function ProgressPanel() {
   const searchParams = useSearchParams();
@@ -15,33 +18,51 @@ export function ProgressPanel() {
 
   if (!ready) {
     return (
-      <div className="skel" aria-busy="true">
-        <div className="skel-line skel-line--title" />
-        <div className="skel-line" />
+      <div className="space-y-3 py-6" aria-busy="true">
+        <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted" />
+        <div className="h-4 w-full animate-pulse rounded-md bg-muted" />
       </div>
     );
   }
 
   return (
-    <>
-      <div className="stats">
-        <p>
-          <b className="num">{done.size}</b>
-          <span>已练 / {totalQuestions}</span>
-        </p>
-        <p>
-          <b className="num">{starred.size}</b>
-          <span>收藏</span>
-        </p>
+    <div className="space-y-6">
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Card size="sm">
+          <CardHeader>
+            <CardTitle>已练</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-medium tabular-nums">
+              {done.size}
+              <span className="ml-2 text-sm font-normal text-muted-foreground">/ {totalQuestions}</span>
+            </p>
+          </CardContent>
+        </Card>
+        <Card size="sm">
+          <CardHeader>
+            <CardTitle>收藏</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-medium tabular-nums">{starred.size}</p>
+          </CardContent>
+        </Card>
       </div>
-      <div className="filters" role="tablist" aria-label="进度列表">
-        <Link className="chip" href="/progress?tab=done" aria-current={tab === "done" ? "page" : undefined}>
+      <div className="flex flex-wrap gap-2" role="tablist" aria-label="进度列表">
+        <Link
+          href="/progress?tab=done"
+          aria-current={tab === "done" ? "page" : undefined}
+          className={cn(badgeVariants({ variant: tab === "done" ? "default" : "outline" }), "h-7 px-2.5")}
+        >
           已练
         </Link>
         <Link
-          className="chip"
           href="/progress?tab=starred"
           aria-current={tab === "starred" ? "page" : undefined}
+          className={cn(
+            badgeVariants({ variant: tab === "starred" ? "default" : "outline" }),
+            "h-7 px-2.5",
+          )}
         >
           收藏
         </Link>
@@ -59,6 +80,6 @@ export function ProgressPanel() {
           emptyBody="在题目页点收藏，回头只看要复盘的几道。"
         />
       )}
-    </>
+    </div>
   );
 }

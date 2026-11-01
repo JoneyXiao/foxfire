@@ -2,6 +2,9 @@
 
 import { FormEvent, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 type SearchFormProps = {
   action?: string;
@@ -25,11 +28,8 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
       const data = new FormData(event.currentTarget);
       const next = String(data.get("q") ?? "").trim();
       const params = new URLSearchParams();
-      if (next) {
-        params.set("q", next);
-      }
+      if (next) params.set("q", next);
       const qs = params.toString();
-      // router.push paths are app-relative; Next adds basePath.
       const appPath = action.endsWith("/") ? action : `${action}/`;
       router.push(qs ? `${appPath}?${qs}` : appPath);
     },
@@ -38,17 +38,16 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
 
   return (
     <form
-      className="finder"
+      className="flex w-full flex-col gap-2 sm:flex-row"
       action={withBasePath(action)}
       method="get"
       role="search"
       onSubmit={onSubmit}
     >
-      <label className="visually-hidden" htmlFor="q">
+      <label className="sr-only" htmlFor="q">
         搜索题目
       </label>
-      <input
-        className="field"
+      <Input
         id="q"
         name="q"
         type="search"
@@ -56,10 +55,12 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
         placeholder="题干、标签或编号"
         autoComplete="off"
         autoFocus={autoFocus}
+        className="h-9 flex-1"
       />
-      <button className="btn" type="submit">
+      <Button type="submit" className="sm:w-auto">
+        <SearchIcon data-icon="inline-start" />
         搜索
-      </button>
+      </Button>
     </form>
   );
 }

@@ -8,7 +8,7 @@ type MarkdownBodyProps = {
 
 export function MarkdownBody({ source }: MarkdownBodyProps) {
   return (
-    <div className="prose">
+    <div className="prose-fox">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

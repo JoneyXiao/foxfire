@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { cn } from "@/lib/utils";
 import mark from "@/assets/foxfire-mark.png";
 
 type AppShellProps = {
@@ -8,47 +11,59 @@ type AppShellProps = {
   current?: "home" | "search" | "progress";
 };
 
+const nav = [
+  { href: "/", id: "home" as const, label: "题库" },
+  { href: "/search", id: "search" as const, label: "搜索" },
+  { href: "/progress", id: "progress" as const, label: "进度" },
+];
+
 export function AppShell({ children, current }: AppShellProps) {
   return (
-    <div className="shell">
-      <a className="skip" href="#content">
+    <div className="flex min-h-svh flex-col">
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+      >
         跳到题目
       </a>
-      <header className="topbar">
-        <div className="container topbar__in">
-          <Link className="wordmark" href="/">
-            <Image
-              className="wordmark__mark"
-              src={mark}
-              alt=""
-              width={30}
-              height={30}
-              priority
-            />
-            <span className="wordmark__zh">狐火</span>
-            <span className="wordmark__en">Foxfire</span>
+      <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+        <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
+          <Link href="/" className="flex items-center gap-2 font-medium tracking-tight">
+            <Image src={mark} alt="" width={28} height={28} priority className="size-7" />
+            <span className="text-base">狐火</span>
+            <span className="hidden text-sm text-muted-foreground sm:inline">Foxfire</span>
           </Link>
-          <nav className="nav" aria-label="主要">
-            <Link href="/" aria-current={current === "home" ? "page" : undefined}>
-              题库
-            </Link>
-            <Link href="/search" aria-current={current === "search" ? "page" : undefined}>
-              搜索
-            </Link>
-            <Link href="/progress" aria-current={current === "progress" ? "page" : undefined}>
-              进度
-            </Link>
+          <nav className="flex items-center gap-1" aria-label="主要">
+            {nav.map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                aria-current={current === item.id ? "page" : undefined}
+                className={cn(
+                  buttonVariants({
+                    variant: current === item.id ? "secondary" : "ghost",
+                    size: "sm",
+                  }),
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
             <ThemeToggle />
           </nav>
         </div>
       </header>
-      <main id="content" className="main">
-        <div className="container">{children}</div>
+      <main id="content" className="flex-1">
+        <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-10">{children}</div>
       </main>
-      <footer className="foot">
-        <div className="container">
-          <strong>狐火</strong>
-          Foxfire，本地保存进度的 AI 应用面试题库。
+      <footer className="mt-auto border-t">
+        <div className="mx-auto w-full max-w-5xl px-4 py-6 text-sm text-muted-foreground sm:px-6">
+          <Separator className="mb-4" />
+          <p>
+            <strong className="font-medium text-foreground">狐火</strong>
+            {" · "}
+            本地保存进度的 AI 应用面试题库
+          </p>
         </div>
       </footer>
     </div>

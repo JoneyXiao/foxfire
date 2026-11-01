@@ -1,16 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IconMoon, IconSun } from "@/components/Icons";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Mode = "light" | "dark";
 
 function readMode(): Mode {
+  if (document.documentElement.classList.contains("dark")) return "dark";
   const attr = document.documentElement.dataset.mode;
-  if (attr === "light" || attr === "dark") {
-    return attr;
-  }
+  if (attr === "light" || attr === "dark") return attr;
   return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
+function applyMode(mode: Mode) {
+  document.documentElement.classList.toggle("dark", mode === "dark");
+  document.documentElement.dataset.mode = mode;
+  window.localStorage.setItem("foxfire-mode", mode);
 }
 
 export function ThemeToggle() {
@@ -22,14 +28,20 @@ export function ThemeToggle() {
 
   function toggle() {
     const next: Mode = mode === "dark" ? "light" : "dark";
-    document.documentElement.dataset.mode = next;
-    window.localStorage.setItem("foxfire-mode", next);
+    applyMode(next);
     setMode(next);
   }
 
   return (
-    <button className="mode" type="button" onClick={toggle} aria-pressed={mode === "dark"}>
-      {mode === "dark" ? <IconSun /> : <IconMoon />}
-    </button>
+    <Button
+      type="button"
+      variant="ghost"
+      size="icon-sm"
+      onClick={toggle}
+      aria-pressed={mode === "dark"}
+      aria-label={mode === "dark" ? "切换到日间" : "切换到夜间"}
+    >
+      {mode === "dark" ? <SunIcon /> : <MoonIcon />}
+    </Button>
   );
 }

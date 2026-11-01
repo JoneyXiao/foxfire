@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IconMark, IconStar } from "@/components/Icons";
+import { CheckIcon, StarIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { emptyProgress, readProgress, toggleId, writeProgress } from "@/lib/progress";
 
 type ProgressButtonsProps = {
@@ -33,34 +34,34 @@ export function ProgressButtons({ id }: ProgressButtonsProps) {
 
   if (!ready) {
     return (
-      <div className="actions">
-        <button className="btn btn--quiet" type="button" disabled>
+      <div className="flex flex-wrap gap-2">
+        <Button type="button" variant="outline" disabled>
           读取进度
-        </button>
+        </Button>
       </div>
     );
   }
 
   return (
-    <div className="actions">
-      <button
-        className="btn btn--quiet"
+    <div className="flex flex-wrap gap-2">
+      <Button
         type="button"
+        variant={done ? "default" : "outline"}
         aria-pressed={done}
         onClick={() => update("done")}
       >
-        <IconMark pressed={done} />
+        <CheckIcon data-icon="inline-start" />
         {done ? "取消已练" : "标为已练"}
-      </button>
-      <button
-        className="btn btn--quiet"
+      </Button>
+      <Button
         type="button"
+        variant={starred ? "secondary" : "outline"}
         aria-pressed={starred}
         onClick={() => update("starred")}
       >
-        <IconStar pressed={starred} />
+        <StarIcon data-icon="inline-start" className={starred ? "fill-current" : undefined} />
         {starred ? "取消收藏" : "收藏"}
-      </button>
+      </Button>
     </div>
   );
 }

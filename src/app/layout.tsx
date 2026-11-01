@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
+import { Geist, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const instrument = Instrument_Sans({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-instrument",
+  variable: "--font-sans",
   display: "swap",
 });
 
 const noto = Noto_Sans_SC({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
   variable: "--font-noto",
   display: "swap",
 });
@@ -31,18 +31,19 @@ export const metadata: Metadata = {
   description: "狐火是面向 AI 应用工程师的面试题库。按分类打开一题，对照参考作答，进度存在本地。",
 };
 
-const themeBoot = `try{var m=localStorage.getItem('foxfire-mode');document.documentElement.dataset.mode=(m==='light'||m==='dark')?m:'dark';}catch(e){document.documentElement.dataset.mode='dark'}`;
+const themeBoot = `try{var m=localStorage.getItem('foxfire-mode');var mode=(m==='light'||m==='dark')?m:'dark';document.documentElement.classList.toggle('dark',mode==='dark');document.documentElement.dataset.mode=mode;}catch(e){document.documentElement.classList.add('dark');document.documentElement.dataset.mode='dark';}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="zh-Hans"
-      className={`${instrument.variable} ${noto.variable} ${mono.variable} h-full`}
+      suppressHydrationWarning
+      className={cn("h-full", geist.variable, noto.variable, mono.variable, "font-sans")}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
       </head>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full bg-background text-foreground">{children}</body>
     </html>
   );
 }

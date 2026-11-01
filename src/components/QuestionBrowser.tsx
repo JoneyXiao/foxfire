@@ -18,7 +18,6 @@ type QuestionBrowserProps = {
   emptyHref: string;
   emptyAction: string;
   autoFocus?: boolean;
-  /** When set, ignore global bank and filter this list (unused if filtering via filterQuestions). */
   seed?: Question[];
 };
 
@@ -61,7 +60,7 @@ export function QuestionBrowser({
   );
 
   return (
-    <>
+    <div className="space-y-6">
       <SearchForm action={basePath} query={q} autoFocus={autoFocus} />
       <FilterLinks
         basePath={basePath}
@@ -79,6 +78,6 @@ export function QuestionBrowser({
         emptyHref={emptyHref}
         emptyAction={emptyAction}
       />
-    </>
+    </div>
   );
 }

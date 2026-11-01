@@ -33,28 +33,36 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <AppShell current="home">
-      <nav className="crumbs" aria-label="面包屑">
-        <Link href="/">题库</Link>
-        <span className="crumb-sep" aria-hidden="true">
-          /
-        </span>
-        <span>{category.name}</span>
-      </nav>
-      <header className="mast">
-        <h1>{category.name}</h1>
-        <p className="lead">{category.summary}</p>
-      </header>
-      <Suspense fallback={<div className="skel" aria-busy="true" />}>
-        <QuestionBrowser
-          basePath={`/category/${slug}`}
-          lockedCategory={slug}
-          showCategory={false}
-          emptyTitle="这个分类下没有匹配"
-          emptyBody="换难度，或清掉搜索词。"
-          emptyHref={`/category/${slug}`}
-          emptyAction="查看该分类全部"
-        />
-      </Suspense>
+      <div className="space-y-6">
+        <nav className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground" aria-label="面包屑">
+          <Link href="/" className="hover:text-foreground hover:underline">
+            题库
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-foreground">{category.name}</span>
+        </nav>
+        <header className="space-y-2">
+          <h1 className="font-heading text-2xl font-medium tracking-tight">{category.name}</h1>
+          <p className="text-muted-foreground">{category.summary}</p>
+        </header>
+        <Suspense
+          fallback={
+            <div className="space-y-3 py-6" aria-busy="true">
+              <div className="h-9 animate-pulse rounded-md bg-muted" />
+            </div>
+          }
+        >
+          <QuestionBrowser
+            basePath={`/category/${slug}`}
+            lockedCategory={slug}
+            showCategory={false}
+            emptyTitle="这个分类下没有匹配"
+            emptyBody="换难度，或清掉搜索词。"
+            emptyHref={`/category/${slug}`}
+            emptyAction="查看该分类全部"
+          />
+        </Suspense>
+      </div>
     </AppShell>
   );
 }

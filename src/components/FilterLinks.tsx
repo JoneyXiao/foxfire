@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { badgeVariants } from "@/components/ui/badge";
 import { categories, difficultyLabel } from "@/lib/categories";
 import type { Difficulty } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 type FilterLinksProps = {
   basePath: string;
@@ -18,20 +20,32 @@ function hrefOf(
 ) {
   const params = new URLSearchParams();
   const next = { ...current, ...patch };
-  if (next.q) {
-    params.set("q", next.q);
-  }
-  if (next.category && next.category !== "all") {
-    params.set("category", next.category);
-  }
-  if (next.difficulty && next.difficulty !== "all") {
-    params.set("difficulty", next.difficulty);
-  }
-  if (next.mark && next.mark !== "all") {
-    params.set("mark", next.mark);
-  }
+  if (next.q) params.set("q", next.q);
+  if (next.category && next.category !== "all") params.set("category", next.category);
+  if (next.difficulty && next.difficulty !== "all") params.set("difficulty", next.difficulty);
+  if (next.mark && next.mark !== "all") params.set("mark", next.mark);
   const text = params.toString();
   return text ? `${basePath}?${text}` : basePath;
+}
+
+function Chip({
+  href,
+  active,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={cn(badgeVariants({ variant: active ? "default" : "outline" }), "h-7 px-2.5")}
+    >
+      {children}
+    </Link>
+  );
 }
 
 export function FilterLinks({
@@ -52,50 +66,43 @@ export function FilterLinks({
   ];
 
   return (
-    <div>
+    <div className="space-y-3">
       {showCategory ? (
-        <div className="filters" role="group" aria-label="分类">
-          <Link
-            className="chip"
-            href={hrefOf(basePath, current, { category: "all" })}
-            aria-current={category === "all" ? "page" : undefined}
-          >
+        <div className="flex flex-wrap gap-2" role="group" aria-label="分类">
+          <Chip href={hrefOf(basePath, current, { category: "all" })} active={category === "all"}>
             全部分类
-          </Link>
+          </Chip>
           {categories.map((item) => (
-            <Link
+            <Chip
               key={item.id}
-              className="chip"
               href={hrefOf("/search", current, { category: item.id })}
-              aria-current={category === item.id ? "page" : undefined}
+              active={category === item.id}
             >
               {item.name}
-            </Link>
+            </Chip>
           ))}
         </div>
       ) : null}
-      <div className="filters" role="group" aria-label="难度">
+      <div className="flex flex-wrap gap-2" role="group" aria-label="难度">
         {difficulties.map((item) => (
-          <Link
+          <Chip
             key={item}
-            className="chip"
             href={hrefOf(basePath, current, { difficulty: item })}
-            aria-current={difficulty === item ? "page" : undefined}
+            active={difficulty === item}
           >
             {item === "all" ? "全部难度" : difficultyLabel[item]}
-          </Link>
+          </Chip>
         ))}
       </div>
-      <div className="filters" role="group" aria-label="进度">
+      <div className="flex flex-wrap gap-2" role="group" aria-label="进度">
         {marks.map((item) => (
-          <Link
+          <Chip
             key={item.id}
-            className="chip"
             href={hrefOf(basePath, current, { mark: item.id })}
-            aria-current={mark === item.id ? "page" : undefined}
+            active={mark === item.id}
           >
             {item.label}
-          </Link>
+          </Chip>
         ))}
       </div>
     </div>
