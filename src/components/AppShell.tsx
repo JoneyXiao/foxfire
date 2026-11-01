@@ -21,8 +21,8 @@ export function AppShell({ children, current }: AppShellProps) {
               className="wordmark__mark"
               src={mark}
               alt=""
-              width={28}
-              height={28}
+              width={30}
+              height={30}
               priority
             />
             <span className="wordmark__zh">狐火</span>

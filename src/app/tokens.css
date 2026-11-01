@@ -1,7 +1,7 @@
 /* Hallmark · shape: app screen · genre: atmospheric · theme: Ribbon (deal 1/3, seed foxfire-chinese-interview-practice-5309·3ce48c2e·2026-11-01·r0) · redesign: full
  * nav: edge-aligned wordmark, three destinations, mode · footer: mast, wordmark over one line
  * signature: question stem with a native details answer · states: loading, empty, error, full
- * ribbon: two-in-the-morning · modes: light+dark · copy: chinese ui
+ * ribbon: fox-ember · modes: light+dark · copy: chinese ui
  * axes: dark/grotesk-sans/chromatic-ember · posture: committed · contrast: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V4 · weakest: E, native details for the answer, controls on the app scale */
 /* Hallmark · body face is Noto Sans SC so Chinese UI can render; Instrument Sans stays the display / wordmark */
@@ -40,12 +40,14 @@
   --color-band-ink: var(--fx-band-ink);
   --color-slot: var(--fx-slot);
   --color-field: var(--fx-field);
+  --color-wash: var(--fx-wash);
+  --color-glow: var(--fx-glow);
   --shadow-part: var(--fx-shadow-part);
   --shadow-panel: var(--fx-shadow-panel);
   --font-display: var(--fx-font-display);
   --font-body: var(--fx-font-body);
   --font-outlier: var(--fx-font-outlier);
-  --radius-card: 20px;
+  --radius-card: 16px;
   --radius-part: 6px;
   --radius-pill: 999px;
   --shadow-card: none;
@@ -90,86 +92,92 @@
   --fx-font-body: var(--font-noto), "Noto Sans SC", "PingFang SC", ui-sans-serif, system-ui, sans-serif;
   --fx-font-outlier: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
 
-  /* Ribbon two-in-the-morning: blue-black night, amber window */
-  --fx-paper: oklch(13.2% 0.022 258);
-  --fx-paper-2: oklch(16.4% 0.02 258);
-  --fx-paper-3: oklch(19.6% 0.018 258);
-  --fx-field: oklch(15% 0.02 258);
-  --fx-ink: oklch(93.5% 0.012 85);
-  --fx-ink-2: oklch(84% 0.016 255);
-  --fx-muted: oklch(72% 0.02 255);
-  --fx-rule: oklch(27% 0.016 258);
-  --fx-rule-2: oklch(22% 0.018 258);
-  --fx-accent: oklch(82% 0.095 68);
-  --fx-accent-soft: oklch(28% 0.04 68);
-  --fx-accent-ink: oklch(20% 0.03 62);
-  --fx-focus: oklch(82% 0.095 68);
-  --fx-band: oklch(18% 0.03 195);
-  --fx-band-ink: oklch(93.5% 0.012 85);
-  --fx-slot: oklch(69% 0.07 80);
+  /* Ribbon fox-ember night: warm charcoal paper, chromatic amber–coral */
+  --fx-paper: oklch(13.4% 0.018 52);
+  --fx-paper-2: oklch(16.6% 0.02 52);
+  --fx-paper-3: oklch(20.2% 0.024 55);
+  --fx-field: oklch(15.2% 0.018 52);
+  --fx-ink: oklch(94% 0.014 75);
+  --fx-ink-2: oklch(82% 0.02 70);
+  --fx-muted: oklch(68% 0.016 62);
+  --fx-rule: oklch(28% 0.02 52);
+  --fx-rule-2: oklch(23% 0.018 52);
+  --fx-accent: oklch(78% 0.135 58);
+  --fx-accent-soft: oklch(26% 0.055 58);
+  --fx-accent-ink: oklch(18% 0.03 50);
+  --fx-focus: oklch(80% 0.12 58);
+  --fx-band: oklch(22% 0.045 55);
+  --fx-band-ink: oklch(94% 0.014 75);
+  --fx-slot: oklch(70% 0.08 65);
+  --fx-wash: oklch(34% 0.08 58 / 0.42);
+  --fx-glow: oklch(72% 0.14 58 / 0.42);
   --fx-error: oklch(72% 0.14 27);
   --fx-success: oklch(78% 0.09 150);
-  --metal-hi: oklch(44% 0.012 255);
-  --metal-lo: oklch(25% 0.014 255);
-  --edge-light: inset 0 1px 0 oklch(93.5% 0.012 85 / 0.18);
-  --fx-shadow-part: 0 1px 0 oklch(8% 0.02 258 / 0.4);
-  --fx-shadow-panel: inset 0 0 0 1px oklch(27% 0.016 258);
+  --metal-hi: oklch(46% 0.02 55);
+  --metal-lo: oklch(26% 0.018 52);
+  --edge-light: inset 0 1px 0 oklch(94% 0.014 75 / 0.16);
+  --fx-shadow-part: 0 1px 0 oklch(8% 0.02 52 / 0.45);
+  --fx-shadow-panel: inset 0 0 0 1px oklch(28% 0.02 52);
 }
 
 [data-mode="light"] {
   color-scheme: light;
-  /* Ribbon dawn: warm off-white, teal signal */
-  --fx-paper: oklch(98.2% 0.008 82);
-  --fx-paper-2: oklch(95.8% 0.011 82);
-  --fx-paper-3: oklch(92.3% 0.014 82);
-  --fx-field: oklch(96.6% 0.01 82);
-  --fx-ink: oklch(18% 0.006 80);
-  --fx-ink-2: oklch(30% 0.008 80);
-  --fx-muted: oklch(47% 0.012 80);
-  --fx-rule: oklch(89.5% 0.011 82);
-  --fx-rule-2: oklch(93.5% 0.009 82);
-  --fx-accent: oklch(44% 0.075 190);
-  --fx-accent-soft: oklch(92% 0.028 190);
-  --fx-accent-ink: oklch(98% 0.006 85);
-  --fx-focus: oklch(52% 0.09 190);
-  --fx-band: oklch(26% 0.045 195);
-  --fx-band-ink: oklch(94% 0.012 85);
-  --fx-slot: oklch(69% 0.07 80);
+  /* Ribbon fox-ember day: warm paper, deeper coral ember */
+  --fx-paper: oklch(97.6% 0.012 78);
+  --fx-paper-2: oklch(95.2% 0.016 75);
+  --fx-paper-3: oklch(91.8% 0.022 70);
+  --fx-field: oklch(96.4% 0.012 78);
+  --fx-ink: oklch(20% 0.022 48);
+  --fx-ink-2: oklch(34% 0.022 50);
+  --fx-muted: oklch(48% 0.02 55);
+  --fx-rule: oklch(87.5% 0.016 75);
+  --fx-rule-2: oklch(92% 0.012 78);
+  --fx-accent: oklch(52% 0.145 48);
+  --fx-accent-soft: oklch(93% 0.04 60);
+  --fx-accent-ink: oklch(98% 0.008 80);
+  --fx-focus: oklch(52% 0.145 48);
+  --fx-band: oklch(34% 0.06 50);
+  --fx-band-ink: oklch(97% 0.01 80);
+  --fx-slot: oklch(62% 0.1 55);
+  --fx-wash: oklch(90% 0.05 62 / 0.55);
+  --fx-glow: oklch(55% 0.14 50 / 0.3);
   --fx-error: oklch(52% 0.19 27);
   --fx-success: oklch(50% 0.12 150);
-  --metal-hi: oklch(97% 0.006 85);
-  --metal-lo: oklch(85% 0.01 85);
-  --edge-light: inset 0 1px 0 oklch(98.2% 0.008 82 / 0.7);
-  --fx-shadow-part: 0 1px 0 oklch(20% 0.01 80 / 0.25), 0 10px 18px -6px oklch(20% 0.01 80 / 0.3);
-  --fx-shadow-panel: 0 1px 0 oklch(20% 0.01 80 / 0.2), 0 24px 48px -16px oklch(20% 0.02 80 / 0.35);
+  --metal-hi: oklch(97% 0.01 80);
+  --metal-lo: oklch(86% 0.02 75);
+  --edge-light: inset 0 1px 0 oklch(98% 0.008 80 / 0.75);
+  --fx-shadow-part: 0 1px 0 oklch(28% 0.03 50 / 0.18), 0 10px 18px -6px oklch(28% 0.04 50 / 0.22);
+  --fx-shadow-panel: 0 1px 0 oklch(28% 0.03 50 / 0.14), 0 24px 48px -16px oklch(28% 0.04 50 / 0.2);
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-mode]) {
     color-scheme: light;
-    --fx-paper: oklch(98.2% 0.008 82);
-    --fx-paper-2: oklch(95.8% 0.011 82);
-    --fx-paper-3: oklch(92.3% 0.014 82);
-    --fx-field: oklch(96.6% 0.01 82);
-    --fx-ink: oklch(18% 0.006 80);
-    --fx-ink-2: oklch(30% 0.008 80);
-    --fx-muted: oklch(47% 0.012 80);
-    --fx-rule: oklch(89.5% 0.011 82);
-    --fx-rule-2: oklch(93.5% 0.009 82);
-    --fx-accent: oklch(44% 0.075 190);
-    --fx-accent-soft: oklch(92% 0.028 190);
-    --fx-accent-ink: oklch(98% 0.006 85);
-    --fx-focus: oklch(52% 0.09 190);
-    --fx-band: oklch(26% 0.045 195);
-    --fx-band-ink: oklch(94% 0.012 85);
-    --fx-slot: oklch(69% 0.07 80);
+    --fx-paper: oklch(97.6% 0.012 78);
+    --fx-paper-2: oklch(95.2% 0.016 75);
+    --fx-paper-3: oklch(91.8% 0.022 70);
+    --fx-field: oklch(96.4% 0.012 78);
+    --fx-ink: oklch(20% 0.022 48);
+    --fx-ink-2: oklch(34% 0.022 50);
+    --fx-muted: oklch(48% 0.02 55);
+    --fx-rule: oklch(87.5% 0.016 75);
+    --fx-rule-2: oklch(92% 0.012 78);
+    --fx-accent: oklch(52% 0.145 48);
+    --fx-accent-soft: oklch(93% 0.04 60);
+    --fx-accent-ink: oklch(98% 0.008 80);
+    --fx-focus: oklch(52% 0.145 48);
+    --fx-band: oklch(34% 0.06 50);
+    --fx-band-ink: oklch(97% 0.01 80);
+    --fx-slot: oklch(62% 0.1 55);
+    --fx-wash: oklch(90% 0.05 62 / 0.55);
+    --fx-glow: oklch(55% 0.14 50 / 0.3);
     --fx-error: oklch(52% 0.19 27);
     --fx-success: oklch(50% 0.12 150);
-    --metal-hi: oklch(97% 0.006 85);
-    --metal-lo: oklch(85% 0.01 85);
-    --edge-light: inset 0 1px 0 oklch(98.2% 0.008 82 / 0.7);
-    --fx-shadow-part: 0 1px 0 oklch(20% 0.01 80 / 0.25), 0 10px 18px -6px oklch(20% 0.01 80 / 0.3);
-    --fx-shadow-panel: 0 1px 0 oklch(20% 0.01 80 / 0.2), 0 24px 48px -16px oklch(20% 0.02 80 / 0.35);
+    --metal-hi: oklch(97% 0.01 80);
+    --metal-lo: oklch(86% 0.02 75);
+    --edge-light: inset 0 1px 0 oklch(98% 0.008 80 / 0.75);
+    --fx-shadow-part: 0 1px 0 oklch(28% 0.03 50 / 0.18), 0 10px 18px -6px oklch(28% 0.04 50 / 0.22);
+    --fx-shadow-panel: 0 1px 0 oklch(28% 0.03 50 / 0.14), 0 24px 48px -16px oklch(28% 0.04 50 / 0.2);
   }
 }
 
