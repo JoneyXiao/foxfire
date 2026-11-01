@@ -1,13 +1,18 @@
 export const CATEGORY_IDS = [
-  "python",
-  "pytorch",
-  "transformer",
-  "multimodal",
-  "agent",
+  "llm-basics",
+  "api-structured",
+  "prompting",
   "rag",
+  "knowledge",
+  "agent",
+  "harness",
+  "frameworks",
   "deployment",
-  "monitoring",
-  "behavioral",
+  "evaluation",
+  "reliability",
+  "safety",
+  "product-cost",
+  "ml-basics",
 ] as const;
 
 export type CategoryId = (typeof CATEGORY_IDS)[number];
