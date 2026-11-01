@@ -1,0 +1,12 @@
+{
+  "scanned": "2026-11-01",
+  "findings": {
+    "fonts": "create-next-app Geist defaults, replaced by Instrument Sans + Noto Sans SC",
+    "palette": "no product tokens; Hallmark Ribbon two-in-the-morning + dawn",
+    "motion": "none in the empty repo",
+    "spacing": "Tailwind v4 default scale",
+    "framework": "Next.js 16 App Router, TypeScript, Tailwind 4"
+  },
+  "preserve": ["Next.js App Router", "TypeScript", "Tailwind 4"],
+  "introduce": ["Ribbon tokens", "app screen shell", "question ledger", "native details answer", "light+dark"]
+}

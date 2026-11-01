@@ -1,0 +1,23 @@
+import { AppShell } from "@/components/AppShell";
+import { ProgressPanel } from "@/components/ProgressPanel";
+
+type ProgressPageProps = {
+  searchParams: Promise<{ tab?: string }>;
+};
+
+export const metadata = { title: "进度" };
+
+export default async function ProgressPage({ searchParams }: ProgressPageProps) {
+  const { tab } = await searchParams;
+  const current = tab === "starred" ? "starred" : "done";
+
+  return (
+    <AppShell current="progress">
+      <header className="mast">
+        <h1>进度</h1>
+        <p className="lead">已练和收藏只留在这台设备。</p>
+      </header>
+      <ProgressPanel tab={current} />
+    </AppShell>
+  );
+}

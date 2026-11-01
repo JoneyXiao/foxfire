@@ -1,0 +1,31 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "Ribbon",
+  "axes": "dark/grotesk-sans/chromatic-ember",
+  "hero": "none",
+  "nav": "edge-aligned wordmark, three destinations, mode",
+  "footer": "mast, wordmark over one line",
+  "imagery": "product screens",
+  "photos": [],
+  "entry": "foxfire-chinese-interview-practice-5309",
+  "fingerprint": "ledger+details+topbar",
+  "sections": [
+   "home ledger",
+   "category list",
+   "question stem",
+   "search",
+   "progress"
+  ],
+  "signature": "question stem with a native details answer",
+  "waived": [
+   "49b"
+  ],
+  "prompt": "Foxfire Chinese AI interview practice tool",
+  "genre": "atmospheric",
+  "date": "2026-11-01"
+ }
+]
