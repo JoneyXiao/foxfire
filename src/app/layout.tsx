@@ -25,10 +25,10 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Foxfire 面栈",
-    template: "%s · Foxfire 面栈",
+    default: "狐火 Foxfire",
+    template: "%s · 狐火",
   },
-  description: "面向 AI 应用工程师的面试题库。按分类打开一题，对照参考作答，进度存在本地。",
+  description: "狐火是面向 AI 应用工程师的面试题库。按分类打开一题，对照参考作答，进度存在本地。",
 };
 
 const themeBoot = `try{var m=localStorage.getItem('foxfire-mode');document.documentElement.dataset.mode=(m==='light'||m==='dark')?m:'dark';}catch(e){document.documentElement.dataset.mode='dark'}`;

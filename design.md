@@ -1,4 +1,4 @@
-# Design: Foxfire 面栈
+# Design: 狐火 Foxfire
 
 The locked system. Every Hallmark run reads this first and pages share it. Change it on purpose; the file is the rule.
 

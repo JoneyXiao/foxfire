@@ -15,8 +15,8 @@ export function AppShell({ children, current }: AppShellProps) {
       <header className="topbar">
         <div className="container topbar__in">
           <Link className="wordmark" href="/">
+            <span className="wordmark__zh">狐火</span>
             <span className="wordmark__en">Foxfire</span>
-            <span className="wordmark__zh">面栈</span>
           </Link>
           <nav className="nav" aria-label="主要">
             <Link href="/" aria-current={current === "home" ? "page" : undefined}>
@@ -37,8 +37,8 @@ export function AppShell({ children, current }: AppShellProps) {
       </main>
       <footer className="foot">
         <div className="container">
-          <strong>Foxfire</strong>
-          本地保存进度的 AI 应用面试题库。
+          <strong>狐火</strong>
+          Foxfire，本地保存进度的 AI 应用面试题库。
         </div>
       </footer>
     </div>

@@ -1,8 +1,8 @@
-![Foxfire](docs/foxfire-readme-hero.jpg)
+![狐火 Foxfire](docs/foxfire-readme-hero.jpg)
 
-# Foxfire
+# 狐火 Foxfire
 
-**面栈** 是一套给 AI 应用工程师用的面试练习工具。按分类浏览题目，打开一题先自己答，再展开参考作答（Markdown）。已练和收藏写在浏览器的 localStorage，不经过服务器。
+**狐火** 是一套给 AI 应用工程师用的面试练习工具。英文名 Foxfire。按分类浏览题目，打开一题先自己答，再展开参考作答（Markdown）。已练和收藏写在浏览器的 localStorage，不经过服务器。
 
 ## 本地运行
 

@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <AppShell current="home">
       <header className="mast">
-        <h1>面栈</h1>
+        <h1>狐火</h1>
         <p className="lead">按分类打开一题，对照参考作答。</p>
       </header>
       <SearchForm />
