@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import mark from "@/assets/foxfire-mark.png";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -15,6 +17,14 @@ export function AppShell({ children, current }: AppShellProps) {
       <header className="topbar">
         <div className="container topbar__in">
           <Link className="wordmark" href="/">
+            <Image
+              className="wordmark__mark"
+              src={mark}
+              alt=""
+              width={28}
+              height={28}
+              priority
+            />
             <span className="wordmark__zh">狐火</span>
             <span className="wordmark__en">Foxfire</span>
           </Link>

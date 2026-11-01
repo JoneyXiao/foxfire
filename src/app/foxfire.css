@@ -42,11 +42,19 @@
 
 .wordmark {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-xs);
   text-decoration: none;
   white-space: nowrap;
   color: var(--color-ink);
+}
+
+.wordmark__mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: block;
 }
 
 .wordmark:hover {
