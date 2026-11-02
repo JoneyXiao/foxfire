@@ -48,6 +48,7 @@ export function QuestionBrowser({
       : "all";
   const difficulty = parseDifficulty(searchParams.get("difficulty"));
   const mark = searchParams.get("mark") ?? "all";
+  const tag = searchParams.get("tag") ?? "";
 
   const items = useMemo(
     () =>
@@ -55,8 +56,9 @@ export function QuestionBrowser({
         q,
         category,
         difficulty,
+        tag: tag || undefined,
       }),
-    [q, category, difficulty],
+    [q, category, difficulty, tag],
   );
 
   return (
@@ -68,6 +70,7 @@ export function QuestionBrowser({
         category={category}
         difficulty={difficulty}
         mark={mark}
+        tag={tag}
         showCategory={showCategory}
       />
       <QuestionTable

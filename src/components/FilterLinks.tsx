@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { badgeVariants } from "@/components/ui/badge";
+import { listTagsWithCounts } from "@/data/questions";
 import { categories, difficultyLabel } from "@/lib/categories";
 import type { Difficulty } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -10,12 +11,13 @@ type FilterLinksProps = {
   category?: string;
   difficulty?: string;
   mark?: string;
+  tag?: string;
   showCategory?: boolean;
 };
 
 function hrefOf(
   basePath: string,
-  current: { q?: string; category?: string; difficulty?: string; mark?: string },
+  current: { q?: string; category?: string; difficulty?: string; mark?: string; tag?: string },
   patch: Record<string, string | undefined>,
 ) {
   const params = new URLSearchParams();
@@ -24,6 +26,7 @@ function hrefOf(
   if (next.category && next.category !== "all") params.set("category", next.category);
   if (next.difficulty && next.difficulty !== "all") params.set("difficulty", next.difficulty);
   if (next.mark && next.mark !== "all") params.set("mark", next.mark);
+  if (next.tag) params.set("tag", next.tag);
   const text = params.toString();
   return text ? `${basePath}?${text}` : basePath;
 }
@@ -54,9 +57,10 @@ export function FilterLinks({
   category = "all",
   difficulty = "all",
   mark = "all",
+  tag = "",
   showCategory = true,
 }: FilterLinksProps) {
-  const current = { q: query, category, difficulty, mark };
+  const current = { q: query, category, difficulty, mark, tag };
   const difficulties: Array<Difficulty | "all"> = ["all", "foundation", "applied", "system"];
   const marks = [
     { id: "all", label: "全部" },
@@ -64,6 +68,12 @@ export function FilterLinks({
     { id: "done", label: "已练" },
     { id: "starred", label: "收藏" },
   ];
+
+  const allTags = listTagsWithCounts();
+  const commonTags = allTags.filter((item) => item.count >= 2);
+  const rareTags = allTags.filter((item) => item.count === 1);
+  const selectedIsRare = Boolean(tag && rareTags.some((item) => item.tag === tag));
+  const pinnedRare = selectedIsRare ? rareTags.find((item) => item.tag === tag) : undefined;
 
   return (
     <div className="space-y-3">
@@ -104,6 +114,56 @@ export function FilterLinks({
             {item.label}
           </Chip>
         ))}
+      </div>
+      <div className="space-y-2" role="group" aria-label="标签">
+        <div className="flex flex-wrap gap-2">
+          <Chip href={hrefOf(basePath, current, { tag: undefined })} active={!tag}>
+            全部标签
+          </Chip>
+          {commonTags.map((item) => {
+            const active = tag === item.tag;
+            return (
+              <Chip
+                key={item.tag}
+                href={hrefOf(basePath, current, { tag: active ? undefined : item.tag })}
+                active={active}
+              >
+                {item.tag}
+                <span className="ml-1 opacity-70">{item.count}</span>
+              </Chip>
+            );
+          })}
+          {pinnedRare ? (
+            <Chip href={hrefOf(basePath, current, { tag: undefined })} active>
+              {pinnedRare.tag}
+              <span className="ml-1 opacity-70">{pinnedRare.count}</span>
+            </Chip>
+          ) : null}
+        </div>
+        {rareTags.length > 0 ? (
+          <details
+            className="group rounded-lg border border-dashed border-border/80 px-3 py-2"
+            open={selectedIsRare || undefined}
+          >
+            <summary className="cursor-pointer select-none text-sm text-muted-foreground hover:text-foreground">
+              更多标签（{rareTags.length}）
+            </summary>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {rareTags.map((item) => {
+                const active = tag === item.tag;
+                return (
+                  <Chip
+                    key={item.tag}
+                    href={hrefOf(basePath, current, { tag: active ? undefined : item.tag })}
+                    active={active}
+                  >
+                    {item.tag}
+                  </Chip>
+                );
+              })}
+            </div>
+          </details>
+        ) : null}
       </div>
     </div>
   );

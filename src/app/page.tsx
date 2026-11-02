@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { AppShell } from "@/components/AppShell";
 import { SearchForm } from "@/components/SearchForm";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +24,9 @@ export default function HomePage() {
           <h1 className="font-heading text-3xl font-medium tracking-tight">狐火</h1>
           <p className="max-w-2xl text-muted-foreground">按分类打开一题，对照参考作答。</p>
         </header>
-        <SearchForm />
+        <Suspense fallback={<div className="h-9 w-full animate-pulse rounded-md bg-muted" />}>
+          <SearchForm />
+        </Suspense>
         <ul className="grid gap-3 sm:grid-cols-2">
           {categories.map((category) => (
             <li key={category.id}>

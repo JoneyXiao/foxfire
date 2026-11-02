@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ProgressButtons } from "@/components/ProgressButtons";
-import { Badge } from "@/components/ui/badge";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -67,9 +67,13 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
               <Badge variant="secondary">{category?.name}</Badge>
               <Badge variant="outline">{difficultyLabel[question.difficulty]}</Badge>
               {question.tags.map((tag) => (
-                <Badge key={tag} variant="outline">
+                <Link
+                  key={tag}
+                  href={`/search?tag=${encodeURIComponent(tag)}`}
+                  className={badgeVariants({ variant: "outline" })}
+                >
                   {tag}
-                </Badge>
+                </Link>
               ))}
             </CardDescription>
           </CardHeader>

@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,8 +19,11 @@ function withBasePath(path: string): string {
   return `${base}${withSlash}`;
 }
 
+const PRESERVE_KEYS = ["category", "difficulty", "mark", "tag"] as const;
+
 export function SearchForm({ action = "/search", query = "", autoFocus }: SearchFormProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const onSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -29,11 +32,15 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
       const next = String(data.get("q") ?? "").trim();
       const params = new URLSearchParams();
       if (next) params.set("q", next);
+      for (const key of PRESERVE_KEYS) {
+        const value = searchParams.get(key);
+        if (value) params.set(key, value);
+      }
       const qs = params.toString();
       const appPath = action.endsWith("/") ? action : `${action}/`;
       router.push(qs ? `${appPath}?${qs}` : appPath);
     },
-    [action, router],
+    [action, router, searchParams],
   );
 
   return (
@@ -57,6 +64,10 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
         autoFocus={autoFocus}
         className="h-9 flex-1"
       />
+      {PRESERVE_KEYS.map((key) => {
+        const value = searchParams.get(key);
+        return value ? <input key={key} type="hidden" name={key} value={value} /> : null;
+      })}
       <Button type="submit" className="sm:w-auto">
         <SearchIcon data-icon="inline-start" />
         搜索

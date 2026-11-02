@@ -46,4 +46,5 @@ export type QuestionFilters = {
   category?: CategoryId | "all";
   difficulty?: Difficulty | "all";
   mark?: "all" | "open" | "done" | "starred";
+  tag?: string;
 };
