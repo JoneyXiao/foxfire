@@ -49,6 +49,14 @@ export function AppShell({ children, current }: AppShellProps) {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="https://github.com/JoneyXiao/foxfire"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            >
+              GitHub
+            </a>
             <ThemeToggle />
           </nav>
         </div>
@@ -63,6 +71,15 @@ export function AppShell({ children, current }: AppShellProps) {
             <strong className="font-medium text-foreground">狐火</strong>
             {" · "}
             本地保存进度的 AI 应用面试题库
+            {" · "}
+            <a
+              href="https://github.com/JoneyXiao/foxfire"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-2 hover:text-foreground hover:underline"
+            >
+              GitHub 仓库
+            </a>
           </p>
         </div>
       </footer>
