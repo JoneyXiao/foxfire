@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { PracticeActions } from "@/components/PracticeActions";
+import { SessionBar } from "@/components/SessionBar";
 import { ProgressButtons } from "@/components/ProgressButtons";
 import { Badge, badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -80,6 +81,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+            <SessionBar questionId={question.id} />
             <MarkdownBody source={question.prompt} />
             <ProgressButtons id={question.id} />
             <PracticeActions currentId={question.id} />
