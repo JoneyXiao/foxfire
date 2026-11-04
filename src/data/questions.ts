@@ -1,7 +1,7 @@
 import { categories } from "@/lib/categories";
 import type { CategoryId, Difficulty, Question, QuestionFilters } from "@/lib/types";
 
-/** AI 应用岗面试题库（150 道）。来源：极客知识库 AI 面试专题整理入库。 */
+/** AI 应用岗面试题库（150 道）。参考极客知识库「AI 面试」专题等公开资料整理改写，供个人练习；非官方原文。 */
 export const questions: Question[] = [
   {
     id: "q-001",
