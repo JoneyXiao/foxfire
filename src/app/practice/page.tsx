@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { AppShell } from "@/components/AppShell";
 import { PracticeSetup } from "@/components/PracticeSetup";
 
@@ -13,7 +14,16 @@ export default function PracticePage() {
             选好分类、难度和题量，随机抽一串题连续练；结束后看完成率与收藏回顾。
           </p>
         </header>
-        <PracticeSetup />
+        <Suspense
+          fallback={
+            <div className="space-y-3 py-6" aria-busy="true">
+              <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted" />
+              <div className="h-4 w-full animate-pulse rounded-md bg-muted" />
+            </div>
+          }
+        >
+          <PracticeSetup />
+        </Suspense>
       </div>
     </AppShell>
   );

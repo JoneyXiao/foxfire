@@ -7,6 +7,7 @@ import { DownloadIcon, UploadIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ProgressAnalytics } from "@/components/ProgressAnalytics";
 import { QuestionTable } from "@/components/QuestionTable";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { questions, totalQuestions } from "@/data/questions";
@@ -95,6 +96,8 @@ export function ProgressPanel() {
           </CardContent>
         </Card>
       </div>
+
+      <ProgressAnalytics done={done} starred={starred} />
 
       <Card size="sm">
         <CardHeader>
