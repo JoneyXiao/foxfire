@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { PracticeActions } from "@/components/PracticeActions";
 import { ProgressButtons } from "@/components/ProgressButtons";
 import { Badge, badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -80,6 +81,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
           <CardContent className="space-y-6">
             <MarkdownBody source={question.prompt} />
             <ProgressButtons id={question.id} />
+            <PracticeActions currentId={question.id} />
           </CardContent>
         </Card>
 
