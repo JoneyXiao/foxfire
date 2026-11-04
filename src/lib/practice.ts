@@ -1,7 +1,7 @@
-import type { Question } from "@/lib/types";
+import type { QuestionSummary } from "@/lib/types";
 
 export type RandomPick = {
-  question: Question;
+  question: QuestionSummary;
   pool: "unpracticed" | "all";
 };
 
@@ -11,9 +11,9 @@ function doneSet(done: Iterable<string>): Set<string> {
 
 /** Unpracticed questions in the given list order. */
 export function listUnpracticed(
-  all: readonly Question[],
+  all: readonly QuestionSummary[],
   done: Iterable<string>,
-): Question[] {
+): QuestionSummary[] {
   const marked = doneSet(done);
   return all.filter((item) => !marked.has(item.id));
 }
@@ -23,10 +23,10 @@ export function listUnpracticed(
  * If `afterId` is missing or unknown, returns the first unpracticed item.
  */
 export function pickNextUnpracticed(
-  all: readonly Question[],
+  all: readonly QuestionSummary[],
   done: Iterable<string>,
   afterId?: string,
-): Question | undefined {
+): QuestionSummary | undefined {
   const open = listUnpracticed(all, done);
   if (open.length === 0) {
     return undefined;
@@ -55,7 +55,7 @@ export function pickNextUnpracticed(
  * Prefer a random unpracticed question; if none remain, pick from all.
  */
 export function pickRandomQuestion(
-  all: readonly Question[],
+  all: readonly QuestionSummary[],
   done: Iterable<string>,
 ): RandomPick | undefined {
   if (all.length === 0) {

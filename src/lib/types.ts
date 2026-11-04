@@ -26,13 +26,18 @@ export type Category = {
   summary: string;
 };
 
-export type Question = {
+/** List / client-safe shape — no reference answer body. */
+export type QuestionSummary = {
   id: string;
   title: string;
   category: CategoryId;
   difficulty: Difficulty;
   tags: string[];
   prompt: string;
+};
+
+/** Full question including reference answer (detail / server). */
+export type Question = QuestionSummary & {
   answer: string;
 };
 

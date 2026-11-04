@@ -7,7 +7,7 @@ import { QuestionTable } from "@/components/QuestionTable";
 import { SearchForm } from "@/components/SearchForm";
 import { isCategoryId } from "@/lib/categories";
 import { filterQuestions } from "@/data/questions";
-import type { CategoryId, Difficulty, Question } from "@/lib/types";
+import type { CategoryId, Difficulty, QuestionSummary } from "@/lib/types";
 
 type QuestionBrowserProps = {
   basePath: string;
@@ -18,7 +18,7 @@ type QuestionBrowserProps = {
   emptyHref: string;
   emptyAction: string;
   autoFocus?: boolean;
-  seed?: Question[];
+  seed?: QuestionSummary[];
 };
 
 function parseDifficulty(value: string | null): Difficulty | "all" {

@@ -13,11 +13,11 @@ import {
 } from "@/components/ui/table";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { categoryById, difficultyLabel } from "@/lib/categories";
-import type { Question } from "@/lib/types";
+import type { QuestionSummary } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 type QuestionTableProps = {
-  items: Question[];
+  items: QuestionSummary[];
   mark?: string;
   emptyTitle: string;
   emptyBody: string;
