@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
@@ -31,6 +31,15 @@ export const metadata: Metadata = {
   description: "狐火是面向 AI 应用工程师的面试题库。按分类打开一题，对照参考作答，进度存在本地。",
 };
 
+// Default night (Ribbon). ThemeToggle syncs meta theme-color on switch.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#2a221c" },
+    { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
+    { color: "#2a221c" },
+  ],
+};
+
 const themeBoot = `try{var m=localStorage.getItem('foxfire-mode');var mode=(m==='light'||m==='dark')?m:'dark';document.documentElement.classList.toggle('dark',mode==='dark');document.documentElement.dataset.mode=mode;}catch(e){document.documentElement.classList.add('dark');document.documentElement.dataset.mode='dark';}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -43,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
       </head>
-      <body className="min-h-full bg-background text-foreground">{children}</body>
+      <body className="min-h-full bg-background text-foreground pb-[env(safe-area-inset-bottom)]">{children}</body>
     </html>
   );
 }

@@ -124,13 +124,34 @@
   }
   html {
     @apply font-sans;
+    color-scheme: light;
     scroll-padding-top: 4rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   body {
     @apply bg-background text-foreground antialiased;
+    touch-action: manipulation;
   }
   a {
     @apply underline-offset-4;
+  }
+  button,
+  [role="button"],
+  a,
+  input,
+  select,
+  textarea,
+  summary {
+    touch-action: manipulation;
+  }
+  input,
+  textarea,
+  select {
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
@@ -169,4 +190,23 @@
 }
 .prose-fox strong {
   @apply font-medium text-foreground;
+}
+
+
+/* Motion: calm defaults; honor reduced motion (Web Interface Guidelines) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Large question lists: cheap paint deferral without full virtualization */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 4.5rem;
 }

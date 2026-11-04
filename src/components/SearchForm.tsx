@@ -65,7 +65,7 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
           type="search"
           defaultValue={query}
           placeholder={
-            answersOn ? "题干、标签、编号或参考作答关键词" : "题干、标签或编号"
+            answersOn ? "题干、标签、编号或参考作答关键词…" : "题干、标签或编号…"
           }
           autoComplete="off"
           autoFocus={autoFocus}

@@ -83,7 +83,7 @@ export function SessionBar({ questionId }: SessionBarProps) {
       return;
     }
     if (isLastQuestion(current)) {
-      endSession();
+      endSession({ skipConfirm: true });
       return;
     }
     const next = setSessionIndex(current, current.index + 1);
@@ -94,7 +94,13 @@ export function SessionBar({ questionId }: SessionBarProps) {
     }
   }
 
-  function endSession() {
+  function endSession(opts?: { skipConfirm?: boolean }) {
+    if (!opts?.skipConfirm) {
+      const ok = window.confirm("确定结束当前练习会话并查看小结？");
+      if (!ok) {
+        return;
+      }
+    }
     const current = readSession();
     if (!current) {
       router.push("/practice/summary");
@@ -110,7 +116,10 @@ export function SessionBar({ questionId }: SessionBarProps) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="space-y-1">
           <p className="text-sm font-medium">
-            练习会话 · {position} / {total}
+            练习会话 ·{" "}
+            <span className="tabular-nums">
+              {position} / {total}
+            </span>
           </p>
           <div
             className="h-1.5 w-40 overflow-hidden rounded-full bg-muted"
@@ -127,7 +136,7 @@ export function SessionBar({ questionId }: SessionBarProps) {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" size="sm" onClick={endSession}>
+          <Button type="button" variant="outline" size="sm" onClick={() => endSession()}>
             <FlagIcon data-icon="inline-start" />
             结束会话
           </Button>

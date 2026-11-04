@@ -61,7 +61,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
 
         <Card>
           <CardHeader className="space-y-3">
-            <CardTitle className="text-xl leading-snug sm:text-2xl">{question.title}</CardTitle>
+            <CardTitle className="text-pretty text-xl leading-snug sm:text-2xl">{question.title}</CardTitle>
             <CardDescription className="flex flex-wrap items-center gap-2">
               <Badge variant="secondary">{category?.name}</Badge>
               <Badge variant="outline">{difficultyLabel[question.difficulty]}</Badge>
@@ -96,7 +96,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
           {prev ? (
             <Link
               href={`/questions/${prev.id}`}
-              className="rounded-xl border bg-card p-4 text-sm hover:bg-muted/40"
+              className="rounded-xl border bg-card p-4 text-sm transition-colors hover:bg-muted/40 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
             >
               <span className="text-muted-foreground">上一题 · k</span>
               <span className="mt-1 block font-medium">{prev.title}</span>
@@ -107,7 +107,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
           {next ? (
             <Link
               href={`/questions/${next.id}`}
-              className="rounded-xl border bg-card p-4 text-sm hover:bg-muted/40 sm:text-right"
+              className="rounded-xl border bg-card p-4 text-sm transition-colors hover:bg-muted/40 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none sm:text-right"
             >
               <span className="text-muted-foreground">下一题 · j</span>
               <span className="mt-1 block font-medium">{next.title}</span>

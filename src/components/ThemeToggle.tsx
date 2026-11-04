@@ -13,17 +13,36 @@ function readMode(): Mode {
   return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
 
+const THEME_COLORS: Record<Mode, string> = {
+  dark: "#2a221c",
+  light: "#faf7f2",
+};
+
+function syncThemeColor(mode: Mode) {
+  const color = THEME_COLORS[mode];
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", "theme-color");
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", color);
+}
+
 function applyMode(mode: Mode) {
   document.documentElement.classList.toggle("dark", mode === "dark");
   document.documentElement.dataset.mode = mode;
   window.localStorage.setItem("foxfire-mode", mode);
+  syncThemeColor(mode);
 }
 
 export function ThemeToggle() {
   const [mode, setMode] = useState<Mode>("dark");
 
   useEffect(() => {
-    setMode(readMode());
+    const current = readMode();
+    setMode(current);
+    syncThemeColor(current);
   }, []);
 
   function toggle() {
@@ -41,7 +60,7 @@ export function ThemeToggle() {
       aria-pressed={mode === "dark"}
       aria-label={mode === "dark" ? "切换到日间" : "切换到夜间"}
     >
-      {mode === "dark" ? <SunIcon /> : <MoonIcon />}
+      {mode === "dark" ? <SunIcon aria-hidden="true" /> : <MoonIcon aria-hidden="true" />}
     </Button>
   );
 }
