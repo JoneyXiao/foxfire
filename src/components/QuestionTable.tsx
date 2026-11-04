@@ -1,8 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { LayoutGridIcon, TableIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -13,6 +22,12 @@ import {
 } from "@/components/ui/table";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { categoryById, difficultyLabel } from "@/lib/categories";
+import {
+  PREFS_CHANGED_EVENT,
+  patchPrefs,
+  readPrefs,
+  type ListLayout,
+} from "@/lib/prefs";
 import type { QuestionSummary } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +49,23 @@ export function QuestionTable({
   emptyAction = "回到题库",
 }: QuestionTableProps) {
   const { ready, done, starred } = useProgressSets();
+  const [layoutReady, setLayoutReady] = useState(false);
+  const [layout, setLayout] = useState<ListLayout>("table");
+
+  useEffect(() => {
+    function refresh() {
+      setLayout(readPrefs().listLayout);
+      setLayoutReady(true);
+    }
+    refresh();
+    window.addEventListener(PREFS_CHANGED_EVENT, refresh);
+    return () => window.removeEventListener(PREFS_CHANGED_EVENT, refresh);
+  }, []);
+
+  function setListLayout(next: ListLayout) {
+    setLayout(next);
+    patchPrefs({ listLayout: next });
+  }
 
   if (!ready) {
     return (
@@ -52,62 +84,161 @@ export function QuestionTable({
     return true;
   });
 
+  const toolbar = (
+    <div className="flex flex-wrap items-center justify-between gap-2">
+      <p className="text-sm text-muted-foreground">
+        {visible.length} 题
+        {layoutReady && layout === "cards" ? " · 卡片视图" : null}
+        {layoutReady && layout === "table" ? " · 表格视图" : null}
+      </p>
+      <div
+        className="inline-flex rounded-lg border p-0.5"
+        role="group"
+        aria-label="列表视图"
+      >
+        <button
+          type="button"
+          aria-pressed={layout === "table"}
+          className={cn(
+            buttonVariants({
+              variant: layout === "table" ? "secondary" : "ghost",
+              size: "sm",
+            }),
+            "gap-1",
+          )}
+          onClick={() => setListLayout("table")}
+        >
+          <TableIcon data-icon="inline-start" />
+          表格
+        </button>
+        <button
+          type="button"
+          aria-pressed={layout === "cards"}
+          className={cn(
+            buttonVariants({
+              variant: layout === "cards" ? "secondary" : "ghost",
+              size: "sm",
+            }),
+            "gap-1",
+          )}
+          onClick={() => setListLayout("cards")}
+        >
+          <LayoutGridIcon data-icon="inline-start" />
+          卡片
+        </button>
+      </div>
+    </div>
+  );
+
   if (visible.length === 0) {
     return (
-      <div className="rounded-xl border bg-card px-6 py-10 text-center">
-        <h2 className="font-heading text-base font-medium">{emptyTitle}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{emptyBody}</p>
-        <p className="mt-4">
-          <Link href={emptyHref} className={cn(buttonVariants())}>
-            {emptyAction}
-          </Link>
-        </p>
+      <div className="space-y-3">
+        {toolbar}
+        <div className="rounded-xl border bg-card px-6 py-10 text-center">
+          <h2 className="font-heading text-base font-medium">{emptyTitle}</h2>
+          <p className="mt-2 text-sm text-muted-foreground">{emptyBody}</p>
+          <p className="mt-4">
+            <Link href={emptyHref} className={cn(buttonVariants())}>
+              {emptyAction}
+            </Link>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (layout === "cards") {
+    return (
+      <div className="space-y-3">
+        {toolbar}
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {visible.map((item) => {
+            const category = categoryById(item.category);
+            return (
+              <li key={item.id}>
+                <Link href={`/questions/${item.id}`} className="block h-full">
+                  <Card className="h-full transition-colors hover:bg-muted/30">
+                    <CardHeader className="space-y-2">
+                      <CardTitle className="text-base leading-snug">
+                        {item.title}
+                      </CardTitle>
+                      <CardDescription className="flex flex-wrap items-center gap-1.5">
+                        <Badge variant="secondary">{category?.name}</Badge>
+                        <Badge variant="outline">
+                          {difficultyLabel[item.difficulty]}
+                        </Badge>
+                        {done.has(item.id) ? (
+                          <Badge variant="secondary">已练</Badge>
+                        ) : (
+                          <span className="text-xs">未练</span>
+                        )}
+                        {starred.has(item.id) ? (
+                          <Badge variant="outline">收藏</Badge>
+                        ) : null}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="line-clamp-2 text-sm text-muted-foreground">
+                        {item.prompt.replace(/^#+\s*/gm, "").trim()}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>题目</TableHead>
-            <TableHead className="hidden sm:table-cell">分类</TableHead>
-            <TableHead>难度</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {visible.map((item) => {
-            const category = categoryById(item.category);
-            return (
-              <TableRow key={item.id}>
-                <TableCell>
-                  <Link
-                    href={`/questions/${item.id}`}
-                    className="font-medium text-foreground hover:underline"
-                  >
-                    {item.title}
-                  </Link>
-                  <div className="mt-1 flex flex-wrap gap-1.5 text-xs text-muted-foreground">
-                    {done.has(item.id) ? (
-                      <Badge variant="secondary">已练</Badge>
-                    ) : (
-                      <span>未练</span>
-                    )}
-                    {starred.has(item.id) ? <Badge variant="outline">收藏</Badge> : null}
-                  </div>
-                </TableCell>
-                <TableCell className="hidden text-muted-foreground sm:table-cell">
-                  {category?.name}
-                </TableCell>
-                <TableCell className="text-muted-foreground">
-                  {difficultyLabel[item.difficulty]}
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+    <div className="space-y-3">
+      {toolbar}
+      <div className="overflow-hidden rounded-xl border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>题目</TableHead>
+              <TableHead className="hidden sm:table-cell">分类</TableHead>
+              <TableHead>难度</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {visible.map((item) => {
+              const category = categoryById(item.category);
+              return (
+                <TableRow key={item.id}>
+                  <TableCell>
+                    <Link
+                      href={`/questions/${item.id}`}
+                      className="font-medium text-foreground hover:underline"
+                    >
+                      {item.title}
+                    </Link>
+                    <div className="mt-1 flex flex-wrap gap-1.5 text-xs text-muted-foreground">
+                      {done.has(item.id) ? (
+                        <Badge variant="secondary">已练</Badge>
+                      ) : (
+                        <span>未练</span>
+                      )}
+                      {starred.has(item.id) ? (
+                        <Badge variant="outline">收藏</Badge>
+                      ) : null}
+                    </div>
+                  </TableCell>
+                  <TableCell className="hidden text-muted-foreground sm:table-cell">
+                    {category?.name}
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {difficultyLabel[item.difficulty]}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
