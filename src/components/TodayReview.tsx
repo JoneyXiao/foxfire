@@ -103,7 +103,7 @@ export function TodayReview({ previewLimit = 5, className }: TodayReviewProps) {
       <CardHeader className="flex-row items-start justify-between gap-3 space-y-0">
         <div className="space-y-1">
           <CardTitle className="flex items-center gap-2">
-            <RefreshCwIcon className="size-4" aria-hidden />
+            <RefreshCwIcon className="size-4" aria-hidden="true" />
             今日待复习
           </CardTitle>
           <CardDescription>
@@ -130,7 +130,7 @@ export function TodayReview({ previewLimit = 5, className }: TodayReviewProps) {
                       href={`/questions/${item.id}`}
                       className="flex items-start justify-between gap-3 rounded-lg border px-3 py-2 text-sm transition-colors hover:bg-muted/40"
                     >
-                      <span className="min-w-0 font-medium leading-snug">{item.title}</span>
+                      <span className="min-w-0 truncate font-medium leading-snug">{item.title}</span>
                       {card ? (
                         <span className="shrink-0 text-muted-foreground">
                           {SRS_RATING_LABEL[card.rating]}

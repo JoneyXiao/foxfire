@@ -24,11 +24,11 @@ export function AppShell({ children, current }: AppShellProps) {
     <div className="flex min-h-svh flex-col">
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+        className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-[max(1rem,env(safe-area-inset-top))] focus-visible:z-50 focus-visible:rounded-md focus-visible:bg-primary focus-visible:px-3 focus-visible:py-2 focus-visible:text-primary-foreground"
       >
-        跳到题目
+        跳到主要内容
       </a>
-      <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+      <header className="sticky top-0 z-40 border-b bg-background/95 pt-[env(safe-area-inset-top)] backdrop-blur supports-backdrop-filter:bg-background/80">
         <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2 font-medium tracking-tight">
             <Image src={mark} alt="" width={28} height={28} priority className="size-7" />
@@ -63,8 +63,8 @@ export function AppShell({ children, current }: AppShellProps) {
           </nav>
         </div>
       </header>
-      <main id="content" className="flex-1">
-        <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-10">{children}</div>
+      <main id="content" className="flex-1 scroll-mt-16">
+        <div className="mx-auto w-full max-w-5xl px-4 py-8 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-10 sm:pl-[max(1.5rem,env(safe-area-inset-left))] sm:pr-[max(1.5rem,env(safe-area-inset-right))]">{children}</div>
       </main>
       <footer className="mt-auto border-t">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 py-6 text-sm text-muted-foreground sm:px-6">

@@ -213,7 +213,13 @@ export function MockRunner() {
     writeMockSession(patchMockResult(session, questionId, { checked: next }));
   }
 
-  function endMock() {
+  function endMock(opts?: { skipConfirm?: boolean }) {
+    if (!opts?.skipConfirm) {
+      const ok = window.confirm("确定结束本场模拟面试并查看小结？");
+      if (!ok) {
+        return;
+      }
+    }
     stopRecording();
     const current = readMockSession();
     if (!current) {
@@ -229,7 +235,7 @@ export function MockRunner() {
     const current = readMockSession();
     if (!current || current.status !== "active") return;
     if (isLastMockQuestion(current)) {
-      endMock();
+      endMock({ skipConfirm: true });
       return;
     }
     writeMockSession(setMockIndex(current, current.index + 1));
@@ -317,7 +323,10 @@ export function MockRunner() {
         <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3">
           <div className="space-y-1">
             <p className="text-sm font-medium">
-              模拟面试 · {position} / {total}
+              模拟面试 ·{" "}
+              <span className="tabular-nums">
+                {position} / {total}
+              </span>
             </p>
             <p
               className={cn(
@@ -333,7 +342,7 @@ export function MockRunner() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button type="button" variant="outline" size="sm" onClick={endMock}>
+            <Button type="button" variant="outline" size="sm" onClick={() => endMock()}>
               <FlagIcon data-icon="inline-start" />
               结束模拟
             </Button>
@@ -347,7 +356,7 @@ export function MockRunner() {
 
       <Card>
         <CardHeader className="space-y-3">
-          <CardTitle className="text-xl leading-snug sm:text-2xl">{question.title}</CardTitle>
+          <CardTitle className="text-pretty text-xl leading-snug sm:text-2xl">{question.title}</CardTitle>
           <CardDescription className="flex flex-wrap items-center gap-2">
             <Badge variant="secondary">{category?.name}</Badge>
             <Badge variant="outline">{difficultyLabel[question.difficulty]}</Badge>
@@ -392,8 +401,13 @@ export function MockRunner() {
             ) : null}
           </div>
           {audioUrl ? (
-            // eslint-disable-next-line jsx-a11y/media-has-caption
-            <audio controls src={audioUrl} className="w-full max-w-md" />
+            // eslint-disable-next-line jsx-a11y/media-has-caption -- local self-recording blob, no captions
+            <audio
+              controls
+              src={audioUrl}
+              className="w-full max-w-md"
+              aria-label="本机录音回放"
+            />
           ) : null}
           {recordError ? (
             <p className="flex items-start gap-2 text-sm text-muted-foreground" role="status">
@@ -452,7 +466,10 @@ export function MockRunner() {
           )}
           {revealed && checklist.length > 0 ? (
             <p className="text-sm text-muted-foreground">
-              已勾选 {checked.size} / {checklist.length}
+              已勾选{" "}
+              <span className="tabular-nums">
+                {checked.size} / {checklist.length}
+              </span>
               {" · "}
               <Link
                 href={`/questions/${question.id}`}

@@ -56,7 +56,7 @@ function Chip({
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={cn(badgeVariants({ variant: active ? "default" : "outline" }), "h-7 px-2.5")}
+      className={cn(badgeVariants({ variant: active ? "default" : "outline" }), "h-7 px-2.5 focus-visible:outline-none")}
     >
       {children}
     </Link>

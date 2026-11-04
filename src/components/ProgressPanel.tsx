@@ -137,7 +137,7 @@ export function ProgressPanel() {
         <CardContent className="space-y-3">
           <p className="text-sm text-muted-foreground">
             进度只保存在本机（含掌握度与复习排期）。可导出 JSON 备份，或导入后覆盖当前进度。已自评{" "}
-            {ratedCount} 题。
+            <span className="tabular-nums">{ratedCount}</span> 题。
           </p>
           <div className="flex flex-wrap gap-2">
             <Button type="button" variant="outline" onClick={handleExport}>
@@ -219,9 +219,9 @@ export function ProgressPanel() {
                 <li key={item.id}>
                   <Link
                     href={`/questions/${item.id}`}
-                    className="flex flex-wrap items-center justify-between gap-2 rounded-xl border bg-card px-4 py-3 text-sm transition-colors hover:bg-muted/40"
+                    className="flex min-w-0 flex-wrap items-center justify-between gap-2 rounded-xl border bg-card px-4 py-3 text-sm transition-colors hover:bg-muted/40 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
                   >
-                    <span className="font-medium">{item.title}</span>
+                    <span className="min-w-0 truncate font-medium">{item.title}</span>
                     <span className="text-muted-foreground">
                       {card ? SRS_RATING_LABEL[card.rating] : "—"}
                       {card ? ` · 到期 ${card.dueAt}` : ""}

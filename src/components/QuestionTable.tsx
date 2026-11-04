@@ -86,7 +86,7 @@ export function QuestionTable({
 
   const toolbar = (
     <div className="flex flex-wrap items-center justify-between gap-2">
-      <p className="text-sm text-muted-foreground">
+      <p className="text-sm text-muted-foreground tabular-nums">
         {visible.length} 题
         {layoutReady && layout === "cards" ? " · 卡片视图" : null}
         {layoutReady && layout === "table" ? " · 表格视图" : null}
@@ -155,11 +155,14 @@ export function QuestionTable({
           {visible.map((item) => {
             const category = categoryById(item.category);
             return (
-              <li key={item.id}>
-                <Link href={`/questions/${item.id}`} className="block h-full">
+              <li key={item.id} className="cv-auto min-w-0">
+                <Link
+                  href={`/questions/${item.id}`}
+                  className="block h-full rounded-xl focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                >
                   <Card className="h-full transition-colors hover:bg-muted/30">
                     <CardHeader className="space-y-2">
-                      <CardTitle className="text-base leading-snug">
+                      <CardTitle className="min-w-0 text-pretty text-base leading-snug">
                         {item.title}
                       </CardTitle>
                       <CardDescription className="flex flex-wrap items-center gap-1.5">
@@ -208,11 +211,11 @@ export function QuestionTable({
             {visible.map((item) => {
               const category = categoryById(item.category);
               return (
-                <TableRow key={item.id}>
-                  <TableCell>
+                <TableRow key={item.id} className="cv-auto">
+                  <TableCell className="min-w-0 max-w-[28rem]">
                     <Link
                       href={`/questions/${item.id}`}
-                      className="font-medium text-foreground hover:underline"
+                      className="line-clamp-2 font-medium text-pretty text-foreground hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
                     >
                       {item.title}
                     </Link>

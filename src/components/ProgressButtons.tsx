@@ -50,7 +50,7 @@ export function ProgressButtons({ id }: ProgressButtonsProps) {
     return (
       <div className="flex flex-wrap gap-2">
         <Button type="button" variant="outline" disabled>
-          读取进度
+          读取进度…
         </Button>
       </div>
     );
