@@ -39,6 +39,8 @@ export type QuestionSummary = {
 /** Full question including reference answer (detail / server). */
 export type Question = QuestionSummary & {
   answer: string;
+  /** Three short, speakable interview lines extracted from the source answer. */
+  interviewQuotes: readonly [string, string, string] | readonly string[];
 };
 
 export type ProgressState = {
