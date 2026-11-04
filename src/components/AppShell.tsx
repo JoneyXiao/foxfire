@@ -65,8 +65,8 @@ export function AppShell({ children, current }: AppShellProps) {
         <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-10">{children}</div>
       </main>
       <footer className="mt-auto border-t">
-        <div className="mx-auto w-full max-w-5xl px-4 py-6 text-sm text-muted-foreground sm:px-6">
-          <Separator className="mb-4" />
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 py-6 text-sm text-muted-foreground sm:px-6">
+          <Separator />
           <p>
             <strong className="font-medium text-foreground">狐火</strong>
             {" · "}
@@ -80,6 +80,9 @@ export function AppShell({ children, current }: AppShellProps) {
             >
               GitHub 仓库
             </a>
+          </p>
+          <p className="max-w-3xl leading-relaxed">
+            本站为个人面试练习工具。题库参考极客知识库「AI 面试」专题等公开学习资料整理、改写，仅供个人学习练习，不构成官方教材或题库，亦与极客时间、极客知识库无隶属或授权关系。
           </p>
         </div>
       </footer>
