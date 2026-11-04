@@ -1,29 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { BrainIcon, EyeIcon } from "lucide-react";
-import { MarkdownBody } from "@/components/MarkdownBody";
 import { MasteryRating } from "@/components/MasteryRating";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { buttonVariants } from "@/components/ui/button";
 import { PREFS_CHANGED_EVENT, patchPrefs, readPrefs } from "@/lib/prefs";
 import { cn } from "@/lib/utils";
 
 type AnswerRevealProps = {
-  answer: string;
   questionId: string;
 };
 
-export function AnswerReveal({ answer, questionId }: AnswerRevealProps) {
+type MarkdownBodyComponent = ComponentType<{ source: string }>;
+
+function answersUrl(questionId: string): string {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${base}/data/questions/${encodeURIComponent(questionId)}.json`;
+}
+
+export function AnswerReveal({ questionId }: AnswerRevealProps) {
   const [ready, setReady] = useState(false);
   const [thinkFirst, setThinkFirst] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [open, setOpen] = useState(false);
+  const [answer, setAnswer] = useState<string | null>(null);
+  const [loadState, setLoadState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [MarkdownBody, setMarkdownBody] = useState<MarkdownBodyComponent | null>(null);
+  const loadedRef = useRef(false);
 
   useEffect(() => {
     function refresh() {
@@ -35,11 +43,39 @@ export function AnswerReveal({ answer, questionId }: AnswerRevealProps) {
     return () => window.removeEventListener(PREFS_CHANGED_EVENT, refresh);
   }, []);
 
-  // Reset gate when switching questions.
+  const needsContent = open || (thinkFirst && unlocked);
+
   useEffect(() => {
-    setUnlocked(false);
-    setOpen(false);
-  }, [answer, questionId]);
+    if (!needsContent) return;
+    if (loadedRef.current) return;
+
+    let cancelled = false;
+    setLoadState("loading");
+
+    void (async () => {
+      try {
+        const [json, mdMod] = await Promise.all([
+          fetch(answersUrl(questionId)).then(async (res) => {
+            if (!res.ok) throw new Error(`answer ${res.status}`);
+            return res.json() as Promise<{ answer: string }>;
+          }),
+          import("@/components/MarkdownBody"),
+        ]);
+        if (cancelled) return;
+        setAnswer(json.answer);
+        setMarkdownBody(() => mdMod.MarkdownBody);
+        loadedRef.current = true;
+        setLoadState("ready");
+      } catch {
+        if (cancelled) return;
+        setLoadState("error");
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [needsContent, questionId]);
 
   function toggleThinkFirst() {
     const next = !thinkFirst;
@@ -107,8 +143,20 @@ export function AnswerReveal({ answer, questionId }: AnswerRevealProps) {
             {open ? "收起参考作答" : "展开参考作答"}
           </CollapsibleTrigger>
           <CollapsibleContent className="space-y-4 border-t px-4 py-4">
-            <MarkdownBody source={answer} />
-            <MasteryRating id={questionId} variant="inline" />
+            {loadState === "loading" || (open && loadState === "idle") ? (
+              <p className="text-sm text-muted-foreground" aria-busy="true">
+                正在加载参考作答…
+              </p>
+            ) : null}
+            {loadState === "error" ? (
+              <p className="text-sm text-destructive">参考作答加载失败，请刷新后重试。</p>
+            ) : null}
+            {loadState === "ready" && answer && MarkdownBody ? (
+              <>
+                <MarkdownBody source={answer} />
+                <MasteryRating id={questionId} variant="inline" />
+              </>
+            ) : null}
           </CollapsibleContent>
         </Collapsible>
       )}

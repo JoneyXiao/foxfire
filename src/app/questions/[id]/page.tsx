@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { AnswerReveal } from "@/components/AnswerReveal";
 import { InterviewQuotes } from "@/components/InterviewQuotes";
 import { AppShell } from "@/components/AppShell";
-import { MarkdownBody } from "@/components/MarkdownBody";
 import { PracticeActions } from "@/components/PracticeActions";
 import { QuestionNavShortcuts } from "@/components/QuestionNavShortcuts";
 import { SessionBar } from "@/components/SessionBar";
@@ -18,14 +17,14 @@ import {
 } from "@/components/ui/card";
 import { categoryById, difficultyLabel } from "@/lib/categories";
 import { adjacentQuestions } from "@/data/questions";
-import { getQuestion, questions } from "@/data/questions-full";
+import { getQuestion, listQuestionIds } from "@/data/questions-full";
 
 type QuestionPageProps = {
   params: Promise<{ id: string }>;
 };
 
 export function generateStaticParams() {
-  return questions.map((item) => ({ id: item.id }));
+  return listQuestionIds().map((id) => ({ id }));
 }
 
 export async function generateMetadata({ params }: QuestionPageProps) {
@@ -43,6 +42,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
 
   const category = categoryById(question.category);
   const { prev, next } = adjacentQuestions(question.id);
+  const showPrompt = question.prompt.trim() !== "" && question.prompt.trim() !== question.title.trim();
 
   return (
     <AppShell>
@@ -78,8 +78,8 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
           </CardHeader>
           <CardContent className="space-y-6">
             <SessionBar questionId={question.id} />
-            {question.prompt.trim() !== question.title.trim() ? (
-              <MarkdownBody source={question.prompt} />
+            {showPrompt ? (
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground">{question.prompt}</p>
             ) : null}
             <ProgressButtons id={question.id} />
             <PracticeActions currentId={question.id} />
@@ -89,7 +89,8 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
 
         <InterviewQuotes quotes={question.interviewQuotes} />
 
-        <AnswerReveal answer={question.answer} questionId={question.id} />
+        {/* Answer body is fetched on expand from /data/questions/<id>.json — not inlined into the client bundle. */}
+        <AnswerReveal key={question.id} questionId={question.id} />
 
         <nav className="grid gap-3 sm:grid-cols-2" aria-label="相邻题目">
           {prev ? (

@@ -6,7 +6,6 @@ import type { QuestionSummary } from "@/lib/types";
 export const questionSummaries = [
   {
     "id": "q-001",
-    "title": "怎么给一个业务场景选 LLM？选型要考虑哪些维度？如何量化决策？",
     "category": "llm-basics",
     "difficulty": "applied",
     "tags": [
@@ -15,11 +14,11 @@ export const questionSummaries = [
       "上下文",
       "RAG"
     ],
-    "prompt": "怎么给一个业务场景选 LLM？选型要考虑哪些维度？如何量化决策？"
+    "title": "怎么给一个业务场景选 LLM？选型要考虑哪些维度？如何量化决策？",
+    "prompt": ""
   },
   {
     "id": "q-002",
-    "title": "BPE、WordPiece、Unigram 三种分词算法有什么区别？词表大小怎么权衡？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -28,11 +27,11 @@ export const questionSummaries = [
       "Token",
       "评测"
     ],
-    "prompt": "BPE、WordPiece、Unigram 三种分词算法有什么区别？词表大小怎么权衡？"
+    "title": "BPE、WordPiece、Unigram 三种分词算法有什么区别？词表大小怎么权衡？",
+    "prompt": ""
   },
   {
     "id": "q-003",
-    "title": "上下文窗口（Context Window）是什么？窗口大就一定好吗？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -41,11 +40,11 @@ export const questionSummaries = [
       "幻觉",
       "Agent"
     ],
-    "prompt": "上下文窗口（Context Window）是什么？窗口大就一定好吗？"
+    "title": "上下文窗口（Context Window）是什么？窗口大就一定好吗？",
+    "prompt": ""
   },
   {
     "id": "q-004",
-    "title": "为什么 LLM 会算错 3.11 和 3.9 谁大、数不清 \"strawberry\" 有几个 r？根因是什么？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -53,11 +52,11 @@ export const questionSummaries = [
       "Token",
       "Function Calling"
     ],
-    "prompt": "为什么 LLM 会算错 3.11 和 3.9 谁大、数不清 \"strawberry\" 有几个 r？根因是什么？"
+    "title": "为什么 LLM 会算错 3.11 和 3.9 谁大、数不清 \"strawberry\" 有几个 r？根因是什么？",
+    "prompt": ""
   },
   {
     "id": "q-005",
-    "title": "Prompt、RAG、微调三种手段，如何按问题类型选型？决策优先级是什么？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -66,11 +65,11 @@ export const questionSummaries = [
       "Prompt",
       "微调"
     ],
-    "prompt": "Prompt、RAG、微调三种手段，如何按问题类型选型？决策优先级是什么？"
+    "title": "Prompt、RAG、微调三种手段，如何按问题类型选型？决策优先级是什么？",
+    "prompt": ""
   },
   {
     "id": "q-006",
-    "title": "幻觉产生的根因是什么？生产环境如何系统性地降低它？",
     "category": "llm-basics",
     "difficulty": "system",
     "tags": [
@@ -79,11 +78,11 @@ export const questionSummaries = [
       "幻觉",
       "RAG"
     ],
-    "prompt": "幻觉产生的根因是什么？生产环境如何系统性地降低它？"
+    "title": "幻觉产生的根因是什么？生产环境如何系统性地降低它？",
+    "prompt": ""
   },
   {
     "id": "q-007",
-    "title": "temperature、top-p、top-k 有什么区别？怎么调？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -91,11 +90,11 @@ export const questionSummaries = [
       "幻觉",
       "结构化"
     ],
-    "prompt": "temperature、top-p、top-k 有什么区别？怎么调？"
+    "title": "temperature、top-p、top-k 有什么区别？怎么调？",
+    "prompt": ""
   },
   {
     "id": "q-008",
-    "title": "Function Calling 和 Structured Output 都让模型\"返回 JSON\"，它们本质区别是什么？怎么选？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -103,11 +102,11 @@ export const questionSummaries = [
       "Function Calling",
       "工具调用"
     ],
-    "prompt": "Function Calling 和 Structured Output 都让模型\"返回 JSON\"，它们本质区别是什么？怎么选？"
+    "title": "Function Calling 和 Structured Output 都让模型\"返回 JSON\"，它们本质区别是什么？怎么选？",
+    "prompt": ""
   },
   {
     "id": "q-009",
-    "title": "为什么大模型需要\"结构化输出\"？和\"在 prompt 里说返回 JSON\"有什么区别？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -115,11 +114,11 @@ export const questionSummaries = [
       "结构化",
       "重试"
     ],
-    "prompt": "为什么大模型需要\"结构化输出\"？和\"在 prompt 里说返回 JSON\"有什么区别？"
+    "title": "为什么大模型需要\"结构化输出\"？和\"在 prompt 里说返回 JSON\"有什么区别？",
+    "prompt": ""
   },
   {
     "id": "q-010",
-    "title": "静态 Embedding 和上下文相关 Embedding 有什么区别？选 embedding 模型看什么？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -128,22 +127,22 @@ export const questionSummaries = [
       "Embedding",
       "向量"
     ],
-    "prompt": "静态 Embedding 和上下文相关 Embedding 有什么区别？选 embedding 模型看什么？"
+    "title": "静态 Embedding 和上下文相关 Embedding 有什么区别？选 embedding 模型看什么？",
+    "prompt": ""
   },
   {
     "id": "q-011",
-    "title": "多模态模型的\"多模态\"是怎么实现的？为什么不能简单把图片转文字再喂给文本模型？",
     "category": "llm-basics",
     "difficulty": "system",
     "tags": [
       "Token",
       "成本"
     ],
-    "prompt": "多模态模型的\"多模态\"是怎么实现的？为什么不能简单把图片转文字再喂给文本模型？"
+    "title": "多模态模型的\"多模态\"是怎么实现的？为什么不能简单把图片转文字再喂给文本模型？",
+    "prompt": ""
   },
   {
     "id": "q-012",
-    "title": "开源模型和闭源 API 怎么选？",
     "category": "llm-basics",
     "difficulty": "applied",
     "tags": [
@@ -152,11 +151,11 @@ export const questionSummaries = [
       "上下文",
       "微调"
     ],
-    "prompt": "开源模型和闭源 API 怎么选？"
+    "title": "开源模型和闭源 API 怎么选？",
+    "prompt": ""
   },
   {
     "id": "q-013",
-    "title": "RoPE 位置编码如何支撑长上下文外推？为什么\"标称窗口\"常大于\"有效窗口\"？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
@@ -165,31 +164,31 @@ export const questionSummaries = [
       "检索",
       "成本"
     ],
-    "prompt": "RoPE 位置编码如何支撑长上下文外推？为什么\"标称窗口\"常大于\"有效窗口\"？"
+    "title": "RoPE 位置编码如何支撑长上下文外推？为什么\"标称窗口\"常大于\"有效窗口\"？",
+    "prompt": ""
   },
   {
     "id": "q-014",
-    "title": "RLHF 和 DPO 有什么区别？为什么现在很多团队改用 DPO？",
     "category": "llm-basics",
     "difficulty": "foundation",
     "tags": [
       "成本"
     ],
-    "prompt": "RLHF 和 DPO 有什么区别？为什么现在很多团队改用 DPO？"
+    "title": "RLHF 和 DPO 有什么区别？为什么现在很多团队改用 DPO？",
+    "prompt": ""
   },
   {
     "id": "q-015",
-    "title": "流式输出用 SSE 还是 WebSocket？大模型场景怎么选协议？",
     "category": "llm-basics",
     "difficulty": "applied",
     "tags": [
       "流式"
     ],
-    "prompt": "流式输出用 SSE 还是 WebSocket？大模型场景怎么选协议？"
+    "title": "流式输出用 SSE 还是 WebSocket？大模型场景怎么选协议？",
+    "prompt": ""
   },
   {
     "id": "q-016",
-    "title": "\"参数记忆\"和\"检索记忆\"怎么分工？什么知识该微调进模型、什么该走 RAG？",
     "category": "llm-basics",
     "difficulty": "applied",
     "tags": [
@@ -198,11 +197,11 @@ export const questionSummaries = [
       "微调",
       "检索"
     ],
-    "prompt": "\"参数记忆\"和\"检索记忆\"怎么分工？什么知识该微调进模型、什么该走 RAG？"
+    "title": "\"参数记忆\"和\"检索记忆\"怎么分工？什么知识该微调进模型、什么该走 RAG？",
+    "prompt": ""
   },
   {
     "id": "q-017",
-    "title": "流式输出和结构化解析有矛盾，怎么兼顾？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
@@ -210,11 +209,11 @@ export const questionSummaries = [
       "结构化",
       "重试"
     ],
-    "prompt": "流式输出和结构化解析有矛盾，怎么兼顾？"
+    "title": "流式输出和结构化解析有矛盾，怎么兼顾？",
+    "prompt": ""
   },
   {
     "id": "q-018",
-    "title": "多轮对话的上下文会越滚越大，怎么设计\"截断 + 摘要\"策略？",
     "category": "api-structured",
     "difficulty": "system",
     "tags": [
@@ -223,11 +222,11 @@ export const questionSummaries = [
       "Agent",
       "Prompt"
     ],
-    "prompt": "多轮对话的上下文会越滚越大，怎么设计\"截断 + 摘要\"策略？"
+    "title": "多轮对话的上下文会越滚越大，怎么设计\"截断 + 摘要\"策略？",
+    "prompt": ""
   },
   {
     "id": "q-019",
-    "title": "为什么一次带工具的回答会触发两次模型调用？成本该怎么估？",
     "category": "api-structured",
     "difficulty": "foundation",
     "tags": [
@@ -236,11 +235,11 @@ export const questionSummaries = [
       "工具调用",
       "成本"
     ],
-    "prompt": "为什么一次带工具的回答会触发两次模型调用？成本该怎么估？"
+    "title": "为什么一次带工具的回答会触发两次模型调用？成本该怎么估？",
+    "prompt": ""
   },
   {
     "id": "q-020",
-    "title": "用 Pydantic / JSON Schema 做结构化输出，怎么落地？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
@@ -249,22 +248,22 @@ export const questionSummaries = [
       "LangChain",
       "Spring AI"
     ],
-    "prompt": "用 Pydantic / JSON Schema 做结构化输出，怎么落地？"
+    "title": "用 Pydantic / JSON Schema 做结构化输出，怎么落地？",
+    "prompt": ""
   },
   {
     "id": "q-021",
-    "title": "API 返回的 JSON 不合法怎么办？有哪些兜底手段？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
       "Prompt",
       "重试"
     ],
-    "prompt": "API 返回的 JSON 不合法怎么办？有哪些兜底手段？"
+    "title": "API 返回的 JSON 不合法怎么办？有哪些兜底手段？",
+    "prompt": ""
   },
   {
     "id": "q-022",
-    "title": "批量调用 LLM 有什么坑？怎么优化吞吐？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
@@ -273,11 +272,11 @@ export const questionSummaries = [
       "限流",
       "重试"
     ],
-    "prompt": "批量调用 LLM 有什么坑？怎么优化吞吐？"
+    "title": "批量调用 LLM 有什么坑？怎么优化吞吐？",
+    "prompt": ""
   },
   {
     "id": "q-023",
-    "title": "多轮 Function Calling 里，怎么避免模型\"反复调同一个工具\"死循环？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
@@ -286,11 +285,11 @@ export const questionSummaries = [
       "工具调用",
       "成本"
     ],
-    "prompt": "多轮 Function Calling 里，怎么避免模型\"反复调同一个工具\"死循环？"
+    "title": "多轮 Function Calling 里，怎么避免模型\"反复调同一个工具\"死循环？",
+    "prompt": ""
   },
   {
     "id": "q-024",
-    "title": "工具结果如何正确注入多轮对话？tool_call_id 配错会怎样？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
@@ -299,11 +298,11 @@ export const questionSummaries = [
       "LangChain",
       "Spring AI"
     ],
-    "prompt": "工具结果如何正确注入多轮对话？tool_call_id 配错会怎样？"
+    "title": "工具结果如何正确注入多轮对话？tool_call_id 配错会怎样？",
+    "prompt": ""
   },
   {
     "id": "q-025",
-    "title": "调用 LLM API 时，超时时间怎么设？",
     "category": "api-structured",
     "difficulty": "system",
     "tags": [
@@ -311,11 +310,11 @@ export const questionSummaries = [
       "流式",
       "重试"
     ],
-    "prompt": "调用 LLM API 时，超时时间怎么设？"
+    "title": "调用 LLM API 时，超时时间怎么设？",
+    "prompt": ""
   },
   {
     "id": "q-026",
-    "title": "如何统一封装多家 LLM 的 API，避免厂商锁定？",
     "category": "api-structured",
     "difficulty": "applied",
     "tags": [
@@ -324,11 +323,11 @@ export const questionSummaries = [
       "结构化",
       "工具调用"
     ],
-    "prompt": "如何统一封装多家 LLM 的 API，避免厂商锁定？"
+    "title": "如何统一封装多家 LLM 的 API，避免厂商锁定？",
+    "prompt": ""
   },
   {
     "id": "q-027",
-    "title": "few-shot 的示例数量和顺序会影响效果吗？怎么科学地挑示例？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -336,22 +335,22 @@ export const questionSummaries = [
       "评测",
       "注意力"
     ],
-    "prompt": "few-shot 的示例数量和顺序会影响效果吗？怎么科学地挑示例？"
+    "title": "few-shot 的示例数量和顺序会影响效果吗？怎么科学地挑示例？",
+    "prompt": ""
   },
   {
     "id": "q-028",
-    "title": "如何用对照实验选择 few-shot，而不是凭感觉加示例？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
       "Token",
       "量化"
     ],
-    "prompt": "如何用对照实验选择 few-shot，而不是凭感觉加示例？"
+    "title": "如何用对照实验选择 few-shot，而不是凭感觉加示例？",
+    "prompt": ""
   },
   {
     "id": "q-029",
-    "title": "思维链（CoT）在什么任务上才真正有效？如何用数据判断该不该加？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -360,11 +359,11 @@ export const questionSummaries = [
       "检索",
       "成本"
     ],
-    "prompt": "思维链（CoT）在什么任务上才真正有效？如何用数据判断该不该加？"
+    "title": "思维链（CoT）在什么任务上才真正有效？如何用数据判断该不该加？",
+    "prompt": ""
   },
   {
     "id": "q-030",
-    "title": "为什么说 \"System Prompt 优先级最高\" 是危险的误解？怎么正确看待它的作用？",
     "category": "prompting",
     "difficulty": "foundation",
     "tags": [
@@ -372,11 +371,11 @@ export const questionSummaries = [
       "安全",
       "注入"
     ],
-    "prompt": "为什么说 \"System Prompt 优先级最高\" 是危险的误解？怎么正确看待它的作用？"
+    "title": "为什么说 \"System Prompt 优先级最高\" 是危险的误解？怎么正确看待它的作用？",
+    "prompt": ""
   },
   {
     "id": "q-031",
-    "title": "怎么让模型\"只根据给定资料回答，不编造\"？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -385,11 +384,11 @@ export const questionSummaries = [
       "Prompt",
       "检索"
     ],
-    "prompt": "怎么让模型\"只根据给定资料回答，不编造\"？"
+    "title": "怎么让模型\"只根据给定资料回答，不编造\"？",
+    "prompt": ""
   },
   {
     "id": "q-032",
-    "title": "怎么让模型稳定输出特定格式？Prompt 文字要求 vs 结构化输出 API 谁更可靠？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -397,22 +396,22 @@ export const questionSummaries = [
       "Prompt",
       "结构化"
     ],
-    "prompt": "怎么让模型稳定输出特定格式？Prompt 文字要求 vs 结构化输出 API 谁更可靠？"
+    "title": "怎么让模型稳定输出特定格式？Prompt 文字要求 vs 结构化输出 API 谁更可靠？",
+    "prompt": ""
   },
   {
     "id": "q-033",
-    "title": "Prompt 注入的攻击面在哪？为什么纯 Prompt 层防不住？（概要，详见分类 12）",
     "category": "prompting",
     "difficulty": "foundation",
     "tags": [
       "Prompt",
       "注入"
     ],
-    "prompt": "Prompt 注入的攻击面在哪？为什么纯 Prompt 层防不住？（概要，详见分类 12）"
+    "title": "Prompt 注入的攻击面在哪？为什么纯 Prompt 层防不住？（概要，详见分类 12）",
+    "prompt": ""
   },
   {
     "id": "q-034",
-    "title": "怎么调试和迭代一条 Prompt？有没有科学方法？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -420,21 +419,21 @@ export const questionSummaries = [
       "评测",
       "量化"
     ],
-    "prompt": "怎么调试和迭代一条 Prompt？有没有科学方法？"
+    "title": "怎么调试和迭代一条 Prompt？有没有科学方法？",
+    "prompt": ""
   },
   {
     "id": "q-035",
-    "title": "few-shot 示例里，怎么处理\"边界情况\"和\"反例\"？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
       "成本"
     ],
-    "prompt": "few-shot 示例里，怎么处理\"边界情况\"和\"反例\"？"
+    "title": "few-shot 示例里，怎么处理\"边界情况\"和\"反例\"？",
+    "prompt": ""
   },
   {
     "id": "q-036",
-    "title": "角色设定 Prompt 什么时候真有用、什么时候是\"伪增益\"？怎么判断？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -442,11 +441,11 @@ export const questionSummaries = [
       "Prompt",
       "注入"
     ],
-    "prompt": "角色设定 Prompt 什么时候真有用、什么时候是\"伪增益\"？怎么判断？"
+    "title": "角色设定 Prompt 什么时候真有用、什么时候是\"伪增益\"？怎么判断？",
+    "prompt": ""
   },
   {
     "id": "q-037",
-    "title": "长上下文里，Prompt 该怎么组织才能让模型抓住重点？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -455,11 +454,11 @@ export const questionSummaries = [
       "Prompt",
       "检索"
     ],
-    "prompt": "长上下文里，Prompt 该怎么组织才能让模型抓住重点？"
+    "title": "长上下文里，Prompt 该怎么组织才能让模型抓住重点？",
+    "prompt": ""
   },
   {
     "id": "q-038",
-    "title": "如何让模型在信息不足时\"主动说不知道\"而不是硬编？",
     "category": "prompting",
     "difficulty": "applied",
     "tags": [
@@ -468,11 +467,11 @@ export const questionSummaries = [
       "Prompt",
       "检索"
     ],
-    "prompt": "如何让模型在信息不足时\"主动说不知道\"而不是硬编？"
+    "title": "如何让模型在信息不足时\"主动说不知道\"而不是硬编？",
+    "prompt": ""
   },
   {
     "id": "q-039",
-    "title": "RAG 的基本流程是什么？每一环节的\"质量杠杆\"分别是什么？",
     "category": "rag",
     "difficulty": "foundation",
     "tags": [
@@ -481,11 +480,11 @@ export const questionSummaries = [
       "上下文",
       "RAG"
     ],
-    "prompt": "RAG 的基本流程是什么？每一环节的\"质量杠杆\"分别是什么？"
+    "title": "RAG 的基本流程是什么？每一环节的\"质量杠杆\"分别是什么？",
+    "prompt": ""
   },
   {
     "id": "q-040",
-    "title": "为什么纯向量检索不够用？混合检索 + 重排序如何补足？RRF 是怎么融合的？",
     "category": "rag",
     "difficulty": "foundation",
     "tags": [
@@ -494,11 +493,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "为什么纯向量检索不够用？混合检索 + 重排序如何补足？RRF 是怎么融合的？"
+    "title": "为什么纯向量检索不够用？混合检索 + 重排序如何补足？RRF 是怎么融合的？",
+    "prompt": ""
   },
   {
     "id": "q-041",
-    "title": "如何评估一个 RAG 系统？为什么检索和生成必须分开评？",
     "category": "rag",
     "difficulty": "foundation",
     "tags": [
@@ -507,11 +506,11 @@ export const questionSummaries = [
       "Prompt",
       "Embedding"
     ],
-    "prompt": "如何评估一个 RAG 系统？为什么检索和生成必须分开评？"
+    "title": "如何评估一个 RAG 系统？为什么检索和生成必须分开评？",
+    "prompt": ""
   },
   {
     "id": "q-042",
-    "title": "分块（Chunking）有哪些策略？各自的适用场景和代价是什么？",
     "category": "rag",
     "difficulty": "foundation",
     "tags": [
@@ -520,11 +519,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "分块（Chunking）有哪些策略？各自的适用场景和代价是什么？"
+    "title": "分块（Chunking）有哪些策略？各自的适用场景和代价是什么？",
+    "prompt": ""
   },
   {
     "id": "q-043",
-    "title": "怎么选 embedding 模型？维度、语言、长度、以及\"非对称检索\"分别考虑什么？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -533,22 +532,22 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "怎么选 embedding 模型？维度、语言、长度、以及\"非对称检索\"分别考虑什么？"
+    "title": "怎么选 embedding 模型？维度、语言、长度、以及\"非对称检索\"分别考虑什么？",
+    "prompt": ""
   },
   {
     "id": "q-044",
-    "title": "向量数据库怎么选？Milvus、Pinecone、pgvector 怎么取舍？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
       "向量",
       "检索"
     ],
-    "prompt": "向量数据库怎么选？Milvus、Pinecone、pgvector 怎么取舍？"
+    "title": "向量数据库怎么选？Milvus、Pinecone、pgvector 怎么取舍？",
+    "prompt": ""
   },
   {
     "id": "q-045",
-    "title": "Rerank 为什么是性价比最高的 RAG 提升手段？和向量检索的本质区别是什么？",
     "category": "rag",
     "difficulty": "foundation",
     "tags": [
@@ -557,22 +556,22 @@ export const questionSummaries = [
       "RAG",
       "向量"
     ],
-    "prompt": "Rerank 为什么是性价比最高的 RAG 提升手段？和向量检索的本质区别是什么？"
+    "title": "Rerank 为什么是性价比最高的 RAG 提升手段？和向量检索的本质区别是什么？",
+    "prompt": ""
   },
   {
     "id": "q-046",
-    "title": "Query 改写解决什么问题？多轮对话里的指代消解怎么落地？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
       "上下文",
       "检索"
     ],
-    "prompt": "Query 改写解决什么问题？多轮对话里的指代消解怎么落地？"
+    "title": "Query 改写解决什么问题？多轮对话里的指代消解怎么落地？",
+    "prompt": ""
   },
   {
     "id": "q-047",
-    "title": "不同类型的 query 该走哪种检索？多路召回和查询路由怎么设计？",
     "category": "rag",
     "difficulty": "system",
     "tags": [
@@ -581,11 +580,11 @@ export const questionSummaries = [
       "检索",
       "结构化"
     ],
-    "prompt": "不同类型的 query 该走哪种检索？多路召回和查询路由怎么设计？"
+    "title": "不同类型的 query 该走哪种检索？多路召回和查询路由怎么设计？",
+    "prompt": ""
   },
   {
     "id": "q-048",
-    "title": "GraphRAG 相比传统 RAG 补上了什么能力？什么时候才值得上它？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -594,11 +593,11 @@ export const questionSummaries = [
       "检索",
       "结构化"
     ],
-    "prompt": "GraphRAG 相比传统 RAG 补上了什么能力？什么时候才值得上它？"
+    "title": "GraphRAG 相比传统 RAG 补上了什么能力？什么时候才值得上它？",
+    "prompt": ""
   },
   {
     "id": "q-049",
-    "title": "RAG 里怎么处理\"检索不到\"的情况？（空召回兜底）",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -607,11 +606,11 @@ export const questionSummaries = [
       "Embedding",
       "检索"
     ],
-    "prompt": "RAG 里怎么处理\"检索不到\"的情况？（空召回兜底）"
+    "title": "RAG 里怎么处理\"检索不到\"的情况？（空召回兜底）",
+    "prompt": ""
   },
   {
     "id": "q-050",
-    "title": "增量更新知识库时，怎么避免检索到过期内容？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -620,11 +619,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "增量更新知识库时，怎么避免检索到过期内容？"
+    "title": "增量更新知识库时，怎么避免检索到过期内容？",
+    "prompt": ""
   },
   {
     "id": "q-051",
-    "title": "多轮对话的 RAG 怎么处理上下文和指代？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -632,11 +631,11 @@ export const questionSummaries = [
       "RAG",
       "检索"
     ],
-    "prompt": "多轮对话的 RAG 怎么处理上下文和指代？"
+    "title": "多轮对话的 RAG 怎么处理上下文和指代？",
+    "prompt": ""
   },
   {
     "id": "q-052",
-    "title": "RAG 和长上下文模型怎么选？什么时候不需要 RAG？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -645,11 +644,11 @@ export const questionSummaries = [
       "RAG",
       "Prompt"
     ],
-    "prompt": "RAG 和长上下文模型怎么选？什么时候不需要 RAG？"
+    "title": "RAG 和长上下文模型怎么选？什么时候不需要 RAG？",
+    "prompt": ""
   },
   {
     "id": "q-053",
-    "title": "一个 RAG 系统上线后效果不好，你怎么排查？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -658,11 +657,11 @@ export const questionSummaries = [
       "Prompt",
       "Embedding"
     ],
-    "prompt": "一个 RAG 系统上线后效果不好，你怎么排查？"
+    "title": "一个 RAG 系统上线后效果不好，你怎么排查？",
+    "prompt": ""
   },
   {
     "id": "q-054",
-    "title": "忠实度（Faithfulness）和答案相关性（Relevance）为何要分开评？各自暴露什么问题？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -670,11 +669,11 @@ export const questionSummaries = [
       "RAG",
       "检索"
     ],
-    "prompt": "忠实度（Faithfulness）和答案相关性（Relevance）为何要分开评？各自暴露什么问题？"
+    "title": "忠实度（Faithfulness）和答案相关性（Relevance）为何要分开评？各自暴露什么问题？",
+    "prompt": ""
   },
   {
     "id": "q-055",
-    "title": "怎么构建 RAG 的评测集（Golden Set）？",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -683,11 +682,11 @@ export const questionSummaries = [
       "检索",
       "评测"
     ],
-    "prompt": "怎么构建 RAG 的评测集（Golden Set）？"
+    "title": "怎么构建 RAG 的评测集（Golden Set）？",
+    "prompt": ""
   },
   {
     "id": "q-056",
-    "title": "分块太大\"语义稀释\"、太小\"语义断裂\"，小到大检索如何两全？（Parent-Child）",
     "category": "rag",
     "difficulty": "applied",
     "tags": [
@@ -696,11 +695,11 @@ export const questionSummaries = [
       "检索",
       "LangChain"
     ],
-    "prompt": "分块太大\"语义稀释\"、太小\"语义断裂\"，小到大检索如何两全？（Parent-Child）"
+    "title": "分块太大\"语义稀释\"、太小\"语义断裂\"，小到大检索如何两全？（Parent-Child）",
+    "prompt": ""
   },
   {
     "id": "q-057",
-    "title": "从原始文档到向量库，哪一步最容易\"悄悄毁掉\" RAG 质量？怎么防？",
     "category": "knowledge",
     "difficulty": "applied",
     "tags": [
@@ -709,22 +708,22 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "从原始文档到向量库，哪一步最容易\"悄悄毁掉\" RAG 质量？怎么防？"
+    "title": "从原始文档到向量库，哪一步最容易\"悄悄毁掉\" RAG 质量？怎么防？",
+    "prompt": ""
   },
   {
     "id": "q-058",
-    "title": "PDF 解析为什么特别难？有哪些坑和对策？",
     "category": "knowledge",
     "difficulty": "foundation",
     "tags": [
       "RAG",
       "结构化"
     ],
-    "prompt": "PDF 解析为什么特别难？有哪些坑和对策？"
+    "title": "PDF 解析为什么特别难？有哪些坑和对策？",
+    "prompt": ""
   },
   {
     "id": "q-059",
-    "title": "表格数据在 RAG 里怎么处理？",
     "category": "knowledge",
     "difficulty": "applied",
     "tags": [
@@ -733,11 +732,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "表格数据在 RAG 里怎么处理？"
+    "title": "表格数据在 RAG 里怎么处理？",
+    "prompt": ""
   },
   {
     "id": "q-060",
-    "title": "RAG 里\"去重\"为什么重要？重复内容会怎样破坏检索质量？",
     "category": "knowledge",
     "difficulty": "foundation",
     "tags": [
@@ -746,11 +745,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "RAG 里\"去重\"为什么重要？重复内容会怎样破坏检索质量？"
+    "title": "RAG 里\"去重\"为什么重要？重复内容会怎样破坏检索质量？",
+    "prompt": ""
   },
   {
     "id": "q-061",
-    "title": "Embedding 的批量生成怎么做？有什么注意点？",
     "category": "knowledge",
     "difficulty": "applied",
     "tags": [
@@ -759,11 +758,11 @@ export const questionSummaries = [
       "检索",
       "成本"
     ],
-    "prompt": "Embedding 的批量生成怎么做？有什么注意点？"
+    "title": "Embedding 的批量生成怎么做？有什么注意点？",
+    "prompt": ""
   },
   {
     "id": "q-062",
-    "title": "向量库的元数据（Metadata）怎么设计？为什么重要？",
     "category": "knowledge",
     "difficulty": "foundation",
     "tags": [
@@ -772,11 +771,11 @@ export const questionSummaries = [
       "结构化",
       "合规"
     ],
-    "prompt": "向量库的元数据（Metadata）怎么设计？为什么重要？"
+    "title": "向量库的元数据（Metadata）怎么设计？为什么重要？",
+    "prompt": ""
   },
   {
     "id": "q-063",
-    "title": "文档的层级结构为何不能丢？切分和检索时怎么利用它补足上下文？",
     "category": "knowledge",
     "difficulty": "foundation",
     "tags": [
@@ -784,11 +783,11 @@ export const questionSummaries = [
       "检索",
       "注入"
     ],
-    "prompt": "文档的层级结构为何不能丢？切分和检索时怎么利用它补足上下文？"
+    "title": "文档的层级结构为何不能丢？切分和检索时怎么利用它补足上下文？",
+    "prompt": ""
   },
   {
     "id": "q-064",
-    "title": "知识库规模很大（千万级文档），数据侧怎么设计？",
     "category": "knowledge",
     "difficulty": "system",
     "tags": [
@@ -797,11 +796,11 @@ export const questionSummaries = [
       "成本",
       "合规"
     ],
-    "prompt": "知识库规模很大（千万级文档），数据侧怎么设计？"
+    "title": "知识库规模很大（千万级文档），数据侧怎么设计？",
+    "prompt": ""
   },
   {
     "id": "q-065",
-    "title": "一个 Agent 的\"规划能力\"是怎么来的？ReAct 和 Plan-and-Execute 的本质区别是什么？",
     "category": "agent",
     "difficulty": "foundation",
     "tags": [
@@ -810,33 +809,33 @@ export const questionSummaries = [
       "评测",
       "成本"
     ],
-    "prompt": "一个 Agent 的\"规划能力\"是怎么来的？ReAct 和 Plan-and-Execute 的本质区别是什么？"
+    "title": "一个 Agent 的\"规划能力\"是怎么来的？ReAct 和 Plan-and-Execute 的本质区别是什么？",
+    "prompt": ""
   },
   {
     "id": "q-066",
-    "title": "工具职责怎么划分？\"工具太多\"和\"工具职责重叠\"会带来什么问题？",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
       "Prompt",
       "路由"
     ],
-    "prompt": "工具职责怎么划分？\"工具太多\"和\"工具职责重叠\"会带来什么问题？"
+    "title": "工具职责怎么划分？\"工具太多\"和\"工具职责重叠\"会带来什么问题？",
+    "prompt": ""
   },
   {
     "id": "q-067",
-    "title": "遇到中途变化，ReAct 与 Plan-and-Execute 如何取舍？",
     "category": "agent",
     "difficulty": "system",
     "tags": [
       "成本",
       "规划"
     ],
-    "prompt": "遇到中途变化，ReAct 与 Plan-and-Execute 如何取舍？"
+    "title": "遇到中途变化，ReAct 与 Plan-and-Execute 如何取舍？",
+    "prompt": ""
   },
   {
     "id": "q-068",
-    "title": "Agent 的记忆（Memory）怎么设计？短期和长期怎么分？",
     "category": "agent",
     "difficulty": "system",
     "tags": [
@@ -845,11 +844,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "Agent 的记忆（Memory）怎么设计？短期和长期怎么分？"
+    "title": "Agent 的记忆（Memory）怎么设计？短期和长期怎么分？",
+    "prompt": ""
   },
   {
     "id": "q-069",
-    "title": "Agent 为什么容易陷入死循环？怎么防？",
     "category": "agent",
     "difficulty": "foundation",
     "tags": [
@@ -857,11 +856,11 @@ export const questionSummaries = [
       "Agent",
       "成本"
     ],
-    "prompt": "Agent 为什么容易陷入死循环？怎么防？"
+    "title": "Agent 为什么容易陷入死循环？怎么防？",
+    "prompt": ""
   },
   {
     "id": "q-070",
-    "title": "多 Agent 什么时候是刚需、什么时候是过度设计？判断标准是什么？",
     "category": "agent",
     "difficulty": "system",
     "tags": [
@@ -870,11 +869,11 @@ export const questionSummaries = [
       "Agent",
       "成本"
     ],
-    "prompt": "多 Agent 什么时候是刚需、什么时候是过度设计？判断标准是什么？"
+    "title": "多 Agent 什么时候是刚需、什么时候是过度设计？判断标准是什么？",
+    "prompt": ""
   },
   {
     "id": "q-071",
-    "title": "何时需要人工审批？怎样避免审批恢复后重复执行？",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
@@ -882,11 +881,11 @@ export const questionSummaries = [
       "LangChain",
       "LangGraph"
     ],
-    "prompt": "何时需要人工审批？怎样避免审批恢复后重复执行？"
+    "title": "何时需要人工审批？怎样避免审批恢复后重复执行？",
+    "prompt": ""
   },
   {
     "id": "q-072",
-    "title": "Agent 的工具调用失败了怎么处理？错误怎么回传？",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
@@ -895,11 +894,11 @@ export const questionSummaries = [
       "工具调用",
       "限流"
     ],
-    "prompt": "Agent 的工具调用失败了怎么处理？错误怎么回传？"
+    "title": "Agent 的工具调用失败了怎么处理？错误怎么回传？",
+    "prompt": ""
   },
   {
     "id": "q-073",
-    "title": "Agent 的上下文会越滚越大，怎么管理？（衔接分类 7）",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
@@ -908,22 +907,22 @@ export const questionSummaries = [
       "Agent",
       "工具调用"
     ],
-    "prompt": "Agent 的上下文会越滚越大，怎么管理？（衔接分类 7）"
+    "title": "Agent 的上下文会越滚越大，怎么管理？（衔接分类 7）",
+    "prompt": ""
   },
   {
     "id": "q-074",
-    "title": "ReAct 的 \"Thought\" 和 CoT 有什么区别？它们各自解决了什么问题？",
     "category": "agent",
     "difficulty": "foundation",
     "tags": [
       "Token",
       "Agent"
     ],
-    "prompt": "ReAct 的 \"Thought\" 和 CoT 有什么区别？它们各自解决了什么问题？"
+    "title": "ReAct 的 \"Thought\" 和 CoT 有什么区别？它们各自解决了什么问题？",
+    "prompt": ""
   },
   {
     "id": "q-075",
-    "title": "并行工具调用（Parallel Tool Calls）怎么做才真正省延迟？有哪些坑？",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
@@ -931,32 +930,32 @@ export const questionSummaries = [
       "评测",
       "限流"
     ],
-    "prompt": "并行工具调用（Parallel Tool Calls）怎么做才真正省延迟？有哪些坑？"
+    "title": "并行工具调用（Parallel Tool Calls）怎么做才真正省延迟？有哪些坑？",
+    "prompt": ""
   },
   {
     "id": "q-076",
-    "title": "怎么评估一个 Agent 好不好？（衔接分类 10）",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
       "Agent",
       "成本"
     ],
-    "prompt": "怎么评估一个 Agent 好不好？（衔接分类 10）"
+    "title": "怎么评估一个 Agent 好不好？（衔接分类 10）",
+    "prompt": ""
   },
   {
     "id": "q-077",
-    "title": "Agent 的\"权限\"怎么控制？为什么写操作要审批？",
     "category": "agent",
     "difficulty": "foundation",
     "tags": [
       "Agent"
     ],
-    "prompt": "Agent 的\"权限\"怎么控制？为什么写操作要审批？"
+    "title": "Agent 的\"权限\"怎么控制？为什么写操作要审批？",
+    "prompt": ""
   },
   {
     "id": "q-078",
-    "title": "模型会\"幻觉式\"调用不存在的工具或捏造参数，怎么从源头和执行层双重防御？",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
@@ -965,11 +964,11 @@ export const questionSummaries = [
       "工具调用",
       "重试"
     ],
-    "prompt": "模型会\"幻觉式\"调用不存在的工具或捏造参数，怎么从源头和执行层双重防御？"
+    "title": "模型会\"幻觉式\"调用不存在的工具或捏造参数，怎么从源头和执行层双重防御？",
+    "prompt": ""
   },
   {
     "id": "q-079",
-    "title": "Agent 编排器该不该用 LLM 当调度核心？确定性和智能怎么分离？",
     "category": "agent",
     "difficulty": "applied",
     "tags": [
@@ -978,11 +977,11 @@ export const questionSummaries = [
       "规划",
       "路由"
     ],
-    "prompt": "Agent 编排器该不该用 LLM 当调度核心？确定性和智能怎么分离？"
+    "title": "Agent 编排器该不该用 LLM 当调度核心？确定性和智能怎么分离？",
+    "prompt": ""
   },
   {
     "id": "q-080",
-    "title": "一个 Agent 项目，你怎么从 0 设计到上线？",
     "category": "agent",
     "difficulty": "system",
     "tags": [
@@ -991,11 +990,11 @@ export const questionSummaries = [
       "成本",
       "记忆"
     ],
-    "prompt": "一个 Agent 项目，你怎么从 0 设计到上线？"
+    "title": "一个 Agent 项目，你怎么从 0 设计到上线？",
+    "prompt": ""
   },
   {
     "id": "q-081",
-    "title": "Agent 框架和 Harness 工程的分工边界在哪？为什么 Harness 才决定生产可用性？",
     "category": "harness",
     "difficulty": "system",
     "tags": [
@@ -1003,11 +1002,11 @@ export const questionSummaries = [
       "安全",
       "LangChain"
     ],
-    "prompt": "Agent 框架和 Harness 工程的分工边界在哪？为什么 Harness 才决定生产可用性？"
+    "title": "Agent 框架和 Harness 工程的分工边界在哪？为什么 Harness 才决定生产可用性？",
+    "prompt": ""
   },
   {
     "id": "q-082",
-    "title": "Agent 对话太长、上下文爆了怎么办？",
     "category": "harness",
     "difficulty": "applied",
     "tags": [
@@ -1016,11 +1015,11 @@ export const questionSummaries = [
       "工具调用",
       "注入"
     ],
-    "prompt": "Agent 对话太长、上下文爆了怎么办？"
+    "title": "Agent 对话太长、上下文爆了怎么办？",
+    "prompt": ""
   },
   {
     "id": "q-083",
-    "title": "\"中间遗忘效应\"是什么？怎么缓解？",
     "category": "harness",
     "difficulty": "foundation",
     "tags": [
@@ -1029,22 +1028,22 @@ export const questionSummaries = [
       "检索",
       "重排"
     ],
-    "prompt": "\"中间遗忘效应\"是什么？怎么缓解？"
+    "title": "\"中间遗忘效应\"是什么？怎么缓解？",
+    "prompt": ""
   },
   {
     "id": "q-084",
-    "title": "三种上下文管理策略（固定窗口/滑动窗口/压缩）怎么选？",
     "category": "harness",
     "difficulty": "applied",
     "tags": [
       "上下文",
       "工具调用"
     ],
-    "prompt": "三种上下文管理策略（固定窗口/滑动窗口/压缩）怎么选？"
+    "title": "三种上下文管理策略（固定窗口/滑动窗口/压缩）怎么选？",
+    "prompt": ""
   },
   {
     "id": "q-085",
-    "title": "无关信息如何\"污染\"上下文并稀释关键信号？怎么动态清理？",
     "category": "harness",
     "difficulty": "applied",
     "tags": [
@@ -1053,22 +1052,22 @@ export const questionSummaries = [
       "安全",
       "缓存"
     ],
-    "prompt": "无关信息如何\"污染\"上下文并稀释关键信号？怎么动态清理？"
+    "title": "无关信息如何\"污染\"上下文并稀释关键信号？怎么动态清理？",
+    "prompt": ""
   },
   {
     "id": "q-086",
-    "title": "Agent 的中断恢复怎么做？为什么需要 Checkpoint？",
     "category": "harness",
     "difficulty": "foundation",
     "tags": [
       "Agent",
       "LangGraph"
     ],
-    "prompt": "Agent 的中断恢复怎么做？为什么需要 Checkpoint？"
+    "title": "Agent 的中断恢复怎么做？为什么需要 Checkpoint？",
+    "prompt": ""
   },
   {
     "id": "q-087",
-    "title": "为什么 Agent 调试和评估必须以 Trace 为主键？没有 trace 会怎样？",
     "category": "harness",
     "difficulty": "foundation",
     "tags": [
@@ -1077,21 +1076,21 @@ export const questionSummaries = [
       "Prompt",
       "工具调用"
     ],
-    "prompt": "为什么 Agent 调试和评估必须以 Trace 为主键？没有 trace 会怎样？"
+    "title": "为什么 Agent 调试和评估必须以 Trace 为主键？没有 trace 会怎样？",
+    "prompt": ""
   },
   {
     "id": "q-088",
-    "title": "Agent 的权限边界怎样落实到执行层？",
     "category": "harness",
     "difficulty": "applied",
     "tags": [
       "Agent"
     ],
-    "prompt": "Agent 的权限边界怎样落实到执行层？"
+    "title": "Agent 的权限边界怎样落实到执行层？",
+    "prompt": ""
   },
   {
     "id": "q-089",
-    "title": "Agent 的状态持久化在哪一层？为什么不能只存 Redis？",
     "category": "harness",
     "difficulty": "foundation",
     "tags": [
@@ -1100,11 +1099,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "Agent 的状态持久化在哪一层？为什么不能只存 Redis？"
+    "title": "Agent 的状态持久化在哪一层？为什么不能只存 Redis？",
+    "prompt": ""
   },
   {
     "id": "q-090",
-    "title": "资源有限时，Agent 的优化顺序是什么？",
     "category": "harness",
     "difficulty": "foundation",
     "tags": [
@@ -1112,11 +1111,11 @@ export const questionSummaries = [
       "Prompt",
       "结构化"
     ],
-    "prompt": "资源有限时，Agent 的优化顺序是什么？"
+    "title": "资源有限时，Agent 的优化顺序是什么？",
+    "prompt": ""
   },
   {
     "id": "q-091",
-    "title": "LangChain 如何解决厂商锁定和状态管理？LCEL 管道和 LangGraph 怎么分工？",
     "category": "frameworks",
     "difficulty": "applied",
     "tags": [
@@ -1125,11 +1124,11 @@ export const questionSummaries = [
       "Embedding",
       "结构化"
     ],
-    "prompt": "LangChain 如何解决厂商锁定和状态管理？LCEL 管道和 LangGraph 怎么分工？"
+    "title": "LangChain 如何解决厂商锁定和状态管理？LCEL 管道和 LangGraph 怎么分工？",
+    "prompt": ""
   },
   {
     "id": "q-092",
-    "title": "Chain 和 Agent 的区别是什么？什么时候用哪个？",
     "category": "frameworks",
     "difficulty": "foundation",
     "tags": [
@@ -1138,11 +1137,11 @@ export const questionSummaries = [
       "Prompt",
       "成本"
     ],
-    "prompt": "Chain 和 Agent 的区别是什么？什么时候用哪个？"
+    "title": "Chain 和 Agent 的区别是什么？什么时候用哪个？",
+    "prompt": ""
   },
   {
     "id": "q-093",
-    "title": "LangGraph 是什么？核心概念有哪些？",
     "category": "frameworks",
     "difficulty": "foundation",
     "tags": [
@@ -1150,11 +1149,11 @@ export const questionSummaries = [
       "LangChain",
       "LangGraph"
     ],
-    "prompt": "LangGraph 是什么？核心概念有哪些？"
+    "title": "LangGraph 是什么？核心概念有哪些？",
+    "prompt": ""
   },
   {
     "id": "q-094",
-    "title": "Spring AI 相比直接调 SDK 有什么优势？",
     "category": "frameworks",
     "difficulty": "applied",
     "tags": [
@@ -1163,11 +1162,11 @@ export const questionSummaries = [
       "Embedding",
       "流式"
     ],
-    "prompt": "Spring AI 相比直接调 SDK 有什么优势？"
+    "title": "Spring AI 相比直接调 SDK 有什么优势？",
+    "prompt": ""
   },
   {
     "id": "q-095",
-    "title": "用 Spring AI 实现 RAG 的流程？",
     "category": "frameworks",
     "difficulty": "applied",
     "tags": [
@@ -1176,11 +1175,11 @@ export const questionSummaries = [
       "RAG",
       "Prompt"
     ],
-    "prompt": "用 Spring AI 实现 RAG 的流程？"
+    "title": "用 Spring AI 实现 RAG 的流程？",
+    "prompt": ""
   },
   {
     "id": "q-096",
-    "title": "Spring AI 的 Function Calling 原理？",
     "category": "frameworks",
     "difficulty": "applied",
     "tags": [
@@ -1189,11 +1188,11 @@ export const questionSummaries = [
       "工具调用",
       "Spring AI"
     ],
-    "prompt": "Spring AI 的 Function Calling 原理？"
+    "title": "Spring AI 的 Function Calling 原理？",
+    "prompt": ""
   },
   {
     "id": "q-097",
-    "title": "用框架（LangChain/Spring AI）和直接调 SDK，怎么选？",
     "category": "frameworks",
     "difficulty": "applied",
     "tags": [
@@ -1202,11 +1201,11 @@ export const questionSummaries = [
       "结构化",
       "工具调用"
     ],
-    "prompt": "用框架（LangChain/Spring AI）和直接调 SDK，怎么选？"
+    "title": "用框架（LangChain/Spring AI）和直接调 SDK，怎么选？",
+    "prompt": ""
   },
   {
     "id": "q-098",
-    "title": "Runnable 接口为什么是 LangChain 的\"统一抽象\"？它带来什么组合能力？",
     "category": "frameworks",
     "difficulty": "foundation",
     "tags": [
@@ -1214,11 +1213,11 @@ export const questionSummaries = [
       "流式",
       "LangChain"
     ],
-    "prompt": "Runnable 接口为什么是 LangChain 的\"统一抽象\"？它带来什么组合能力？"
+    "title": "Runnable 接口为什么是 LangChain 的\"统一抽象\"？它带来什么组合能力？",
+    "prompt": ""
   },
   {
     "id": "q-099",
-    "title": "各 Agent 框架的 Tool 抽象有何共性？工具描述写不好为什么模型就不调用？",
     "category": "frameworks",
     "difficulty": "foundation",
     "tags": [
@@ -1227,11 +1226,11 @@ export const questionSummaries = [
       "Prompt",
       "LangChain"
     ],
-    "prompt": "各 Agent 框架的 Tool 抽象有何共性？工具描述写不好为什么模型就不调用？"
+    "title": "各 Agent 框架的 Tool 抽象有何共性？工具描述写不好为什么模型就不调用？",
+    "prompt": ""
   },
   {
     "id": "q-100",
-    "title": "一个 AI 应用框架的核心组件有哪些？你如何设计一个最小框架？",
     "category": "frameworks",
     "difficulty": "system",
     "tags": [
@@ -1239,11 +1238,11 @@ export const questionSummaries = [
       "成本",
       "LangGraph"
     ],
-    "prompt": "一个 AI 应用框架的核心组件有哪些？你如何设计一个最小框架？"
+    "title": "一个 AI 应用框架的核心组件有哪些？你如何设计一个最小框架？",
+    "prompt": ""
   },
   {
     "id": "q-101",
-    "title": "量化为什么能加速推理？精度损伤集中在哪？如何按场景选量化方案？",
     "category": "deployment",
     "difficulty": "foundation",
     "tags": [
@@ -1252,11 +1251,11 @@ export const questionSummaries = [
       "上下文",
       "成本"
     ],
-    "prompt": "量化为什么能加速推理？精度损伤集中在哪？如何按场景选量化方案？"
+    "title": "量化为什么能加速推理？精度损伤集中在哪？如何按场景选量化方案？",
+    "prompt": ""
   },
   {
     "id": "q-102",
-    "title": "KV Cache 节省了哪些计算？长文本下又有哪些瓶颈？",
     "category": "deployment",
     "difficulty": "applied",
     "tags": [
@@ -1265,22 +1264,22 @@ export const questionSummaries = [
       "成本",
       "KV Cache"
     ],
-    "prompt": "KV Cache 节省了哪些计算？长文本下又有哪些瓶颈？"
+    "title": "KV Cache 节省了哪些计算？长文本下又有哪些瓶颈？",
+    "prompt": ""
   },
   {
     "id": "q-103",
-    "title": "vLLM 是什么？它为什么快？",
     "category": "deployment",
     "difficulty": "foundation",
     "tags": [
       "KV Cache",
       "vLLM"
     ],
-    "prompt": "vLLM 是什么？它为什么快？"
+    "title": "vLLM 是什么？它为什么快？",
+    "prompt": ""
   },
   {
     "id": "q-104",
-    "title": "自部署开源模型，Ollama、vLLM、llama.cpp 三者的定位和适用场景怎么区分？",
     "category": "deployment",
     "difficulty": "applied",
     "tags": [
@@ -1288,11 +1287,11 @@ export const questionSummaries = [
       "量化",
       "vLLM"
     ],
-    "prompt": "自部署开源模型，Ollama、vLLM、llama.cpp 三者的定位和适用场景怎么区分？"
+    "title": "自部署开源模型，Ollama、vLLM、llama.cpp 三者的定位和适用场景怎么区分？",
+    "prompt": ""
   },
   {
     "id": "q-105",
-    "title": "冷启动为什么是弹性伸缩的痛点？一张显卡能跑多大模型怎么估算？",
     "category": "deployment",
     "difficulty": "system",
     "tags": [
@@ -1301,11 +1300,11 @@ export const questionSummaries = [
       "量化",
       "规划"
     ],
-    "prompt": "冷启动为什么是弹性伸缩的痛点？一张显卡能跑多大模型怎么估算？"
+    "title": "冷启动为什么是弹性伸缩的痛点？一张显卡能跑多大模型怎么估算？",
+    "prompt": ""
   },
   {
     "id": "q-106",
-    "title": "为什么\"解码（decode）阶段是内存带宽受限\"？这对优化有什么指导意义？",
     "category": "deployment",
     "difficulty": "foundation",
     "tags": [
@@ -1313,11 +1312,11 @@ export const questionSummaries = [
       "KV Cache",
       "量化"
     ],
-    "prompt": "为什么\"解码（decode）阶段是内存带宽受限\"？这对优化有什么指导意义？"
+    "title": "为什么\"解码（decode）阶段是内存带宽受限\"？这对优化有什么指导意义？",
+    "prompt": ""
   },
   {
     "id": "q-107",
-    "title": "Continuous Batching 解决了静态批处理的什么问题？为什么能显著提吞吐？",
     "category": "deployment",
     "difficulty": "foundation",
     "tags": [
@@ -1326,11 +1325,11 @@ export const questionSummaries = [
       "KV Cache",
       "vLLM"
     ],
-    "prompt": "Continuous Batching 解决了静态批处理的什么问题？为什么能显著提吞吐？"
+    "title": "Continuous Batching 解决了静态批处理的什么问题？为什么能显著提吞吐？",
+    "prompt": ""
   },
   {
     "id": "q-108",
-    "title": "应用岗需要了解哪些\"模型服务化\"的基础设施？",
     "category": "deployment",
     "difficulty": "system",
     "tags": [
@@ -1339,11 +1338,11 @@ export const questionSummaries = [
       "vLLM",
       "限流"
     ],
-    "prompt": "应用岗需要了解哪些\"模型服务化\"的基础设施？"
+    "title": "应用岗需要了解哪些\"模型服务化\"的基础设施？",
+    "prompt": ""
   },
   {
     "id": "q-109",
-    "title": "应用侧怎么评估一个 LLM 应用？和跑 benchmark 有什么区别？",
     "category": "evaluation",
     "difficulty": "foundation",
     "tags": [
@@ -1352,11 +1351,11 @@ export const questionSummaries = [
       "成本",
       "安全"
     ],
-    "prompt": "应用侧怎么评估一个 LLM 应用？和跑 benchmark 有什么区别？"
+    "title": "应用侧怎么评估一个 LLM 应用？和跑 benchmark 有什么区别？",
+    "prompt": ""
   },
   {
     "id": "q-110",
-    "title": "线上出错的案例怎么系统性归因，并把它变成改进信号？",
     "category": "evaluation",
     "difficulty": "applied",
     "tags": [
@@ -1365,32 +1364,32 @@ export const questionSummaries = [
       "Prompt",
       "检索"
     ],
-    "prompt": "线上出错的案例怎么系统性归因，并把它变成改进信号？"
+    "title": "线上出错的案例怎么系统性归因，并把它变成改进信号？",
+    "prompt": ""
   },
   {
     "id": "q-111",
-    "title": "怎么构建 LLM 应用的评测集（Golden Set）？",
     "category": "evaluation",
     "difficulty": "applied",
     "tags": [
       "评测",
       "路由"
     ],
-    "prompt": "怎么构建 LLM 应用的评测集（Golden Set）？"
+    "title": "怎么构建 LLM 应用的评测集（Golden Set）？",
+    "prompt": ""
   },
   {
     "id": "q-112",
-    "title": "LLM-as-Judge 为什么不能直接替代人工评估？它的偏见和校准怎么做？",
     "category": "evaluation",
     "difficulty": "foundation",
     "tags": [
       "面试"
     ],
-    "prompt": "LLM-as-Judge 为什么不能直接替代人工评估？它的偏见和校准怎么做？"
+    "title": "LLM-as-Judge 为什么不能直接替代人工评估？它的偏见和校准怎么做？",
+    "prompt": ""
   },
   {
     "id": "q-113",
-    "title": "评测分数提高两分，如何判断是否值得发布？",
     "category": "evaluation",
     "difficulty": "applied",
     "tags": [
@@ -1399,21 +1398,21 @@ export const questionSummaries = [
       "安全",
       "合规"
     ],
-    "prompt": "评测分数提高两分，如何判断是否值得发布？"
+    "title": "评测分数提高两分，如何判断是否值得发布？",
+    "prompt": ""
   },
   {
     "id": "q-114",
-    "title": "用户反馈（thumbs up/down）怎么用于评估？",
     "category": "evaluation",
     "difficulty": "foundation",
     "tags": [
       "检索"
     ],
-    "prompt": "用户反馈（thumbs up/down）怎么用于评估？"
+    "title": "用户反馈（thumbs up/down）怎么用于评估？",
+    "prompt": ""
   },
   {
     "id": "q-115",
-    "title": "LLM 应用怎么做 A/B 测试？为什么必须先离线评测再小流量？",
     "category": "evaluation",
     "difficulty": "foundation",
     "tags": [
@@ -1422,11 +1421,11 @@ export const questionSummaries = [
       "评测",
       "成本"
     ],
-    "prompt": "LLM 应用怎么做 A/B 测试？为什么必须先离线评测再小流量？"
+    "title": "LLM 应用怎么做 A/B 测试？为什么必须先离线评测再小流量？",
+    "prompt": ""
   },
   {
     "id": "q-116",
-    "title": "LLM 应用为什么必须配回归测试门禁？非确定性输出下怎么防退化？",
     "category": "evaluation",
     "difficulty": "foundation",
     "tags": [
@@ -1435,11 +1434,11 @@ export const questionSummaries = [
       "安全",
       "合规"
     ],
-    "prompt": "LLM 应用为什么必须配回归测试门禁？非确定性输出下怎么防退化？"
+    "title": "LLM 应用为什么必须配回归测试门禁？非确定性输出下怎么防退化？",
+    "prompt": ""
   },
   {
     "id": "q-117",
-    "title": "怎么让 Agent 持续变好？完整反馈闭环怎么设计？",
     "category": "evaluation",
     "difficulty": "system",
     "tags": [
@@ -1448,11 +1447,11 @@ export const questionSummaries = [
       "评测",
       "成本"
     ],
-    "prompt": "怎么让 Agent 持续变好？完整反馈闭环怎么设计？"
+    "title": "怎么让 Agent 持续变好？完整反馈闭环怎么设计？",
+    "prompt": ""
   },
   {
     "id": "q-118",
-    "title": "评估 LLM 应用时，怎么平衡\"质量、延迟、成本\"三个维度？",
     "category": "evaluation",
     "difficulty": "applied",
     "tags": [
@@ -1461,32 +1460,32 @@ export const questionSummaries = [
       "量化",
       "路由"
     ],
-    "prompt": "评估 LLM 应用时，怎么平衡\"质量、延迟、成本\"三个维度？"
+    "title": "评估 LLM 应用时，怎么平衡\"质量、延迟、成本\"三个维度？",
+    "prompt": ""
   },
   {
     "id": "q-119",
-    "title": "LLM 调用该怎么重试？哪些状态码能重试、哪些绝不能？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
       "限流",
       "重试"
     ],
-    "prompt": "LLM 调用该怎么重试？哪些状态码能重试、哪些绝不能？"
+    "title": "LLM 调用该怎么重试？哪些状态码能重试、哪些绝不能？",
+    "prompt": ""
   },
   {
     "id": "q-120",
-    "title": "为什么要把\"模型调用\"和\"副作用\"分离？幂等键怎么用？",
     "category": "reliability",
     "difficulty": "foundation",
     "tags": [
       "重试"
     ],
-    "prompt": "为什么要把\"模型调用\"和\"副作用\"分离？幂等键怎么用？"
+    "title": "为什么要把\"模型调用\"和\"副作用\"分离？幂等键怎么用？",
+    "prompt": ""
   },
   {
     "id": "q-121",
-    "title": "怎么防止\"单个 bug 把账单烧穿\"？成本熔断器该在哪一层、按什么指标触发？",
     "category": "reliability",
     "difficulty": "system",
     "tags": [
@@ -1495,22 +1494,22 @@ export const questionSummaries = [
       "Agent",
       "Prompt"
     ],
-    "prompt": "怎么防止\"单个 bug 把账单烧穿\"？成本熔断器该在哪一层、按什么指标触发？"
+    "title": "怎么防止\"单个 bug 把账单烧穿\"？成本熔断器该在哪一层、按什么指标触发？",
+    "prompt": ""
   },
   {
     "id": "q-122",
-    "title": "模型返回的工具参数不合法，怎么处理？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
       "Prompt",
       "重试"
     ],
-    "prompt": "模型返回的工具参数不合法，怎么处理？"
+    "title": "模型返回的工具参数不合法，怎么处理？",
+    "prompt": ""
   },
   {
     "id": "q-123",
-    "title": "流式输出的分片怎么拼接和解析？（衔接分类 2）",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
@@ -1518,22 +1517,22 @@ export const questionSummaries = [
       "工具调用",
       "重试"
     ],
-    "prompt": "流式输出的分片怎么拼接和解析？（衔接分类 2）"
+    "title": "流式输出的分片怎么拼接和解析？（衔接分类 2）",
+    "prompt": ""
   },
   {
     "id": "q-124",
-    "title": "LLM 应用怎么降级（Degradation）？降级策略有哪些？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
       "检索",
       "缓存"
     ],
-    "prompt": "LLM 应用怎么降级（Degradation）？降级策略有哪些？"
+    "title": "LLM 应用怎么降级（Degradation）？降级策略有哪些？",
+    "prompt": ""
   },
   {
     "id": "q-125",
-    "title": "LLM 应用的双层限流怎么设计？上游 429 和自身限流各怎么应对？",
     "category": "reliability",
     "difficulty": "system",
     "tags": [
@@ -1542,11 +1541,11 @@ export const questionSummaries = [
       "限流",
       "重试"
     ],
-    "prompt": "LLM 应用的双层限流怎么设计？上游 429 和自身限流各怎么应对？"
+    "title": "LLM 应用的双层限流怎么设计？上游 429 和自身限流各怎么应对？",
+    "prompt": ""
   },
   {
     "id": "q-126",
-    "title": "LLM 应用怎么做缓存？缓存什么、怎么失效？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
@@ -1555,11 +1554,11 @@ export const questionSummaries = [
       "Embedding",
       "向量"
     ],
-    "prompt": "LLM 应用怎么做缓存？缓存什么、怎么失效？"
+    "title": "LLM 应用怎么做缓存？缓存什么、怎么失效？",
+    "prompt": ""
   },
   {
     "id": "q-127",
-    "title": "LLM 应用的可观测性怎么做？要监控哪些指标？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
@@ -1568,21 +1567,21 @@ export const questionSummaries = [
       "工具调用",
       "成本"
     ],
-    "prompt": "LLM 应用的可观测性怎么做？要监控哪些指标？"
+    "title": "LLM 应用的可观测性怎么做？要监控哪些指标？",
+    "prompt": ""
   },
   {
     "id": "q-128",
-    "title": "异步处理里，怎么保证 LLM 任务的\"不丢、不重、不卡死\"？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
       "重试"
     ],
-    "prompt": "异步处理里，怎么保证 LLM 任务的\"不丢、不重、不卡死\"？"
+    "title": "异步处理里，怎么保证 LLM 任务的\"不丢、不重、不卡死\"？",
+    "prompt": ""
   },
   {
     "id": "q-129",
-    "title": "多个 LLM 调用怎么编排？串行、并行、DAG 怎么选？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
@@ -1590,22 +1589,22 @@ export const questionSummaries = [
       "LangGraph",
       "限流"
     ],
-    "prompt": "多个 LLM 调用怎么编排？串行、并行、DAG 怎么选？"
+    "title": "多个 LLM 调用怎么编排？串行、并行、DAG 怎么选？",
+    "prompt": ""
   },
   {
     "id": "q-130",
-    "title": "流式场景下游消费不过来怎么办？背压机制如何防止内存被拖垮？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
       "Token",
       "流式"
     ],
-    "prompt": "流式场景下游消费不过来怎么办？背压机制如何防止内存被拖垮？"
+    "title": "流式场景下游消费不过来怎么办？背压机制如何防止内存被拖垮？",
+    "prompt": ""
   },
   {
     "id": "q-131",
-    "title": "LLM 应用怎么做灰度发布和回滚？",
     "category": "reliability",
     "difficulty": "system",
     "tags": [
@@ -1614,11 +1613,11 @@ export const questionSummaries = [
       "成本",
       "安全"
     ],
-    "prompt": "LLM 应用怎么做灰度发布和回滚？"
+    "title": "LLM 应用怎么做灰度发布和回滚？",
+    "prompt": ""
   },
   {
     "id": "q-132",
-    "title": "怎么保证 LLM 输出的\"确定性\"和\"可复现\"？",
     "category": "reliability",
     "difficulty": "applied",
     "tags": [
@@ -1626,21 +1625,21 @@ export const questionSummaries = [
       "结构化",
       "评测"
     ],
-    "prompt": "怎么保证 LLM 输出的\"确定性\"和\"可复现\"？"
+    "title": "怎么保证 LLM 输出的\"确定性\"和\"可复现\"？",
+    "prompt": ""
   },
   {
     "id": "q-133",
-    "title": "LLM 应用的\"超时、重试、幂等\"三者怎么协同设计？",
     "category": "reliability",
     "difficulty": "system",
     "tags": [
       "重试"
     ],
-    "prompt": "LLM 应用的\"超时、重试、幂等\"三者怎么协同设计？"
+    "title": "LLM 应用的\"超时、重试、幂等\"三者怎么协同设计？",
+    "prompt": ""
   },
   {
     "id": "q-134",
-    "title": "一个高并发 LLM 应用，你会怎么设计架构？",
     "category": "reliability",
     "difficulty": "system",
     "tags": [
@@ -1649,11 +1648,11 @@ export const questionSummaries = [
       "重试",
       "缓存"
     ],
-    "prompt": "一个高并发 LLM 应用，你会怎么设计架构？"
+    "title": "一个高并发 LLM 应用，你会怎么设计架构？",
+    "prompt": ""
   },
   {
     "id": "q-135",
-    "title": "直接注入 vs 间接注入，哪个更难防？为什么间接注入更隐蔽？",
     "category": "safety",
     "difficulty": "foundation",
     "tags": [
@@ -1662,11 +1661,11 @@ export const questionSummaries = [
       "检索",
       "注入"
     ],
-    "prompt": "直接注入 vs 间接注入，哪个更难防？为什么间接注入更隐蔽？"
+    "title": "直接注入 vs 间接注入，哪个更难防？为什么间接注入更隐蔽？",
+    "prompt": ""
   },
   {
     "id": "q-136",
-    "title": "为什么\"提示词里写安全规则\"防不住攻击？正确的防御是什么？",
     "category": "safety",
     "difficulty": "foundation",
     "tags": [
@@ -1674,11 +1673,11 @@ export const questionSummaries = [
       "安全",
       "注入"
     ],
-    "prompt": "为什么\"提示词里写安全规则\"防不住攻击？正确的防御是什么？"
+    "title": "为什么\"提示词里写安全规则\"防不住攻击？正确的防御是什么？",
+    "prompt": ""
   },
   {
     "id": "q-137",
-    "title": "LLM 应用有哪些常见安全风险？（OWASP LLM Top 10）",
     "category": "safety",
     "difficulty": "applied",
     "tags": [
@@ -1687,11 +1686,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "LLM 应用有哪些常见安全风险？（OWASP LLM Top 10）"
+    "title": "LLM 应用有哪些常见安全风险？（OWASP LLM Top 10）",
+    "prompt": ""
   },
   {
     "id": "q-138",
-    "title": "怎么防止模型泄露敏感信息（system prompt、训练数据、用户数据）？",
     "category": "safety",
     "difficulty": "applied",
     "tags": [
@@ -1700,11 +1699,11 @@ export const questionSummaries = [
       "向量",
       "检索"
     ],
-    "prompt": "怎么防止模型泄露敏感信息（system prompt、训练数据、用户数据）？"
+    "title": "怎么防止模型泄露敏感信息（system prompt、训练数据、用户数据）？",
+    "prompt": ""
   },
   {
     "id": "q-139",
-    "title": "LLM 应用怎么做内容审核（Content Moderation）？",
     "category": "safety",
     "difficulty": "applied",
     "tags": [
@@ -1712,22 +1711,22 @@ export const questionSummaries = [
       "注入",
       "合规"
     ],
-    "prompt": "LLM 应用怎么做内容审核（Content Moderation）？"
+    "title": "LLM 应用怎么做内容审核（Content Moderation）？",
+    "prompt": ""
   },
   {
     "id": "q-140",
-    "title": "LLM 应用的合规要注意什么？（数据安全、备案、跨境）",
     "category": "safety",
     "difficulty": "applied",
     "tags": [
       "安全",
       "合规"
     ],
-    "prompt": "LLM 应用的合规要注意什么？（数据安全、备案、跨境）"
+    "title": "LLM 应用的合规要注意什么？（数据安全、备案、跨境）",
+    "prompt": ""
   },
   {
     "id": "q-141",
-    "title": "怎么估算一个 LLM 应用的成本？",
     "category": "product-cost",
     "difficulty": "applied",
     "tags": [
@@ -1736,11 +1735,11 @@ export const questionSummaries = [
       "Prompt",
       "检索"
     ],
-    "prompt": "怎么估算一个 LLM 应用的成本？"
+    "title": "怎么估算一个 LLM 应用的成本？",
+    "prompt": ""
   },
   {
     "id": "q-142",
-    "title": "怎么降低 LLM 应用的成本？有哪些手段？",
     "category": "product-cost",
     "difficulty": "applied",
     "tags": [
@@ -1749,11 +1748,11 @@ export const questionSummaries = [
       "Prompt",
       "检索"
     ],
-    "prompt": "怎么降低 LLM 应用的成本？有哪些手段？"
+    "title": "怎么降低 LLM 应用的成本？有哪些手段？",
+    "prompt": ""
   },
   {
     "id": "q-143",
-    "title": "什么场景\"不该用 LLM\"？怎么判断？",
     "category": "product-cost",
     "difficulty": "applied",
     "tags": [
@@ -1761,11 +1760,11 @@ export const questionSummaries = [
       "检索",
       "成本"
     ],
-    "prompt": "什么场景\"不该用 LLM\"？怎么判断？"
+    "title": "什么场景\"不该用 LLM\"？怎么判断？",
+    "prompt": ""
   },
   {
     "id": "q-144",
-    "title": "模型路由怎样降低成本，如何验证质量没有退化？",
     "category": "product-cost",
     "difficulty": "applied",
     "tags": [
@@ -1774,11 +1773,11 @@ export const questionSummaries = [
       "缓存",
       "路由"
     ],
-    "prompt": "模型路由怎样降低成本，如何验证质量没有退化？"
+    "title": "模型路由怎样降低成本，如何验证质量没有退化？",
+    "prompt": ""
   },
   {
     "id": "q-145",
-    "title": "怎么判断一个 AI 功能\"值不值得做\"？（ROI 与场景判断）",
     "category": "product-cost",
     "difficulty": "applied",
     "tags": [
@@ -1787,11 +1786,11 @@ export const questionSummaries = [
       "微调",
       "成本"
     ],
-    "prompt": "怎么判断一个 AI 功能\"值不值得做\"？（ROI 与场景判断）"
+    "title": "怎么判断一个 AI 功能\"值不值得做\"？（ROI 与场景判断）",
+    "prompt": ""
   },
   {
     "id": "q-146",
-    "title": "一个 AI 应用从想法到上线，你会怎么推进？",
     "category": "product-cost",
     "difficulty": "applied",
     "tags": [
@@ -1800,11 +1799,11 @@ export const questionSummaries = [
       "Agent",
       "Prompt"
     ],
-    "prompt": "一个 AI 应用从想法到上线，你会怎么推进？"
+    "title": "一个 AI 应用从想法到上线，你会怎么推进？",
+    "prompt": ""
   },
   {
     "id": "q-147",
-    "title": "大模型预训练为什么叫\"自监督学习\"？它和传统监督学习有什么本质区别？",
     "category": "ml-basics",
     "difficulty": "foundation",
     "tags": [
@@ -1812,22 +1811,22 @@ export const questionSummaries = [
       "成本",
       "记忆"
     ],
-    "prompt": "大模型预训练为什么叫\"自监督学习\"？它和传统监督学习有什么本质区别？"
+    "title": "大模型预训练为什么叫\"自监督学习\"？它和传统监督学习有什么本质区别？",
+    "prompt": ""
   },
   {
     "id": "q-148",
-    "title": "微调 LLM 时，\"过拟合\"具体表现为哪些现象？怎么在微调中避免？",
     "category": "ml-basics",
     "difficulty": "applied",
     "tags": [
       "微调",
       "LoRA"
     ],
-    "prompt": "微调 LLM 时，\"过拟合\"具体表现为哪些现象？怎么在微调中避免？"
+    "title": "微调 LLM 时，\"过拟合\"具体表现为哪些现象？怎么在微调中避免？",
+    "prompt": ""
   },
   {
     "id": "q-149",
-    "title": "LoRA 为什么能\"只改一点点参数\"就完成微调？它解决了什么痛点？",
     "category": "ml-basics",
     "difficulty": "foundation",
     "tags": [
@@ -1836,11 +1835,11 @@ export const questionSummaries = [
       "量化",
       "LoRA"
     ],
-    "prompt": "LoRA 为什么能\"只改一点点参数\"就完成微调？它解决了什么痛点？"
+    "title": "LoRA 为什么能\"只改一点点参数\"就完成微调？它解决了什么痛点？",
+    "prompt": ""
   },
   {
     "id": "q-150",
-    "title": "自注意力的 Q、K、V 分别扮演什么角色？为什么说\"注意力是软性检索\"？",
     "category": "ml-basics",
     "difficulty": "foundation",
     "tags": [
@@ -1849,6 +1848,7 @@ export const questionSummaries = [
       "检索",
       "注意力"
     ],
-    "prompt": "自注意力的 Q、K、V 分别扮演什么角色？为什么说\"注意力是软性检索\"？"
+    "title": "自注意力的 Q、K、V 分别扮演什么角色？为什么说\"注意力是软性检索\"？",
+    "prompt": ""
   }
 ] as const satisfies readonly QuestionSummary[];
