@@ -1,23 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { cn } from "@/lib/utils";
+import { SiteNav, type NavId } from "@/components/SiteNav";
 import mark from "@/assets/foxfire-mark.png";
 
 type AppShellProps = {
   children: React.ReactNode;
-  current?: "home" | "search" | "progress" | "practice" | "mock";
+  current?: NavId;
 };
-
-const nav = [
-  { href: "/", id: "home" as const, label: "题库" },
-  { href: "/practice", id: "practice" as const, label: "会话" },
-  { href: "/mock", id: "mock" as const, label: "模拟" },
-  { href: "/search", id: "search" as const, label: "搜索" },
-  { href: "/progress", id: "progress" as const, label: "进度" },
-];
 
 export function AppShell({ children, current }: AppShellProps) {
   return (
@@ -35,32 +25,7 @@ export function AppShell({ children, current }: AppShellProps) {
             <span className="text-base">狐火</span>
             <span className="hidden text-sm text-muted-foreground sm:inline">Foxfire</span>
           </Link>
-          <nav className="flex items-center gap-1" aria-label="主要">
-            {nav.map((item) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                aria-current={current === item.id ? "page" : undefined}
-                className={cn(
-                  buttonVariants({
-                    variant: current === item.id ? "secondary" : "ghost",
-                    size: "sm",
-                  }),
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <a
-              href="https://github.com/JoneyXiao/foxfire"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
-            >
-              GitHub
-            </a>
-            <ThemeToggle />
-          </nav>
+          <SiteNav current={current} />
         </div>
       </header>
       <main id="content" className="flex-1 scroll-mt-16">
