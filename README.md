@@ -28,6 +28,7 @@ npm run build && npm start
 
 - Next.js App Router、TypeScript、Tailwind CSS 4
 - 题目数据在仓库内，构建时打进页面
+- 题库源文件按分类分片在 `src/data/bank/*.json`；`npm run sync:questions` 生成列表用摘要与含答案的完整模块（`predev` / `prebuild` 会自动跑）
 - 进度仅存在本机
 
 ## 来源与公开说明

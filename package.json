@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:questions": "node scripts/sync-question-data.mjs",
+    "predev": "npm run sync:questions",
+    "prebuild": "npm run sync:questions"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

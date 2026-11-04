@@ -19,7 +19,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { categoryById, difficultyLabel } from "@/lib/categories";
-import { adjacentQuestions, getQuestion, questions } from "@/data/questions";
+import { adjacentQuestions } from "@/data/questions";
+import { getQuestion, questions } from "@/data/questions-full";
 import { cn } from "@/lib/utils";
 
 type QuestionPageProps = {
