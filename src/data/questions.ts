@@ -9,9 +9,11 @@ import type {
 } from "@/lib/types";
 
 /**
- * Client-safe question index (no `answer` field).
- * Full answers live in `@/data/questions-full` for detail / SSG pages only.
+ * Client-safe question index (no `answer` / quotes).
+ * Full answers are route-level JSON under public/data/questions/<id>.json
+ * (SSG via `@/data/questions-full`, client fetch on answer expand).
  * Optional answer keyword search loads `@/data/generated/answer-index` dynamically.
+ * `prompt` may be "" when it duplicates `title` (keeps list chunks smaller).
  */
 export const questions: readonly QuestionSummary[] = questionSummaries;
 
@@ -58,7 +60,12 @@ export function adjacentQuestions(id: string): {
 }
 
 function matchesMetaQuery(question: QuestionSummary, q: string): boolean {
-  const haystack = [question.title, question.prompt, question.tags.join(" "), question.id]
+  const haystack = [
+    question.title,
+    question.prompt, // may be empty when it duplicated title in the bank
+    question.tags.join(" "),
+    question.id,
+  ]
     .join("\n")
     .toLowerCase();
   return haystack.includes(q);

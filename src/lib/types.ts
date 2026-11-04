@@ -33,6 +33,7 @@ export type QuestionSummary = {
   category: CategoryId;
   difficulty: Difficulty;
   tags: string[];
+  /** Empty when the bank prompt duplicated title (saves list-chunk bytes). */
   prompt: string;
 };
 
