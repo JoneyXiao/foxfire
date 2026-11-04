@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import { CheckIcon, StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { emptyProgress, readProgress, toggleId, writeProgress } from "@/lib/progress";
+import {
+  emptyProgress,
+  PROGRESS_CHANGED_EVENT,
+  readProgress,
+  toggleId,
+  writeProgress,
+} from "@/lib/progress";
 
 type ProgressButtonsProps = {
   id: string;
@@ -15,10 +21,16 @@ export function ProgressButtons({ id }: ProgressButtonsProps) {
   const [starred, setStarred] = useState(false);
 
   useEffect(() => {
-    const progress = readProgress();
-    setDone(progress.done.includes(id));
-    setStarred(progress.starred.includes(id));
-    setReady(true);
+    function refresh() {
+      const progress = readProgress();
+      setDone(progress.done.includes(id));
+      setStarred(progress.starred.includes(id));
+      setReady(true);
+    }
+
+    refresh();
+    window.addEventListener(PROGRESS_CHANGED_EVENT, refresh);
+    return () => window.removeEventListener(PROGRESS_CHANGED_EVENT, refresh);
   }, [id]);
 
   function update(kind: "done" | "starred") {
@@ -71,8 +83,14 @@ export function useProgressSets() {
   const [progress, setProgress] = useState(emptyProgress);
 
   useEffect(() => {
-    setProgress(readProgress());
-    setReady(true);
+    function refresh() {
+      setProgress(readProgress());
+      setReady(true);
+    }
+
+    refresh();
+    window.addEventListener(PROGRESS_CHANGED_EVENT, refresh);
+    return () => window.removeEventListener(PROGRESS_CHANGED_EVENT, refresh);
   }, []);
 
   return { ready, done: new Set(progress.done), starred: new Set(progress.starred) };
