@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { AppShell } from "@/components/AppShell";
 import { PracticeActions } from "@/components/PracticeActions";
+import { TodayReview } from "@/components/TodayReview";
 import { SearchForm } from "@/components/SearchForm";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,7 +24,7 @@ export default function HomePage() {
         <header className="space-y-2">
           <p className="text-sm font-medium text-primary">AI 应用面试</p>
           <h1 className="font-heading text-3xl font-medium tracking-tight">狐火</h1>
-          <p className="max-w-2xl text-muted-foreground">按分类打开一题，对照参考作答。</p>
+          <p className="max-w-2xl text-muted-foreground">按分类打开一题，对照参考作答；自评掌握度后会出现在今日待复习。</p>
         </header>
         <div className="space-y-2">
           <PracticeActions />
@@ -35,6 +36,7 @@ export default function HomePage() {
             。
           </p>
         </div>
+        <TodayReview />
         <Suspense fallback={<div className="h-9 w-full animate-pulse rounded-md bg-muted" />}>
           <SearchForm />
         </Suspense>
