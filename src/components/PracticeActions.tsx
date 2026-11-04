@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { DicesIcon, ListOrderedIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { DicesIcon, ListOrderedIcon, TimerIcon } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { questions } from "@/data/questions";
 import {
   listUnpracticed,
@@ -98,6 +99,13 @@ export function PracticeActions({ currentId, className }: PracticeActionsProps) 
           <DicesIcon data-icon="inline-start" />
           随机一题
         </Button>
+        <Link
+          href="/practice"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
+          <TimerIcon data-icon="inline-start" />
+          练习会话
+        </Link>
       </div>
       {allDone ? (
         <p className="mt-2 text-sm text-muted-foreground" role="status">

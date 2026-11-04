@@ -1,4 +1,4 @@
-import type { QuestionSummary } from "@/lib/types";
+import type { CategoryId, Difficulty, QuestionSummary } from "@/lib/types";
 
 export type RandomPick = {
   question: QuestionSummary;
@@ -69,4 +69,49 @@ export function pickRandomQuestion(
     question: pool[index],
     pool: open.length > 0 ? "unpracticed" : "all",
   };
+}
+
+export type SessionPoolFilters = {
+  category?: CategoryId | "all";
+  difficulty?: Difficulty | "all";
+  unpracticedOnly?: boolean;
+  done?: Iterable<string>;
+};
+
+function shuffleInPlace<T>(items: T[]): T[] {
+  for (let i = items.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = items[i];
+    items[i] = items[j];
+    items[j] = tmp;
+  }
+  return items;
+}
+
+/** Filter the bank for a practice session, then shuffle and take up to `count`. */
+export function buildSessionQuestions(
+  all: readonly QuestionSummary[],
+  count: number,
+  filters: SessionPoolFilters = {},
+): QuestionSummary[] {
+  const category = filters.category ?? "all";
+  const difficulty = filters.difficulty ?? "all";
+  const done = filters.unpracticedOnly ? doneSet(filters.done ?? []) : null;
+
+  let pool = all.filter((item) => {
+    if (category !== "all" && item.category !== category) {
+      return false;
+    }
+    if (difficulty !== "all" && item.difficulty !== difficulty) {
+      return false;
+    }
+    if (done && done.has(item.id)) {
+      return false;
+    }
+    return true;
+  });
+
+  pool = shuffleInPlace([...pool]);
+  const n = Number.isFinite(count) ? Math.max(0, Math.floor(count)) : 0;
+  return pool.slice(0, n);
 }

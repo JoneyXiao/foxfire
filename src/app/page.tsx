@@ -25,7 +25,16 @@ export default function HomePage() {
           <h1 className="font-heading text-3xl font-medium tracking-tight">狐火</h1>
           <p className="max-w-2xl text-muted-foreground">按分类打开一题，对照参考作答。</p>
         </header>
-        <PracticeActions />
+        <div className="space-y-2">
+          <PracticeActions />
+          <p className="text-sm text-muted-foreground">
+            想连续刷一串？去{" "}
+            <Link href="/practice" className="underline-offset-2 hover:text-foreground hover:underline">
+              练习会话
+            </Link>
+            。
+          </p>
+        </div>
         <Suspense fallback={<div className="h-9 w-full animate-pulse rounded-md bg-muted" />}>
           <SearchForm />
         </Suspense>
