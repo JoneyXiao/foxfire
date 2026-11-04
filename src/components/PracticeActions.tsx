@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { DicesIcon, ListOrderedIcon, TimerIcon } from "lucide-react";
+import { DicesIcon, ListOrderedIcon, MicIcon, TimerIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { questions } from "@/data/questions";
@@ -105,6 +105,13 @@ export function PracticeActions({ currentId, className }: PracticeActionsProps) 
         >
           <TimerIcon data-icon="inline-start" />
           练习会话
+        </Link>
+        <Link
+          href="/mock"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
+          <MicIcon data-icon="inline-start" />
+          模拟面试
         </Link>
       </div>
       {allDone ? (
