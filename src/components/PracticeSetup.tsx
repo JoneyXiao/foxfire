@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PlayIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { questions } from "@/data/questions";
-import { categories, difficultyLabel } from "@/lib/categories";
+import { categories, difficultyLabel, isCategoryId } from "@/lib/categories";
 import { buildSessionQuestions } from "@/lib/practice";
 import { PROGRESS_CHANGED_EVENT, readProgress } from "@/lib/progress";
 import {
@@ -24,7 +24,7 @@ import {
   writeSession,
   type SessionFilters,
 } from "@/lib/session";
-import type { CategoryId, Difficulty } from "@/lib/types";
+import { DIFFICULTIES, type CategoryId, type Difficulty } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const COUNT_PRESETS = [5, 10, 15, 20] as const;
@@ -53,15 +53,54 @@ function Chip({ active, onClick, children }: ChipProps) {
   );
 }
 
+function categoryFromParams(params: URLSearchParams): CategoryId | "all" {
+  const value = params.get("category");
+  return value && isCategoryId(value) ? value : "all";
+}
+
+function difficultyFromParams(params: URLSearchParams): Difficulty | "all" {
+  const value = params.get("difficulty");
+  return value && (DIFFICULTIES as readonly string[]).includes(value)
+    ? (value as Difficulty)
+    : "all";
+}
+
+function unpracticedFromParams(params: URLSearchParams): boolean {
+  const value = params.get("unpracticed");
+  if (value === "0" || value === "false") {
+    return false;
+  }
+  if (value === "1" || value === "true") {
+    return true;
+  }
+  return true;
+}
+
+function countFromParams(params: URLSearchParams): number {
+  const value = params.get("count");
+  if (!value) {
+    return 10;
+  }
+  const n = Number.parseInt(value, 10);
+  return Number.isFinite(n) && n > 0 ? n : 10;
+}
+
 export function PracticeSetup() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [ready, setReady] = useState(false);
   const [done, setDone] = useState<string[]>([]);
   const [activeSession, setActiveSession] = useState<ReturnType<typeof readSession>>(null);
-  const [category, setCategory] = useState<CategoryId | "all">("all");
-  const [difficulty, setDifficulty] = useState<Difficulty | "all">("all");
-  const [unpracticedOnly, setUnpracticedOnly] = useState(true);
-  const [count, setCount] = useState(10);
+  const [category, setCategory] = useState<CategoryId | "all">(() =>
+    categoryFromParams(searchParams),
+  );
+  const [difficulty, setDifficulty] = useState<Difficulty | "all">(() =>
+    difficultyFromParams(searchParams),
+  );
+  const [unpracticedOnly, setUnpracticedOnly] = useState(() =>
+    unpracticedFromParams(searchParams),
+  );
+  const [count, setCount] = useState(() => countFromParams(searchParams));
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
