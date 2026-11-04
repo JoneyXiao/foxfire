@@ -8,12 +8,13 @@ import mark from "@/assets/foxfire-mark.png";
 
 type AppShellProps = {
   children: React.ReactNode;
-  current?: "home" | "search" | "progress" | "practice";
+  current?: "home" | "search" | "progress" | "practice" | "mock";
 };
 
 const nav = [
   { href: "/", id: "home" as const, label: "题库" },
   { href: "/practice", id: "practice" as const, label: "会话" },
+  { href: "/mock", id: "mock" as const, label: "模拟" },
   { href: "/search", id: "search" as const, label: "搜索" },
   { href: "/progress", id: "progress" as const, label: "进度" },
 ];

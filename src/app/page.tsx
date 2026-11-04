@@ -33,6 +33,10 @@ export default function HomePage() {
             <Link href="/practice" className="underline-offset-2 hover:text-foreground hover:underline">
               练习会话
             </Link>
+            ；想限时口述？去{" "}
+            <Link href="/mock" className="underline-offset-2 hover:text-foreground hover:underline">
+              模拟面试
+            </Link>
             。
           </p>
         </div>

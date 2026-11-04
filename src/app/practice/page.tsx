@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import { AppShell } from "@/components/AppShell";
 import { PracticeSetup } from "@/components/PracticeSetup";
@@ -11,7 +12,11 @@ export default function PracticePage() {
         <header className="space-y-2">
           <h1 className="font-heading text-2xl font-medium tracking-tight">练习会话</h1>
           <p className="text-muted-foreground">
-            选好分类、难度和题量，随机抽一串题连续练；结束后看完成率与收藏回顾。
+            选好分类、难度和题量，随机抽一串题连续练；结束后看完成率与收藏回顾。需要限时口述可去{" "}
+            <Link href="/mock" className="underline-offset-2 hover:underline">
+              模拟面试
+            </Link>
+            。
           </p>
         </header>
         <Suspense
