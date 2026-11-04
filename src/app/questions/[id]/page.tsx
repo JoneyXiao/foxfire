@@ -78,7 +78,9 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
           </CardHeader>
           <CardContent className="space-y-6">
             <SessionBar questionId={question.id} />
-            <MarkdownBody source={question.prompt} />
+            {question.prompt.trim() !== question.title.trim() ? (
+              <MarkdownBody source={question.prompt} />
+            ) : null}
             <ProgressButtons id={question.id} />
             <PracticeActions currentId={question.id} />
             <QuestionNavShortcuts prev={prev} next={next} />
