@@ -216,7 +216,7 @@ export const questionSummaries = [
     "id": "q-018",
     "title": "多轮对话的上下文会越滚越大，怎么设计\"截断 + 摘要\"策略？",
     "category": "api-structured",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "Token",
       "上下文",
@@ -574,7 +574,7 @@ export const questionSummaries = [
     "id": "q-047",
     "title": "不同类型的 query 该走哪种检索？多路召回和查询路由怎么设计？",
     "category": "rag",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "RAG",
       "向量",
@@ -790,7 +790,7 @@ export const questionSummaries = [
     "id": "q-064",
     "title": "知识库规模很大（千万级文档），数据侧怎么设计？",
     "category": "knowledge",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "向量",
       "检索",
@@ -838,7 +838,7 @@ export const questionSummaries = [
     "id": "q-068",
     "title": "Agent 的记忆（Memory）怎么设计？短期和长期怎么分？",
     "category": "agent",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "上下文",
       "Agent",
@@ -1233,7 +1233,7 @@ export const questionSummaries = [
     "id": "q-100",
     "title": "一个 AI 应用框架的核心组件有哪些？你如何设计一个最小框架？",
     "category": "frameworks",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "结构化",
       "成本",
@@ -1441,7 +1441,7 @@ export const questionSummaries = [
     "id": "q-117",
     "title": "怎么让 Agent 持续变好？完整反馈闭环怎么设计？",
     "category": "evaluation",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "Agent",
       "Prompt",
@@ -1488,7 +1488,7 @@ export const questionSummaries = [
     "id": "q-121",
     "title": "怎么防止\"单个 bug 把账单烧穿\"？成本熔断器该在哪一层、按什么指标触发？",
     "category": "reliability",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "Token",
       "上下文",
@@ -1535,7 +1535,7 @@ export const questionSummaries = [
     "id": "q-125",
     "title": "LLM 应用的双层限流怎么设计？上游 429 和自身限流各怎么应对？",
     "category": "reliability",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "Token",
       "成本",
@@ -1632,7 +1632,7 @@ export const questionSummaries = [
     "id": "q-133",
     "title": "LLM 应用的\"超时、重试、幂等\"三者怎么协同设计？",
     "category": "reliability",
-    "difficulty": "applied",
+    "difficulty": "system",
     "tags": [
       "重试"
     ],

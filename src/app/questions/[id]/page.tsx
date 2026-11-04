@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnswerReveal } from "@/components/AnswerReveal";
+import { InterviewQuotes } from "@/components/InterviewQuotes";
 import { AppShell } from "@/components/AppShell";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { PracticeActions } from "@/components/PracticeActions";
@@ -83,6 +84,8 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
             <QuestionNavShortcuts prev={prev} next={next} />
           </CardContent>
         </Card>
+
+        <InterviewQuotes quotes={question.interviewQuotes} />
 
         <AnswerReveal answer={question.answer} />
 
