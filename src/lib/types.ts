@@ -43,9 +43,24 @@ export type Question = QuestionSummary & {
   interviewQuotes: readonly [string, string, string] | readonly string[];
 };
 
+/** Self-rated mastery for spaced repetition: 生疏 / 模糊 / 掌握. */
+export type SrsRating = "hard" | "fuzzy" | "known";
+
+export type SrsCard = {
+  rating: SrsRating;
+  /** Days until next review after the last rating. */
+  intervalDays: number;
+  /** Local calendar day YYYY-MM-DD when the card becomes due. */
+  dueAt: string;
+  reviewedAt: string;
+  reps: number;
+};
+
 export type ProgressState = {
   done: string[];
   starred: string[];
+  /** Per-question SRS state; absent keys mean never rated. */
+  srs: Record<string, SrsCard>;
 };
 
 export const SORT_OPTIONS = ["default", "open", "difficulty", "difficulty-desc"] as const;

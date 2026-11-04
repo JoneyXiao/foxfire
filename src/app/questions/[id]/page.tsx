@@ -87,7 +87,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
 
         <InterviewQuotes quotes={question.interviewQuotes} />
 
-        <AnswerReveal answer={question.answer} />
+        <AnswerReveal answer={question.answer} questionId={question.id} />
 
         <nav className="grid gap-3 sm:grid-cols-2" aria-label="相邻题目">
           {prev ? (

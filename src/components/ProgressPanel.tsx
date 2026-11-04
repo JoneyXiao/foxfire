@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { DownloadIcon, UploadIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,20 +9,41 @@ import { badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProgressAnalytics } from "@/components/ProgressAnalytics";
 import { QuestionTable } from "@/components/QuestionTable";
+import { TodayReview } from "@/components/TodayReview";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { questions, totalQuestions } from "@/data/questions";
 import { downloadProgressJson, importProgressFromFile } from "@/lib/progress";
+import { listDueIds, SRS_RATING_LABEL } from "@/lib/srs";
 import { cn } from "@/lib/utils";
+
+type Tab = "done" | "starred" | "review";
 
 export function ProgressPanel() {
   const searchParams = useSearchParams();
-  const tab = searchParams.get("tab") === "starred" ? "starred" : "done";
-  const { ready, done, starred } = useProgressSets();
+  const rawTab = searchParams.get("tab");
+  const tab: Tab =
+    rawTab === "starred" ? "starred" : rawTab === "review" ? "review" : "done";
+  const { ready, progress, done, starred } = useProgressSets();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [importError, setImportError] = useState<string | null>(null);
   const [importBusy, setImportBusy] = useState(false);
   const doneItems = questions.filter((item) => done.has(item.id));
   const starredItems = questions.filter((item) => starred.has(item.id));
+  const dueIds = useMemo(
+    () => (ready ? listDueIds(progress) : []),
+    [ready, progress],
+  );
+  const dueItems = useMemo(() => {
+    const byId = new Map(questions.map((q) => [q.id, q]));
+    // Preserve due-date order from listDueIds
+    const items: (typeof questions)[number][] = [];
+    for (const id of dueIds) {
+      const item = byId.get(id);
+      if (item) items.push(item);
+    }
+    return items;
+  }, [dueIds]);
+  const ratedCount = ready ? Object.keys(progress.srs).length : 0;
 
   function handleExport() {
     setImportError(null);
@@ -40,7 +61,7 @@ export function ProgressPanel() {
     }
 
     const confirmed = window.confirm(
-      "导入会覆盖本机当前的已练与收藏进度，确定继续？",
+      "导入会覆盖本机当前的已练、收藏与复习进度，确定继续？",
     );
     if (!confirmed) {
       if (fileInputRef.current) {
@@ -75,7 +96,7 @@ export function ProgressPanel() {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-3">
         <Card size="sm">
           <CardHeader>
             <CardTitle>已练</CardTitle>
@@ -89,6 +110,14 @@ export function ProgressPanel() {
         </Card>
         <Card size="sm">
           <CardHeader>
+            <CardTitle>今日待复习</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-medium tabular-nums">{dueIds.length}</p>
+          </CardContent>
+        </Card>
+        <Card size="sm">
+          <CardHeader>
             <CardTitle>收藏</CardTitle>
           </CardHeader>
           <CardContent>
@@ -96,6 +125,8 @@ export function ProgressPanel() {
           </CardContent>
         </Card>
       </div>
+
+      <TodayReview previewLimit={8} />
 
       <ProgressAnalytics done={done} starred={starred} />
 
@@ -105,7 +136,8 @@ export function ProgressPanel() {
         </CardHeader>
         <CardContent className="space-y-3">
           <p className="text-sm text-muted-foreground">
-            进度只保存在本机。可导出 JSON 备份，或导入后覆盖当前进度。
+            进度只保存在本机（含掌握度与复习排期）。可导出 JSON 备份，或导入后覆盖当前进度。已自评{" "}
+            {ratedCount} 题。
           </p>
           <div className="flex flex-wrap gap-2">
             <Button type="button" variant="outline" onClick={handleExport}>
@@ -149,6 +181,19 @@ export function ProgressPanel() {
           已练
         </Link>
         <Link
+          href="/progress?tab=review"
+          aria-current={tab === "review" ? "page" : undefined}
+          className={cn(
+            badgeVariants({ variant: tab === "review" ? "default" : "outline" }),
+            "h-7 px-2.5",
+          )}
+        >
+          待复习
+          {dueIds.length > 0 ? (
+            <span className="ml-1 tabular-nums opacity-80">{dueIds.length}</span>
+          ) : null}
+        </Link>
+        <Link
           href="/progress?tab=starred"
           aria-current={tab === "starred" ? "page" : undefined}
           className={cn(
@@ -163,8 +208,35 @@ export function ProgressPanel() {
         <QuestionTable
           items={doneItems}
           emptyTitle="还没有练过"
-          emptyBody="从题库打开一题，对照参考作答后标为已练。"
+          emptyBody="从题库打开一题，对照参考作答后标为已练或自评掌握度。"
         />
+      ) : tab === "review" ? (
+        dueItems.length > 0 ? (
+          <ul className="space-y-2">
+            {dueItems.map((item) => {
+              const card = progress.srs[item.id];
+              return (
+                <li key={item.id}>
+                  <Link
+                    href={`/questions/${item.id}`}
+                    className="flex flex-wrap items-center justify-between gap-2 rounded-xl border bg-card px-4 py-3 text-sm transition-colors hover:bg-muted/40"
+                  >
+                    <span className="font-medium">{item.title}</span>
+                    <span className="text-muted-foreground">
+                      {card ? SRS_RATING_LABEL[card.rating] : "—"}
+                      {card ? ` · 到期 ${card.dueAt}` : ""}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <div className="rounded-xl border border-dashed px-4 py-8 text-center text-sm text-muted-foreground">
+            <p className="font-medium text-foreground">今日没有待复习</p>
+            <p className="mt-2">展开参考作答后点「生疏 / 模糊 / 掌握」，到期会出现在这里。</p>
+          </div>
+        )
       ) : (
         <QuestionTable
           items={starredItems}

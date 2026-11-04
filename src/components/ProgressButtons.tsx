@@ -10,6 +10,7 @@ import {
   toggleId,
   writeProgress,
 } from "@/lib/progress";
+import type { ProgressState } from "@/lib/types";
 
 type ProgressButtonsProps = {
   id: string;
@@ -35,9 +36,10 @@ export function ProgressButtons({ id }: ProgressButtonsProps) {
 
   function update(kind: "done" | "starred") {
     const current = readProgress();
-    const next = {
+    const next: ProgressState = {
       done: kind === "done" ? toggleId(current.done, id) : current.done,
       starred: kind === "starred" ? toggleId(current.starred, id) : current.starred,
+      srs: current.srs,
     };
     writeProgress(next);
     setDone(next.done.includes(id));
@@ -93,5 +95,10 @@ export function useProgressSets() {
     return () => window.removeEventListener(PROGRESS_CHANGED_EVENT, refresh);
   }, []);
 
-  return { ready, done: new Set(progress.done), starred: new Set(progress.starred) };
+  return {
+    ready,
+    progress,
+    done: new Set(progress.done),
+    starred: new Set(progress.starred),
+  };
 }

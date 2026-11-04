@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { BrainIcon, EyeIcon } from "lucide-react";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { MasteryRating } from "@/components/MasteryRating";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -15,9 +16,10 @@ import { cn } from "@/lib/utils";
 
 type AnswerRevealProps = {
   answer: string;
+  questionId: string;
 };
 
-export function AnswerReveal({ answer }: AnswerRevealProps) {
+export function AnswerReveal({ answer, questionId }: AnswerRevealProps) {
   const [ready, setReady] = useState(false);
   const [thinkFirst, setThinkFirst] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
@@ -37,7 +39,7 @@ export function AnswerReveal({ answer }: AnswerRevealProps) {
   useEffect(() => {
     setUnlocked(false);
     setOpen(false);
-  }, [answer]);
+  }, [answer, questionId]);
 
   function toggleThinkFirst() {
     const next = !thinkFirst;
@@ -104,8 +106,9 @@ export function AnswerReveal({ answer }: AnswerRevealProps) {
           >
             {open ? "收起参考作答" : "展开参考作答"}
           </CollapsibleTrigger>
-          <CollapsibleContent className="border-t px-4 py-4">
+          <CollapsibleContent className="space-y-4 border-t px-4 py-4">
             <MarkdownBody source={answer} />
+            <MasteryRating id={questionId} variant="inline" />
           </CollapsibleContent>
         </Collapsible>
       )}

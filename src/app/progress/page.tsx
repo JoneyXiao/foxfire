@@ -11,7 +11,7 @@ export default function ProgressPage() {
         <header className="space-y-2">
           <h1 className="font-heading text-2xl font-medium tracking-tight">进度</h1>
           <p className="text-muted-foreground">
-            看分类/难度完成率，点薄弱分类继续练；进度只留在本机，可导出 JSON 备份。
+            看分类/难度完成率与今日待复习；自评掌握度驱动间隔复习。进度只留在本机，可导出 JSON 备份。
           </p>
         </header>
         <Suspense
