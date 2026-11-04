@@ -1,10 +1,17 @@
 import { categories } from "@/lib/categories";
 import { questionSummaries } from "@/data/generated/summaries";
-import type { CategoryId, QuestionFilters, QuestionSummary } from "@/lib/types";
+import type {
+  CategoryId,
+  Difficulty,
+  QuestionFilters,
+  QuestionSummary,
+  SortOption,
+} from "@/lib/types";
 
 /**
  * Client-safe question index (no `answer` field).
  * Full answers live in `@/data/questions-full` for detail / SSG pages only.
+ * Optional answer keyword search loads `@/data/generated/answer-index` dynamically.
  */
 export const questions: readonly QuestionSummary[] = questionSummaries;
 
@@ -50,7 +57,7 @@ export function adjacentQuestions(id: string): {
   };
 }
 
-function matchesQuery(question: QuestionSummary, q: string): boolean {
+function matchesMetaQuery(question: QuestionSummary, q: string): boolean {
   const haystack = [question.title, question.prompt, question.tags.join(" "), question.id]
     .join("\n")
     .toLowerCase();
@@ -60,6 +67,7 @@ function matchesQuery(question: QuestionSummary, q: string): boolean {
 export function filterQuestions(
   filters: QuestionFilters,
   marks?: { done: Set<string>; starred: Set<string> },
+  answerTextById?: Readonly<Record<string, string>>,
 ): QuestionSummary[] {
   const q = filters.q?.trim().toLowerCase() ?? "";
 
@@ -70,8 +78,16 @@ export function filterQuestions(
     if (filters.difficulty && filters.difficulty !== "all" && item.difficulty !== filters.difficulty) {
       return false;
     }
-    if (q && !matchesQuery(item, q)) {
-      return false;
+    if (q) {
+      const metaHit = matchesMetaQuery(item, q);
+      if (filters.inAnswers && answerTextById) {
+        const answerHit = (answerTextById[item.id] ?? "").includes(q);
+        if (!metaHit && !answerHit) {
+          return false;
+        }
+      } else if (!metaHit) {
+        return false;
+      }
     }
     if (marks && filters.mark && filters.mark !== "all") {
       if (filters.mark === "done" && !marks.done.has(item.id)) {
@@ -89,6 +105,51 @@ export function filterQuestions(
     }
     return true;
   });
+}
+
+const DIFFICULTY_RANK: Record<Difficulty, number> = {
+  foundation: 0,
+  applied: 1,
+  system: 2,
+};
+
+export function sortQuestions(
+  items: QuestionSummary[],
+  sort: SortOption = "default",
+  done?: Set<string>,
+): QuestionSummary[] {
+  if (sort === "default") {
+    return items;
+  }
+
+  const copy = [...items];
+  if (sort === "open") {
+    const doneSet = done ?? new Set<string>();
+    copy.sort((a, b) => {
+      const aOpen = doneSet.has(a.id) ? 1 : 0;
+      const bOpen = doneSet.has(b.id) ? 1 : 0;
+      if (aOpen !== bOpen) return aOpen - bOpen;
+      return a.id.localeCompare(b.id);
+    });
+    return copy;
+  }
+
+  if (sort === "difficulty") {
+    copy.sort(
+      (a, b) =>
+        DIFFICULTY_RANK[a.difficulty] - DIFFICULTY_RANK[b.difficulty] ||
+        a.id.localeCompare(b.id),
+    );
+    return copy;
+  }
+
+  // difficulty-desc
+  copy.sort(
+    (a, b) =>
+      DIFFICULTY_RANK[b.difficulty] - DIFFICULTY_RANK[a.difficulty] ||
+      a.id.localeCompare(b.id),
+  );
+  return copy;
 }
 
 export type TagCount = { tag: string; count: number };

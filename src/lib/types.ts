@@ -46,10 +46,16 @@ export type ProgressState = {
   starred: string[];
 };
 
+export const SORT_OPTIONS = ["default", "open", "difficulty", "difficulty-desc"] as const;
+export type SortOption = (typeof SORT_OPTIONS)[number];
+
 export type QuestionFilters = {
   q?: string;
   category?: CategoryId | "all";
   difficulty?: Difficulty | "all";
   mark?: "all" | "open" | "done" | "starred";
   tag?: string;
+  /** When true, also match against the optional answer keyword index. */
+  inAnswers?: boolean;
+  sort?: SortOption;
 };

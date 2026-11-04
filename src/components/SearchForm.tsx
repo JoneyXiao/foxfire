@@ -19,20 +19,24 @@ function withBasePath(path: string): string {
   return `${base}${withSlash}`;
 }
 
-const PRESERVE_KEYS = ["category", "difficulty", "mark", "tag"] as const;
+const PRESERVE_KEYS = ["category", "difficulty", "mark", "tag", "sort", "answers"] as const;
 
 export function SearchForm({ action = "/search", query = "", autoFocus }: SearchFormProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const answersOn = searchParams.get("answers") === "1";
 
   const onSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
       const next = String(data.get("q") ?? "").trim();
+      const includeAnswers = data.get("answers") === "1";
       const params = new URLSearchParams();
       if (next) params.set("q", next);
+      if (includeAnswers) params.set("answers", "1");
       for (const key of PRESERVE_KEYS) {
+        if (key === "answers") continue;
         const value = searchParams.get(key);
         if (value) params.set(key, value);
       }
@@ -45,33 +49,50 @@ export function SearchForm({ action = "/search", query = "", autoFocus }: Search
 
   return (
     <form
-      className="flex w-full flex-col gap-2 sm:flex-row"
+      className="flex w-full flex-col gap-2"
       action={withBasePath(action)}
       method="get"
       role="search"
       onSubmit={onSubmit}
     >
-      <label className="sr-only" htmlFor="q">
-        搜索题目
+      <div className="flex w-full flex-col gap-2 sm:flex-row">
+        <label className="sr-only" htmlFor="q">
+          搜索题目
+        </label>
+        <Input
+          id="q"
+          name="q"
+          type="search"
+          defaultValue={query}
+          placeholder={
+            answersOn ? "题干、标签、编号或参考作答关键词" : "题干、标签或编号"
+          }
+          autoComplete="off"
+          autoFocus={autoFocus}
+          className="h-9 flex-1"
+        />
+        {PRESERVE_KEYS.filter((key) => key !== "answers").map((key) => {
+          const value = searchParams.get(key);
+          return value ? <input key={key} type="hidden" name={key} value={value} /> : null;
+        })}
+        <Button type="submit" className="sm:w-auto">
+          <SearchIcon data-icon="inline-start" />
+          搜索
+        </Button>
+      </div>
+      <label className="flex items-center gap-2 text-sm text-muted-foreground">
+        <input
+          type="checkbox"
+          name="answers"
+          value="1"
+          defaultChecked={answersOn}
+          className="size-4 rounded border-border accent-primary"
+        />
+        <span>
+          同时搜参考作答关键词
+          <span className="ml-1 text-xs opacity-80">（可选，首次勾选会加载检索索引）</span>
+        </span>
       </label>
-      <Input
-        id="q"
-        name="q"
-        type="search"
-        defaultValue={query}
-        placeholder="题干、标签或编号"
-        autoComplete="off"
-        autoFocus={autoFocus}
-        className="h-9 flex-1"
-      />
-      {PRESERVE_KEYS.map((key) => {
-        const value = searchParams.get(key);
-        return value ? <input key={key} type="hidden" name={key} value={value} /> : null;
-      })}
-      <Button type="submit" className="sm:w-auto">
-        <SearchIcon data-icon="inline-start" />
-        搜索
-      </Button>
     </form>
   );
 }

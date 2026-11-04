@@ -10,7 +10,9 @@ export default function SearchPage() {
       <div className="space-y-6">
         <header className="space-y-2">
           <h1 className="font-heading text-2xl font-medium tracking-tight">搜索</h1>
-          <p className="text-muted-foreground">按题干、标签或编号找题。</p>
+          <p className="text-muted-foreground">
+            按题干、标签或编号找题；可勾选同时搜参考作答关键词，并按未练优先或难度排序。
+          </p>
         </header>
         <Suspense
           fallback={
@@ -23,7 +25,7 @@ export default function SearchPage() {
           <QuestionBrowser
             basePath="/search"
             emptyTitle="没有找到这题"
-            emptyBody="换一个更短的词，或清掉分类和难度。"
+            emptyBody="换一个更短的词，或清掉分类和难度；需要的话再勾选「同时搜参考作答」。"
             emptyHref="/search"
             emptyAction="清掉筛选"
             autoFocus
