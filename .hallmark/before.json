@@ -1,0 +1,31 @@
+{
+  "recorded": "2026-11-05",
+  "wave": "w3-refresh",
+  "routes": [
+    "/",
+    "/search",
+    "/progress",
+    "/practice",
+    "/practice/summary",
+    "/mock",
+    "/mock/run",
+    "/mock/summary",
+    "/category/[slug]",
+    "/questions/[id]"
+  ],
+  "preserved": [
+    "Geekbang question bank JSON",
+    "localStorage progress + SRS",
+    "mock sessionStorage",
+    "Chinese product copy",
+    "static GitHub Pages export"
+  ],
+  "screenshots": {
+    "external": "/workspace/foxfire-assets/preview-w3-*.png",
+    "prior": ["/workspace/foxfire-assets/preview-w2-question-desktop.png", "/workspace/foxfire-assets/preview-w1-home-desktop.png"]
+  },
+  "sloplint": {
+    "before": "skipped-full-capture",
+    "reason": "Intentional mono labels conflict with Hallmark Floor 54/67; document rather than rewrite DNA"
+  }
+}

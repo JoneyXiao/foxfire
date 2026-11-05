@@ -14,6 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { IndexRow } from "@/components/IndexRow";
+import { QuietEmpty } from "@/components/QuietEmpty";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { categoryById, difficultyLabel } from "@/lib/categories";
 import {
@@ -128,15 +129,13 @@ export function QuestionTable({
     return (
       <div className="space-y-3">
         {toolbar}
-        <div className="rounded-xl border bg-card px-6 py-10 text-center">
-          <h2 className="font-heading text-base font-medium">{emptyTitle}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">{emptyBody}</p>
-          <p className="mt-4">
-            <Link href={emptyHref} className={cn(buttonVariants())}>
-              {emptyAction}
-            </Link>
-          </p>
-        </div>
+        <QuietEmpty
+          label="empty"
+          title={emptyTitle}
+          body={emptyBody}
+          href={emptyHref}
+          action={emptyAction}
+        />
       </div>
     );
   }

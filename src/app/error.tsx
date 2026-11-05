@@ -1,6 +1,7 @@
 "use client";
 
 import { AppShell } from "@/components/AppShell";
+import { QuietEmpty } from "@/components/QuietEmpty";
 import { Button } from "@/components/ui/button";
 
 export default function ErrorView({
@@ -11,13 +12,16 @@ export default function ErrorView({
 }) {
   return (
     <AppShell>
-      <div className="mx-auto max-w-md space-y-3 rounded-xl border bg-card px-6 py-10 text-center">
-        <h2 className="font-heading text-base font-medium">这一页没有打开</h2>
-        <p className="text-sm text-muted-foreground">刷新一次。若仍在，回到题库另选一题。</p>
+      <QuietEmpty
+        label="error"
+        title="这一页没有打开"
+        body="渲染时出错了。"
+        nextStep="点重试；仍失败就回到题库另选一题。"
+      >
         <Button type="button" onClick={reset}>
           重试
         </Button>
-      </div>
+      </QuietEmpty>
     </AppShell>
   );
 }

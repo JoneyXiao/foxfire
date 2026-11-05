@@ -11,6 +11,7 @@ import {
   SkipForwardIcon,
   SquareIcon,
 } from "lucide-react";
+import { QuietNotice } from "@/components/QuietEmpty";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { questions } from "@/data/questions";
 import { checklistById } from "@/data/generated/checklist-index";
@@ -145,11 +146,11 @@ export function MockRunner() {
   async function startRecording() {
     setRecordError(null);
     if (typeof window === "undefined" || !navigator.mediaDevices?.getUserMedia) {
-      setRecordError("当前浏览器不支持录音，可继续口述并对照要点。");
+      setRecordError("当前浏览器不支持录音。下一步：直接口述，展开对照要点自检。");
       return;
     }
     if (typeof MediaRecorder === "undefined") {
-      setRecordError("当前浏览器不支持 MediaRecorder，已跳过录音。");
+      setRecordError("当前浏览器不支持 MediaRecorder。下一步：跳过录音，口述后展开要点。");
       return;
     }
     try {
@@ -187,7 +188,7 @@ export function MockRunner() {
     } catch {
       stopTracks();
       setRecording(false);
-      setRecordError("无法使用麦克风（已拒绝或不可用）。仍可口述并对照要点自检。");
+      setRecordError("无法使用麦克风（已拒绝或不可用）。下一步：在浏览器站点设置里允许麦克风，或跳过录音继续口述。");
     }
   }
 
@@ -398,10 +399,10 @@ export function MockRunner() {
             />
           ) : null}
           {recordError ? (
-            <p className="flex items-start gap-2 text-sm text-muted-foreground" role="status">
+            <QuietNotice className="flex items-start gap-2" role="status">
               <MicOffIcon className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              {recordError}
-            </p>
+              <span>{recordError}</span>
+            </QuietNotice>
           ) : null}
         </div>
       </section>

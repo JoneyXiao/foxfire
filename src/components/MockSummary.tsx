@@ -24,6 +24,7 @@ import {
   readMockSession,
   type MockSession,
 } from "@/lib/mock";
+import { QuietEmpty } from "@/components/QuietEmpty";
 import { cn } from "@/lib/utils";
 
 export function MockSummary() {
@@ -83,17 +84,14 @@ export function MockSummary() {
 
   if (!session || !stats) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>还没有模拟小结</CardTitle>
-          <CardDescription>先开一场 15–30 分钟模拟，结束后会显示用时与覆盖题目。</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Link href="/mock" className={buttonVariants()}>
-            去开一场
-          </Link>
-        </CardContent>
-      </Card>
+      <QuietEmpty
+        label="summary"
+        title="还没有模拟小结"
+        body="先开一场 15–30 分钟模拟，结束后会显示用时与覆盖题目。"
+        nextStep="到模拟页设定时长与题量，点黄按钮开场。"
+        href="/mock"
+        action="去开一场"
+      />
     );
   }
 
@@ -108,6 +106,9 @@ export function MockSummary() {
 
   return (
     <div className="space-y-6">
+      <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+        本场读数
+      </p>
       <div className="grid gap-3 sm:grid-cols-3">
         <Card size="sm">
           <CardHeader>
@@ -185,7 +186,7 @@ export function MockSummary() {
       </Card>
 
       <section className="space-y-3">
-        <h2 className="font-heading text-lg font-medium">本场题目</h2>
+        <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">本场题目</h2>
         <p className="text-sm text-muted-foreground">
           题号：{session.questionIds.join("、")}
         </p>
