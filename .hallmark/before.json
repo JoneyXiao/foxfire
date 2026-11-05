@@ -1,31 +1,111 @@
 {
-  "recorded": "2026-11-05",
-  "wave": "w3-refresh",
-  "routes": [
-    "/",
-    "/search",
-    "/progress",
-    "/practice",
-    "/practice/summary",
-    "/mock",
-    "/mock/run",
-    "/mock/summary",
-    "/category/[slug]",
-    "/questions/[id]"
-  ],
-  "preserved": [
-    "Geekbang question bank JSON",
-    "localStorage progress + SRS",
-    "mock sessionStorage",
-    "Chinese product copy",
-    "static GitHub Pages export"
-  ],
-  "screenshots": {
-    "external": "/workspace/foxfire-assets/preview-w3-*.png",
-    "prior": ["/workspace/foxfire-assets/preview-w2-question-desktop.png", "/workspace/foxfire-assets/preview-w1-home-desktop.png"]
+ "v": 1,
+ "at": "2026-11-05T06:10:24.945Z",
+ "scope": "app",
+ "summary": {
+  "fails": 5,
+  "reflex": 0,
+  "warns": 0
+ },
+ "files": {
+  "src/app/progress/page.tsx": {
+   "handlers": [],
+   "links": [],
+   "fields": [],
+   "hooks": [],
+   "ids": [],
+   "scripts": []
   },
-  "sloplint": {
-    "before": "skipped-full-capture",
-    "reason": "Intentional mono labels conflict with Hallmark Floor 54/67; document rather than rewrite DNA"
+  "src/components/ProgressPanel.tsx": {
+   "handlers": [
+    "onChange={(event) => { void handleImportFile(event.target.files?.[0]); }}",
+    "onClick={handleExport}",
+    "onClick={handleImportClick}"
+   ],
+   "links": [
+    "/",
+    "/progress?tab=done",
+    "/progress?tab=review",
+    "/progress?tab=starred",
+    "{`/questions/${item.id}`}",
+    "去题库"
+   ],
+   "fields": [],
+   "hooks": [],
+   "ids": [
+    "backup-heading"
+   ],
+   "scripts": []
+  },
+  "src/components/ProgressAnalytics.tsx": {
+   "handlers": [
+    "onClick={() => setWeakOnly(\"all\")}",
+    "onClick={() => setWeakOnly(\"weak\")}"
+   ],
+   "links": [
+    "{browseHref}",
+    "{sessionHref}"
+   ],
+   "fields": [],
+   "hooks": [],
+   "ids": [],
+   "scripts": []
+  },
+  "src/components/IndexRow.tsx": {
+   "handlers": [
+    "onClick={onClick}"
+   ],
+   "links": [
+    "{href}"
+   ],
+   "fields": [],
+   "hooks": [],
+   "ids": [],
+   "scripts": []
+  },
+  "src/components/TodayReview.tsx": {
+   "handlers": [
+    "onClick={startReviewSession}"
+   ],
+   "links": [
+    "/progress?tab=review",
+    "{ dueItems.length > 0 ? ( <span className=\"font-mono text-[0.7rem] tabular-nums text-muted-foreground\"> {dueItems.length} due </span> ) : null }",
+    "{`/questions/${item.id}`}"
+   ],
+   "fields": [],
+   "hooks": [],
+   "ids": [],
+   "scripts": []
   }
+ },
+ "wiring": {
+  "handlers": [
+   "onChange={(event) => { void handleImportFile(event.target.files?.[0]); }}",
+   "onClick={() => setWeakOnly(\"all\")}",
+   "onClick={() => setWeakOnly(\"weak\")}",
+   "onClick={handleExport}",
+   "onClick={handleImportClick}",
+   "onClick={onClick}",
+   "onClick={startReviewSession}"
+  ],
+  "links": [
+   "/",
+   "/progress?tab=done",
+   "/progress?tab=review",
+   "/progress?tab=starred",
+   "{ dueItems.length > 0 ? ( <span className=\"font-mono text-[0.7rem] tabular-nums text-muted-foreground\"> {dueItems.length} due </span> ) : null }",
+   "{`/questions/${item.id}`}",
+   "{browseHref}",
+   "{href}",
+   "{sessionHref}",
+   "去题库"
+  ],
+  "fields": [],
+  "hooks": [],
+  "ids": [
+   "backup-heading"
+  ]
+ },
+ "scripts": {},
+ "pages": {}
 }

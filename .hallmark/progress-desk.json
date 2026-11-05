@@ -1,0 +1,13 @@
+{
+  "wave": "progress-desk",
+  "recorded": "2026-11-05",
+  "screenshots": "/workspace/foxfire-assets/preview-progress-*.png",
+  "kept": "links 10/10, handlers 7/7",
+  "floor_remaining": {
+    "fails": 7,
+    "gates": [
+      "67"
+    ],
+    "reason": "Intentional mono uppercase micro-labels (aihero index desk); do not rewrite DNA to chase Floor 0"
+  }
+}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { PlayIcon, SearchIcon } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { IndexSection } from "@/components/IndexRow";
 import { buttonVariants } from "@/components/ui/button";
 import { questions } from "@/data/questions";
 import {
@@ -26,7 +26,7 @@ function ProgressBar({ rate, tone }: { rate: number; tone: "default" | "weak" | 
   const width = `${Math.max(0, Math.min(100, Math.round(rate * 100)))}%`;
   return (
     <div
-      className="h-2 w-full overflow-hidden rounded-full bg-muted"
+      className="h-1.5 w-full overflow-hidden rounded-full bg-muted"
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={100}
@@ -34,7 +34,7 @@ function ProgressBar({ rate, tone }: { rate: number; tone: "default" | "weak" | 
     >
       <div
         className={cn(
-          "h-full rounded-full transition-[width]",
+          "h-full rounded-full",
           tone === "weak" && "bg-amber-500/80",
           tone === "strong" && "bg-emerald-500/80",
           tone === "default" && "bg-primary",
@@ -64,16 +64,15 @@ function BucketList({
 }) {
   if (items.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">
+      <li className="border-b border-border/80 py-3 text-sm text-muted-foreground last:border-b-0">
         当前筛选下没有可显示的项。
-      </p>
+      </li>
     );
   }
 
   return (
-    <ul className="space-y-3">
-      {items.map((item) => {
-        const tone = toneFor(item.rate, item.open);
+    <>
+      {items.map((item, index) => {
         const browseHref =
           linkKind === "category"
             ? `/search?category=${encodeURIComponent(item.id)}&mark=open`
@@ -84,29 +83,37 @@ function BucketList({
             : `/practice?difficulty=${encodeURIComponent(item.id)}&unpracticed=1`;
 
         return (
-          <li key={item.id} className="space-y-1.5">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <div className="min-w-0">
-                <p className="truncate text-sm font-medium">{item.label}</p>
-                <p className="text-xs text-muted-foreground tabular-nums">
+          <li key={item.id} className="border-b border-border/80 last:border-b-0">
+            <div className="flex min-h-11 items-center gap-3 py-3">
+              <span className="w-10 shrink-0 font-mono text-[0.7rem] tabular-nums tracking-tight text-muted-foreground">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium leading-snug text-foreground">
+                  {item.label}
+                </p>
+                <p className="mt-0.5 text-xs tabular-nums text-muted-foreground">
                   {item.done}/{item.total} · 未练 {item.open} · {formatPercent(item.rate)}
                 </p>
+                <div className="mt-2">
+                  <ProgressBar rate={item.rate} tone={toneFor(item.rate, item.open)} />
+                </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex shrink-0 flex-wrap justify-end gap-1.5">
                 {item.open > 0 ? (
                   <>
                     <Link
                       href={browseHref}
                       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-7 gap-1 px-2")}
                     >
-                      <SearchIcon className="size-3.5" />
+                      <SearchIcon className="size-3.5" aria-hidden="true" />
                       未练
                     </Link>
                     <Link
                       href={sessionHref}
                       className={cn(buttonVariants({ variant: "default", size: "sm" }), "h-7 gap-1 px-2")}
                     >
-                      <PlayIcon className="size-3.5" />
+                      <PlayIcon className="size-3.5" aria-hidden="true" />
                       会话
                     </Link>
                   </>
@@ -115,11 +122,10 @@ function BucketList({
                 )}
               </div>
             </div>
-            <ProgressBar rate={item.rate} tone={tone} />
           </li>
         );
       })}
-    </ul>
+    </>
   );
 }
 
@@ -139,7 +145,6 @@ export function ProgressAnalytics({ done, starred }: ProgressAnalyticsProps) {
 
   const visibleCategories = useMemo(() => {
     if (weakOnly === "weak") {
-      // Prefer under 50%; if none, show all with open remaining, weakest first.
       if (weakList.length > 0) {
         return weakList;
       }
@@ -151,87 +156,90 @@ export function ProgressAnalytics({ done, starred }: ProgressAnalyticsProps) {
   const overallDone = done.size;
   const overallTotal = questions.length;
   const overallRate = overallTotal > 0 ? overallDone / overallTotal : 0;
+  const overallOpen = overallTotal - overallDone;
 
   return (
-    <div className="space-y-4">
-      <Card size="sm">
-        <CardHeader>
-          <CardTitle>覆盖概览</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="flex flex-wrap items-end justify-between gap-2">
-            <p className="text-2xl font-medium tabular-nums">
-              {formatPercent(overallRate)}
-              <span className="ml-2 text-sm font-normal text-muted-foreground">
-                全库完成率 · {overallDone}/{overallTotal}
-              </span>
-            </p>
-            {weakList.length > 0 ? (
-              <p className="text-sm text-muted-foreground">
-                薄弱分类（&lt;50%）{weakList.length} 个
-              </p>
-            ) : overallDone === 0 ? (
-              <p className="text-sm text-muted-foreground">从任意分类开始练即可</p>
-            ) : (
-              <p className="text-sm text-muted-foreground">暂无低于 50% 的分类</p>
-            )}
-          </div>
-          <ProgressBar rate={overallRate} tone={toneFor(overallRate, overallTotal - overallDone)} />
-        </CardContent>
-      </Card>
+    <div className="space-y-8">
+      <section className="space-y-3" aria-labelledby="coverage-heading">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <h2
+            id="coverage-heading"
+            className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground"
+          >
+            覆盖概览
+          </h2>
+          <p className="text-xs text-muted-foreground">
+            {weakList.length > 0
+              ? `薄弱分类（<50%）${weakList.length} 个`
+              : overallDone === 0
+                ? "从任意分类开始练即可"
+                : "暂无低于 50% 的分类"}
+          </p>
+        </div>
+        <div className="flex flex-wrap items-end justify-between gap-2 border-t border-border/80 pt-3">
+          <p className="text-2xl font-medium tabular-nums">
+            {formatPercent(overallRate)}
+            <span className="ml-2 text-sm font-normal text-muted-foreground">
+              全库 · {overallDone}/{overallTotal}
+            </span>
+          </p>
+          {overallOpen > 0 ? (
+            <Link
+              href="/practice?unpracticed=1"
+              className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            >
+              练未练题
+            </Link>
+          ) : null}
+        </div>
+        <ProgressBar rate={overallRate} tone={toneFor(overallRate, overallOpen)} />
+      </section>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Card size="sm">
-          <CardHeader className="gap-3">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <CardTitle>分类完成率</CardTitle>
-              <div className="flex gap-1" role="group" aria-label="分类筛选">
-                <button
-                  type="button"
-                  aria-pressed={weakOnly === "weak"}
-                  onClick={() => setWeakOnly("weak")}
-                  className={cn(
-                    "inline-flex h-7 items-center rounded-lg border px-2.5 text-xs transition-colors",
-                    weakOnly === "weak"
-                      ? "border-transparent bg-primary text-primary-foreground"
-                      : "border-border bg-background hover:bg-muted",
-                  )}
-                >
-                  薄弱优先
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={weakOnly === "all"}
-                  onClick={() => setWeakOnly("all")}
-                  className={cn(
-                    "inline-flex h-7 items-center rounded-lg border px-2.5 text-xs transition-colors",
-                    weakOnly === "all"
-                      ? "border-transparent bg-primary text-primary-foreground"
-                      : "border-border bg-background hover:bg-muted",
-                  )}
-                >
-                  全部
-                </button>
-              </div>
+      <div className="grid gap-8 lg:grid-cols-2">
+        <IndexSection
+          label="分类完成率"
+          action={
+            <div className="flex gap-1" role="group" aria-label="分类筛选">
+              <button
+                type="button"
+                aria-pressed={weakOnly === "weak"}
+                onClick={() => setWeakOnly("weak")}
+                className={cn(
+                  "inline-flex h-7 items-center rounded-lg border px-2.5 text-xs transition-colors",
+                  weakOnly === "weak"
+                    ? "border-transparent bg-primary text-primary-foreground"
+                    : "border-border bg-background hover:bg-muted",
+                )}
+              >
+                薄弱优先
+              </button>
+              <button
+                type="button"
+                aria-pressed={weakOnly === "all"}
+                onClick={() => setWeakOnly("all")}
+                className={cn(
+                  "inline-flex h-7 items-center rounded-lg border px-2.5 text-xs transition-colors",
+                  weakOnly === "all"
+                    ? "border-transparent bg-primary text-primary-foreground"
+                    : "border-border bg-background hover:bg-muted",
+                )}
+              >
+                全部
+              </button>
             </div>
-            <p className="text-xs text-muted-foreground">
-              点「未练」进筛选列表，「会话」直接开该分类练习。
-            </p>
-          </CardHeader>
-          <CardContent>
-            <BucketList items={visibleCategories} linkKind="category" />
-          </CardContent>
-        </Card>
+          }
+        >
+          <BucketList items={visibleCategories} linkKind="category" />
+        </IndexSection>
 
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>难度完成率</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <BucketList items={difficultyStats} linkKind="difficulty" />
-          </CardContent>
-        </Card>
+        <IndexSection label="难度完成率">
+          <BucketList items={difficultyStats} linkKind="difficulty" />
+        </IndexSection>
       </div>
+
+      <p className="text-xs text-muted-foreground">
+        「未练」打开筛选列表，「会话」直接开该桶练习。
+      </p>
     </div>
   );
 }

@@ -67,3 +67,9 @@ Radius: `--radius: 0.625rem` (~10px cards). Flat solids only — no purple-blue 
 - Empty / soft-fail states use `QuietEmpty` / `QuietNotice`: quiet hairline panels, optional 「下一步」 hint, yellow CTA only for the recovery action.
 - Import/export and mic-deny feedback stay muted and always suggest a next step; do not invent Geekbang content.
 
+## Progress desk (post-W3 leftover)
+
+- Progress page stats are a flat mono index strip (`已练` / `今日待复习` / `收藏`), not a 3-card grid.
+- Coverage / category / difficulty analytics use `IndexSection` + hairline bucket rows (keep both「未练」and「会话」links); yellow only on the weak-filter chip and recovery CTAs.
+- Due queue on `/progress?tab=review` reuses `IndexRow`, same language as home `TodayReview`.
+- Hallmark: `--before`/`--kept` on progress surfaces; Floor gate 67 mono labels remain by design (see `.hallmark/before/README.md`).
