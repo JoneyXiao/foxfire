@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 type MasteryRatingProps = {
   id: string;
-  /** Compact row under answer reveal; default is a labeled card block. */
+  /** Compact row under answer reveal; default is a labeled section. */
   variant?: "card" | "inline";
   className?: string;
 };
@@ -56,8 +56,9 @@ export function MasteryRating({ id, variant = "card", className }: MasteryRating
   }
 
   const today = localDayStamp();
+  const isDue = Boolean(card && card.dueAt <= today);
   const dueHint = card
-    ? card.dueAt <= today
+    ? isDue
       ? "今日待复习"
       : `下次复习 ${card.dueAt}`
     : "尚未自评";
@@ -65,11 +66,18 @@ export function MasteryRating({ id, variant = "card", className }: MasteryRating
   const body = (
     <>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="font-medium">掌握度</p>
-        <p className="text-sm text-muted-foreground">
+        <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          掌握度
+        </p>
+        <p
+          className={cn(
+            "font-mono text-[0.7rem] tabular-nums tracking-tight",
+            isDue ? "text-foreground" : "text-muted-foreground",
+          )}
+        >
           {card ? (
             <>
-              上次：{SRS_RATING_LABEL[card.rating]} · {dueHint}
+              {SRS_RATING_LABEL[card.rating]} · {dueHint}
             </>
           ) : (
             dueHint
@@ -77,7 +85,7 @@ export function MasteryRating({ id, variant = "card", className }: MasteryRating
         </p>
       </div>
       <p className="text-sm text-muted-foreground">
-        看完参考后自评，驱动间隔复习队列（生疏 1 天 · 模糊约 3 天 · 掌握 7 天起翻倍）。
+        看完参考后自评，驱动间隔复习队列（生疏 1 天 · 模糊约 3 天 · 掌握 7 天起翻倍）。待复习入口集中在首页。
       </p>
       <div className="flex flex-wrap gap-2" role="group" aria-label="自评掌握度">
         {SRS_RATINGS.map((rating) => {
@@ -87,7 +95,8 @@ export function MasteryRating({ id, variant = "card", className }: MasteryRating
               key={rating}
               type="button"
               size="sm"
-              variant={active ? "default" : "outline"}
+              variant={active ? "secondary" : "outline"}
+              className="min-h-11"
               aria-pressed={active}
               onClick={() => onRate(rating)}
             >
@@ -106,11 +115,11 @@ export function MasteryRating({ id, variant = "card", className }: MasteryRating
   );
 
   if (variant === "inline") {
-    return <div className={cn("space-y-2", className)}>{body}</div>;
+    return <div className={cn("space-y-3 border-t border-border/80 pt-4", className)}>{body}</div>;
   }
 
   return (
-    <div className={cn("space-y-3 rounded-xl border bg-card px-4 py-4", className)}>
+    <div className={cn("space-y-3 border-y border-border/80 py-4", className)}>
       {body}
     </div>
   );

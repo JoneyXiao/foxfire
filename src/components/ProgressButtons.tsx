@@ -11,12 +11,16 @@ import {
   writeProgress,
 } from "@/lib/progress";
 import type { ProgressState } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 type ProgressButtonsProps = {
   id: string;
+  /** Dense row for sticky thumb bar / reading desk meta. */
+  compact?: boolean;
+  className?: string;
 };
 
-export function ProgressButtons({ id }: ProgressButtonsProps) {
+export function ProgressButtons({ id, compact = false, className }: ProgressButtonsProps) {
   const [ready, setReady] = useState(false);
   const [done, setDone] = useState(false);
   const [starred, setStarred] = useState(false);
@@ -48,8 +52,8 @@ export function ProgressButtons({ id }: ProgressButtonsProps) {
 
   if (!ready) {
     return (
-      <div className="flex flex-wrap gap-2">
-        <Button type="button" variant="outline" disabled>
+      <div className={cn("flex flex-wrap gap-2", className)}>
+        <Button type="button" variant="outline" className="min-h-11" disabled>
           读取进度…
         </Button>
       </div>
@@ -57,24 +61,27 @@ export function ProgressButtons({ id }: ProgressButtonsProps) {
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className={cn("flex flex-wrap gap-2", className)}>
       <Button
         type="button"
-        variant={done ? "default" : "outline"}
+        variant={done ? "secondary" : "outline"}
+        size={compact ? "default" : "default"}
+        className={cn("min-h-11", compact && "flex-1 sm:flex-none")}
         aria-pressed={done}
         onClick={() => update("done")}
       >
         <CheckIcon data-icon="inline-start" />
-        {done ? "取消已练" : "标为已练"}
+        {done ? "已练" : "标为已练"}
       </Button>
       <Button
         type="button"
         variant={starred ? "secondary" : "outline"}
+        className={cn("min-h-11", compact && "flex-1 sm:flex-none")}
         aria-pressed={starred}
         onClick={() => update("starred")}
       >
         <StarIcon data-icon="inline-start" className={starred ? "fill-current" : undefined} />
-        {starred ? "取消收藏" : "收藏"}
+        {starred ? "已收藏" : "收藏"}
       </Button>
     </div>
   );
