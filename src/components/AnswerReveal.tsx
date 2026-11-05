@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ComponentType } from "react";
-import { BrainIcon, EyeIcon } from "lucide-react";
+import { BrainIcon, ChevronDownIcon, EyeIcon } from "lucide-react";
 import { MasteryRating } from "@/components/MasteryRating";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -95,54 +95,63 @@ export function AnswerReveal({ questionId }: AnswerRevealProps) {
   const gated = thinkFirst && !unlocked;
 
   return (
-    <div className="space-y-3">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm text-muted-foreground">
-          {thinkFirst
-            ? "已开启「先想再看」：展开前需确认自己想过一遍。"
-            : "可开启「先想再看」，展开前先强制自测。"}
-        </p>
+    <section className="space-y-3 border-t border-border/80 pt-6" aria-labelledby="answer-section-label">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <h2
+          id="answer-section-label"
+          className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground"
+        >
+          参考作答
+        </h2>
         <Button
           type="button"
           size="sm"
-          variant={thinkFirst ? "secondary" : "outline"}
+          variant={thinkFirst ? "secondary" : "ghost"}
           aria-pressed={thinkFirst}
           onClick={toggleThinkFirst}
           disabled={!ready}
+          className="h-8"
         >
           <BrainIcon data-icon="inline-start" />
           先想再看
         </Button>
       </div>
 
+      <p className="text-sm text-muted-foreground">
+        {thinkFirst
+          ? "已开启「先想再看」：展开前需确认自己想过一遍。"
+          : "可开启「先想再看」，展开前先强制自测。"}
+      </p>
+
       {gated ? (
-        <div className="rounded-xl border bg-card px-4 py-5">
+        <div className="space-y-3 border-y border-border/80 py-5">
           <p className="font-medium">先想一想再看参考</p>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             用自己的话复述要点、边界条件与取舍。想清楚后再展开参考作答。
           </p>
-          <div className="mt-4">
-            <Button type="button" onClick={confirmThought}>
-              <EyeIcon data-icon="inline-start" />
-              我已想过，展开参考
-            </Button>
-          </div>
+          <Button type="button" onClick={confirmThought}>
+            <EyeIcon data-icon="inline-start" />
+            我已想过，展开参考
+          </Button>
         </div>
       ) : (
-        <Collapsible
-          open={open}
-          onOpenChange={setOpen}
-          className="rounded-xl border bg-card"
-        >
+        <Collapsible open={open} onOpenChange={setOpen} className="border-y border-border/80">
           <CollapsibleTrigger
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "h-auto w-full justify-start rounded-xl px-4 py-3 text-left font-medium",
+              "h-auto w-full justify-between rounded-none px-0 py-3 text-left font-medium hover:bg-transparent",
             )}
           >
-            {open ? "收起参考作答" : "展开参考作答"}
+            <span>{open ? "收起参考作答" : "展开参考作答"}</span>
+            <ChevronDownIcon
+              aria-hidden="true"
+              className={cn(
+                "size-4 shrink-0 text-muted-foreground transition-transform",
+                open && "rotate-180",
+              )}
+            />
           </CollapsibleTrigger>
-          <CollapsibleContent className="space-y-4 border-t px-4 py-4">
+          <CollapsibleContent className="space-y-5 pb-5">
             {loadState === "loading" || (open && loadState === "idle") ? (
               <p className="text-sm text-muted-foreground" aria-busy="true">
                 正在加载参考作答…
@@ -160,6 +169,6 @@ export function AnswerReveal({ questionId }: AnswerRevealProps) {
           </CollapsibleContent>
         </Collapsible>
       )}
-    </div>
+    </section>
   );
 }

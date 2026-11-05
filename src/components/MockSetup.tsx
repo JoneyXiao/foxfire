@@ -6,13 +6,6 @@ import { useRouter } from "next/navigation";
 import { MicIcon, PlayIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { questions } from "@/data/questions";
 import { categories, difficultyLabel } from "@/lib/categories";
 import { buildSessionQuestions } from "@/lib/practice";
@@ -42,7 +35,7 @@ function Chip({ active, onClick, children }: ChipProps) {
       aria-pressed={active}
       onClick={onClick}
       className={cn(
-        "inline-flex h-7 items-center rounded-lg border px-2.5 text-sm transition-colors",
+        "inline-flex h-8 items-center rounded-lg border px-2.5 text-sm transition-colors",
         active
           ? "border-transparent bg-primary text-primary-foreground"
           : "border-border bg-background hover:bg-muted",
@@ -127,25 +120,31 @@ export function MockSetup() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {active?.status === "active" ? (
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>进行中的模拟</CardTitle>
-            <CardDescription>
-              第 {active.index + 1} / {active.questionIds.length} 题 · 计划{" "}
-              {active.filters.durationMinutes} 分钟
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            <Button type="button" onClick={resumeMock}>
+        <section className="space-y-3 border-y border-border/80 py-4">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            进行中
+          </p>
+          <p className="font-mono text-lg tabular-nums tracking-tight">
+            {active.index + 1}
+            <span className="text-muted-foreground"> / {active.questionIds.length}</span>
+            <span className="ml-3 text-sm text-muted-foreground">
+              计划 {active.filters.durationMinutes} 分钟
+            </span>
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Button type="button" className="min-h-11" onClick={resumeMock}>
               继续模拟
             </Button>
-            <Link href="/mock/summary" className={buttonVariants({ variant: "outline" })}>
+            <Link
+              href="/mock/summary"
+              className={cn(buttonVariants({ variant: "outline" }), "min-h-11")}
+            >
               查看小结
             </Link>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
       ) : null}
 
       {active?.status === "finished" ? (
@@ -158,114 +157,117 @@ export function MockSetup() {
         </p>
       ) : null}
 
-      <Card>
-        <CardHeader>
-          <CardTitle>开一场模拟面试</CardTitle>
-          <CardDescription>
-            15–30 分钟限时口述：先出题不看答案，可选录音，结束后对照知识点 / 金句 / 答案要点自检。
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-5">
-          <div className="space-y-2">
-            <p className="text-sm font-medium">时长</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="时长">
-              {MOCK_DURATIONS.map((mins) => (
-                <Chip
-                  key={mins}
-                  active={durationMinutes === mins}
-                  onClick={() => setDurationMinutes(mins)}
-                >
-                  {mins} 分钟
-                </Chip>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">分类</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="分类">
-              <Chip active={category === "all"} onClick={() => setCategory("all")}>
-                全部分类
-              </Chip>
-              {categories.map((item) => (
-                <Chip
-                  key={item.id}
-                  active={category === item.id}
-                  onClick={() => setCategory(item.id)}
-                >
-                  {item.name}
-                </Chip>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">难度</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="难度">
-              <Chip active={difficulty === "all"} onClick={() => setDifficulty("all")}>
-                全部难度
-              </Chip>
-              {(Object.keys(difficultyLabel) as Difficulty[]).map((item) => (
-                <Chip
-                  key={item}
-                  active={difficulty === item}
-                  onClick={() => setDifficulty(item)}
-                >
-                  {difficultyLabel[item]}
-                </Chip>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">题量</p>
-            <div className="flex flex-wrap items-center gap-2">
-              {COUNT_PRESETS.map((n) => (
-                <Chip key={n} active={count === n} onClick={() => setCount(n)}>
-                  {n} 题
-                </Chip>
-              ))}
-              <label className="flex items-center gap-2 text-sm text-muted-foreground">
-                自定义
-                <Input
-                  type="number"
-                  min={1}
-                  max={Math.max(poolSize, 1)}
-                  value={count}
-                  onChange={(event) => {
-                    const next = Number(event.target.value);
-                    if (Number.isFinite(next)) {
-                      setCount(Math.max(1, Math.floor(next)));
-                    }
-                  }}
-                  className="w-20"
-                  aria-label="自定义题量"
-                />
-              </label>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              候选 {poolSize} 题
-              {poolSize > 0 ? ` · 将抽取 ${Math.min(effectiveCount, poolSize)} 题` : null}
-            </p>
-          </div>
-
-          <p className="flex items-start gap-2 text-sm text-muted-foreground">
-            <MicIcon className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-            录音可选：仅保存在本机内存，拒绝麦克风也能继续口述自检。
+      <section className="space-y-6">
+        <div className="space-y-1">
+          <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            开一场模拟
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            三步：定时长 → 筛分类/难度与题量 → 开始。限时口述，结束后对照要点自检。
           </p>
+        </div>
 
-          {error ? (
-            <p className="text-sm text-destructive" role="alert">
-              {error}
-            </p>
-          ) : null}
+        <div className="space-y-2">
+          <p className="text-sm font-medium">1 · 时长</p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="时长">
+            {MOCK_DURATIONS.map((mins) => (
+              <Chip
+                key={mins}
+                active={durationMinutes === mins}
+                onClick={() => setDurationMinutes(mins)}
+              >
+                {mins} 分钟
+              </Chip>
+            ))}
+          </div>
+        </div>
 
-          <Button type="button" size="lg" disabled={poolSize === 0} onClick={startMock}>
-            <PlayIcon data-icon="inline-start" />
-            开始模拟
-          </Button>
-        </CardContent>
-      </Card>
+        <div className="space-y-2">
+          <p className="text-sm font-medium">2 · 分类与难度</p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="分类">
+            <Chip active={category === "all"} onClick={() => setCategory("all")}>
+              全部分类
+            </Chip>
+            {categories.map((item) => (
+              <Chip
+                key={item.id}
+                active={category === item.id}
+                onClick={() => setCategory(item.id)}
+              >
+                {item.name}
+              </Chip>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2 pt-1" role="group" aria-label="难度">
+            <Chip active={difficulty === "all"} onClick={() => setDifficulty("all")}>
+              全部难度
+            </Chip>
+            {(Object.keys(difficultyLabel) as Difficulty[]).map((item) => (
+              <Chip
+                key={item}
+                active={difficulty === item}
+                onClick={() => setDifficulty(item)}
+              >
+                {difficultyLabel[item]}
+              </Chip>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <p className="text-sm font-medium">3 · 题量</p>
+          <div className="flex flex-wrap items-center gap-2">
+            {COUNT_PRESETS.map((n) => (
+              <Chip key={n} active={count === n} onClick={() => setCount(n)}>
+                {n} 题
+              </Chip>
+            ))}
+            <label className="flex items-center gap-2 text-sm text-muted-foreground">
+              自定义
+              <Input
+                type="number"
+                min={1}
+                max={Math.max(poolSize, 1)}
+                value={count}
+                onChange={(event) => {
+                  const next = Number(event.target.value);
+                  if (Number.isFinite(next)) {
+                    setCount(Math.max(1, Math.floor(next)));
+                  }
+                }}
+                className="w-20 font-mono tabular-nums"
+                aria-label="自定义题量"
+              />
+            </label>
+          </div>
+          <p className="font-mono text-[0.7rem] tabular-nums tracking-tight text-muted-foreground">
+            候选 {poolSize}
+            {poolSize > 0 ? ` · 抽取 ${Math.min(effectiveCount, poolSize)}` : null}
+          </p>
+        </div>
+
+        <p className="flex items-start gap-2 text-sm text-muted-foreground">
+          <MicIcon className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          录音可选：仅保存在本机内存，拒绝麦克风也能继续口述自检。
+        </p>
+
+        {error ? (
+          <p className="text-sm text-destructive" role="alert">
+            {error}
+          </p>
+        ) : null}
+
+        <Button
+          type="button"
+          size="lg"
+          className="min-h-11"
+          disabled={poolSize === 0}
+          onClick={startMock}
+        >
+          <PlayIcon data-icon="inline-start" />
+          开始模拟
+        </Button>
+      </section>
 
       <p className="text-sm text-muted-foreground">
         想无计时连续刷？去{" "}

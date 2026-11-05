@@ -12,14 +12,6 @@ import {
   SquareIcon,
 } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { questions } from "@/data/questions";
 import { checklistById } from "@/data/generated/checklist-index";
 import { categoryById, difficultyLabel } from "@/lib/categories";
@@ -252,52 +244,42 @@ export function MockRunner() {
 
   if (!session) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>还没有模拟场次</CardTitle>
-          <CardDescription>先配置时长与题量，再开始口述练习。</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Link href="/mock" className={buttonVariants()}>
-            去开一场
-          </Link>
-        </CardContent>
-      </Card>
+      <section className="space-y-3 border-y border-border/80 py-6">
+        <h2 className="font-heading text-lg font-medium">还没有模拟场次</h2>
+        <p className="text-sm text-muted-foreground">先配置时长与题量，再开始口述练习。</p>
+        <Link href="/mock" className={cn(buttonVariants(), "min-h-11")}>
+          去开一场
+        </Link>
+      </section>
     );
   }
 
   if (session.status === "finished") {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>本场已结束</CardTitle>
-          <CardDescription>可查看小结，或回到设置页再开一场。</CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-wrap gap-2">
-          <Link href="/mock/summary" className={buttonVariants()}>
+      <section className="space-y-3 border-y border-border/80 py-6">
+        <h2 className="font-heading text-lg font-medium">本场已结束</h2>
+        <p className="text-sm text-muted-foreground">可查看小结，或回到设置页再开一场。</p>
+        <div className="flex flex-wrap gap-2">
+          <Link href="/mock/summary" className={cn(buttonVariants(), "min-h-11")}>
             查看小结
           </Link>
-          <Link href="/mock" className={buttonVariants({ variant: "outline" })}>
+          <Link href="/mock" className={cn(buttonVariants({ variant: "outline" }), "min-h-11")}>
             模拟设置
           </Link>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
     );
   }
 
   if (!question || !questionId) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>题目缺失</CardTitle>
-          <CardDescription>本场题目无法加载，请重新开一场。</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Link href="/mock" className={buttonVariants()}>
-            返回设置
-          </Link>
-        </CardContent>
-      </Card>
+      <section className="space-y-3 border-y border-border/80 py-6">
+        <h2 className="font-heading text-lg font-medium">题目缺失</h2>
+        <p className="text-sm text-muted-foreground">本场题目无法加载，请重新开一场。</p>
+        <Link href="/mock" className={cn(buttonVariants(), "min-h-11")}>
+          返回设置
+        </Link>
+      </section>
     );
   }
 
@@ -316,37 +298,41 @@ export function MockRunner() {
     <div className="space-y-6">
       <div
         className={cn(
-          "sticky top-14 z-30 -mx-4 border-b px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6",
-          overtime ? "border-destructive/40 bg-destructive/10" : "bg-background/95",
+          "sticky top-12 z-30 -mx-4 border-b px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6",
+          overtime ? "border-border bg-muted/40" : "border-border/80 bg-background/95",
         )}
       >
         <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3">
           <div className="space-y-1">
-            <p className="text-sm font-medium">
-              模拟面试 ·{" "}
-              <span className="tabular-nums">
-                {position} / {total}
+            <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              模拟面试
+            </p>
+            <p className="font-mono text-lg tabular-nums tracking-tight">
+              {position}
+              <span className="text-muted-foreground"> / {total}</span>
+              <span className="ml-3 text-sm text-muted-foreground">
+                剩余 {Math.max(total - position, 0)}
               </span>
             </p>
             <p
               className={cn(
-                "font-outlier text-2xl tabular-nums tracking-tight",
-                overtime ? "text-destructive" : "text-foreground",
+                "font-mono text-2xl tabular-nums tracking-tight",
+                overtime ? "text-foreground" : "text-foreground",
               )}
               aria-live="polite"
             >
               {overtime ? `超时 +${formatClock(elapsed - planned)}` : formatClock(remain)}
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
               计划 {session.filters.durationMinutes} 分钟 · 已用 {formatClock(elapsed)}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button type="button" variant="outline" size="sm" onClick={() => endMock()}>
+            <Button type="button" variant="outline" size="sm" className="min-h-11" onClick={() => endMock()}>
               <FlagIcon data-icon="inline-start" />
               结束模拟
             </Button>
-            <Button type="button" size="sm" onClick={goNext}>
+            <Button type="button" size="sm" className="min-h-11" onClick={goNext}>
               <SkipForwardIcon data-icon="inline-start" />
               {last ? "完成并查看小结" : "下一题"}
             </Button>
@@ -354,34 +340,36 @@ export function MockRunner() {
         </div>
       </div>
 
-      <Card>
-        <CardHeader className="space-y-3">
-          <CardTitle className="text-pretty text-xl leading-snug sm:text-2xl">{question.title}</CardTitle>
-          <CardDescription className="flex flex-wrap items-center gap-2">
-            <Badge variant="secondary">{category?.name}</Badge>
-            <Badge variant="outline">{difficultyLabel[question.difficulty]}</Badge>
-            <Badge variant="outline">{question.id}</Badge>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="leading-relaxed whitespace-pre-wrap">{question.prompt}</p>
-          <p className="text-sm text-muted-foreground">
-            先口述作答（可录音），想清楚后再展开对照要点。本题不展示完整参考作答。
-          </p>
-        </CardContent>
-      </Card>
+      <header className="space-y-3">
+        <h1 className="font-heading text-pretty text-2xl font-medium leading-snug tracking-tight sm:text-3xl">
+          {question.title}
+        </h1>
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+          {category ? <span>{category.name}</span> : null}
+          <span aria-hidden="true">·</span>
+          <span>{difficultyLabel[question.difficulty]}</span>
+          <span aria-hidden="true">·</span>
+          <span className="font-mono text-[0.7rem] tabular-nums">{question.id}</span>
+        </p>
+        <p className="leading-relaxed whitespace-pre-wrap text-base text-foreground/90">
+          {question.prompt}
+        </p>
+        <p className="text-sm text-muted-foreground">
+          先口述作答（可录音），想清楚后再展开对照要点。本题不展示完整参考作答。
+        </p>
+      </header>
 
-      <Card size="sm">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-base">
-            <MicIcon className="size-4" aria-hidden="true" />
+      <section className="space-y-3 border-y border-border/80 py-4">
+        <div className="flex items-center gap-2">
+          <MicIcon className="size-4 text-muted-foreground" aria-hidden="true" />
+          <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
             可选录音
-          </CardTitle>
-          <CardDescription>
-            录音仅保存在当前页面内存，切换题目或离开后会释放；不会写入进度备份。
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3">
+          </h2>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          录音仅保存在当前页面内存，切换题目或离开后会释放；不会写入进度备份。
+        </p>
+        <div className="space-y-3">
           <div className="flex flex-wrap gap-2">
             {recording ? (
               <Button type="button" variant="destructive" onClick={stopRecording}>
@@ -415,20 +403,20 @@ export function MockRunner() {
               {recordError}
             </p>
           ) : null}
-        </CardContent>
-      </Card>
+        </div>
+      </section>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-base">
-            <CheckSquareIcon className="size-4" aria-hidden="true" />
+      <section className="space-y-4 border-t border-border/80 pt-6">
+        <div className="flex items-center gap-2">
+          <CheckSquareIcon className="size-4 text-muted-foreground" aria-hidden="true" />
+          <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
             对照要点
-          </CardTitle>
-          <CardDescription>
-            来自本题面试金句、知识点与答案要点；勾选你已口述覆盖的条目。
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+          </h2>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          来自本题面试金句、知识点与答案要点；勾选你已口述覆盖的条目。
+        </p>
+        <div className="space-y-4">
           {!revealed ? (
             <Button type="button" onClick={revealChecklist}>
               展开自检 checklist
@@ -444,7 +432,7 @@ export function MockRunner() {
                   const isOn = checked.has(item.id);
                   return (
                     <li key={item.id}>
-                      <label className="flex cursor-pointer gap-3 rounded-xl border bg-card px-3 py-3 hover:bg-muted/40">
+                      <label className="flex cursor-pointer gap-3 border-b border-border/80 px-1 py-3 last:border-b-0 hover:bg-muted/30">
                         <input
                           type="checkbox"
                           className="mt-1 size-4 shrink-0"
@@ -480,8 +468,8 @@ export function MockRunner() {
               </Link>
             </p>
           ) : null}
-        </CardContent>
-      </Card>
+        </div>
+      </section>
     </div>
   );
 }

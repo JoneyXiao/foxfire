@@ -8,10 +8,15 @@ export const metadata = { title: "练习会话" };
 export default function PracticePage() {
   return (
     <AppShell current="practice">
-      <div className="space-y-6">
+      <div className="space-y-8">
         <header className="space-y-2">
-          <h1 className="font-heading text-2xl font-medium tracking-tight">练习会话</h1>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            Session
+          </p>
+          <h1 className="font-heading text-2xl font-medium tracking-tight sm:text-3xl">
+            练习会话
+          </h1>
+          <p className="max-w-xl text-sm text-muted-foreground">
             选好分类、难度和题量，随机抽一串题连续练；结束后看完成率与收藏回顾。需要限时口述可去{" "}
             <Link href="/mock" className="underline-offset-2 hover:underline">
               模拟面试

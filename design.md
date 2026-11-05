@@ -52,3 +52,12 @@ Radius: `--radius: 0.625rem` (~10px cards). Flat solids only — no purple-blue 
 
 ## Exports
 `src/app/globals.css` (`:root` + `.dark`) and `src/app/layout.tsx` (fonts + theme-color).
+
+## Reading desk (W2)
+- Question page: stem as large title hierarchy (not a floating card). Meta is a quiet text row; practiced / favorite / mastery live in the thumb zone or under the answer — they must not bury the stem.
+- Answer / quotes / mastery: expand as document sections (`border-t` hairlines + mono section labels), not stacked cards.
+- Mobile: sticky bottom action bar (`QuestionThumbBar`) for 已练 / 收藏 / 上一题 / 下一题, with safe-area padding.
+- Practice / mock setup: index-desk language, numbered ≤3 steps, mono pool/progress/timer readouts; start CTA is the yellow primary.
+- Search filters: flat primary chip rail on desktop; on narrow screens mark chips stay visible and the rest collapse into a 「筛选」 sheet. Results stay `IndexRow` / table.
+- Mastery / due: restrained status (secondary/outline, mono due hint). Due entry stays on the home desk — do not scatter new due widgets.
+

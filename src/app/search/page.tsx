@@ -7,10 +7,15 @@ export const metadata = { title: "搜索" };
 export default function SearchPage() {
   return (
     <AppShell current="search">
-      <div className="space-y-6">
+      <div className="space-y-8">
         <header className="space-y-2">
-          <h1 className="font-heading text-2xl font-medium tracking-tight">搜索</h1>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            Search
+          </p>
+          <h1 className="font-heading text-2xl font-medium tracking-tight sm:text-3xl">
+            搜索
+          </h1>
+          <p className="max-w-xl text-sm text-muted-foreground">
             按题干、标签或编号找题；可勾选同时搜参考作答关键词，并按未练优先或难度排序。
           </p>
         </header>

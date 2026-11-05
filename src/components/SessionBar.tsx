@@ -76,6 +76,7 @@ export function SessionBar({ questionId }: SessionBarProps) {
   const position = session.index + 1;
   const total = session.questionIds.length;
   const last = isLastQuestion(session);
+  const remaining = Math.max(total - position, 0);
 
   function goNext() {
     const current = readSession();
@@ -112,17 +113,21 @@ export function SessionBar({ questionId }: SessionBarProps) {
   }
 
   return (
-    <div className="rounded-xl border bg-muted/30 px-4 py-3">
+    <div className="space-y-3 border-y border-border/80 py-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="space-y-1">
-          <p className="text-sm font-medium">
-            练习会话 ·{" "}
-            <span className="tabular-nums">
-              {position} / {total}
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            练习会话
+          </p>
+          <p className="font-mono text-lg tabular-nums tracking-tight">
+            {position}
+            <span className="text-muted-foreground"> / {total}</span>
+            <span className="ml-3 text-sm text-muted-foreground">
+              剩余 {remaining}
             </span>
           </p>
           <div
-            className="h-1.5 w-40 overflow-hidden rounded-full bg-muted"
+            className="h-1 w-36 overflow-hidden rounded-full bg-muted"
             role="progressbar"
             aria-valuemin={0}
             aria-valuemax={total}
@@ -136,20 +141,23 @@ export function SessionBar({ questionId }: SessionBarProps) {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" size="sm" onClick={() => endSession()}>
+          <Button type="button" variant="outline" size="sm" className="min-h-11" onClick={() => endSession()}>
             <FlagIcon data-icon="inline-start" />
             结束会话
           </Button>
-          <Button type="button" size="sm" onClick={goNext}>
+          <Button type="button" size="sm" className="min-h-11" onClick={goNext}>
             <SkipForwardIcon data-icon="inline-start" />
             {last ? "完成并查看小结" : "下一题"}
           </Button>
         </div>
       </div>
-      <p className="mt-2 text-xs text-muted-foreground">
+      <p className="text-xs text-muted-foreground">
         可先自己想，再展开参考作答；标已练/收藏会记入本机进度。
         {" · "}
-        <Link href="/practice" className={cn(buttonVariants({ variant: "link", size: "sm" }), "h-auto px-0")}>
+        <Link
+          href="/practice"
+          className={cn(buttonVariants({ variant: "link", size: "sm" }), "h-auto px-0")}
+        >
           会话设置
         </Link>
       </p>

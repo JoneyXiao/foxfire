@@ -6,13 +6,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { PlayIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { questions } from "@/data/questions";
 import { categories, difficultyLabel, isCategoryId } from "@/lib/categories";
 import { buildSessionQuestions } from "@/lib/practice";
@@ -42,7 +35,7 @@ function Chip({ active, onClick, children }: ChipProps) {
       aria-pressed={active}
       onClick={onClick}
       className={cn(
-        "inline-flex h-7 items-center rounded-lg border px-2.5 text-sm transition-colors",
+        "inline-flex h-8 items-center rounded-lg border px-2.5 text-sm transition-colors",
         active
           ? "border-transparent bg-primary text-primary-foreground"
           : "border-border bg-background hover:bg-muted",
@@ -195,27 +188,31 @@ export function PracticeSetup() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {activeSession?.status === "active" ? (
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>进行中的会话</CardTitle>
-            <CardDescription>
-              第 {activeSession.index + 1} / {activeSession.questionIds.length} 题
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            <Button type="button" onClick={resumeSession}>
+        <section className="space-y-3 border-y border-border/80 py-4">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            进行中
+          </p>
+          <p className="font-mono text-lg tabular-nums tracking-tight">
+            {activeSession.index + 1}
+            <span className="text-muted-foreground">
+              {" "}
+              / {activeSession.questionIds.length}
+            </span>
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Button type="button" className="min-h-11" onClick={resumeSession}>
               继续会话
             </Button>
             <Link
               href="/practice/summary"
-              className={buttonVariants({ variant: "outline" })}
+              className={cn(buttonVariants({ variant: "outline" }), "min-h-11")}
             >
               查看小结
             </Link>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
       ) : null}
 
       {activeSession?.status === "finished" ? (
@@ -228,112 +225,109 @@ export function PracticeSetup() {
         </p>
       ) : null}
 
-      <Card>
-        <CardHeader>
-          <CardTitle>开一场练习</CardTitle>
-          <CardDescription>
-            按分类、难度和未练筛选后随机抽 N 题；不强制先作答，可随时展开参考作答。
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-5">
-          <div className="space-y-2">
-            <p className="text-sm font-medium">分类</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="分类">
-              <Chip active={category === "all"} onClick={() => setCategory("all")}>
-                全部分类
-              </Chip>
-              {categories.map((item) => (
-                <Chip
-                  key={item.id}
-                  active={category === item.id}
-                  onClick={() => setCategory(item.id)}
-                >
-                  {item.name}
-                </Chip>
-              ))}
-            </div>
-          </div>
+      <section className="space-y-6">
+        <div className="space-y-1">
+          <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            开一场练习
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            三步：筛范围 → 选题量 → 开始。不强制先作答，可随时展开参考。
+          </p>
+        </div>
 
-          <div className="space-y-2">
-            <p className="text-sm font-medium">难度</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="难度">
-              <Chip active={difficulty === "all"} onClick={() => setDifficulty("all")}>
-                全部难度
-              </Chip>
-              {(Object.keys(difficultyLabel) as Difficulty[]).map((item) => (
-                <Chip
-                  key={item}
-                  active={difficulty === item}
-                  onClick={() => setDifficulty(item)}
-                >
-                  {difficultyLabel[item]}
-                </Chip>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">范围</p>
-            <div className="flex flex-wrap gap-2">
+        <div className="space-y-2">
+          <p className="text-sm font-medium">1 · 分类</p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="分类">
+            <Chip active={category === "all"} onClick={() => setCategory("all")}>
+              全部分类
+            </Chip>
+            {categories.map((item) => (
               <Chip
-                active={unpracticedOnly}
-                onClick={() => setUnpracticedOnly(true)}
+                key={item.id}
+                active={category === item.id}
+                onClick={() => setCategory(item.id)}
               >
-                仅未练
+                {item.name}
               </Chip>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <p className="text-sm font-medium">2 · 难度与范围</p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="难度">
+            <Chip active={difficulty === "all"} onClick={() => setDifficulty("all")}>
+              全部难度
+            </Chip>
+            {(Object.keys(difficultyLabel) as Difficulty[]).map((item) => (
               <Chip
-                active={!unpracticedOnly}
-                onClick={() => setUnpracticedOnly(false)}
+                key={item}
+                active={difficulty === item}
+                onClick={() => setDifficulty(item)}
               >
-                含已练
+                {difficultyLabel[item]}
               </Chip>
-            </div>
+            ))}
           </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">题量</p>
-            <div className="flex flex-wrap items-center gap-2">
-              {COUNT_PRESETS.map((n) => (
-                <Chip key={n} active={count === n} onClick={() => setCount(n)}>
-                  {n} 题
-                </Chip>
-              ))}
-              <label className="flex items-center gap-2 text-sm text-muted-foreground">
-                自定义
-                <Input
-                  type="number"
-                  min={1}
-                  max={Math.max(poolSize, 1)}
-                  value={count}
-                  onChange={(event) => {
-                    const next = Number(event.target.value);
-                    if (Number.isFinite(next)) {
-                      setCount(Math.max(1, Math.floor(next)));
-                    }
-                  }}
-                  className="w-20"
-                  aria-label="自定义题量"
-                />
-              </label>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              候选 {poolSize} 题
-              {poolSize > 0 ? ` · 将抽取 ${Math.min(effectiveCount, poolSize)} 题` : null}
-            </p>
+          <div className="flex flex-wrap gap-2 pt-1">
+            <Chip active={unpracticedOnly} onClick={() => setUnpracticedOnly(true)}>
+              仅未练
+            </Chip>
+            <Chip active={!unpracticedOnly} onClick={() => setUnpracticedOnly(false)}>
+              含已练
+            </Chip>
           </div>
+        </div>
 
-          {error ? (
-            <p className="text-sm text-destructive" role="alert">
-              {error}
-            </p>
-          ) : null}
+        <div className="space-y-2">
+          <p className="text-sm font-medium">3 · 题量</p>
+          <div className="flex flex-wrap items-center gap-2">
+            {COUNT_PRESETS.map((n) => (
+              <Chip key={n} active={count === n} onClick={() => setCount(n)}>
+                {n} 题
+              </Chip>
+            ))}
+            <label className="flex items-center gap-2 text-sm text-muted-foreground">
+              自定义
+              <Input
+                type="number"
+                min={1}
+                max={Math.max(poolSize, 1)}
+                value={count}
+                onChange={(event) => {
+                  const next = Number(event.target.value);
+                  if (Number.isFinite(next)) {
+                    setCount(Math.max(1, Math.floor(next)));
+                  }
+                }}
+                className="w-20 font-mono tabular-nums"
+                aria-label="自定义题量"
+              />
+            </label>
+          </div>
+          <p className="font-mono text-[0.7rem] tabular-nums tracking-tight text-muted-foreground">
+            候选 {poolSize}
+            {poolSize > 0 ? ` · 抽取 ${Math.min(effectiveCount, poolSize)}` : null}
+          </p>
+        </div>
 
-          <Button type="button" size="lg" disabled={poolSize === 0} onClick={startSession}>
-            <PlayIcon data-icon="inline-start" />
-            开始练习
-          </Button>
-        </CardContent>
-      </Card>
+        {error ? (
+          <p className="text-sm text-destructive" role="alert">
+            {error}
+          </p>
+        ) : null}
+
+        <Button
+          type="button"
+          size="lg"
+          className="min-h-11"
+          disabled={poolSize === 0}
+          onClick={startSession}
+        >
+          <PlayIcon data-icon="inline-start" />
+          开始练习
+        </Button>
+      </section>
     </div>
   );
 }
