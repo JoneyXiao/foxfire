@@ -1,17 +1,6 @@
-import Link from "next/link";
-import { Suspense } from "react";
 import { AppShell } from "@/components/AppShell";
-import { PracticeActions } from "@/components/PracticeActions";
+import { IndexRow, IndexSection } from "@/components/IndexRow";
 import { TodayReview } from "@/components/TodayReview";
-import { SearchForm } from "@/components/SearchForm";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { categories } from "@/lib/categories";
 import { countByCategory, totalQuestions } from "@/data/questions";
 
@@ -20,50 +9,67 @@ export default function HomePage() {
 
   return (
     <AppShell current="home">
-      <div className="space-y-8">
+      <div className="space-y-10">
         <header className="space-y-2">
-          <p className="text-sm font-medium text-primary">AI 应用面试</p>
-          <h1 className="font-heading text-pretty text-3xl font-medium tracking-tight">狐火</h1>
-          <p className="max-w-2xl text-muted-foreground">按分类打开一题，对照参考作答；自评掌握度后会出现在今日待复习。</p>
-        </header>
-        <div className="space-y-2">
-          <PracticeActions />
-          <p className="text-sm text-muted-foreground">
-            想连续刷一串？去{" "}
-            <Link href="/practice" className="underline-offset-2 hover:text-foreground hover:underline">
-              练习会话
-            </Link>
-            ；想限时口述？去{" "}
-            <Link href="/mock" className="underline-offset-2 hover:text-foreground hover:underline">
-              模拟面试
-            </Link>
-            。
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            AI 应用面试 · {totalQuestions} 题
           </p>
-        </div>
+          <h1 className="font-heading text-pretty text-3xl font-medium tracking-tight">
+            狐火
+          </h1>
+          <p className="max-w-xl text-sm text-muted-foreground">
+            按分类打开一题，对照参考作答；自评掌握度后会出现在今日待复习。进度写在这台设备上。
+          </p>
+        </header>
+
         <TodayReview />
-        <Suspense fallback={<div className="h-9 w-full animate-pulse rounded-md bg-muted" />}>
-          <SearchForm />
-        </Suspense>
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {categories.map((category) => (
-            <li key={category.id}>
-              <Link href={`/category/${category.id}`} className="block h-full">
-                <Card className="h-full transition-colors hover:bg-muted/40">
-                  <CardHeader className="flex-row items-start justify-between gap-3 space-y-0">
-                    <CardTitle>{category.name}</CardTitle>
-                    <Badge variant="secondary" className="tabular-nums">{counts[category.id]} 题</Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>{category.summary}</CardDescription>
-                  </CardContent>
-                </Card>
-              </Link>
-            </li>
+
+        <IndexSection label="快捷入口">
+          <IndexRow
+            href="/practice"
+            badge="01"
+            title="练习会话"
+            description="连续刷一串，按筛选组卷"
+          />
+          <IndexRow
+            href="/mock"
+            badge="02"
+            title="模拟面试"
+            description="限时口述，按轮次复盘"
+          />
+          <IndexRow
+            href="/search"
+            badge="03"
+            title="搜索题库"
+            description="题干、标签、编号或参考关键词"
+          />
+          <IndexRow
+            href="/progress"
+            badge="04"
+            title="练习进度"
+            description="已练、收藏与复习队列"
+          />
+        </IndexSection>
+
+        <IndexSection
+          label="分类索引"
+          action={
+            <span className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
+              {categories.length} cats
+            </span>
+          }
+        >
+          {categories.map((category, index) => (
+            <IndexRow
+              key={category.id}
+              href={`/category/${category.id}`}
+              badge={String(index + 1).padStart(2, "0")}
+              title={category.name}
+              description={category.summary}
+              meta={`${counts[category.id] ?? 0} 题`}
+            />
           ))}
-        </ul>
-        <p className="text-sm text-muted-foreground">
-          题库共 {totalQuestions} 题，进度写在这台设备上。
-        </p>
+        </IndexSection>
       </div>
     </AppShell>
   );

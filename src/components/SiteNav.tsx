@@ -43,14 +43,22 @@ function NavLink({
       aria-current={active ? "page" : undefined}
       onClick={onNavigate}
       className={cn(
-        buttonVariants({
-          variant: active ? "secondary" : "ghost",
-          size: "sm",
-        }),
+        "inline-flex min-h-11 items-center px-2.5 text-sm transition-colors outline-none",
+        "focus-visible:ring-2 focus-visible:ring-ring/50",
+        active
+          ? "font-medium text-foreground"
+          : "text-muted-foreground hover:text-foreground",
         className,
       )}
     >
-      {label}
+      <span
+        className={cn(
+          "border-b border-transparent py-0.5",
+          active && "border-primary",
+        )}
+      >
+        {label}
+      </span>
     </Link>
   );
 }
@@ -62,7 +70,7 @@ export function SiteNav({ current }: SiteNavProps) {
 
   return (
     <>
-      <nav className="hidden items-center gap-1 md:flex" aria-label="主要">
+      <nav className="hidden items-center gap-0.5 md:flex" aria-label="主要">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.id}
@@ -75,7 +83,7 @@ export function SiteNav({ current }: SiteNavProps) {
           href={GITHUB_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+          className="inline-flex min-h-11 items-center px-2.5 text-sm text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50"
         >
           GitHub
         </a>
@@ -129,13 +137,13 @@ export function SiteNav({ current }: SiteNavProps) {
                     <div>
                       <Drawer.Title
                         id={titleId}
-                        className="text-base font-medium tracking-tight"
+                        className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground"
                       >
                         导航
                       </Drawer.Title>
                       <Drawer.Description
                         id={descId}
-                        className="mt-1 text-sm text-muted-foreground"
+                        className="mt-1 text-sm text-foreground"
                       >
                         狐火 · 面试题库
                       </Drawer.Description>
@@ -151,26 +159,35 @@ export function SiteNav({ current }: SiteNavProps) {
                     </Drawer.Close>
                   </div>
 
-                  <nav className="flex flex-col gap-1" aria-label="主要">
+                  <nav className="flex flex-col border-t border-border/80" aria-label="主要">
                     {NAV_ITEMS.map((item) => (
-                      <NavLink
+                      <Link
                         key={item.id}
                         href={item.href}
-                        label={item.label}
-                        active={current === item.id}
-                        onNavigate={() => setOpen(false)}
-                        className="h-11 justify-start px-3 text-base"
-                      />
+                        aria-current={current === item.id ? "page" : undefined}
+                        onClick={() => setOpen(false)}
+                        className={cn(
+                          "flex min-h-11 items-center justify-between border-b border-border/80 px-1 text-base outline-none",
+                          "focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset",
+                          current === item.id
+                            ? "font-medium text-foreground"
+                            : "text-muted-foreground hover:text-foreground",
+                        )}
+                      >
+                        <span>{item.label}</span>
+                        {current === item.id ? (
+                          <span className="font-mono text-[0.65rem] uppercase tracking-wider text-primary">
+                            now
+                          </span>
+                        ) : null}
+                      </Link>
                     ))}
                     <a
                       href={GITHUB_HREF}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setOpen(false)}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "sm" }),
-                        "h-11 justify-start px-3 text-base",
-                      )}
+                      className="flex min-h-11 items-center border-b border-border/80 px-1 text-base text-muted-foreground outline-none hover:text-foreground focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset"
                     >
                       GitHub
                     </a>
