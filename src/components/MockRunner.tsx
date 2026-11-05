@@ -32,6 +32,7 @@ import {
   writeMockSession,
   type MockSession,
 } from "@/lib/mock";
+import { SHELL_MAX_WIDTH_CLASS } from "@/lib/shell";
 import { cn } from "@/lib/utils";
 
 function pickMimeType(): string | undefined {
@@ -303,7 +304,7 @@ export function MockRunner() {
           overtime ? "border-border bg-muted/40" : "border-border/80 bg-background/95",
         )}
       >
-        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3">
+        <div className={cn("mx-auto flex w-full flex-wrap items-center justify-between gap-3", SHELL_MAX_WIDTH_CLASS)}>
           <div className="space-y-1">
             <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
               模拟面试

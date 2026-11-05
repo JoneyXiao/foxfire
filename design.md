@@ -47,6 +47,13 @@ Radius: `--radius: 0.625rem` (~10px cards). Flat solids only — no purple-blue 
 - Top rail: quiet thin header (`h-12`), hairline border, text nav — not pill chrome. Yellow CTA lives in page content (e.g. 下一道未练 / 开始今日复习), not the nav.
 - Lists: prefer `IndexRow` / `IndexSection` (mono micro-badge + title + arrow, flat hairline separators) over card grids on curated index surfaces.
 
+
+## Shell measure (aihero-aligned)
+
+- Desktop content + nav rail: `max-w-[1456px]` via `SHELL_MAX_WIDTH_CLASS` in `src/lib/shell.ts` (same outer measure as aihero.dev `/` and `/skills`: `mx-auto w-full max-w-[1456px]`).
+- Applied in `AppShell` (header / main / footer), `QuestionThumbBar`, and `MockRunner` sticky chrome.
+- Mobile gutters unchanged (`px-4` / `sm:px-6`); do not narrow back to `max-w-5xl`.
+
 ## Motion
 - Character: calm; one answer reveal; under reduced motion everything ends at once.
 

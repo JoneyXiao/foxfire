@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SiteNav, type NavId } from "@/components/SiteNav";
+import { SHELL_MAX_WIDTH_CLASS } from "@/lib/shell";
 import { questionThumbBarClearanceClass } from "@/lib/thumb-bar";
 import { cn } from "@/lib/utils";
 import mark from "@/assets/foxfire-mark.png";
@@ -27,7 +28,12 @@ export function AppShell({ children, current, clearThumbBar = false }: AppShellP
         跳到主要内容
       </a>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background pt-[env(safe-area-inset-top)]">
-        <div className="mx-auto flex h-12 w-full max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
+        <div
+          className={cn(
+            "mx-auto flex h-12 w-full items-center justify-between gap-3 px-4 sm:px-6",
+            SHELL_MAX_WIDTH_CLASS,
+          )}
+        >
           <Link
             href="/"
             className="flex min-h-11 items-center gap-2 font-medium tracking-tight outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
@@ -42,12 +48,22 @@ export function AppShell({ children, current, clearThumbBar = false }: AppShellP
         </div>
       </header>
       <main id="content" className="flex-1 scroll-mt-14">
-        <div className="mx-auto w-full max-w-5xl px-4 py-7 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-9 sm:pl-[max(1.5rem,env(safe-area-inset-left))] sm:pr-[max(1.5rem,env(safe-area-inset-right))]">
+        <div
+          className={cn(
+            "mx-auto w-full px-4 py-7 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-9 sm:pl-[max(1.5rem,env(safe-area-inset-left))] sm:pr-[max(1.5rem,env(safe-area-inset-right))]",
+            SHELL_MAX_WIDTH_CLASS,
+          )}
+        >
           {children}
         </div>
       </main>
       <footer className="mt-auto border-t border-border/70">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-4 py-5 text-sm text-muted-foreground sm:px-6">
+        <div
+          className={cn(
+            "mx-auto flex w-full flex-col gap-2 px-4 py-5 text-sm text-muted-foreground sm:px-6",
+            SHELL_MAX_WIDTH_CLASS,
+          )}
+        >
           <p>
             <strong className="font-medium text-foreground">狐火</strong>
             {" · "}
