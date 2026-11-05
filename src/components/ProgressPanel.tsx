@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { DownloadIcon, UploadIcon } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { badgeVariants } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { IndexRow, IndexSection } from "@/components/IndexRow";
 import { ProgressAnalytics } from "@/components/ProgressAnalytics";
 import { QuestionTable } from "@/components/QuestionTable";
 import { TodayReview } from "@/components/TodayReview";
@@ -95,43 +95,40 @@ export function ProgressPanel() {
   if (!ready) {
     return (
       <div className="space-y-3 py-6" aria-busy="true">
-        <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted" />
-        <div className="h-4 w-full animate-pulse rounded-md bg-muted" />
+        <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
+        <div className="h-4 w-full animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-3 sm:grid-cols-3">
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>已练</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-medium tabular-nums">
-              {done.size}
-              <span className="ml-2 text-sm font-normal text-muted-foreground">/ {totalQuestions}</span>
-            </p>
-          </CardContent>
-        </Card>
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>今日待复习</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-medium tabular-nums">{dueIds.length}</p>
-          </CardContent>
-        </Card>
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>收藏</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-2xl font-medium tabular-nums">{starred.size}</p>
-          </CardContent>
-        </Card>
-      </div>
+      <section
+        className="grid gap-4 border-y border-border/80 py-4 sm:grid-cols-3"
+        aria-label="进度摘要"
+      >
+        <div className="space-y-1">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            已练
+          </p>
+          <p className="text-2xl font-medium tabular-nums">
+            {done.size}
+            <span className="ml-2 text-sm font-normal text-muted-foreground">/ {totalQuestions}</span>
+          </p>
+        </div>
+        <div className="space-y-1">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            今日待复习
+          </p>
+          <p className="text-2xl font-medium tabular-nums">{dueIds.length}</p>
+        </div>
+        <div className="space-y-1">
+          <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            收藏
+          </p>
+          <p className="text-2xl font-medium tabular-nums">{starred.size}</p>
+        </div>
+      </section>
 
       <TodayReview previewLimit={8} />
 
@@ -226,25 +223,31 @@ export function ProgressPanel() {
         />
       ) : tab === "review" ? (
         dueItems.length > 0 ? (
-          <ul className="space-y-2">
-            {dueItems.map((item) => {
+          <IndexSection
+            label="待复习队列"
+            action={
+              <span className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
+                {dueItems.length} due
+              </span>
+            }
+          >
+            {dueItems.map((item, index) => {
               const card = progress.srs[item.id];
               return (
-                <li key={item.id}>
-                  <Link
-                    href={`/questions/${item.id}`}
-                    className="flex min-w-0 flex-wrap items-center justify-between gap-2 rounded-xl border bg-card px-4 py-3 text-sm transition-colors hover:bg-muted/40 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
-                  >
-                    <span className="min-w-0 truncate font-medium">{item.title}</span>
-                    <span className="text-muted-foreground">
-                      {card ? SRS_RATING_LABEL[card.rating] : "—"}
-                      {card ? ` · 到期 ${card.dueAt}` : ""}
-                    </span>
-                  </Link>
-                </li>
+                <IndexRow
+                  key={item.id}
+                  href={`/questions/${item.id}`}
+                  badge={String(index + 1).padStart(2, "0")}
+                  title={item.title}
+                  meta={
+                    card
+                      ? `${SRS_RATING_LABEL[card.rating]} · ${card.dueAt}`
+                      : undefined
+                  }
+                />
               );
             })}
-          </ul>
+          </IndexSection>
         ) : (
           <QuietEmpty
             label="review"

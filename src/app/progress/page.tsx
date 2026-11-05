@@ -17,8 +17,8 @@ export default function ProgressPage() {
         <Suspense
           fallback={
             <div className="space-y-3 py-6" aria-busy="true">
-              <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted" />
-              <div className="h-4 w-full animate-pulse rounded-md bg-muted" />
+              <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
+              <div className="h-4 w-full animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
             </div>
           }
         >
