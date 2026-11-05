@@ -1,16 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SiteNav, type NavId } from "@/components/SiteNav";
+import { questionThumbBarClearanceClass } from "@/lib/thumb-bar";
+import { cn } from "@/lib/utils";
 import mark from "@/assets/foxfire-mark.png";
 
 type AppShellProps = {
   children: React.ReactNode;
   current?: NavId;
+  /** Reserve space under SiteFooter for the fixed mobile QuestionThumbBar. */
+  clearThumbBar?: boolean;
 };
 
-export function AppShell({ children, current }: AppShellProps) {
+export function AppShell({ children, current, clearThumbBar = false }: AppShellProps) {
   return (
-    <div className="flex min-h-svh flex-col">
+    <div
+      className={cn(
+        "flex min-h-svh flex-col",
+        clearThumbBar && questionThumbBarClearanceClass,
+      )}
+    >
       <a
         href="#content"
         className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-[max(1rem,env(safe-area-inset-top))] focus-visible:z-50 focus-visible:rounded-md focus-visible:bg-primary focus-visible:px-3 focus-visible:py-2 focus-visible:text-primary-foreground"
