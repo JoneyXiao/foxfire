@@ -205,7 +205,7 @@
   }
 }
 
-/* Large question lists: cheap paint deferral without full virtualization */
+/* Small filtered lists: cheap paint deferral; long lists use useWindowVirtual */
 .cv-auto {
   content-visibility: auto;
   contain-intrinsic-size: auto 4.5rem;
