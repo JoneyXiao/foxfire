@@ -1,12 +1,22 @@
 {
-  "scanned": "2026-11-01",
+  "scanned": "2026-11-05",
   "findings": {
-    "fonts": "create-next-app Geist defaults, replaced by Instrument Sans + Noto Sans SC",
-    "palette": "no product tokens; Hallmark Ribbon two-in-the-morning + dawn",
+    "fonts": "DM Sans + Noto Sans SC + JetBrains Mono (next/font/google)",
+    "palette": "aihero-locked custom: near-black #0B0B0B + yellow #F5C451; light companion #F7F6F3; shadcn vars in globals.css",
     "motion": "none in the empty repo",
     "spacing": "Tailwind v4 default scale",
     "framework": "Next.js 16 App Router, TypeScript, Tailwind 4"
   },
-  "preserve": ["Next.js App Router", "TypeScript", "Tailwind 4"],
-  "introduce": ["Ribbon tokens", "app screen shell", "question ledger", "native details answer", "light+dark"]
+  "preserve": [
+    "Next.js App Router",
+    "TypeScript",
+    "Tailwind 4"
+  ],
+  "introduce": [
+    "aihero-locked palette",
+    "app screen shell",
+    "question ledger",
+    "native details answer",
+    "light+dark"
+  ]
 }
