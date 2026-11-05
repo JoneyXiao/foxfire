@@ -42,6 +42,11 @@ Radius: `--radius: 0.625rem` (~10px cards). Flat solids only — no purple-blue 
 - Primary: yellow fill · same radius · 44px tap target
 - Secondary: quiet outline / muted surface · same radius and height
 
+
+## Shell & index (W1)
+- Top rail: quiet thin header (`h-12`), hairline border, text nav — not pill chrome. Yellow CTA lives in page content (e.g. 下一道未练 / 开始今日复习), not the nav.
+- Lists: prefer `IndexRow` / `IndexSection` (mono micro-badge + title + arrow, flat hairline separators) over card grids on curated index surfaces.
+
 ## Motion
 - Character: calm; one answer reveal; under reduced motion everything ends at once.
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { DicesIcon, ListOrderedIcon, MicIcon, TimerIcon } from "lucide-react";
+import { DicesIcon, ListOrderedIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { questions } from "@/data/questions";
@@ -18,9 +18,18 @@ type PracticeActionsProps = {
   /** When set, 「下一道未练」 starts after this question in bank order. */
   currentId?: string;
   className?: string;
+  /** Home index desk: primary CTA only + quiet random; hide session/mock (those are index rows). */
+  compact?: boolean;
+  /** Yellow only when this is the page primary action. */
+  nextVariant?: "default" | "outline";
 };
 
-export function PracticeActions({ currentId, className }: PracticeActionsProps) {
+export function PracticeActions({
+  currentId,
+  className,
+  compact = false,
+  nextVariant = "default",
+}: PracticeActionsProps) {
   const router = useRouter();
   const [ready, setReady] = useState(false);
   const [done, setDone] = useState<string[]>([]);
@@ -70,7 +79,7 @@ export function PracticeActions({ currentId, className }: PracticeActionsProps) 
     return (
       <div className={className}>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" disabled>
+          <Button type="button" variant="outline" className="min-h-11" disabled>
             读取进度…
           </Button>
         </div>
@@ -83,36 +92,50 @@ export function PracticeActions({ currentId, className }: PracticeActionsProps) 
       <div className="flex flex-wrap gap-2">
         <Button
           type="button"
-          variant="default"
+          variant={nextVariant}
+          className="min-h-11 px-4"
           disabled={allDone}
           onClick={goNextUnpracticed}
         >
           <ListOrderedIcon data-icon="inline-start" />
           下一道未练
           {!allDone ? (
-            <span className="ml-1 tabular-nums text-primary-foreground/80">
+            <span
+              className={
+                nextVariant === "default"
+                  ? "ml-1 font-mono text-[0.7rem] tabular-nums text-primary-foreground/80"
+                  : "ml-1 font-mono text-[0.7rem] tabular-nums text-muted-foreground"
+              }
+            >
               · {openCount}
             </span>
           ) : null}
         </Button>
-        <Button type="button" variant="outline" onClick={goRandom}>
+        <Button
+          type="button"
+          variant="outline"
+          className="min-h-11"
+          onClick={goRandom}
+        >
           <DicesIcon data-icon="inline-start" />
           随机一题
         </Button>
-        <Link
-          href="/practice"
-          className={cn(buttonVariants({ variant: "outline" }))}
-        >
-          <TimerIcon data-icon="inline-start" />
-          练习会话
-        </Link>
-        <Link
-          href="/mock"
-          className={cn(buttonVariants({ variant: "outline" }))}
-        >
-          <MicIcon data-icon="inline-start" />
-          模拟面试
-        </Link>
+        {!compact ? (
+          <>
+            <Link
+              href="/practice"
+              className={cn(buttonVariants({ variant: "outline" }), "min-h-11")}
+            >
+              练习会话
+            </Link>
+            <Link
+              href="/mock"
+              className={cn(buttonVariants({ variant: "outline" }), "min-h-11")}
+            >
+              模拟面试
+            </Link>
+          </>
+        ) : null}
       </div>
       {allDone ? (
         <p className="mt-2 text-sm text-muted-foreground" role="status">

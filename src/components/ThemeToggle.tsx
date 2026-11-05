@@ -55,7 +55,8 @@ export function ThemeToggle() {
     <Button
       type="button"
       variant="ghost"
-      size="icon-sm"
+      size="icon"
+      className="size-11"
       onClick={toggle}
       aria-pressed={mode === "dark"}
       aria-label={mode === "dark" ? "切换到日间" : "切换到夜间"}

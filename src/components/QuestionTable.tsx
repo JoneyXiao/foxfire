@@ -2,16 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { LayoutGridIcon, TableIcon } from "lucide-react";
+import { ListIcon, TableIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -20,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { IndexRow } from "@/components/IndexRow";
 import { useProgressSets } from "@/components/ProgressButtons";
 import { categoryById, difficultyLabel } from "@/lib/categories";
 import {
@@ -88,7 +82,7 @@ export function QuestionTable({
     <div className="flex flex-wrap items-center justify-between gap-2">
       <p className="text-sm text-muted-foreground tabular-nums">
         {visible.length} 题
-        {layoutReady && layout === "cards" ? " · 卡片视图" : null}
+        {layoutReady && layout === "cards" ? " · 列表视图" : null}
         {layoutReady && layout === "table" ? " · 表格视图" : null}
       </p>
       <div
@@ -123,8 +117,8 @@ export function QuestionTable({
           )}
           onClick={() => setListLayout("cards")}
         >
-          <LayoutGridIcon data-icon="inline-start" />
-          卡片
+          <ListIcon data-icon="inline-start" />
+          列表
         </button>
       </div>
     </div>
@@ -151,43 +145,26 @@ export function QuestionTable({
     return (
       <div className="space-y-3">
         {toolbar}
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {visible.map((item) => {
+        <ul className="border-t border-border/80">
+          {visible.map((item, index) => {
             const category = categoryById(item.category);
+            const status = [
+              difficultyLabel[item.difficulty],
+              done.has(item.id) ? "已练" : "未练",
+              starred.has(item.id) ? "收藏" : null,
+            ]
+              .filter(Boolean)
+              .join(" · ");
             return (
-              <li key={item.id} className="cv-auto min-w-0">
-                <Link
-                  href={`/questions/${item.id}`}
-                  className="block h-full rounded-xl focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
-                >
-                  <Card className="h-full transition-colors hover:bg-muted/30">
-                    <CardHeader className="space-y-2">
-                      <CardTitle className="min-w-0 text-pretty text-base leading-snug">
-                        {item.title}
-                      </CardTitle>
-                      <CardDescription className="flex flex-wrap items-center gap-1.5">
-                        <Badge variant="secondary">{category?.name}</Badge>
-                        <Badge variant="outline">
-                          {difficultyLabel[item.difficulty]}
-                        </Badge>
-                        {done.has(item.id) ? (
-                          <Badge variant="secondary">已练</Badge>
-                        ) : (
-                          <span className="text-xs">未练</span>
-                        )}
-                        {starred.has(item.id) ? (
-                          <Badge variant="outline">收藏</Badge>
-                        ) : null}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <p className="line-clamp-2 text-sm text-muted-foreground">
-                        {item.prompt.replace(/^#+\s*/gm, "").trim()}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </li>
+              <IndexRow
+                key={item.id}
+                href={`/questions/${item.id}`}
+                badge={String(index + 1).padStart(2, "0")}
+                title={item.title}
+                description={category?.name}
+                meta={status}
+                className="cv-auto"
+              />
             );
           })}
         </ul>
