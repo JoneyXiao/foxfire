@@ -61,3 +61,9 @@ Radius: `--radius: 0.625rem` (~10px cards). Flat solids only — no purple-blue 
 - Search filters: flat primary chip rail on desktop; on narrow screens mark chips stay visible and the rest collapse into a 「筛选」 sheet. Results stay `IndexRow` / table.
 - Mastery / due: restrained status (secondary/outline, mono due hint). Due entry stays on the home desk — do not scatter new due widgets.
 
+## Answer desk (W3)
+- Reference answers split into document sections (`直接答案` / `知识点`) via `splitAnswerSections` — mono labels + hairline separators inside the reveal, not stacked cards.
+- Interview quotes are copyable cards (mono index + copy control) in the same doc-section chrome.
+- Empty / soft-fail states use `QuietEmpty` / `QuietNotice`: quiet hairline panels, optional 「下一步」 hint, yellow CTA only for the recovery action.
+- Import/export and mic-deny feedback stay muted and always suggest a next step; do not invent Geekbang content.
+

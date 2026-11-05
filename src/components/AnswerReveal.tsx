@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState, type ComponentType } from "react";
 import { BrainIcon, ChevronDownIcon, EyeIcon } from "lucide-react";
 import { MasteryRating } from "@/components/MasteryRating";
+import { QuietNotice } from "@/components/QuietEmpty";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { splitAnswerSections } from "@/lib/answer-sections";
 import { PREFS_CHANGED_EVENT, patchPrefs, readPrefs } from "@/lib/prefs";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +33,7 @@ export function AnswerReveal({ questionId }: AnswerRevealProps) {
   const [answer, setAnswer] = useState<string | null>(null);
   const [loadState, setLoadState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [MarkdownBody, setMarkdownBody] = useState<MarkdownBodyComponent | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
   const loadedRef = useRef(false);
 
   useEffect(() => {
@@ -75,7 +78,7 @@ export function AnswerReveal({ questionId }: AnswerRevealProps) {
     return () => {
       cancelled = true;
     };
-  }, [needsContent, questionId]);
+  }, [needsContent, questionId, reloadKey]);
 
   function toggleThinkFirst() {
     const next = !thinkFirst;
@@ -92,7 +95,17 @@ export function AnswerReveal({ questionId }: AnswerRevealProps) {
     setOpen(true);
   }
 
+  function retryLoad() {
+    loadedRef.current = false;
+    setAnswer(null);
+    setMarkdownBody(null);
+    setLoadState("idle");
+    setOpen(true);
+    setReloadKey((key) => key + 1);
+  }
+
   const gated = thinkFirst && !unlocked;
+  const sections = answer ? splitAnswerSections(answer) : [];
 
   return (
     <section className="space-y-3 border-t border-border/80 pt-6" aria-labelledby="answer-section-label">
@@ -151,18 +164,39 @@ export function AnswerReveal({ questionId }: AnswerRevealProps) {
               )}
             />
           </CollapsibleTrigger>
-          <CollapsibleContent className="space-y-5 pb-5">
+          <CollapsibleContent className="space-y-6 pb-5">
             {loadState === "loading" || (open && loadState === "idle") ? (
               <p className="text-sm text-muted-foreground" aria-busy="true">
                 正在加载参考作答…
               </p>
             ) : null}
             {loadState === "error" ? (
-              <p className="text-sm text-destructive">参考作答加载失败，请刷新后重试。</p>
+              <div className="space-y-3">
+                <QuietNotice tone="danger" role="alert">
+                  参考作答加载失败。
+                </QuietNotice>
+                <QuietNotice>
+                  下一步：检查网络后点重试；仍失败可刷新本页或换一题。
+                </QuietNotice>
+                <Button type="button" variant="outline" size="sm" onClick={retryLoad}>
+                  重试加载
+                </Button>
+              </div>
             ) : null}
             {loadState === "ready" && answer && MarkdownBody ? (
               <>
-                <MarkdownBody source={answer} />
+                {sections.map((section) => (
+                  <article
+                    key={`${section.kind}-${section.label}`}
+                    className="space-y-3 border-t border-border/60 pt-5 first:border-t-0 first:pt-0"
+                    aria-label={section.label}
+                  >
+                    <h3 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      {section.label}
+                    </h3>
+                    <MarkdownBody source={section.body} />
+                  </article>
+                ))}
                 <MasteryRating id={questionId} variant="inline" />
               </>
             ) : null}

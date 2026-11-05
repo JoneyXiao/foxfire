@@ -16,6 +16,7 @@ import { questions } from "@/data/questions";
 import { categoryById, difficultyLabel } from "@/lib/categories";
 import { PROGRESS_CHANGED_EVENT, readProgress } from "@/lib/progress";
 import { clearSession, readSession, type PracticeSession } from "@/lib/session";
+import { QuietEmpty } from "@/components/QuietEmpty";
 import { cn } from "@/lib/utils";
 
 export function PracticeSummary() {
@@ -70,17 +71,14 @@ export function PracticeSummary() {
 
   if (!session || !stats) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>还没有会话小结</CardTitle>
-          <CardDescription>先开一场练习，结束后会在这里显示完成率与收藏回顾。</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Link href="/practice" className={buttonVariants()}>
-            去开一场
-          </Link>
-        </CardContent>
-      </Card>
+      <QuietEmpty
+        label="summary"
+        title="还没有会话小结"
+        body="先开一场练习，结束后会在这里显示完成率与收藏回顾。"
+        nextStep="到练习页选分类与题量，点黄按钮开场。"
+        href="/practice"
+        action="去开一场"
+      />
     );
   }
 
@@ -95,6 +93,9 @@ export function PracticeSummary() {
 
   return (
     <div className="space-y-6">
+      <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+        本场读数
+      </p>
       <div className="grid gap-3 sm:grid-cols-3">
         <Card size="sm">
           <CardHeader>
@@ -170,7 +171,7 @@ export function PracticeSummary() {
       </Card>
 
       <section className="space-y-3">
-        <h2 className="font-heading text-lg font-medium">收藏回顾</h2>
+        <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">收藏回顾</h2>
         <QuestionTable
           items={stats.favoriteItems}
           emptyTitle="本场没有收藏"
@@ -179,7 +180,7 @@ export function PracticeSummary() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-heading text-lg font-medium">本场题目</h2>
+        <h2 className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">本场题目</h2>
         <QuestionTable
           items={stats.sessionItems}
           emptyTitle="本场题目为空"
