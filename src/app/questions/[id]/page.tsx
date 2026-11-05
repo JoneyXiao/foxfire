@@ -6,6 +6,7 @@ import { AppShell } from "@/components/AppShell";
 import { PracticeActions } from "@/components/PracticeActions";
 import { QuestionNavShortcuts } from "@/components/QuestionNavShortcuts";
 import { QuestionThumbBar } from "@/components/QuestionThumbBar";
+import { questionThumbBarClearanceClass } from "@/lib/thumb-bar";
 import { SessionBar } from "@/components/SessionBar";
 import { categoryById, difficultyLabel } from "@/lib/categories";
 import { adjacentQuestions } from "@/data/questions";
@@ -39,7 +40,7 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
 
   return (
     <AppShell>
-      <div className="space-y-8 pb-28 sm:pb-0">
+      <div className={`space-y-8 ${questionThumbBarClearanceClass}`}>
         <nav
           className="flex flex-wrap items-center gap-2 font-mono text-[0.7rem] tracking-tight text-muted-foreground"
           aria-label="面包屑"
