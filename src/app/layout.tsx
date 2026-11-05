@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const geist = Geist({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   description: "狐火是面向 AI 应用工程师的面试题库。按分类打开一题，对照参考作答，进度存在本地。",
 };
 
-// Default night (Ribbon). ThemeToggle syncs meta theme-color on switch.
+// Default night (aihero-locked near-black). ThemeToggle syncs meta theme-color on switch.
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#2a221c" },
-    { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
-    { color: "#2a221c" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0B0B" },
+    { media: "(prefers-color-scheme: light)", color: "#F7F6F3" },
+    { color: "#0B0B0B" },
   ],
 };
 
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="zh-Hans"
       suppressHydrationWarning
-      className={cn("h-full", geist.variable, noto.variable, mono.variable, "font-sans")}
+      className={cn("h-full", dmSans.variable, noto.variable, mono.variable, "font-sans")}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />

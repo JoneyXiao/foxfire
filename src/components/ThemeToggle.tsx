@@ -14,8 +14,8 @@ function readMode(): Mode {
 }
 
 const THEME_COLORS: Record<Mode, string> = {
-  dark: "#2a221c",
-  light: "#faf7f2",
+  dark: "#0B0B0B",
+  light: "#F7F6F3",
 };
 
 function syncThemeColor(mode: Mode) {
