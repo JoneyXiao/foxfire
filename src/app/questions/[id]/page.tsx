@@ -6,7 +6,6 @@ import { AppShell } from "@/components/AppShell";
 import { PracticeActions } from "@/components/PracticeActions";
 import { QuestionNavShortcuts } from "@/components/QuestionNavShortcuts";
 import { QuestionThumbBar } from "@/components/QuestionThumbBar";
-import { questionThumbBarClearanceClass } from "@/lib/thumb-bar";
 import { SessionBar } from "@/components/SessionBar";
 import { categoryById, difficultyLabel } from "@/lib/categories";
 import { adjacentQuestions } from "@/data/questions";
@@ -39,8 +38,8 @@ export default async function QuestionPage({ params }: QuestionPageProps) {
     question.prompt.trim() !== "" && question.prompt.trim() !== question.title.trim();
 
   return (
-    <AppShell>
-      <div className={`space-y-8 ${questionThumbBarClearanceClass}`}>
+    <AppShell clearThumbBar>
+      <div className="space-y-8">
         <nav
           className="flex flex-wrap items-center gap-2 font-mono text-[0.7rem] tracking-tight text-muted-foreground"
           aria-label="面包屑"
