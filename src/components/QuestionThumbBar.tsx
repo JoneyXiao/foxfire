@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ProgressButtons } from "@/components/ProgressButtons";
+import { SHELL_MAX_WIDTH_CLASS } from "@/lib/shell";
 import { cn } from "@/lib/utils";
 
 type Neighbor = {
@@ -35,7 +36,7 @@ export function QuestionThumbBar({
         className,
       )}
     >
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-4 sm:px-0">
+      <div className={cn("mx-auto flex w-full flex-col gap-2 px-4 sm:px-0", SHELL_MAX_WIDTH_CLASS)}>
         <ProgressButtons id={questionId} compact />
         <div className="flex gap-2 sm:hidden">
           {prev ? (
