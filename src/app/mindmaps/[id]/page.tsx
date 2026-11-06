@@ -45,7 +45,7 @@ export default async function MindmapChapterPage({ params }: MindmapPageProps) {
           aria-label="面包屑"
         >
           <Link href="/mindmaps" className="hover:text-foreground hover:underline">
-            Agent 导图
+            Agent 导图复习
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-foreground">{chapter.shortTitle}</span>
@@ -59,7 +59,7 @@ export default async function MindmapChapterPage({ params }: MindmapPageProps) {
             {chapter.title}
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            可折叠分支、搜索高亮、平移缩放。节点层级对齐极客时间原图；这是复习画布，不是答题页
+            可折叠分支、搜索高亮、平移缩放。节点层级对齐极客时间原图；这是 Agent 导图复习画布，不是 150 题刷题答题页
             {entry
               ? `（${entry.branchCount} 个分支 · ${entry.stemCount} 个题干节点）。`
               : "。"}

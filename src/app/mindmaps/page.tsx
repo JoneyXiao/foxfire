@@ -13,13 +13,13 @@ export default function MindmapsIndexPage() {
       <div className="space-y-10">
         <header className="space-y-2">
           <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            导图复习 · 非练习分类
+            Agent 导图复习 · 非 150 题刷题
           </p>
           <h1 className="font-heading text-pretty text-3xl font-medium tracking-tight">
-            Agent 导图
+            Agent 导图复习
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            极客时间专栏 Wiki 里第 15–20 章原文只有思维导图、没有问答页。这里做成可折叠、可搜索、可拖拽缩放的复习画布，不计入题库题数，也不进入 SRS / 进度。
+            极客时间专栏 Wiki 第 15–20 章原文只有思维导图、没有问答页。这里做成可折叠、可搜索、可拖拽缩放的复习画布——与首页「150 题刷题」分开：不计入题库题数，也不进入练习会话 / SRS / 进度。
           </p>
         </header>
 
@@ -55,9 +55,9 @@ export default function MindmapsIndexPage() {
             说明
           </h2>
           <ul className="max-w-2xl space-y-1.5 text-sm text-muted-foreground">
+            <li>想刷题请回首页「150 题 · 分类索引」或导航里的「会话 / 模拟」；本页只做导图复习。</li>
             <li>第 15 章为总览图，与 16–18 专章题干有重叠，仍单独成画布便于总览对照。</li>
-            <li>经典 150 题 / 14 分类练习入口不变；本页不是刷题分类。</li>
-            <li>节点文案来自校对后的导图题干，不编造标签或占位答案。</li>
+            <li>节点文案对齐原图层级；不嵌入 JPG、不拆题入库、不编造答案。</li>
           </ul>
         </section>
       </div>

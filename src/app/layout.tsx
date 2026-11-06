@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: "狐火 Foxfire",
     template: "%s · 狐火",
   },
-  description: "狐火是面向 AI 应用工程师的面试题库。按分类打开一题，对照参考作答，进度存在本地。",
+  description: "狐火：面向 AI 应用工程师的 150 题刷题题库，外加第 15–20 章 Agent 导图复习画布。进度只存在本地。",
 };
 
 // Default night (aihero-locked near-black). ThemeToggle syncs meta theme-color on switch.
