@@ -1,0 +1,505 @@
+{
+  "id": "ch15",
+  "chapter": 15,
+  "sectionId": "1.16",
+  "title": "Agent 面试题（Agent 模拟面试总览）",
+  "shortTitle": "模拟面试总览",
+  "tree": {
+    "id": "ch15-root",
+    "label": "Agent 面试题（Agent 模拟面试总览）",
+    "kind": "root",
+    "children": [
+      {
+        "id": "ch15-b1",
+        "label": "意图识别",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch15-b1-l1",
+            "label": "什么是意图识别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l2",
+            "label": "你的意图识别是怎么做的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l3",
+            "label": "什么是 slot-filling？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l4",
+            "label": "你们系统里的意图集合是怎么设计出来的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l5",
+            "label": "线上新增一个业务意图，你怎么接入？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l6",
+            "label": "新增意图后怎么避免影响老意图准确率？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l7",
+            "label": "意图识别是不是就是从一堆枚举里面选一个？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l8",
+            "label": "为什么意图识别要结合 Slot Filling？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l9",
+            "label": "Slot 是怎么定义的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l10",
+            "label": "不同意图对应的 Slot 一样吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l11",
+            "label": "怎么判断必填 Slot 是否完整？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l12",
+            "label": "怎么避免 Slot 不完整？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l13",
+            "label": "Slot 缺失的时候，怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l14",
+            "label": "怎么补全 Slot？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l15",
+            "label": "先调用轻量级大模型的意义在哪里？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l16",
+            "label": "为什么要先调用轻量级大模型？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l17",
+            "label": "多少比例会在这个阶段识别出来？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l18",
+            "label": "你是怎么计算的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l19",
+            "label": "调用轻量级大模型的耗时大概多少？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l20",
+            "label": "你是怎么评估轻量级大模型识别的效果的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l21",
+            "label": "为什么不直接调用重量级大模型？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l22",
+            "label": "调用重量级大模型的耗时大概多少？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l23",
+            "label": "置信度是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l24",
+            "label": "大模型输出的 confidence 可信吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l25",
+            "label": "confidence 阈值怎么设置？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l26",
+            "label": "置信度低的时候怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l27",
+            "label": "置信度中等的时候，是澄清还是升级模型？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l28",
+            "label": "为什么要做意图识别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l29",
+            "label": "意图识别在 Agent 系统里到底解决什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l30",
+            "label": "意图识别和传统 NLP 里的文本分类有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l31",
+            "label": "为什么不能直接让大模型回答用户问题，而要先做意图识别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l32",
+            "label": "直接 ReAct 循环不可以吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l33",
+            "label": "不能让 Agent 在执行过程中自己判断用户想干什么吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l34",
+            "label": "既然后面已经有 ReAct/TAO 循环了，为什么还要在前面单独做一次意图识别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l35",
+            "label": "意图识别放在 ReAct 前面，和放在 ReAct 里面，有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l36",
+            "label": "你们为什么选择在进入主流程前先做意图识别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l37",
+            "label": "如果前面意图识别错了，后面的 Agent 流程不是全错了吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l38",
+            "label": "意图识别和用户输入规范化应该谁先做？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l39",
+            "label": "你们意图识别 Prompt 是怎么写的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l40",
+            "label": "怎么定义意图边界？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l41",
+            "label": "few-shot 怎么设计？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l42",
+            "label": "few-shot 怎么动态召回？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l43",
+            "label": "输出格式怎么约束？JSON Schema 怎么设计？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l44",
+            "label": "意图识别不出来怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l45",
+            "label": "什么时候输出 unclear？什么时候输出 unsupported？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l46",
+            "label": "拒识和澄清有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l47",
+            "label": "什么时候应该直接回答，什么时候应该先追问？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l48",
+            "label": "怎么避免大模型自己发明一个不存在的意图？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l49",
+            "label": "怎么解决多意图问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b1-l50",
+            "label": "你们意图识别测试集怎么构造？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch15-b2",
+        "label": "执行核心",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch15-b2-l1",
+            "label": "你怎么理解 Agent 里的 Plan？它和普通 Workflow 有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l2",
+            "label": "很多人说 Plan 就是「先分析、再执行、最后总结」，你觉得这种说法有什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l3",
+            "label": "既然 ReAct 可以边想边做，为什么还需要显式 Plan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l4",
+            "label": "为什么你的 Agent 用 Plan 而不是用 Workflow？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l5",
+            "label": "你提到过 G4C Plan 模型，分别是哪几个部分？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l6",
+            "label": "Goal 在 Plan 里面解决什么问题？怎么判断 Goal 定义得好不好？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l7",
+            "label": "用户说「帮我优化一下项目」，你如何把这个模糊目标转成一个可执行的 Goal？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l8",
+            "label": "Context 在 Plan 中具体包含什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l9",
+            "label": "Plan 里面怎么区分事实、假设和缺失信息？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l10",
+            "label": "你怎么确保后续执行不会忘掉硬约束？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l11",
+            "label": "Checkpoint 应该怎么设计？每一步都要有 Checkpoint 吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l12",
+            "label": "Correction 和 Checkpoint 有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l13",
+            "label": "Plan 的 Prompt 怎么写的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l14",
+            "label": "在 Plan Prompt 里，如何要求模型设计 Checkpoint？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l15",
+            "label": "Plan 生成之后，你会直接执行吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l16",
+            "label": "Plan 完成了，是否代表用户目标一定完成了？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l17",
+            "label": "怎么评估 Checkpoint 是否足够？检查点是不是越多越好？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l18",
+            "label": "DAG Plan 适合解决什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l19",
+            "label": "如果某个节点失败了，怎么判断哪些下游节点需要重新执行？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l20",
+            "label": "你怎么理解 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l21",
+            "label": "什么情况下应该触发 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l22",
+            "label": "Replan Prompt 怎么写？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l23",
+            "label": "你提到过类似 TCC 的 Replan 思路，核心是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l24",
+            "label": "你怎么理解 TAO？T、A、O 分别是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l25",
+            "label": "TAO 和 ReAct 是什么关系？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l26",
+            "label": "TAO 循环什么时候应该停止？你会设计哪些停止条件？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l27",
+            "label": "让你实现一个最小 TAO Runtime，你会怎么设计？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l28",
+            "label": "如何避免 TAO 死循环？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l29",
+            "label": "工具太多时，怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b2-l30",
+            "label": "如果 Observation 和模型原来的假设冲突，Agent 应该怎么办？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch15-b3",
+        "label": "上下文管理",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch15-b3-l1",
+            "label": "你的 Agent 中一共有哪些类型的 Context？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l2",
+            "label": "上下文管理是一个独立模块，还是分散在意图识别、Plan、ReAct、RAG 等模块里面？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l3",
+            "label": "假设让你从零设计一个通用 Agent 的上下文管理系统，你会怎么划分核心模块和数据结构？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l4",
+            "label": "你的上下文为什么要分层？全部放在一个数据库或者一个大 JSON 里面有什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l5",
+            "label": "分层越多是不是越好？层次过多会带来什么复杂度？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l6",
+            "label": "你具体是怎么动态编排的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l7",
+            "label": "假设模型支持 128K Context Window，你会直接放满吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l8",
+            "label": "你怎么分配 Token Budget？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l9",
+            "label": "为什么摘要必然会丢失细节？有没有一种摘要算法能够做到完全无损？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l10",
+            "label": "用户说「刚才那个」「第一个」「之前推荐的那个」，你的 Agent 如何完成指代消解？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l11",
+            "label": "用户画像应该放在 System Prompt 的什么位置？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l12",
+            "label": "上下文污染和细节丢失有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l13",
+            "label": "Checkpoint 中应该保存哪些运行时状态，才能支持任务恢复？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-b3-l14",
+            "label": "上下文召回的 Precision 和 Recall 哪一个更重要？",
+            "kind": "leaf"
+          }
+        ]
+      }
+    ]
+  }
+}

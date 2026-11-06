@@ -54,7 +54,7 @@ export default function HomePage() {
             href="/mindmaps"
             badge="05"
             title="Agent 导图"
-            description="16–20 章可拖拽复习画布（非题库）"
+            description="15–20 章可拖拽复习画布（非题库）"
           />
         </IndexSection>
 
