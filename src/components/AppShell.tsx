@@ -20,6 +20,34 @@ type AppShellProps = {
   sidebar?: boolean;
 };
 
+function SiteFooter() {
+  return (
+    <footer className="mt-auto border-t border-border/70">
+      <div className="flex w-full flex-col gap-2 px-4 py-5 text-sm text-muted-foreground sm:px-6">
+        <p>
+          <strong className="font-medium text-foreground">狐火</strong>
+          {" · "}
+          150 题刷题 + Agent 导图复习 · 进度只留在本机
+          {" · "}
+          <a
+            href="https://github.com/JoneyXiao/foxfire"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-offset-2 hover:text-foreground hover:underline"
+          >
+            GitHub
+          </a>
+        </p>
+        <p className="max-w-3xl text-xs leading-relaxed opacity-90">
+          本站为个人面试练习工具：经典十四分类 150 题刷题（含间隔复习）；第 15–20 章
+          Agent 导图为复习画布，不入题库。题库与导图参考极客知识库「AI
+          面试」等公开学习资料整理，不构成官方教材，亦与极客时间、极客知识库无隶属或授权关系。
+        </p>
+      </div>
+    </footer>
+  );
+}
+
 export function AppShell({
   children,
   current,
@@ -60,44 +88,31 @@ export function AppShell({
           <SiteNav current={current} />
         </div>
       </header>
-      <main id="content" className="flex-1 scroll-mt-14">
+
+      {/*
+        Body: on lg+ with sidebar, left rail border-r meets header border-b and
+        runs to the page bottom; footer lives only in the right column (aihero).
+      */}
+      <div
+        className={cn(
+          "mx-auto flex w-full flex-1",
+          SHELL_MAX_WIDTH_CLASS,
+          sidebar ? "lg:items-stretch" : "flex-col",
+        )}
+      >
+        {sidebar ? <AppSidebar /> : null}
         <div
           className={cn(
-            "mx-auto w-full px-4 py-7 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-9 sm:pl-[max(1.5rem,env(safe-area-inset-left))] sm:pr-[max(1.5rem,env(safe-area-inset-right))]",
-            SHELL_MAX_WIDTH_CLASS,
-            sidebar && "lg:flex lg:items-start lg:gap-8",
+            "flex min-w-0 flex-1 flex-col",
+            "pl-[max(0px,env(safe-area-inset-left))] pr-[max(0px,env(safe-area-inset-right))]",
           )}
         >
-          {sidebar ? <AppSidebar /> : null}
-          <div className={cn(sidebar && "min-w-0 flex-1")}>{children}</div>
+          <main id="content" className="flex-1 scroll-mt-14">
+            <div className="px-4 py-7 sm:px-6 sm:py-9">{children}</div>
+          </main>
+          <SiteFooter />
         </div>
-      </main>
-      <footer className="mt-auto border-t border-border/70">
-        <div
-          className={cn(
-            "mx-auto flex w-full flex-col gap-2 px-4 py-5 text-sm text-muted-foreground sm:px-6",
-            SHELL_MAX_WIDTH_CLASS,
-          )}
-        >
-          <p>
-            <strong className="font-medium text-foreground">狐火</strong>
-            {" · "}
-            刷题轨 + 导图轨 · 进度只留在本机
-            {" · "}
-            <a
-              href="https://github.com/JoneyXiao/foxfire"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline-offset-2 hover:text-foreground hover:underline"
-            >
-              GitHub
-            </a>
-          </p>
-          <p className="max-w-3xl text-xs leading-relaxed opacity-90">
-            本站为个人面试练习工具：经典十四分类 150 题刷题（含间隔复习）；第 15–20 章 Agent 导图为复习画布，不入题库。题库与导图参考极客知识库「AI 面试」等公开学习资料整理，不构成官方教材，亦与极客时间、极客知识库无隶属或授权关系。
-          </p>
-        </div>
-      </footer>
+      </div>
     </div>
   );
 }

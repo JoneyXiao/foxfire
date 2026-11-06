@@ -27,6 +27,20 @@ const DRAWER_GLOBAL_LINKS: { href: string; id: NavId; label: string }[] = [
 
 const GITHUB_HREF = "https://github.com/JoneyXiao/foxfire";
 
+/** Simple GitHub mark — lucide dropped brand icons in this release. */
+function GitHubMark({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+    </svg>
+  );
+}
+
 type SiteNavProps = {
   current?: NavId;
   /**
@@ -37,45 +51,6 @@ type SiteNavProps = {
   showSidebarGroups?: boolean;
 };
 
-function NavLink({
-  href,
-  label,
-  active,
-  className,
-  onNavigate,
-}: {
-  href: string;
-  label: string;
-  active?: boolean;
-  className?: string;
-  onNavigate?: () => void;
-}) {
-  return (
-    <Link
-      href={href}
-      aria-current={active ? "page" : undefined}
-      onClick={onNavigate}
-      className={cn(
-        "inline-flex min-h-11 items-center px-2.5 text-sm transition-colors outline-none",
-        "focus-visible:ring-2 focus-visible:ring-ring/50",
-        active
-          ? "font-medium text-foreground"
-          : "text-muted-foreground hover:text-foreground",
-        className,
-      )}
-    >
-      <span
-        className={cn(
-          "border-b border-transparent py-0.5",
-          active && "border-primary",
-        )}
-      >
-        {label}
-      </span>
-    </Link>
-  );
-}
-
 export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
   const [open, setOpen] = useState(false);
   const titleId = useId();
@@ -84,22 +59,19 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
 
   return (
     <>
+      {/* Desktop: GitHub mark + appearance only — primary nav lives in the sidebar. */}
       <nav className="hidden items-center gap-0.5 md:flex" aria-label="主要">
-        {NAV_ITEMS.map((item) => (
-          <NavLink
-            key={item.id}
-            href={item.href}
-            label={item.label}
-            active={current === item.id}
-          />
-        ))}
         <a
           href={GITHUB_HREF}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center px-2.5 text-sm text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50"
+          className={cn(
+            buttonVariants({ variant: "ghost", size: "icon" }),
+            "size-11 text-muted-foreground hover:text-foreground",
+          )}
+          aria-label="GitHub 仓库"
         >
-          GitHub
+          <GitHubMark className="size-5" />
         </a>
         <ThemeToggle />
       </nav>
@@ -159,7 +131,7 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
                         id={descId}
                         className="mt-1 text-sm text-foreground"
                       >
-                        刷题轨 · 导图轨
+                        150 题刷题 + Agent 导图复习
                       </Drawer.Description>
                     </div>
                     <Drawer.Close
@@ -208,8 +180,9 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={closeDrawer}
-                      className="flex min-h-11 items-center px-1 text-sm text-muted-foreground outline-none hover:text-foreground focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset"
+                      className="flex min-h-11 items-center gap-2 px-1 text-sm text-muted-foreground outline-none hover:text-foreground focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset"
                     >
+                      <GitHubMark className="size-4" />
                       GitHub
                     </a>
                   </nav>

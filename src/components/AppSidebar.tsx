@@ -57,20 +57,14 @@ function SidebarLinkRow({
 function SidebarGroupBlock({
   group,
   pathname,
-  hasActiveChild,
   onNavigate,
 }: {
   group: SidebarGroup;
   pathname: string;
-  hasActiveChild: boolean;
   onNavigate?: () => void;
 }) {
-  // Collapsible groups (分类) default closed unless a child route is active.
-  // Do not force-open on `/`. Parent remounts this block when active-child
-  // flips so SPA navigations re-apply the default without an effect.
-  const [open, setOpen] = useState(
-    () => !group.collapsible || hasActiveChild,
-  );
+  // Collapsible groups (分类) default expanded; user can still collapse.
+  const [open, setOpen] = useState(true);
 
   const body = (
     <ul className="space-y-0.5">
@@ -130,34 +124,29 @@ export function SidebarNav({ className, onNavigate }: SidebarNavProps) {
       aria-label="目录"
       className={cn("flex flex-col gap-6", className)}
     >
-      {groups.map((group) => {
-        const hasActiveChild = group.links.some((link) =>
-          isSidebarLinkActive(pathname, link),
-        );
-        return (
-          <SidebarGroupBlock
-            key={
-              group.collapsible
-                ? `${group.id}:${hasActiveChild ? "on" : "off"}`
-                : group.id
-            }
-            group={group}
-            pathname={pathname}
-            hasActiveChild={hasActiveChild}
-            onNavigate={onNavigate}
-          />
-        );
-      })}
+      {groups.map((group) => (
+        <SidebarGroupBlock
+          key={group.id}
+          group={group}
+          pathname={pathname}
+          onNavigate={onNavigate}
+        />
+      ))}
     </nav>
   );
 }
 
-/** Desktop sticky sidebar (~16rem), visible from lg up. */
+/**
+ * Desktop sticky sidebar (~16rem), visible from lg up.
+ * Outer aside stretches full body height so border-r meets the header
+ * bottom rule and continues to the page foot (footer sits in the right column).
+ */
 export function AppSidebar({ className }: { className?: string }) {
   return (
     <aside
       className={cn(
-        "hidden w-64 shrink-0 lg:block",
+        "hidden w-64 shrink-0 border-r border-border/70 lg:block",
+        "pl-4 sm:pl-6",
         className,
       )}
       aria-label="侧栏目录"
@@ -165,7 +154,7 @@ export function AppSidebar({ className }: { className?: string }) {
       <div
         className={cn(
           "sticky top-[calc(3rem+env(safe-area-inset-top))] max-h-[calc(100svh-3rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain",
-          "border-r border-sidebar-border py-1 pr-4",
+          "py-7 pr-4 sm:py-9",
           "bg-background",
         )}
       >
