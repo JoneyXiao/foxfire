@@ -5,8 +5,8 @@
     "sectionId": "1.16",
     "title": "Agent 面试题（Agent 模拟面试总览）",
     "shortTitle": "模拟面试总览",
-    "branchCount": 39,
-    "stemCount": 266
+    "branchCount": 44,
+    "stemCount": 94
   },
   {
     "id": "ch16",
@@ -14,7 +14,7 @@
     "sectionId": "1.17",
     "title": "执行核心面试题",
     "shortTitle": "执行核心",
-    "branchCount": 18,
+    "branchCount": 54,
     "stemCount": 123
   },
   {
@@ -23,7 +23,7 @@
     "sectionId": "1.18",
     "title": "意图识别面试题",
     "shortTitle": "意图识别",
-    "branchCount": 10,
+    "branchCount": 38,
     "stemCount": 95
   },
   {
@@ -32,7 +32,7 @@
     "sectionId": "1.19",
     "title": "上下文管理面试题",
     "shortTitle": "上下文管理",
-    "branchCount": 8,
+    "branchCount": 24,
     "stemCount": 48
   },
   {
@@ -41,7 +41,7 @@
     "sectionId": "1.20",
     "title": "评估和反馈面试题",
     "shortTitle": "评估和反馈",
-    "branchCount": 7,
+    "branchCount": 38,
     "stemCount": 80
   },
   {
@@ -50,7 +50,7 @@
     "sectionId": "1.21",
     "title": "检索面试题",
     "shortTitle": "检索",
-    "branchCount": 11,
+    "branchCount": 81,
     "stemCount": 161
   }
 ]
