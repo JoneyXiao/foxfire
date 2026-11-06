@@ -10,9 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Serialize Pages deploys; do not cancel in-flight ones (cancel leaves ghost
+# deployments that block newer runs with "cancel … first").
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
