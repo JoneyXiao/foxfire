@@ -13,19 +13,23 @@ export default function HomePage() {
       <div className="space-y-10">
         <header className="space-y-2">
           <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            AI 应用面试 · {totalQuestions} 题
+            AI 应用面试 · 两套入口
           </p>
           <h1 className="font-heading text-pretty text-3xl font-medium tracking-tight">
             狐火
           </h1>
-          <p className="max-w-xl text-sm text-muted-foreground">
-            按分类打开一题，对照参考作答；自评掌握度后会出现在今日待复习。进度写在这台设备上。
+          <p className="max-w-2xl text-sm text-muted-foreground">
+            <strong className="font-medium text-foreground">150 题刷题</strong>
+            ：十四分类，对照参考作答，掌握度驱动今日待复习，进度只留在本机。
+            {" "}
+            <strong className="font-medium text-foreground">Agent 导图复习</strong>
+            ：第 15–20 章可拖拽画布，只复习、不入题库、不进 SRS。
           </p>
         </header>
 
         <TodayReview />
 
-        <IndexSection label="快捷入口">
+        <IndexSection label="刷题入口">
           <IndexRow
             href="/practice"
             badge="01"
@@ -50,22 +54,23 @@ export default function HomePage() {
             title="练习进度"
             description="已练、收藏与复习队列"
           />
-          <IndexRow
-            href="/mindmaps"
-            badge="05"
-            title="Agent 导图"
-            description="15–20 章可拖拽复习画布（非题库）"
-          />
         </IndexSection>
 
         <IndexSection
-          label="导图复习"
+          label="Agent 导图复习"
           action={
             <span className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
-              {mindmapIndex.length} maps
+              {mindmapIndex.length} maps · 非题库
             </span>
           }
         >
+          <IndexRow
+            href="/mindmaps"
+            badge="全"
+            title="全部导图"
+            description={`第 15–20 章 React Flow 画布 · 不计入 ${totalQuestions} 题`}
+            meta="复习"
+          />
           {mindmapIndex.map((item) => (
             <IndexRow
               key={item.id}
@@ -79,10 +84,10 @@ export default function HomePage() {
         </IndexSection>
 
         <IndexSection
-          label="分类索引"
+          label="150 题 · 分类索引"
           action={
             <span className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
-              {categories.length} cats
+              {categories.length} cats · {totalQuestions} 题
             </span>
           }
         >

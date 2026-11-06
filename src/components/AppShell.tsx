@@ -67,7 +67,7 @@ export function AppShell({ children, current, clearThumbBar = false }: AppShellP
           <p>
             <strong className="font-medium text-foreground">狐火</strong>
             {" · "}
-            本地保存进度的 AI 应用面试题库
+            150 题刷题 + Agent 导图复习 · 进度只留在本机
             {" · "}
             <a
               href="https://github.com/JoneyXiao/foxfire"
@@ -79,7 +79,7 @@ export function AppShell({ children, current, clearThumbBar = false }: AppShellP
             </a>
           </p>
           <p className="max-w-3xl text-xs leading-relaxed opacity-90">
-            本站为个人面试练习工具。题库参考极客知识库「AI 面试」专题等公开学习资料整理、改写，仅供个人学习练习，不构成官方教材或题库，亦与极客时间、极客知识库无隶属或授权关系。
+            本站为个人面试练习工具：经典十四分类 150 题刷题（含间隔复习）；第 15–20 章 Agent 导图为复习画布，不入题库。题库与导图参考极客知识库「AI 面试」等公开学习资料整理，不构成官方教材，亦与极客时间、极客知识库无隶属或授权关系。
           </p>
         </div>
       </footer>

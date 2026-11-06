@@ -11,10 +11,10 @@ import { cn } from "@/lib/utils";
 export type NavId = "home" | "search" | "progress" | "practice" | "mock" | "mindmaps";
 
 export const NAV_ITEMS: { href: string; id: NavId; label: string }[] = [
-  { href: "/", id: "home", label: "题库" },
+  { href: "/", id: "home", label: "首页" },
   { href: "/practice", id: "practice", label: "会话" },
   { href: "/mock", id: "mock", label: "模拟" },
-  { href: "/mindmaps", id: "mindmaps", label: "导图" },
+  { href: "/mindmaps", id: "mindmaps", label: "导图复习" },
   { href: "/search", id: "search", label: "搜索" },
   { href: "/progress", id: "progress", label: "进度" },
 ];
@@ -146,7 +146,7 @@ export function SiteNav({ current }: SiteNavProps) {
                         id={descId}
                         className="mt-1 text-sm text-foreground"
                       >
-                        狐火 · 面试题库
+                        狐火 · 刷题 + 导图复习
                       </Drawer.Description>
                     </div>
                     <Drawer.Close
