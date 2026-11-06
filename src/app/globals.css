@@ -211,7 +211,7 @@
   contain-intrinsic-size: auto 4.5rem;
 }
 
-/* Foxfire React Flow mindmap (W1) */
+/* Foxfire React Flow mindmap */
 .foxfire-mindmap.react-flow {
   --xy-background-color: transparent;
   --xy-node-border-radius: var(--radius);
@@ -233,6 +233,8 @@
 }
 
 .foxfire-mindmap .react-flow__controls-button {
+  width: 2rem;
+  height: 2rem;
   fill: var(--foreground);
 }
 
@@ -243,3 +245,19 @@
 .foxfire-mindmap .react-flow__edge-path {
   stroke: var(--border);
 }
+
+.foxfire-mindmap .react-flow__node.selected {
+  z-index: 2;
+}
+
+@media (pointer: coarse) {
+  .foxfire-mindmap .react-flow__controls-button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .foxfire-mindmap .react-flow__controls {
+    margin-bottom: 0.75rem;
+  }
+}
+
