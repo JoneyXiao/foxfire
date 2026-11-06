@@ -5,8 +5,9 @@
     "sectionId": "1.16",
     "title": "Agent 面试题（Agent 模拟面试总览）",
     "shortTitle": "模拟面试总览",
-    "branchCount": 3,
-    "stemCount": 94
+    "branchCount": 39,
+    "stemCount": 266,
+    "imageSrc": "/mindmaps/ch15.jpg"
   },
   {
     "id": "ch16",
@@ -14,8 +15,9 @@
     "sectionId": "1.17",
     "title": "执行核心面试题",
     "shortTitle": "执行核心",
-    "branchCount": 11,
-    "stemCount": 123
+    "branchCount": 18,
+    "stemCount": 123,
+    "imageSrc": "/mindmaps/ch16.jpg"
   },
   {
     "id": "ch17",
@@ -24,7 +26,8 @@
     "title": "意图识别面试题",
     "shortTitle": "意图识别",
     "branchCount": 10,
-    "stemCount": 95
+    "stemCount": 95,
+    "imageSrc": "/mindmaps/ch17.jpg"
   },
   {
     "id": "ch18",
@@ -33,7 +36,8 @@
     "title": "上下文管理面试题",
     "shortTitle": "上下文管理",
     "branchCount": 8,
-    "stemCount": 48
+    "stemCount": 48,
+    "imageSrc": "/mindmaps/ch18.jpg"
   },
   {
     "id": "ch19",
@@ -42,7 +46,8 @@
     "title": "评估和反馈面试题",
     "shortTitle": "评估和反馈",
     "branchCount": 7,
-    "stemCount": 80
+    "stemCount": 80,
+    "imageSrc": "/mindmaps/ch19.jpg"
   },
   {
     "id": "ch20",
@@ -51,6 +56,7 @@
     "title": "检索面试题",
     "shortTitle": "检索",
     "branchCount": 11,
-    "stemCount": 161
+    "stemCount": 161,
+    "imageSrc": "/mindmaps/ch20.jpg"
   }
 ]
