@@ -20,13 +20,19 @@ export const NAV_ITEMS: { href: string; id: NavId; label: string }[] = [
   { href: "/progress", id: "progress", label: "进度" },
 ];
 
+/** Slim global strip inside the mobile drawer (SidebarNav is the primary directory). */
+const DRAWER_GLOBAL_LINKS: { href: string; id: NavId; label: string }[] = [
+  { href: "/", id: "home", label: "首页" },
+];
+
 const GITHUB_HREF = "https://github.com/JoneyXiao/foxfire";
 
 type SiteNavProps = {
   current?: NavId;
   /**
-   * When true (default), mobile drawer also shows the dense sidebar groups
-   * (刷题 / 导图 / 分类) so narrow screens stay reachable without the lg sidebar.
+   * When true (default), mobile drawer shows dense SidebarNav groups
+   * (刷题 / 导图 / 分类). Always keep true so canvas pages (`sidebar={false}`)
+   * still expose the directory on narrow screens.
    */
   showSidebarGroups?: boolean;
 };
@@ -74,6 +80,7 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
   const [open, setOpen] = useState(false);
   const titleId = useId();
   const descId = useId();
+  const closeDrawer = () => setOpen(false);
 
   return (
     <>
@@ -139,20 +146,20 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
                   "data-starting-style:[transform:translateX(100%)] data-ending-style:[transform:translateX(100%)]",
                 )}
               >
-                <Drawer.Content className="flex flex-1 flex-col gap-4 p-4">
+                <Drawer.Content className="flex flex-1 flex-col gap-5 p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <Drawer.Title
                         id={titleId}
                         className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground"
                       >
-                        导航
+                        目录
                       </Drawer.Title>
                       <Drawer.Description
                         id={descId}
                         className="mt-1 text-sm text-foreground"
                       >
-                        狐火 · 刷题 + 导图复习
+                        刷题轨 · 导图轨
                       </Drawer.Description>
                     </div>
                     <Drawer.Close
@@ -166,15 +173,22 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
                     </Drawer.Close>
                   </div>
 
-                  <nav className="flex flex-col border-t border-border/80" aria-label="主要">
-                    {NAV_ITEMS.map((item) => (
+                  {showSidebarGroups ? (
+                    <SidebarNav onNavigate={closeDrawer} />
+                  ) : null}
+
+                  <nav
+                    className="mt-auto flex flex-col border-t border-border/80 pt-3"
+                    aria-label="全局"
+                  >
+                    {DRAWER_GLOBAL_LINKS.map((item) => (
                       <Link
                         key={item.id}
                         href={item.href}
                         aria-current={current === item.id ? "page" : undefined}
-                        onClick={() => setOpen(false)}
+                        onClick={closeDrawer}
                         className={cn(
-                          "flex min-h-11 items-center justify-between border-b border-border/80 px-1 text-base outline-none",
+                          "flex min-h-11 items-center justify-between px-1 text-sm outline-none",
                           "focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset",
                           current === item.id
                             ? "font-medium text-foreground"
@@ -193,18 +207,12 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
                       href={GITHUB_HREF}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => setOpen(false)}
-                      className="flex min-h-11 items-center border-b border-border/80 px-1 text-base text-muted-foreground outline-none hover:text-foreground focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset"
+                      onClick={closeDrawer}
+                      className="flex min-h-11 items-center px-1 text-sm text-muted-foreground outline-none hover:text-foreground focus-visible:bg-muted/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset"
                     >
                       GitHub
                     </a>
                   </nav>
-
-                  {showSidebarGroups ? (
-                    <div className="border-t border-border/80 pt-4">
-                      <SidebarNav onNavigate={() => setOpen(false)} />
-                    </div>
-                  ) : null}
                 </Drawer.Content>
               </Drawer.Popup>
             </Drawer.Viewport>

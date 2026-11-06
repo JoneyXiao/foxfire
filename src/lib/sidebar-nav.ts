@@ -6,7 +6,10 @@ export type SidebarLink = {
   label: string;
   /** Optional mono badge (chapter no., category index). */
   badge?: string;
-  /** exact: only pathname === href (e.g. /mindmaps vs /mindmaps/ch15). */
+  /**
+   * exact (default): pathname === href only — e.g. `/mindmaps` vs `/mindmaps/ch15`.
+   * prefix: also match nested paths — e.g. `/practice` + `/practice/summary`.
+   */
   match?: "exact" | "prefix";
 };
 
@@ -14,7 +17,7 @@ export type SidebarGroup = {
   id: string;
   label: string;
   links: SidebarLink[];
-  /** Categories group starts collapsed on non-category routes. */
+  /** Categories group starts collapsed unless a child route is active. */
   collapsible?: boolean;
 };
 
@@ -61,11 +64,9 @@ export function getSidebarGroups(): SidebarGroup[] {
 }
 
 export function isSidebarLinkActive(pathname: string, link: SidebarLink): boolean {
-  if (link.match === "exact") {
-    return pathname === link.href;
-  }
   if (link.match === "prefix") {
     return pathname === link.href || pathname.startsWith(`${link.href}/`);
   }
-  return pathname === link.href || pathname.startsWith(`${link.href}/`);
+  // Default exact — prevents `/mindmaps` and `/mindmaps/ch*` both lighting up.
+  return pathname === link.href;
 }
