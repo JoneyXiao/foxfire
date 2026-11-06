@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ch16",
+    "chapter": 16,
+    "sectionId": "1.17",
+    "title": "执行核心面试题",
+    "shortTitle": "执行核心",
+    "branchCount": 11,
+    "stemCount": 123
+  },
+  {
+    "id": "ch17",
+    "chapter": 17,
+    "sectionId": "1.18",
+    "title": "意图识别面试题",
+    "shortTitle": "意图识别",
+    "branchCount": 10,
+    "stemCount": 95
+  },
+  {
+    "id": "ch18",
+    "chapter": 18,
+    "sectionId": "1.19",
+    "title": "上下文管理面试题",
+    "shortTitle": "上下文管理",
+    "branchCount": 8,
+    "stemCount": 48
+  },
+  {
+    "id": "ch19",
+    "chapter": 19,
+    "sectionId": "1.20",
+    "title": "评估和反馈面试题",
+    "shortTitle": "评估和反馈",
+    "branchCount": 7,
+    "stemCount": 80
+  },
+  {
+    "id": "ch20",
+    "chapter": 20,
+    "sectionId": "1.21",
+    "title": "检索面试题",
+    "shortTitle": "检索",
+    "branchCount": 11,
+    "stemCount": 161
+  }
+]

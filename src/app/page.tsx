@@ -2,6 +2,7 @@ import { AppShell } from "@/components/AppShell";
 import { IndexRow, IndexSection } from "@/components/IndexRow";
 import { TodayReview } from "@/components/TodayReview";
 import { categories } from "@/lib/categories";
+import { mindmapIndex } from "@/data/mindmaps";
 import { countByCategory, totalQuestions } from "@/data/questions";
 
 export default function HomePage() {
@@ -49,6 +50,32 @@ export default function HomePage() {
             title="练习进度"
             description="已练、收藏与复习队列"
           />
+          <IndexRow
+            href="/mindmaps"
+            badge="05"
+            title="Agent 导图"
+            description="16–20 章可拖拽复习画布（非题库）"
+          />
+        </IndexSection>
+
+        <IndexSection
+          label="导图复习"
+          action={
+            <span className="font-mono text-[0.7rem] tabular-nums text-muted-foreground">
+              {mindmapIndex.length} maps
+            </span>
+          }
+        >
+          {mindmapIndex.map((item) => (
+            <IndexRow
+              key={item.id}
+              href={`/mindmaps/${item.id}`}
+              badge={String(item.chapter)}
+              title={item.shortTitle}
+              description={`${item.title} · 专栏 ${item.sectionId}`}
+              meta={`${item.branchCount} 分支`}
+            />
+          ))}
         </IndexSection>
 
         <IndexSection
