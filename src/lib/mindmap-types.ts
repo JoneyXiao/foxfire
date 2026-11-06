@@ -13,6 +13,10 @@ export type MindmapChapter = {
   sectionId: string;
   title: string;
   shortTitle: string;
+  /** Original Geekbang mindmap image under /public */
+  imageSrc?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   tree: MindmapTreeNode;
 };
 
@@ -24,4 +28,5 @@ export type MindmapIndexEntry = {
   shortTitle: string;
   branchCount: number;
   stemCount: number;
+  imageSrc?: string;
 };
