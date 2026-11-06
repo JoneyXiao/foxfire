@@ -59,21 +59,14 @@ export default async function MindmapChapterPage({ params }: MindmapPageProps) {
             {chapter.title}
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            默认展示极客时间原图（与专栏 Wiki 一致）。也可切换「节点大纲」按层级浏览
+            可拖动节点、滚轮缩放、空白处平移。节点层级对齐极客时间原图，这是复习画布，不是答题页
             {entry
-              ? `（${entry.branchCount} 个分支 · ${entry.stemCount} 个题干节点）`
-              : ""}
-            。讲解气泡仅见于原图。
+              ? `（${entry.branchCount} 个分支 · ${entry.stemCount} 个题干节点）。`
+              : "。"}
           </p>
         </header>
 
-        <MindmapCanvas
-          tree={chapter.tree}
-          title={chapter.title}
-          imageSrc={chapter.imageSrc}
-          imageWidth={chapter.imageWidth}
-          imageHeight={chapter.imageHeight}
-        />
+        <MindmapCanvas tree={chapter.tree} title={chapter.title} />
 
         <nav aria-label="其他章节" className="border-t border-border/80 pt-4">
           <p className="mb-2 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted-foreground">

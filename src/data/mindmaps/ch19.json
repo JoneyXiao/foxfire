@@ -4,7 +4,6 @@
   "sectionId": "1.20",
   "title": "评估和反馈面试题",
   "shortTitle": "评估和反馈",
-  "imageSrc": "/mindmaps/ch19.jpg",
   "tree": {
     "id": "ch19-root",
     "label": "评估和反馈面试题",
@@ -460,7 +459,5 @@
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 8013
+  }
 }

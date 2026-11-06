@@ -4,7 +4,6 @@
   "sectionId": "1.18",
   "title": "意图识别面试题",
   "shortTitle": "意图识别",
-  "imageSrc": "/mindmaps/ch17.jpg",
   "tree": {
     "id": "ch17-root",
     "label": "意图识别面试题",
@@ -556,7 +555,5 @@
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 7288
+  }
 }

@@ -4,7 +4,6 @@
   "sectionId": "1.19",
   "title": "上下文管理面试题",
   "shortTitle": "上下文管理",
-  "imageSrc": "/mindmaps/ch18.jpg",
   "tree": {
     "id": "ch18-root",
     "label": "上下文管理面试题",
@@ -307,7 +306,5 @@
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 7278
+  }
 }

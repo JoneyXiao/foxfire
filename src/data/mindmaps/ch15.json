@@ -4,7 +4,6 @@
   "sectionId": "1.16",
   "title": "Agent 面试题（Agent 模拟面试总览）",
   "shortTitle": "模拟面试总览",
-  "imageSrc": "/mindmaps/ch15.jpg",
   "tree": {
     "id": "ch15-root",
     "label": "Agent模拟面试题 · 极客时间专栏·AI Agent 系统设计面试现场",
@@ -1614,7 +1613,5 @@
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 4483
+  }
 }

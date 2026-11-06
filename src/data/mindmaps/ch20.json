@@ -4,7 +4,6 @@
   "sectionId": "1.21",
   "title": "检索面试题",
   "shortTitle": "检索",
-  "imageSrc": "/mindmaps/ch20.jpg",
   "tree": {
     "id": "ch20-root",
     "label": "检索面试题",
@@ -893,7 +892,5 @@
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 14707
+  }
 }

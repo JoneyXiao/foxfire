@@ -4,7 +4,6 @@
   "sectionId": "1.17",
   "title": "执行核心面试题",
   "shortTitle": "执行核心",
-  "imageSrc": "/mindmaps/ch16.jpg",
   "tree": {
     "id": "ch16-root",
     "label": "执行核心面试题",
@@ -752,7 +751,5 @@
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 15110
+  }
 }
