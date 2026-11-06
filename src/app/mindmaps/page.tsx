@@ -19,7 +19,7 @@ export default function MindmapsIndexPage() {
             Agent 导图
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            极客时间专栏 Wiki 里第 16–20 章原文只有思维导图、没有问答页。这里做成可拖拽、可缩放的复习画布，不计入题库题数，也不进入 SRS / 进度。
+            极客时间专栏 Wiki 里第 15–20 章原文只有思维导图、没有问答页。这里做成可拖拽、可缩放的复习画布，不计入题库题数，也不进入 SRS / 进度。
           </p>
         </header>
 
@@ -55,7 +55,7 @@ export default function MindmapsIndexPage() {
             说明
           </h2>
           <ul className="max-w-2xl space-y-1.5 text-sm text-muted-foreground">
-            <li>第 15 章总览图本轮不上线（与专章重叠，仅作导读）。</li>
+            <li>第 15 章为总览图，与 16–18 专章题干有重叠，仍单独成画布便于对照原图。</li>
             <li>经典 150 题 / 14 分类练习入口不变；本页不是刷题分类。</li>
             <li>节点文案来自校对后的导图题干，不编造标签或占位答案。</li>
           </ul>
