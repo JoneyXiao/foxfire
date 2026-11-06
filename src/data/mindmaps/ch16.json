@@ -1,0 +1,706 @@
+{
+  "id": "ch16",
+  "chapter": 16,
+  "sectionId": "1.17",
+  "title": "执行核心面试题",
+  "shortTitle": "执行核心",
+  "tree": {
+    "id": "ch16-root",
+    "label": "执行核心面试题",
+    "kind": "root",
+    "children": [
+      {
+        "id": "ch16-b1",
+        "label": "Plan vs Workflow",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b1-l1",
+            "label": "你怎么理解 Agent 里的 Plan？它和普通 Workflow 有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b1-l2",
+            "label": "很多人说 Plan 就是「先分析、再执行、最后总结」，你觉得这种说法有什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b1-l3",
+            "label": "既然 ReAct 可以边想边做，为什么还需要显式 Plan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b1-l4",
+            "label": "为什么你的 Agent 用 Plan 而不是用 Workflow？我觉得你这个 Agent 就是在用 workflow，为啥要 Plan？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b2",
+        "label": "G4C · Goal",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b2-l1",
+            "label": "你提到过 G4C Plan 模型，分别是哪几个部分？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b2-l2",
+            "label": "Goal 在 Plan 里面解决什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b2-l3",
+            "label": "怎么判断 Goal 定义得好不好？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b2-l4",
+            "label": "你的 Goal 包含什么字段？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b2-l5",
+            "label": "用户说「帮我优化一下项目」，你如何把这个模糊目标转成一个可执行的 Goal？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b3",
+        "label": "G4C · Context",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b3-l1",
+            "label": "Context 在 Plan 中具体包含什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b3-l2",
+            "label": "Plan 里面怎么区分事实、假设和缺失信息？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b3-l3",
+            "label": "你怎么确保后续执行不会忘掉硬约束？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b3-l4",
+            "label": "你能百分百保证不会忘掉吗？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b4",
+        "label": "G4C · Choice",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b4-l1",
+            "label": "你会让模型生成多少候选路径？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b4-l2",
+            "label": "你如何让模型阐述「为什么选择这条路径」？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b4-l3",
+            "label": "怎么让模型判定哪一个才是最佳路径？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b4-l4",
+            "label": "模型判定的最佳路径就一定是最佳路径吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b4-l5",
+            "label": "怎么提高大模型选择最佳路径的准确性？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b5",
+        "label": "G4C · Checkpoint / Correction",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b5-l1",
+            "label": "Checkpoint 应该怎么设计？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b5-l2",
+            "label": "每一步都要有 Checkpoint 吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b5-l3",
+            "label": "Checkpoint 是固定的/静态的吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b5-l4",
+            "label": "你的 Plan 里面有多少个 Checkpoint？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b5-l5",
+            "label": "如果少设置了 Checkpoint，会发生什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b5-l6",
+            "label": "Correction 和 Checkpoint 有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b5-l7",
+            "label": "Correction 常见有哪些类型？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b6",
+        "label": "Plan Prompt 与质量评估",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b6-l1",
+            "label": "Plan 的 Prompt 怎么写的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l2",
+            "label": "你会如何约束大模型不要直接回答用户问题，而是先生成 Plan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l3",
+            "label": "能不能百分百保证先生成 Plan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l4",
+            "label": "你如何让大模型不要输出「分析需求、执行任务、总结结果」这种空泛步骤？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l5",
+            "label": "在 Plan Prompt 里，如何要求模型设计 Checkpoint？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l6",
+            "label": "能百分百保证一定会设置 Checkpoint 吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l7",
+            "label": "如果用户信息不足，你怎么让 Planner 判断是先追问，还是先执行可确定部分？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l8",
+            "label": "怎么防止大模型将关键参数识别成非关键参数？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l9",
+            "label": "Plan 生成之后，你会直接执行吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l10",
+            "label": "你怎么知道一个 Plan 好不好？有哪些线上评估指标？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l11",
+            "label": "Plan 的线上指标怎么设计？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l12",
+            "label": "Plan 完成了，是否代表用户目标一定完成了？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l13",
+            "label": "什么情况下会出现 Plan 完成了，但是用户目标并没有完成的场景？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l14",
+            "label": "那究竟怎么判定用户目标一定达成了？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l15",
+            "label": "怎么判断一个 Plan 是否违反了用户硬约束？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b6-l16",
+            "label": "怎么评估 Checkpoint 是否足够？检查点是不是越多越好？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b7",
+        "label": "DAG Plan",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b7-l1",
+            "label": "DAG Plan 适合解决什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l2",
+            "label": "你会给 DAG Plan 的每个 node 设计哪些字段？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l3",
+            "label": "某个节点失败了，它的下游/后续节点都要重新执行吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l4",
+            "label": "如果某个节点失败了，怎么判断哪些下游节点需要重新执行？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l5",
+            "label": "能不能从头开始执行？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l6",
+            "label": "DAG 里面怎么检查循环依赖？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l7",
+            "label": "如果出现循环依赖了，怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l8",
+            "label": "那怎么评估什么时候用 DAG，什么时候用线性呢？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b7-l9",
+            "label": "DAG Plan 是不是一定比线性 Plan 好？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b8",
+        "label": "Replan",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b8-l1",
+            "label": "你怎么理解 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l2",
+            "label": "什么情况下会触发 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l3",
+            "label": "Replan 的时候，怎么避免目标漂移？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l4",
+            "label": "Checkpoint 没通过时，你怎么判断是当前步骤问题，还是原计划问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l5",
+            "label": "如果用户突然说「刚才那个要求不要了」，你怎么处理原计划？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l6",
+            "label": "如果任务执行一半，用户补充了一个硬约束，你怎么判断影响范围？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l7",
+            "label": "怎么确定从哪一步开始 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l8",
+            "label": "如何避免局部 Replan 复用错误的中间结果？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l9",
+            "label": "Replan 时如何处理硬约束和软约束？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l10",
+            "label": "Replan Prompt 怎么写？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b8-l11",
+            "label": "什么时候 Replan 应该转为向用户澄清？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b9",
+        "label": "TCC 式 Replan",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b9-l1",
+            "label": "你提到过类似 TCC 的 Replan 思路，核心是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l2",
+            "label": "TCC 的思路和验证 Plan 可行性有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l3",
+            "label": "什么样的节点值得 Try？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l4",
+            "label": "Try 阶段具体 Try 什么？把新计划执行一遍？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l5",
+            "label": "如果 Try 失败了，是重新 Replan，还是直接中断？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l6",
+            "label": "Confirm 阶段做什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l7",
+            "label": "Cancel 阶段做什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b9-l8",
+            "label": "TCC Replan 适合哪些场景？不适合哪些场景？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b10",
+        "label": "设计取舍",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b10-l1",
+            "label": "你觉得随着大模型能力越来越强，显式 Plan 还有必要吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b10-l2",
+            "label": "Plan 是应该展示给用户看，还是作为内部状态隐藏起来？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b10-l3",
+            "label": "Replan 越频繁是不是说明 Agent 越智能？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b10-l4",
+            "label": "如果用户目标本身不断变化，你怎么区分正常需求变更和 Agent 目标漂移？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b10-l5",
+            "label": "你怎么证明你的 Plan/Replan 机制真的提升了任务成功率？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch16-b11",
+        "label": "TAO / ReAct",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch16-b11-l1",
+            "label": "你怎么理解 TAO？T、A、O 分别是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l2",
+            "label": "TAO 和普通的大模型问答有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l3",
+            "label": "TAO 和 ReAct 是什么关系？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l4",
+            "label": "Thought 是不是就是让大模型推理？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l5",
+            "label": "Action 在 Agent 里面通常对应什么？它和普通函数调用有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l6",
+            "label": "TAO 循环什么时候应该停止？你会设计哪些停止条件？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l7",
+            "label": "怎么保证 TAO 一定会停下来？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l8",
+            "label": "你会在 Thought 阶段要求模型输出哪些内容？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l9",
+            "label": "你怎么避免模型在 Thought 阶段发散？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l10",
+            "label": "你会不会让模型输出「为什么选择这个 Action」？为什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l11",
+            "label": "如果模型 Thought 的结论没有证据，你怎么处理？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l12",
+            "label": "如果模型已经可以回答用户问题了，但它还继续调用工具，你认为是什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l13",
+            "label": "你怎么判断一个 Thought 的质量好不好？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l14",
+            "label": "如果 Thought 判断「需要查日志」，但系统没有日志工具，你会让 Agent 怎么做？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l15",
+            "label": "Thought 是否应该允许模型修改用户目标？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l16",
+            "label": "Action 的粒度是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l17",
+            "label": "工具粒度太细会有什么问题？工具粒度太粗又会有什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l18",
+            "label": "怎么划定 Action 的边界？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l19",
+            "label": "Action 的名称会不会影响/怎么影响大模型选择 Action 的准确率？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l20",
+            "label": "怎么给 Action 取一个好名字？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l21",
+            "label": "一个 Action 描述里面至少应该包含哪些字段？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l22",
+            "label": "Action 描述和 API 文档有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l23",
+            "label": "你的 Agent 有多少个 Action？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l24",
+            "label": "Action 太多时，怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l25",
+            "label": "如果模型连续选错 Action，你怎么排查？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l26",
+            "label": "如何评估 Action 选择准确率？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l27",
+            "label": "如果 Observation 和模型原来的假设冲突，Agent 应该怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l28",
+            "label": "如果工具返回空结果，模型应该怎么解释？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l29",
+            "label": "如果多个工具返回结果互相矛盾，你怎么仲裁？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l30",
+            "label": "让你实现一个最小 TAO Runtime，你会怎么设计？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l31",
+            "label": "TAO 循环的状态要存哪些内容？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l32",
+            "label": "每一轮 Thought、Action、Observation 是否都要落库？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l33",
+            "label": "如果任务中断了，怎么恢复？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l34",
+            "label": "如何限制最大 Action 调用 / Thinking / 循环次数？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l35",
+            "label": "在多 Agent 协作架构里面，怎么控制整体的循环次数 / thinking 次数？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l36",
+            "label": "怎么确定最大循环次数的阈值？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l37",
+            "label": "如何限制总 token 消耗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l38",
+            "label": "如何避免 TAO 死循环？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l39",
+            "label": "如何处理工具调用超时？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l40",
+            "label": "工具调用怎么容错？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l41",
+            "label": "工具失败后，怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l42",
+            "label": "如果意图识别错了，TAO 循环能不能自动纠正？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l43",
+            "label": "你怎么评估一个 TAO Agent 的效果？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l44",
+            "label": "Thought 质量怎么评估？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l45",
+            "label": "Action 选择准确率怎么评估？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l46",
+            "label": "Observation 解释质量怎么评估？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l47",
+            "label": "如何构建 TAO 的测试集？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l48",
+            "label": "线上反馈怎么反哺 TAO Prompt 和工具描述？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch16-b11-l49",
+            "label": "如果评估结果显示 Action 选择准确率低，你会怎么优化？",
+            "kind": "leaf"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -210,3 +210,36 @@
   content-visibility: auto;
   contain-intrinsic-size: auto 4.5rem;
 }
+
+/* Foxfire React Flow mindmap (W1) */
+.foxfire-mindmap.react-flow {
+  --xy-background-color: transparent;
+  --xy-node-border-radius: var(--radius);
+  --xy-node-boxshadow-default: none;
+  --xy-node-boxshadow-selected: none;
+  --xy-handle-background-color: var(--muted-foreground);
+  --xy-selection-background-color: color-mix(in oklab, var(--primary) 12%, transparent);
+  --xy-selection-border-color: var(--primary);
+  --xy-minimap-background-color: var(--card);
+  --xy-controls-button-background-color: var(--card);
+  --xy-controls-button-color: var(--foreground);
+  --xy-controls-button-border-color: var(--border);
+  --xy-controls-box-shadow: none;
+  background: var(--background);
+}
+
+.foxfire-mindmap .react-flow__attribution {
+  display: none;
+}
+
+.foxfire-mindmap .react-flow__controls-button {
+  fill: var(--foreground);
+}
+
+.foxfire-mindmap .react-flow__controls-button:hover {
+  background: var(--muted) !important;
+}
+
+.foxfire-mindmap .react-flow__edge-path {
+  stroke: var(--border);
+}

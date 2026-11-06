@@ -8,12 +8,13 @@ import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
-export type NavId = "home" | "search" | "progress" | "practice" | "mock";
+export type NavId = "home" | "search" | "progress" | "practice" | "mock" | "mindmaps";
 
 export const NAV_ITEMS: { href: string; id: NavId; label: string }[] = [
   { href: "/", id: "home", label: "题库" },
   { href: "/practice", id: "practice", label: "会话" },
   { href: "/mock", id: "mock", label: "模拟" },
+  { href: "/mindmaps", id: "mindmaps", label: "导图" },
   { href: "/search", id: "search", label: "搜索" },
   { href: "/progress", id: "progress", label: "进度" },
 ];

@@ -1,0 +1,310 @@
+{
+  "id": "ch18",
+  "chapter": 18,
+  "sectionId": "1.19",
+  "title": "上下文管理面试题",
+  "shortTitle": "上下文管理",
+  "tree": {
+    "id": "ch18-root",
+    "label": "上下文管理面试题",
+    "kind": "root",
+    "children": [
+      {
+        "id": "ch18-b1",
+        "label": "整体设计",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b1-l1",
+            "label": "你的 Agent 中一共有哪些类型的 Context？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b1-l2",
+            "label": "你的上下文里面究竟有哪些内容？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b1-l3",
+            "label": "请完整描述一条 Context 的生命周期",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b1-l4",
+            "label": "上下文管理是一个独立模块，还是分散在意图识别、Plan、ReAct、RAG 等模块里面？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b1-l5",
+            "label": "假设让你从零设计一个通用 Agent 的上下文管理系统，你会怎么划分核心模块和数据结构？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b2",
+        "label": "分层上下文与统一抽象",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b2-l1",
+            "label": "你的上下文为什么要分层？全部放在一个数据库或者一个大 JSON 里面有什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b2-l2",
+            "label": "你提到可以用 Context Window = f(Context) 来统一抽象，那么这个函数 f 具体做什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b2-l3",
+            "label": "同一条信息是否可能同时存在于多个层级？如何避免数据重复和版本冲突？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b2-l4",
+            "label": "分层越多是不是越好？层次过多会带来什么复杂度？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b2-l5",
+            "label": "那么一般需要多少层比较好？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b3",
+        "label": "上下文窗口的动态编排",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b3-l1",
+            "label": "动态编排中，你怎么决定哪些信息完整保留、哪些进行压缩、哪些完全不加载？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b3-l2",
+            "label": "你具体是怎么动态编排的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b3-l3",
+            "label": "除了剩余窗口大小，你还会考虑哪些信号？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b3-l4",
+            "label": "假设模型支持 128K Context Window，你会直接放满吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b3-l5",
+            "label": "你怎么判断当前步骤真正需要哪些上下文？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b3-l6",
+            "label": "你怎么分配 Token Budget？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b4",
+        "label": "摘要与细节召回",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b4-l1",
+            "label": "为什么摘要必然会丢失细节？有没有一种摘要算法能够做到完全无损？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b4-l2",
+            "label": "多轮对话摘要、Agent 输出摘要、任务状态摘要和关键事实提取有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b4-l3",
+            "label": "为什么你会优先保留用户原始输入，而不是优先保留 Agent 的历史回答？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b4-l4",
+            "label": "摘要内容与召回出来的原始细节发生冲突时，你相信哪一个？怎么做仲裁？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b5",
+        "label": "指代与边界",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b5-l1",
+            "label": "跨越数天甚至数周的指代问题，怎么解决？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b5-l2",
+            "label": "用户输入规范化和上下文管理的边界在哪里？哪些问题应该前置处理，哪些必须进入 ReAct 阶段处理？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b5-l3",
+            "label": "指代关系的推理结果应该怎么处理？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b6",
+        "label": "用户画像",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b6-l1",
+            "label": "你的用户画像包含哪些维度？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l2",
+            "label": "用户画像怎么提取？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l3",
+            "label": "为什么要采用实时提取与离线提取相结合的方式？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l4",
+            "label": "用户说一次「我最近不喜欢苹果」，你怎么判断这是偶发情绪，还是长期偏好变化？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l5",
+            "label": "短期、中期和长期用户画像分别解决什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l6",
+            "label": "你设计的画像稳定性评分会考虑哪些信号？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l7",
+            "label": "不同来源的画像冲突了，你怎么裁决？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l8",
+            "label": "新画像与旧画像发生冲突时，怎么裁决？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l9",
+            "label": "用户画像应该放在 System Prompt 的什么位置？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l10",
+            "label": "用户画像内容很多怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l11",
+            "label": "怎么动态筛选用户画像？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b6-l12",
+            "label": "怎么评估用户画像质量？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b7",
+        "label": "长任务与上下文漂移",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b7-l1",
+            "label": "长任务漂移的原因是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b7-l2",
+            "label": "你的解决方案是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b7-l3",
+            "label": "上下文污染和细节丢失有什么区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b7-l4",
+            "label": "为什么错误会不断积累？怎么缓解？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b7-l5",
+            "label": "怎样防止恢复任务时把一个错误中间结果当成可信事实继续使用？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b7-l6",
+            "label": "Checkpoint 中应该保存哪些运行时状态，才能支持任务恢复？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b7-l7",
+            "label": "任务中断后恢复时，你如何判断哪些 Context 仍然有效，哪些已经过期？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch18-b8",
+        "label": "评估与测试",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch18-b8-l1",
+            "label": "你怎么知道自己的上下文选择策略是有效的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b8-l2",
+            "label": "你会设计哪些上下文管理指标？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b8-l3",
+            "label": "怎样评估一条被注入窗口的 Context 是否真正对最终决策产生了价值？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b8-l4",
+            "label": "上下文召回的 Precision 和 Recall 哪一个更重要？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b8-l5",
+            "label": "如何构建上下文管理测试集？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch18-b8-l6",
+            "label": "线上如何发现 Agent「记错了上下文」的问题，而不是模型本身能力不足？",
+            "kind": "leaf"
+          }
+        ]
+      }
+    ]
+  }
+}

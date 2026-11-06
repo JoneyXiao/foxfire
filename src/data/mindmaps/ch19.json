@@ -1,0 +1,463 @@
+{
+  "id": "ch19",
+  "chapter": 19,
+  "sectionId": "1.20",
+  "title": "评估和反馈面试题",
+  "shortTitle": "评估和反馈",
+  "tree": {
+    "id": "ch19-root",
+    "label": "评估和反馈面试题",
+    "kind": "root",
+    "children": [
+      {
+        "id": "ch19-b1",
+        "label": "评估内容",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b1-l1",
+            "label": "你说你们做了 Agent 评估，那你们到底评估什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l2",
+            "label": "你们有什么指标？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l3",
+            "label": "这么多指标，你最终到底看哪个？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l4",
+            "label": "到底是局部指标服从整体指标，还是局部指标必须同时满足？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l5",
+            "label": "哪些指标下降一点可以接受，哪些指标一点都不能下降？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l6",
+            "label": "Agent 最终回答错了，能说明是哪一步错了吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l7",
+            "label": "如果意图识别错了，但是最后碰巧回答对了，这个 Case 算成功还是失败？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l8",
+            "label": "如果工具选错了一次，后来 Replan 修回来了，怎么算？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l9",
+            "label": "检索结果很好，但是生成阶段幻觉了，这属于检索问题还是生成问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b1-l10",
+            "label": "Plan 执行了 10 步，前 9 步都正确，第 10 步失败，怎么评价？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch19-b2",
+        "label": "测试集",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b2-l1",
+            "label": "你刚才说有离线测试集，你们这个测试集是怎么来的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l2",
+            "label": "人工写的吗？谁来写？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l3",
+            "label": "线上真实用户输入有没有进入测试集？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l4",
+            "label": "能不能让大模型自动生成测试用例？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l5",
+            "label": "大模型自己生成测试题，再自己测试，会不会自娱自乐？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l6",
+            "label": "这不就是球员、裁判都是我的人，你测试还能有用吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l7",
+            "label": "如果让大模型生成测试用例，你怎么保证测试集质量？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l8",
+            "label": "Prompt 怎么写？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l9",
+            "label": "怎么让它生成边界 Case，而不是全是简单题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l10",
+            "label": "怎么生成反例？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l11",
+            "label": "怎么生成容易让 Agent 出错的 Case？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l12",
+            "label": "谁审核生成结果？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l13",
+            "label": "测试集中的每一个测试长什么样？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l14",
+            "label": "多轮对话怎么测？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l15",
+            "label": "上下文放在哪里？怎么模拟上下文？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l16",
+            "label": "如果依赖检索，Knowledge Base 版本怎么固定？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l17",
+            "label": "Expected Result 长什么样？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b2-l18",
+            "label": "一个开放式问题根本没有唯一答案怎么办？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch19-b3",
+        "label": "LLM-as-a-Judge",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b3-l1",
+            "label": "你们为什么用 LLM-as-a-Judge？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l2",
+            "label": "你们的 LLM-as-a-Judge 本质是什么？是一次大模型调用？是一个 workflow？还是一个子 Agent？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l3",
+            "label": "Judge 的输入是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l4",
+            "label": "你怎么知道 Judge 的结果是否准确？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l5",
+            "label": "你怎么测 Judge 本身的准确率？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l6",
+            "label": "Judge 是不是也有幻觉？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l7",
+            "label": "怎么降低 Judge 出错的几率？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l8",
+            "label": "Judge 自己判断错了怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l9",
+            "label": "Judge 和被测试模型用同一个模型行不行？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l10",
+            "label": "Judge 输出 8 分和 9 分有什么真实区别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b3-l11",
+            "label": "同一个结果跑两次 Judge，评分不一样怎么办？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch19-b4",
+        "label": "多轮与用户体验",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b4-l1",
+            "label": "多轮对话 Agent 怎么评价？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b4-l2",
+            "label": "平均轮数越少越好吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b4-l3",
+            "label": "用户愿意多聊是不是也说明体验好？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b4-l4",
+            "label": "怎么定义无效轮次？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b4-l5",
+            "label": "用户频繁纠正 Agent 怎么统计？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch19-b5",
+        "label": "线上反馈与业务指标",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b5-l1",
+            "label": "离线测试集是不是不代表真实流量？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l2",
+            "label": "你离线测试做到 95 分，为什么上线之后用户还是骂？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l3",
+            "label": "用户真正关心的东西是不是根本没进入评分标准？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l4",
+            "label": "回答「正确」和用户「满意」是一回事吗？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l5",
+            "label": "有多少用户真的会点赞/点踩？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l6",
+            "label": "不点的人怎么办？是满意还是不满意？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l7",
+            "label": "用户明明不满意但是直接退出了，你怎么知道？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l8",
+            "label": "所以你怎么知道用户到底喜不喜欢你的 Agent？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l9",
+            "label": "用户连续改口算不算负反馈？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l10",
+            "label": "用户说「不是这个意思」算不算？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l11",
+            "label": "用户重新问一次同样的问题呢？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l12",
+            "label": "用户要求转人工呢？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b5-l13",
+            "label": "如果这是一个电商导购 Agent，你会设计什么业务指标？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch19-b6",
+        "label": "因果归因与 A/B",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b6-l1",
+            "label": "你说优化之后用户满意度提升了 10%，怎么证明是你这次优化带来的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l2",
+            "label": "上线前后直接比较行不行？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l3",
+            "label": "怎么排除别的变量？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l4",
+            "label": "你们 A/B 怎么分流？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l5",
+            "label": "按请求分还是按用户分？为什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l6",
+            "label": "同一个用户一会 A 一会 B 会有什么问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l7",
+            "label": "能不能让同一个用户同时生成 A/B 两个答案比较？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b6-l8",
+            "label": "用户画像、历史记忆怎么处理？",
+            "kind": "leaf"
+          }
+        ]
+      },
+      {
+        "id": "ch19-b7",
+        "label": "闭环优化与自进化",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch19-b7-l1",
+            "label": "你说线上反馈会回流，具体怎么回？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l2",
+            "label": "你怎么知道是 Bad Case？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l3",
+            "label": "怎么定位是哪一个模块的问题？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l4",
+            "label": "Bad Case 是否直接加入测试集？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l5",
+            "label": "一个偶发 Case 要不要马上修改 Prompt？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l6",
+            "label": "什么样的问题才值得触发优化？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l7",
+            "label": "高风险业务是不是一次就必须处理？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l8",
+            "label": "谁来改？怎么改？谁来验证？谁来评估？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l9",
+            "label": "能不能自动修改 Prompt？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l10",
+            "label": "怎么证明新 Prompt 没有修 A 坏 B？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l11",
+            "label": "谁保证评估指标本身没有设计错？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l12",
+            "label": "如果优化 Agent 开始针对 Judge 刷分怎么办？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l13",
+            "label": "为什么不直接做成一个完全自动自进化系统？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l14",
+            "label": "出了事故怎么知道是哪一次自动修改导致的？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch19-b7-l15",
+            "label": "高风险业务敢不敢这么搞？",
+            "kind": "leaf"
+          }
+        ]
+      }
+    ]
+  }
+}
