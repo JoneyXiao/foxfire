@@ -59,7 +59,7 @@ export default async function MindmapChapterPage({ params }: MindmapPageProps) {
             {chapter.title}
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            可拖动节点、滚轮缩放、空白处平移。节点层级对齐极客时间原图，这是复习画布，不是答题页
+            可折叠分支、搜索高亮、平移缩放。节点层级对齐极客时间原图；这是复习画布，不是答题页
             {entry
               ? `（${entry.branchCount} 个分支 · ${entry.stemCount} 个题干节点）。`
               : "。"}

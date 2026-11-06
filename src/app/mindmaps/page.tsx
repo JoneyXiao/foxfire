@@ -19,7 +19,7 @@ export default function MindmapsIndexPage() {
             Agent 导图
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            极客时间专栏 Wiki 里第 15–20 章原文只有思维导图、没有问答页。这里做成可拖拽、可缩放的复习画布，不计入题库题数，也不进入 SRS / 进度。
+            极客时间专栏 Wiki 里第 15–20 章原文只有思维导图、没有问答页。这里做成可折叠、可搜索、可拖拽缩放的复习画布，不计入题库题数，也不进入 SRS / 进度。
           </p>
         </header>
 
