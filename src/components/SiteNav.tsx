@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import Link from "next/link";
 import { Drawer } from "@base-ui/react/drawer";
 import { MenuIcon, XIcon } from "lucide-react";
+import { SidebarNav } from "@/components/AppSidebar";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -23,6 +24,11 @@ const GITHUB_HREF = "https://github.com/JoneyXiao/foxfire";
 
 type SiteNavProps = {
   current?: NavId;
+  /**
+   * When true (default), mobile drawer also shows the dense sidebar groups
+   * (刷题 / 导图 / 分类) so narrow screens stay reachable without the lg sidebar.
+   */
+  showSidebarGroups?: boolean;
 };
 
 function NavLink({
@@ -64,7 +70,7 @@ function NavLink({
   );
 }
 
-export function SiteNav({ current }: SiteNavProps) {
+export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
   const [open, setOpen] = useState(false);
   const titleId = useId();
   const descId = useId();
@@ -193,6 +199,12 @@ export function SiteNav({ current }: SiteNavProps) {
                       GitHub
                     </a>
                   </nav>
+
+                  {showSidebarGroups ? (
+                    <div className="border-t border-border/80 pt-4">
+                      <SidebarNav onNavigate={() => setOpen(false)} />
+                    </div>
+                  ) : null}
                 </Drawer.Content>
               </Drawer.Popup>
             </Drawer.Viewport>

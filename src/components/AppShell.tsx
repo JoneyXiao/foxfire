@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AppSidebar } from "@/components/AppSidebar";
 import { SiteNav, type NavId } from "@/components/SiteNav";
 import { SHELL_MAX_WIDTH_CLASS } from "@/lib/shell";
 import { questionThumbBarClearanceClass } from "@/lib/thumb-bar";
@@ -11,9 +12,19 @@ type AppShellProps = {
   current?: NavId;
   /** Reserve space under SiteFooter for the fixed mobile QuestionThumbBar. */
   clearThumbBar?: boolean;
+  /**
+   * Left sticky sidebar (lg+). Default true.
+   * Set false on mindmap canvas pages so the React Flow desk stays full width.
+   */
+  sidebar?: boolean;
 };
 
-export function AppShell({ children, current, clearThumbBar = false }: AppShellProps) {
+export function AppShell({
+  children,
+  current,
+  clearThumbBar = false,
+  sidebar = true,
+}: AppShellProps) {
   return (
     <div
       className={cn(
@@ -44,7 +55,7 @@ export function AppShell({ children, current, clearThumbBar = false }: AppShellP
               Foxfire
             </span>
           </Link>
-          <SiteNav current={current} />
+          <SiteNav current={current} showSidebarGroups={sidebar} />
         </div>
       </header>
       <main id="content" className="flex-1 scroll-mt-14">
@@ -52,9 +63,11 @@ export function AppShell({ children, current, clearThumbBar = false }: AppShellP
           className={cn(
             "mx-auto w-full px-4 py-7 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-9 sm:pl-[max(1.5rem,env(safe-area-inset-left))] sm:pr-[max(1.5rem,env(safe-area-inset-right))]",
             SHELL_MAX_WIDTH_CLASS,
+            sidebar && "lg:flex lg:items-start lg:gap-8",
           )}
         >
-          {children}
+          {sidebar ? <AppSidebar /> : null}
+          <div className={cn(sidebar && "min-w-0 flex-1")}>{children}</div>
         </div>
       </main>
       <footer className="mt-auto border-t border-border/70">

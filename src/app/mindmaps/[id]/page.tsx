@@ -38,7 +38,7 @@ export default async function MindmapChapterPage({ params }: MindmapPageProps) {
   const entry = mindmapIndex.find((item) => item.id === id);
 
   return (
-    <AppShell current="mindmaps">
+    <AppShell current="mindmaps" sidebar={false}>
       <div className="space-y-6">
         <nav
           className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
