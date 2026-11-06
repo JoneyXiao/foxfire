@@ -15,6 +15,7 @@ type AppShellProps = {
   /**
    * Left sticky sidebar (lg+). Default true.
    * Set false on mindmap canvas pages so the React Flow desk stays full width.
+   * Mobile drawer always keeps SidebarNav groups regardless of this flag.
    */
   sidebar?: boolean;
 };
@@ -55,7 +56,8 @@ export function AppShell({
               Foxfire
             </span>
           </Link>
-          <SiteNav current={current} showSidebarGroups={sidebar} />
+          {/* Mobile drawer always includes SidebarNav groups; desktop aside is gated by `sidebar`. */}
+          <SiteNav current={current} />
         </div>
       </header>
       <main id="content" className="flex-1 scroll-mt-14">
@@ -80,7 +82,7 @@ export function AppShell({
           <p>
             <strong className="font-medium text-foreground">狐火</strong>
             {" · "}
-            150 题刷题 + Agent 导图复习 · 进度只留在本机
+            刷题轨 + 导图轨 · 进度只留在本机
             {" · "}
             <a
               href="https://github.com/JoneyXiao/foxfire"

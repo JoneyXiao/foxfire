@@ -57,17 +57,19 @@ function SidebarLinkRow({
 function SidebarGroupBlock({
   group,
   pathname,
+  hasActiveChild,
   onNavigate,
 }: {
   group: SidebarGroup;
   pathname: string;
+  hasActiveChild: boolean;
   onNavigate?: () => void;
 }) {
-  const hasActiveChild = group.links.some((link) =>
-    isSidebarLinkActive(pathname, link),
-  );
+  // Collapsible groups (分类) default closed unless a child route is active.
+  // Do not force-open on `/`. Parent remounts this block when active-child
+  // flips so SPA navigations re-apply the default without an effect.
   const [open, setOpen] = useState(
-    () => !group.collapsible || hasActiveChild || pathname === "/",
+    () => !group.collapsible || hasActiveChild,
   );
 
   const body = (
@@ -128,14 +130,24 @@ export function SidebarNav({ className, onNavigate }: SidebarNavProps) {
       aria-label="目录"
       className={cn("flex flex-col gap-6", className)}
     >
-      {groups.map((group) => (
-        <SidebarGroupBlock
-          key={group.id}
-          group={group}
-          pathname={pathname}
-          onNavigate={onNavigate}
-        />
-      ))}
+      {groups.map((group) => {
+        const hasActiveChild = group.links.some((link) =>
+          isSidebarLinkActive(pathname, link),
+        );
+        return (
+          <SidebarGroupBlock
+            key={
+              group.collapsible
+                ? `${group.id}:${hasActiveChild ? "on" : "off"}`
+                : group.id
+            }
+            group={group}
+            pathname={pathname}
+            hasActiveChild={hasActiveChild}
+            onNavigate={onNavigate}
+          />
+        );
+      })}
     </nav>
   );
 }
