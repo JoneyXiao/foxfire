@@ -23,21 +23,7 @@ type AppShellProps = {
 function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border/70">
-      <div className="flex w-full flex-col gap-2 px-4 py-5 text-sm text-muted-foreground sm:px-6">
-        <p>
-          <strong className="font-medium text-foreground">狐火</strong>
-          {" · "}
-          150 题刷题 + Agent 导图复习 · 进度只留在本机
-          {" · "}
-          <a
-            href="https://github.com/JoneyXiao/foxfire"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline-offset-2 hover:text-foreground hover:underline"
-          >
-            GitHub
-          </a>
-        </p>
+      <div className="flex w-full flex-col gap-2 px-4 py-5 text-sm text-muted-foreground sm:px-11">
         <p className="max-w-3xl text-xs leading-relaxed opacity-90">
           本站为个人面试练习工具：经典十四分类 150 题刷题（含间隔复习）；第 15–20 章
           Agent 导图为复习画布，不入题库。题库与导图参考极客知识库「AI
@@ -108,7 +94,7 @@ export function AppShell({
           )}
         >
           <main id="content" className="flex-1 scroll-mt-14">
-            <div className="px-4 py-7 sm:px-6 sm:py-9">{children}</div>
+            <div className="px-4 py-7 sm:px-11 sm:py-9">{children}</div>
           </main>
           <SiteFooter />
         </div>

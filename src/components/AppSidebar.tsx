@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -101,11 +101,11 @@ function SidebarGroupBlock({
         )}
       >
         <span>{group.label}</span>
-        <ChevronDownIcon
+        <ChevronRightIcon
           aria-hidden="true"
           className={cn(
             "size-3.5 shrink-0 transition-transform",
-            open && "rotate-180",
+            open && "rotate-90",
           )}
         />
       </CollapsibleTrigger>
@@ -154,6 +154,7 @@ export function AppSidebar({ className }: { className?: string }) {
       <div
         className={cn(
           "sticky top-[calc(3rem+env(safe-area-inset-top))] max-h-[calc(100svh-3rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain",
+          "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           "py-7 pr-4 sm:py-9",
           "bg-background",
         )}
