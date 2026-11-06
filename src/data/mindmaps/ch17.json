@@ -4,559 +4,562 @@
   "sectionId": "1.18",
   "title": "意图识别面试题",
   "shortTitle": "意图识别",
-  "imageSrc": "/mindmaps/ch17.jpg",
   "tree": {
     "id": "ch17-root",
     "label": "意图识别面试题",
     "kind": "root",
     "children": [
       {
-        "id": "ch17-b-0",
-        "label": "Slot Filling",
+        "id": "ch17-s0",
+        "label": "什么是 slot-filling？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-0-l-0",
-            "label": "什么是 slot-filling？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-1",
+            "id": "ch17-s1",
             "label": "你具体是怎么实现的？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-0-l-2",
+            "id": "ch17-s2",
             "label": "Prompt 是怎么写的？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-0-l-3",
-            "label": "为什么意图识别要结合 Slot Filling？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-4",
-            "label": "Slot 是怎么定义的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-5",
+            "id": "ch17-s5",
             "label": "不同意图对应的 Slot 一样吗？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-0-l-6",
-            "label": "你怎么知道某个意图需要什么参数？",
-            "kind": "leaf"
+            "id": "ch17-s4",
+            "label": "Slot 是怎么定义的？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s6",
+                "label": "你怎么知道某个意图需要什么参数？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch17-0-l-7",
-            "label": "怎么保证大模型一定会识别这些参数？",
-            "kind": "leaf"
+            "id": "ch17-s3",
+            "label": "为什么意图识别要结合 Slot Filling？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s7",
+                "label": "怎么保证大模型一定会识别这些参数？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s9",
+                    "label": "怎么避免 Slot 不完整？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch17-s8",
+                "label": "怎么判断必填 Slot 是否完整？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s11",
+                    "label": "怎么补全 Slot？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch17-s10",
+                    "label": "Slot 缺失的时候，怎么办？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch17-s12",
+                    "label": "如果没识别出来，怎么办？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch17-s13",
+                        "label": "重试也失败怎么办？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch17-0-l-8",
-            "label": "怎么判断必填 Slot 是否完整？",
-            "kind": "leaf"
+            "id": "ch17-s15",
+            "label": "你们系统里的意图集合是怎么设计出来的？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s16",
+                "label": "线上新增一个业务意图，你怎么接入？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s17",
+                "label": "新增意图后怎么避免影响老意图准确率？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch17-0-l-9",
-            "label": "怎么避免 Slot 不完整？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-10",
-            "label": "Slot 缺失的时候，怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-11",
-            "label": "怎么补全 Slot？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-12",
-            "label": "如果没识别出来，怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-0-l-13",
-            "label": "重试也失败怎么办？",
+            "id": "ch17-s18",
+            "label": "意图识别是不是就是从一堆枚举里面选一个？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-1",
-        "label": "意图体系与实现路径",
+        "id": "ch17-s14",
+        "label": "你的意图识别是怎么做的？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-1-l-0",
-            "label": "你的意图识别是怎么做的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-1",
-            "label": "你们系统里的意图集合是怎么设计出来的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-2",
-            "label": "线上新增一个业务意图，你怎么接入？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-3",
-            "label": "新增意图后怎么避免影响老意图准确率？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-4",
-            "label": "意图识别是不是就是从一堆枚举里面选一个？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-5",
-            "label": "先调用轻量级大模型的意义在哪里？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-6",
-            "label": "为什么要先调用轻量级大模型？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-7",
+            "id": "ch17-s21",
             "label": "多少比例会在这个阶段识别出来？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s22",
+                "label": "你是怎么计算的？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch17-1-l-8",
-            "label": "你是怎么计算的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-9",
+            "id": "ch17-s23",
             "label": "你是怎么评估轻量级大模型识别的效果的？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-1-l-10",
-            "label": "调用轻量级大模型的耗时大概多少？",
-            "kind": "leaf"
+            "id": "ch17-s20",
+            "label": "为什么要先调用轻量级大模型？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s19",
+                "label": "先调用轻量级大模型的意义在哪里？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s24",
+                "label": "调用轻量级大模型的耗时大概多少？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch17-1-l-11",
-            "label": "只用轻量级模型是否可以？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-1-l-12",
+            "id": "ch17-s26",
             "label": "为什么不直接调用重量级大模型？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s25",
+                "label": "只用轻量级模型是否可以？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s27",
+                "label": "调用重量级大模型的耗时大概多少？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s30",
+                "label": "大模型输出的 confidence 可信吗？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s31",
+                    "label": "怎么知道大模型的 confidence 是否可信？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch17-1-l-13",
-            "label": "调用重量级大模型的耗时大概多少？",
-            "kind": "leaf"
+            "id": "ch17-s29",
+            "label": "置信度（Confidence）是什么？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s32",
+                "label": "confidence 阈值怎么设置？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s33",
+                    "label": "这个阈值是怎么来的？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch17-s34",
+                "label": "置信度低的时候怎么办？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch17-1-l-14",
+            "id": "ch17-s46",
+            "label": "指代消解这种，大模型本身不就是能够解决吗？为什么还需要专门处理？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s35",
+                "label": "置信度中等的时候，是澄清还是升级模型？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s37",
+                "label": "意图识别在 Agent 系统里到底解决什么问题？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch17-s28",
             "label": "你的意图识别还可以怎么改进？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-2",
-        "label": "置信度",
+        "id": "ch17-s36",
+        "label": "为什么要做意图识别？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-2-l-0",
-            "label": "置信度（Confidence）是什么？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-2-l-1",
-            "label": "大模型输出的 confidence 可信吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-2-l-2",
-            "label": "怎么知道大模型的 confidence 是否可信？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-2-l-3",
-            "label": "confidence 阈值怎么设置？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-2-l-4",
-            "label": "这个阈值是怎么来的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-2-l-5",
-            "label": "置信度低的时候怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-2-l-6",
-            "label": "置信度中等的时候，是澄清还是升级模型？",
-            "kind": "leaf"
-          }
-        ]
-      },
-      {
-        "id": "ch17-b-3",
-        "label": "为什么要做意图识别",
-        "kind": "branch",
-        "children": [
-          {
-            "id": "ch17-3-l-0",
-            "label": "为什么要做意图识别？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-3-l-1",
-            "label": "意图识别在 Agent 系统里到底解决什么问题？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-3-l-2",
+            "id": "ch17-s38",
             "label": "意图识别和传统 NLP 里的文本分类有什么区别？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-3-l-3",
+            "id": "ch17-s39",
             "label": "为什么不能直接让大模型回答用户问题，而要先做意图识别？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-4",
-        "label": "与 ReAct / 规范化的关系",
+        "id": "ch17-s40",
+        "label": "直接 ReAct 循环不可以吗？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-4-l-0",
-            "label": "直接 ReAct 循环不可以吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-1",
-            "label": "不能让 Agent 在执行过程中自己判断用户想干什么吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-2",
-            "label": "既然后面已经有 ReAct/TAO 循环了，为什么还要在前面单独做一次意图识别？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-3",
+            "id": "ch17-s43",
             "label": "意图识别放在 ReAct 前面，和放在 ReAct 里面，有什么区别？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s44",
+                "label": "你们为什么选择在进入主流程前先做意图识别？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch17-4-l-4",
-            "label": "你们为什么选择在进入主流程前先做意图识别？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-5",
+            "id": "ch17-s45",
             "label": "如果前置意图识别错了，后面的 Agent 流程不是全错了吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-6",
-            "label": "指代消解这种，大模型本身不就是能够解决吗？为什么还需要专门处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-7",
-            "label": "意图识别和用户输入规范化应该谁先做？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-4-l-8",
-            "label": "那你的是分开做还是一起做？为什么？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-5",
-        "label": "影响面与权限",
+        "id": "ch17-s41",
+        "label": "不能让 Agent 在执行过程中自己判断用户想干什么吗？",
+        "kind": "leaf"
+      },
+      {
+        "id": "ch17-s42",
+        "label": "既然后面已经有 ReAct/TAO 循环了，为什么还要在前面单独做一次意图识别？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-5-l-0",
+            "id": "ch17-s47",
+            "label": "意图识别和用户输入规范化应该谁先做？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s48",
+                "label": "那你的是分开做还是一起做？为什么？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch17-s49",
             "label": "你说意图识别会影响 Spec 加载，具体怎么影响？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-5-l-1",
+            "id": "ch17-s50",
             "label": "意图识别怎么影响 Context Window 的内容组织？",
             "kind": "leaf"
-          },
+          }
+        ]
+      },
+      {
+        "id": "ch17-s52",
+        "label": "意图识别结果会影响哪些后续模块？",
+        "kind": "branch",
+        "children": [
           {
-            "id": "ch17-5-l-2",
+            "id": "ch17-s51",
             "label": "意图识别错了，Tool Calling 会出现什么问题？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-5-l-3",
-            "label": "意图识别结果会影响哪些后续模块？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-5-l-4",
+            "id": "ch17-s53",
             "label": "意图识别和多 Agent 路由是什么关系？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-5-l-5",
+            "id": "ch17-s54",
             "label": "意图识别和权限控制有没有关系？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s55",
+                "label": "怎么防止某个用户执行一些高危操作？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s57",
+                "label": "Prompt 里会不会列出所有候选意图？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s58",
+                    "label": "你有多少个意图？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch17-5-l-6",
-            "label": "怎么防止某个用户执行一些高危操作？",
-            "kind": "leaf"
+            "id": "ch17-s59",
+            "label": "候选意图的描述应该怎么写？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s60",
+                "label": "容易混淆的意图怎么在 Prompt 里说明？",
+                "kind": "leaf"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch17-b-6",
-        "label": "Prompt 设计",
+        "id": "ch17-s56",
+        "label": "你们意图识别 Prompt 是怎么写的？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-6-l-0",
-            "label": "你们意图识别 Prompt 是怎么写的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-1",
-            "label": "Prompt 里会不会列出所有候选意图？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-2",
-            "label": "你有多少个意图？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-3",
-            "label": "候选意图的描述应该怎么写？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-4",
-            "label": "容易混淆的意图怎么在 Prompt 里说明？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-5",
+            "id": "ch17-s61",
             "label": "怎么定义意图边界？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-6-l-6",
+            "id": "ch17-s62",
             "label": "few-shot 怎么设计？",
-            "kind": "leaf"
-          },
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s63",
+                "label": "输出格式怎么约束？JSON Schema 怎么设计？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s64",
+                    "label": "怎么知道输出是否符合格式？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch17-s65",
+                    "label": "如果输出不符合格式，怎么办？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch17-s69",
+                    "label": "澄清问题应该怎么问？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch17-s67",
+                        "label": "什么时候输出 unclear？什么时候输出 unsupported？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ch17-s68",
+        "label": "拒识和澄清有什么区别？",
+        "kind": "branch",
+        "children": [
           {
-            "id": "ch17-6-l-7",
-            "label": "输出格式怎么约束？JSON Schema 怎么设计？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-8",
-            "label": "怎么知道输出是否符合格式？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-6-l-9",
-            "label": "如果输出不符合格式，怎么办？",
+            "id": "ch17-s70",
+            "label": "什么时候应该直接回答，什么时候应该先追问？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-7",
-        "label": "拒识与澄清",
+        "id": "ch17-s66",
+        "label": "意图识别不出来怎么办？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-7-l-0",
-            "label": "意图识别不出来怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-1",
-            "label": "什么时候输出 unclear？什么时候输出 unsupported？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-2",
-            "label": "拒识和澄清有什么区别？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-3",
-            "label": "澄清问题应该怎么问？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-4",
-            "label": "什么时候应该直接回答，什么时候应该先追问？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-5",
+            "id": "ch17-s71",
             "label": "怎么评估澄清是否有效？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-7-l-6",
+            "id": "ch17-s72",
             "label": "怎么降低误拒率和漏拒率？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-7",
-            "label": "用户输入很模糊时，怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-7-l-8",
-            "label": "怎么避免大模型自己发明一个不存在的意图？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-8",
-        "label": "指标与测试",
+        "id": "ch17-s73",
+        "label": "用户输入很模糊时，怎么办？",
+        "kind": "leaf"
+      },
+      {
+        "id": "ch17-s76",
+        "label": "你怎么测量出来的？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-8-l-0",
-            "label": "意图识别准确率是多少？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-1",
-            "label": "你怎么测量出来的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-2",
+            "id": "ch17-s77",
             "label": "你觉得这个准确率好还是不好？",
             "kind": "leaf"
-          },
+          }
+        ]
+      },
+      {
+        "id": "ch17-s78",
+        "label": "怎么提高意图识别的准确率？",
+        "kind": "leaf"
+      },
+      {
+        "id": "ch17-s79",
+        "label": "误拒率和漏拒率有什么区别？",
+        "kind": "leaf"
+      },
+      {
+        "id": "ch17-s80",
+        "label": "澄清后成功率怎么计算？",
+        "kind": "leaf"
+      },
+      {
+        "id": "ch17-s75",
+        "label": "意图识别准确率是多少？",
+        "kind": "branch",
+        "children": [
           {
-            "id": "ch17-8-l-3",
-            "label": "怎么提高意图识别的准确率？",
+            "id": "ch17-s74",
+            "label": "怎么避免大模型自己发明一个不存在的意图？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-8-l-4",
-            "label": "误拒率和漏拒率有什么区别？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-5",
-            "label": "澄清后成功率怎么计算？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-6",
+            "id": "ch17-s81",
             "label": "最终任务成功率和意图识别准确率是什么关系？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-8-l-7",
+            "id": "ch17-s82",
             "label": "线上怎么判断上一轮意图已经结束了？",
-            "kind": "leaf"
-          },
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s83",
+                "label": "用户说「不是这个意思」，你们会把它当作什么信号？",
+                "kind": "leaf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ch17-s84",
+        "label": "怎么解决多意图问题？",
+        "kind": "branch",
+        "children": [
           {
-            "id": "ch17-8-l-8",
-            "label": "用户说「不是这个意思」，你们会把它当作什么信号？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-9",
-            "label": "怎么解决多意图问题？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-10",
+            "id": "ch17-s85",
             "label": "多意图之间的依赖关系该在意图识别阶段处理，还是 Plan 阶段处理？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-8-l-11",
-            "label": "你们意图识别测试集怎么构造？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-12",
-            "label": "测试集是不是人工标注？谁来标？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-13",
+            "id": "ch17-s88",
             "label": "拒识样本怎么设计？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-14",
-            "label": "线上错例怎么回流到测试集？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-15",
-            "label": "你的测试用例有哪些字段？分别什么含义？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch17-8-l-16",
-            "label": "意图体系变更后，历史测试集怎么维护？",
             "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch17-b-9",
-        "label": "目标理解",
+        "id": "ch17-s86",
+        "label": "你们意图识别测试集怎么构造？",
         "kind": "branch",
         "children": [
           {
-            "id": "ch17-9-l-0",
-            "label": "什么是目标理解？",
+            "id": "ch17-s89",
+            "label": "线上错例怎么回流到测试集？",
             "kind": "leaf"
           },
           {
-            "id": "ch17-9-l-1",
-            "label": "目标理解和意图识别的区别是什么？",
-            "kind": "leaf"
-          },
+            "id": "ch17-s87",
+            "label": "测试集是不是人工标注？谁来标？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch17-s90",
+                "label": "你的测试用例有哪些字段？分别什么含义？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch17-s91",
+                "label": "意图体系变更后，历史测试集怎么维护？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch17-s93",
+                    "label": "目标理解和意图识别的区别是什么？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ch17-s92",
+        "label": "什么是目标理解？",
+        "kind": "branch",
+        "children": [
           {
-            "id": "ch17-9-l-2",
+            "id": "ch17-s94",
             "label": "目标理解怎么做？",
             "kind": "leaf"
           }
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 7288
+  }
 }

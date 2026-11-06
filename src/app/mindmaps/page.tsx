@@ -55,7 +55,7 @@ export default function MindmapsIndexPage() {
             说明
           </h2>
           <ul className="max-w-2xl space-y-1.5 text-sm text-muted-foreground">
-            <li>第 15 章为总览图，与 16–18 专章题干有重叠，仍单独成画布便于对照原图。</li>
+            <li>第 15 章为总览图，与 16–18 专章题干有重叠，仍单独成画布便于总览对照。</li>
             <li>经典 150 题 / 14 分类练习入口不变；本页不是刷题分类。</li>
             <li>节点文案来自校对后的导图题干，不编造标签或占位答案。</li>
           </ul>

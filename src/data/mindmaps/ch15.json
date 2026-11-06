@@ -4,1017 +4,369 @@
   "sectionId": "1.16",
   "title": "Agent 面试题（Agent 模拟面试总览）",
   "shortTitle": "模拟面试总览",
-  "imageSrc": "/mindmaps/ch15.jpg",
   "tree": {
     "id": "ch15-root",
     "label": "Agent模拟面试题 · 极客时间专栏·AI Agent 系统设计面试现场",
     "kind": "root",
     "children": [
       {
-        "id": "ch15-b-intent",
+        "id": "ch15-intent",
         "label": "意图识别",
         "kind": "branch",
         "children": [
           {
-            "id": "ch15-intent-b-0",
-            "label": "Slot Filling",
+            "id": "ch15-0",
+            "label": "什么是意图识别？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-2",
+            "label": "什么是 slot-filling？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-intent-0-l-0",
-                "label": "什么是 slot-filling？",
-                "kind": "leaf"
-              },
+                "id": "ch15-3",
+                "label": "你们系统里的意图集合是怎么设计出来的？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-4",
+                    "label": "线上新增一个业务意图，你怎么接入？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch15-5",
+                    "label": "新增意图后怎么避免影响老意图准确率？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ch15-1",
+            "label": "你的意图识别是怎么做的？",
+            "kind": "branch",
+            "children": [
               {
-                "id": "ch15-intent-0-l-1",
-                "label": "你具体是怎么实现的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-2",
-                "label": "Prompt 是怎么写的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-3",
+                "id": "ch15-7",
                 "label": "为什么意图识别要结合 Slot Filling？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-6",
+                    "label": "意图识别是不是就是从一堆枚举里面选一个？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch15-8",
+                    "label": "Slot 是怎么定义的？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch15-9",
+                        "label": "不同意图对应的 Slot 一样吗？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ch15-11",
+                    "label": "怎么避免 Slot 不完整？",
+                    "kind": "leaf"
+                  }
+                ]
               },
               {
-                "id": "ch15-intent-0-l-4",
-                "label": "Slot 是怎么定义的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-5",
-                "label": "不同意图对应的 Slot 一样吗？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-6",
-                "label": "你怎么知道某个意图需要什么参数？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-7",
-                "label": "怎么保证大模型一定会识别这些参数？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-8",
+                "id": "ch15-10",
                 "label": "怎么判断必填 Slot 是否完整？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-intent-0-l-9",
-                "label": "怎么避免 Slot 不完整？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-10",
+                "id": "ch15-12",
                 "label": "Slot 缺失的时候，怎么办？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-intent-0-l-11",
+                "id": "ch15-13",
                 "label": "怎么补全 Slot？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-intent-0-l-12",
-                "label": "如果没识别出来，怎么办？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-0-l-13",
-                "label": "重试也失败怎么办？",
-                "kind": "leaf"
-              }
-            ]
-          },
-          {
-            "id": "ch15-intent-b-1",
-            "label": "意图体系与实现路径",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-intent-1-l-0",
-                "label": "你的意图识别是怎么做的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-1",
-                "label": "你们系统里的意图集合是怎么设计出来的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-2",
-                "label": "线上新增一个业务意图，你怎么接入？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-3",
-                "label": "新增意图后怎么避免影响老意图准确率？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-4",
-                "label": "意图识别是不是就是从一堆枚举里面选一个？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-5",
-                "label": "先调用轻量级大模型的意义在哪里？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-6",
+                "id": "ch15-15",
                 "label": "为什么要先调用轻量级大模型？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-7",
-                "label": "多少比例会在这个阶段识别出来？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-8",
-                "label": "你是怎么计算的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-9",
-                "label": "你是怎么评估轻量级大模型识别的效果的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-10",
-                "label": "调用轻量级大模型的耗时大概多少？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-11",
-                "label": "只用轻量级模型是否可以？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-12",
-                "label": "为什么不直接调用重量级大模型？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-13",
-                "label": "调用重量级大模型的耗时大概多少？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-1-l-14",
-                "label": "你的意图识别还可以怎么改进？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-14",
+                    "label": "先调用轻量级大模型的意义在哪里？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch15-17",
+                        "label": "你是怎么计算的？",
+                        "kind": "leaf"
+                      },
+                      {
+                        "id": "ch15-16",
+                        "label": "多少比例会在这个阶段识别出来？",
+                        "kind": "branch",
+                        "children": [
+                          {
+                            "id": "ch15-19",
+                            "label": "你是怎么评估轻量级大模型识别的效果的？",
+                            "kind": "leaf"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "ch15-18",
+                    "label": "调用轻量级大模型的耗时大概多少？",
+                    "kind": "leaf"
+                  }
+                ]
               }
             ]
           },
           {
-            "id": "ch15-intent-b-2",
-            "label": "置信度",
+            "id": "ch15-22",
+            "label": "置信度是什么？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-intent-2-l-0",
-                "label": "置信度（Confidence）是什么？",
-                "kind": "leaf"
+                "id": "ch15-20",
+                "label": "为什么不直接调用重量级大模型？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-21",
+                    "label": "调用重量级大模型的耗时大概多少？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch15-23",
+                    "label": "大模型输出的 confidence 可信吗？",
+                    "kind": "leaf"
+                  }
+                ]
               },
               {
-                "id": "ch15-intent-2-l-1",
-                "label": "大模型输出的 confidence 可信吗？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-2-l-2",
-                "label": "怎么知道大模型的 confidence 是否可信？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-2-l-3",
+                "id": "ch15-24",
                 "label": "confidence 阈值怎么设置？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-intent-2-l-4",
-                "label": "这个阈值是怎么来的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-2-l-5",
+                "id": "ch15-25",
                 "label": "置信度低的时候怎么办？",
                 "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-2-l-6",
-                "label": "置信度中等的时候，是澄清还是升级模型？",
-                "kind": "leaf"
               }
             ]
           },
           {
-            "id": "ch15-intent-b-3",
-            "label": "为什么要做意图识别",
+            "id": "ch15-27",
+            "label": "为什么要做意图识别？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-intent-3-l-0",
-                "label": "为什么要做意图识别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-3-l-1",
+                "id": "ch15-28",
                 "label": "意图识别在 Agent 系统里到底解决什么问题？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-26",
+                    "label": "置信度中等的时候，是澄清还是升级模型？",
+                    "kind": "leaf"
+                  }
+                ]
               },
               {
-                "id": "ch15-intent-3-l-2",
+                "id": "ch15-29",
                 "label": "意图识别和传统 NLP 里的文本分类有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-3-l-3",
-                "label": "为什么不能直接让大模型回答用户问题，而要先做意图识别？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-30",
+                    "label": "为什么不能直接让大模型回答用户问题，而要先做意图识别？",
+                    "kind": "leaf"
+                  }
+                ]
               }
             ]
           },
           {
-            "id": "ch15-intent-b-4",
-            "label": "与 ReAct / 规范化的关系",
+            "id": "ch15-31",
+            "label": "直接 ReAct 循环不可以吗？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-intent-4-l-0",
-                "label": "直接 ReAct 循环不可以吗？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-4-l-1",
-                "label": "不能让 Agent 在执行过程中自己判断用户想干什么吗？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-4-l-2",
-                "label": "既然后面已经有 ReAct/TAO 循环了，为什么还要在前面单独做一次意图识别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-4-l-3",
-                "label": "意图识别放在 ReAct 前面，和放在 ReAct 里面，有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-4-l-4",
+                "id": "ch15-35",
                 "label": "你们为什么选择在进入主流程前先做意图识别？",
                 "kind": "leaf"
-              },
+              }
+            ]
+          },
+          {
+            "id": "ch15-32",
+            "label": "不能让 Agent 在执行过程中自己判断用户想干什么吗？",
+            "kind": "branch",
+            "children": [
               {
-                "id": "ch15-intent-4-l-5",
-                "label": "如果前置意图识别错了，后面的 Agent 流程不是全错了吗？",
+                "id": "ch15-34",
+                "label": "意图识别放在 ReAct 前面，和放在 ReAct 里面，有什么区别？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch15-33",
+            "label": "既然后面已经有 ReAct/TAO 循环了，为什么还要在前面单独做一次意图识别？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch15-36",
+                "label": "如果前面意图识别错了，后面的 Agent 流程不是全错了吗？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-intent-4-l-6",
-                "label": "指代消解这种，大模型本身不就是能够解决吗？为什么还需要专门处理？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-4-l-7",
+                "id": "ch15-37",
                 "label": "意图识别和用户输入规范化应该谁先做？",
                 "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-4-l-8",
-                "label": "那你的是分开做还是一起做？为什么？",
-                "kind": "leaf"
               }
             ]
           },
           {
-            "id": "ch15-intent-b-5",
-            "label": "影响面与权限",
+            "id": "ch15-38",
+            "label": "你们意图识别 Prompt 是怎么写的？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-intent-5-l-0",
-                "label": "你说意图识别会影响 Spec 加载，具体怎么影响？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-5-l-1",
-                "label": "意图识别怎么影响 Context Window 的内容组织？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-5-l-2",
-                "label": "意图识别错了，Tool Calling 会出现什么问题？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-5-l-3",
-                "label": "意图识别结果会影响哪些后续模块？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-5-l-4",
-                "label": "意图识别和多 Agent 路由是什么关系？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-5-l-5",
-                "label": "意图识别和权限控制有没有关系？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-5-l-6",
-                "label": "怎么防止某个用户执行一些高危操作？",
-                "kind": "leaf"
-              }
-            ]
-          },
-          {
-            "id": "ch15-intent-b-6",
-            "label": "Prompt 设计",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-intent-6-l-0",
-                "label": "你们意图识别 Prompt 是怎么写的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-1",
-                "label": "Prompt 里会不会列出所有候选意图？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-2",
-                "label": "你有多少个意图？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-3",
-                "label": "候选意图的描述应该怎么写？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-4",
-                "label": "容易混淆的意图怎么在 Prompt 里说明？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-5",
+                "id": "ch15-39",
                 "label": "怎么定义意图边界？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-intent-6-l-6",
+                "id": "ch15-40",
                 "label": "few-shot 怎么设计？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-7",
-                "label": "输出格式怎么约束？JSON Schema 怎么设计？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-8",
-                "label": "怎么知道输出是否符合格式？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-6-l-9",
-                "label": "如果输出不符合格式，怎么办？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-41",
+                    "label": "few-shot 怎么动态召回？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch15-42",
+                    "label": "输出格式怎么约束？JSON Schema 怎么设计？",
+                    "kind": "leaf"
+                  }
+                ]
               }
             ]
           },
           {
-            "id": "ch15-intent-b-7",
-            "label": "拒识与澄清",
+            "id": "ch15-45",
+            "label": "拒识和澄清有什么区别？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-intent-7-l-0",
-                "label": "意图识别不出来怎么办？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-1",
-                "label": "什么时候输出 unclear？什么时候输出 unsupported？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-2",
-                "label": "拒识和澄清有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-3",
-                "label": "澄清问题应该怎么问？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-4",
+                "id": "ch15-46",
                 "label": "什么时候应该直接回答，什么时候应该先追问？",
-                "kind": "leaf"
-              },
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-44",
+                    "label": "什么时候输出 unclear？什么时候输出 unsupported？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ch15-43",
+            "label": "意图识别不出来怎么办？",
+            "kind": "branch",
+            "children": [
               {
-                "id": "ch15-intent-7-l-5",
-                "label": "怎么评估澄清是否有效？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-6",
-                "label": "怎么降低误拒率和漏拒率？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-7",
-                "label": "用户输入很模糊时，怎么办？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-7-l-8",
+                "id": "ch15-47",
                 "label": "怎么避免大模型自己发明一个不存在的意图？",
                 "kind": "leaf"
               }
             ]
           },
           {
-            "id": "ch15-intent-b-8",
-            "label": "指标与测试",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-intent-8-l-0",
-                "label": "意图识别准确率是多少？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-1",
-                "label": "你怎么测量出来的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-2",
-                "label": "你觉得这个准确率好还是不好？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-3",
-                "label": "怎么提高意图识别的准确率？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-4",
-                "label": "误拒率和漏拒率有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-5",
-                "label": "澄清后成功率怎么计算？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-6",
-                "label": "最终任务成功率和意图识别准确率是什么关系？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-7",
-                "label": "线上怎么判断上一轮意图已经结束了？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-8",
-                "label": "用户说「不是这个意思」，你们会把它当作什么信号？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-9",
-                "label": "怎么解决多意图问题？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-10",
-                "label": "多意图之间的依赖关系该在意图识别阶段处理，还是 Plan 阶段处理？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-11",
-                "label": "你们意图识别测试集怎么构造？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-12",
-                "label": "测试集是不是人工标注？谁来标？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-13",
-                "label": "拒识样本怎么设计？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-14",
-                "label": "线上错例怎么回流到测试集？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-15",
-                "label": "你的测试用例有哪些字段？分别什么含义？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-8-l-16",
-                "label": "意图体系变更后，历史测试集怎么维护？",
-                "kind": "leaf"
-              }
-            ]
+            "id": "ch15-48",
+            "label": "怎么解决多意图问题？",
+            "kind": "leaf"
           },
           {
-            "id": "ch15-intent-b-9",
-            "label": "目标理解",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-intent-9-l-0",
-                "label": "什么是目标理解？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-9-l-1",
-                "label": "目标理解和意图识别的区别是什么？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-intent-9-l-2",
-                "label": "目标理解怎么做？",
-                "kind": "leaf"
-              }
-            ]
+            "id": "ch15-49",
+            "label": "你们意图识别测试集怎么构造？",
+            "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch15-b-exec",
+        "id": "ch15-exec",
         "label": "执行核心",
         "kind": "branch",
         "children": [
           {
-            "id": "ch15-exec-b-plan",
-            "label": "Plan",
+            "id": "ch15-50",
+            "label": "你怎么理解 Agent 里的 Plan？它和普通 Workflow 有什么区别？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-exec-b-plan-vs",
-                "label": "Plan vs Workflow",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-plan-vs-l-0",
-                    "label": "你怎么理解 Agent 里的 Plan？它和普通 Workflow 有什么区别？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-plan-vs-l-1",
-                    "label": "很多人说 Plan 就是「先分析、再执行、最后总结」，你觉得这种说法有什么问题？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-plan-vs-l-2",
-                    "label": "既然 ReAct 可以边想边做，为什么还需要显式 Plan？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-plan-vs-l-3",
-                    "label": "为什么你的 Agent 用 Plan 而不是用 Workflow？我觉得你这个 Agent 就是在用 workflow，为啥要 Plan？",
-                    "kind": "leaf"
-                  }
-                ]
+                "id": "ch15-51",
+                "label": "很多人说 Plan 就是「先分析、再执行、最后总结」，你觉得这种说法有什么问题？",
+                "kind": "leaf"
               },
               {
-                "id": "ch15-exec-b-g4c",
-                "label": "G4C Plan 模型",
+                "id": "ch15-52",
+                "label": "既然 ReAct 可以边想边做，为什么还需要显式 Plan？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch15-55",
+                "label": "Goal 在 Plan 里面解决什么问题？怎么判断 Goal 定义得好不好？",
                 "kind": "branch",
                 "children": [
                   {
-                    "id": "ch15-exec-b-goal",
-                    "label": "Goal",
+                    "id": "ch15-53",
+                    "label": "为什么你的 Agent 用 Plan 而不是用 Workflow？",
                     "kind": "branch",
                     "children": [
                       {
-                        "id": "ch15-exec-goal-l-0",
-                        "label": "你提到过 G4C Plan 模型，分别是哪几个部分？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-goal-l-1",
-                        "label": "Goal 在 Plan 里面解决什么问题？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-goal-l-2",
-                        "label": "怎么判断 Goal 定义得好不好？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-goal-l-3",
-                        "label": "你的 Goal 包含什么字段？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-goal-l-4",
+                        "id": "ch15-56",
                         "label": "用户说「帮我优化一下项目」，你如何把这个模糊目标转成一个可执行的 Goal？",
                         "kind": "leaf"
                       }
                     ]
-                  },
-                  {
-                    "id": "ch15-exec-b-ctx",
-                    "label": "Context",
-                    "kind": "branch",
-                    "children": [
-                      {
-                        "id": "ch15-exec-ctx-l-0",
-                        "label": "Context 在 Plan 中具体包含什么？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-ctx-l-1",
-                        "label": "Plan 里面怎么区分事实、假设和缺失信息？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-ctx-l-2",
-                        "label": "你怎么确保后续执行不会忘掉硬约束？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-ctx-l-3",
-                        "label": "你能百分百保证不会忘掉吗？",
-                        "kind": "leaf"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "ch15-exec-b-choice",
-                    "label": "Choice",
-                    "kind": "branch",
-                    "children": [
-                      {
-                        "id": "ch15-exec-choice-l-0",
-                        "label": "你会让模型生成多少候选路径？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-choice-l-1",
-                        "label": "你如何让模型阐述「为什么选择这条路径」？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-choice-l-2",
-                        "label": "怎么让模型判定哪一个才是最佳路径？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-choice-l-3",
-                        "label": "模型判定的最佳路径就一定是最佳路径吗？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-choice-l-4",
-                        "label": "怎么提高大模型选择最佳路径的准确性？",
-                        "kind": "leaf"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "ch15-exec-b-chk",
-                    "label": "Checkpoint / Correction",
-                    "kind": "branch",
-                    "children": [
-                      {
-                        "id": "ch15-exec-chk-l-0",
-                        "label": "Checkpoint 应该怎么设计？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-chk-l-1",
-                        "label": "每一步都要有 Checkpoint 吗？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-chk-l-2",
-                        "label": "Checkpoint 是固定的/静态的吗？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-chk-l-3",
-                        "label": "你的 Plan 里面有多少个 Checkpoint？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-chk-l-4",
-                        "label": "如果少设置了 Checkpoint，会发生什么？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-chk-l-5",
-                        "label": "Correction 和 Checkpoint 有什么区别？",
-                        "kind": "leaf"
-                      },
-                      {
-                        "id": "ch15-exec-chk-l-6",
-                        "label": "Correction 常见有哪些类型？",
-                        "kind": "leaf"
-                      }
-                    ]
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "id": "ch15-54",
+            "label": "你提到过 G4C Plan 模型，分别是哪几个部分？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch15-57",
+                "label": "Context 在 Plan 中具体包含什么？",
+                "kind": "leaf"
               },
               {
-                "id": "ch15-exec-b-prompt-q",
-                "label": "Plan Prompt 与质量评估",
+                "id": "ch15-59",
+                "label": "你怎么确保后续执行不会忘掉硬约束？",
                 "kind": "branch",
                 "children": [
                   {
-                    "id": "ch15-exec-prompt-q-l-0",
-                    "label": "Plan 的 Prompt 怎么写的？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-1",
-                    "label": "你会如何约束大模型不要直接回答用户问题，而是先生成 Plan？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-2",
-                    "label": "能不能百分百保证先生成 Plan？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-3",
-                    "label": "你如何让大模型不要输出「分析需求、执行任务、总结结果」这种空泛步骤？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-4",
-                    "label": "在 Plan Prompt 里，如何要求模型设计 Checkpoint？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-5",
-                    "label": "能百分百保证一定会设置 Checkpoint 吗？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-6",
-                    "label": "如果用户信息不足，你怎么让 Planner 判断是先追问，还是先执行可确定部分？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-7",
-                    "label": "怎么防止大模型将关键参数识别成非关键参数？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-8",
-                    "label": "Plan 生成之后，你会直接执行吗？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-9",
-                    "label": "你怎么知道一个 Plan 好不好？有哪些线上评估指标？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-10",
-                    "label": "Plan 的线上指标怎么设计？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-11",
-                    "label": "Plan 完成了，是否代表用户目标一定完成了？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-12",
-                    "label": "什么情况下会出现 Plan 完成了，但是用户目标并没有完成的场景？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-13",
-                    "label": "那究竟怎么判定用户目标一定达成了？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-14",
-                    "label": "怎么判断一个 Plan 是否违反了用户硬约束？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-prompt-q-l-15",
-                    "label": "怎么评估 Checkpoint 是否足够？检查点是不是越多越好？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-dag",
-                "label": "DAG Plan",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-dag-l-0",
-                    "label": "DAG Plan 适合解决什么问题？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-1",
-                    "label": "你会给 DAG Plan 的每个 node 设计哪些字段？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-2",
-                    "label": "某个节点失败了，它的下游/后续节点都要重新执行吗？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-3",
-                    "label": "如果某个节点失败了，怎么判断哪些下游节点需要重新执行？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-4",
-                    "label": "能不能从头开始执行？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-5",
-                    "label": "DAG 里面怎么检查循环依赖？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-6",
-                    "label": "如果出现循环依赖了，怎么办？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-7",
-                    "label": "那怎么评估什么时候用 DAG，什么时候用线性呢？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-dag-l-8",
-                    "label": "DAG Plan 是不是一定比线性 Plan 好？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-replan",
-                "label": "Replan",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-replan-l-0",
-                    "label": "你怎么理解 Replan？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-1",
-                    "label": "什么情况下会触发 Replan？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-2",
-                    "label": "Replan 的时候，怎么避免目标漂移？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-3",
-                    "label": "Checkpoint 没通过时，你怎么判断是当前步骤问题，还是原计划问题？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-4",
-                    "label": "如果用户突然说「刚才那个要求不要了」，你怎么处理原计划？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-5",
-                    "label": "如果任务执行一半，用户补充了一个硬约束，你怎么判断影响范围？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-6",
-                    "label": "怎么确定从哪一步开始 Replan？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-7",
-                    "label": "如何避免局部 Replan 复用错误的中间结果？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-8",
-                    "label": "Replan 时如何处理硬约束和软约束？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-9",
-                    "label": "Replan Prompt 怎么写？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-replan-l-10",
-                    "label": "什么时候 Replan 应该转为向用户澄清？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-tcc",
-                "label": "TCC 方案",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-tcc-l-0",
-                    "label": "你提到过类似 TCC 的 Replan 思路，核心是什么？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-1",
-                    "label": "TCC 的思路和验证 Plan 可行性有什么区别？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-2",
-                    "label": "什么样的节点值得 Try？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-3",
-                    "label": "Try 阶段具体 Try 什么？把新计划执行一遍？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-4",
-                    "label": "如果 Try 失败了，是重新 Replan，还是直接中断？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-5",
-                    "label": "Confirm 阶段做什么？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-6",
-                    "label": "Cancel 阶段做什么？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tcc-l-7",
-                    "label": "TCC Replan 适合哪些场景？不适合哪些场景？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-trade",
-                "label": "设计/开放/决策问题",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-trade-l-0",
-                    "label": "你觉得随着大模型能力越来越强，显式 Plan 还有必要吗？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-trade-l-1",
-                    "label": "Plan 是应该展示给用户看，还是作为内部状态隐藏起来？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-trade-l-2",
-                    "label": "Replan 越频繁是不是说明 Agent 越智能？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-trade-l-3",
-                    "label": "如果用户目标本身不断变化，你怎么区分正常需求变更和 Agent 目标漂移？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-trade-l-4",
-                    "label": "你怎么证明你的 Plan/Replan 机制真的提升了任务成功率？",
+                    "id": "ch15-58",
+                    "label": "Plan 里面怎么区分事实、假设和缺失信息？",
                     "kind": "leaf"
                   }
                 ]
@@ -1022,599 +374,214 @@
             ]
           },
           {
-            "id": "ch15-exec-b-tao",
-            "label": "ReAct & TAO",
+            "id": "ch15-62",
+            "label": "Plan 的 Prompt 怎么写的？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-exec-tao-intro-l-0",
-                "label": "你怎么理解 TAO？T、A、O 分别是什么？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-tao-intro-l-1",
-                "label": "TAO 和普通的大模型问答有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-tao-intro-l-2",
-                "label": "TAO 和 ReAct 是什么关系？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-tao-intro-l-3",
-                "label": "Thought 是不是就是让大模型推理？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-tao-intro-l-4",
-                "label": "Action 在 Agent 里面通常对应什么？它和普通函数调用有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-tao-intro-l-5",
-                "label": "TAO 循环什么时候应该停止？你会设计哪些停止条件？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-tao-intro-l-6",
-                "label": "怎么保证 TAO 一定会停下来？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-exec-b-thought",
-                "label": "Thought（Think 用作名词）",
+                "id": "ch15-61",
+                "label": "Correction 和 Checkpoint 有什么区别？",
                 "kind": "branch",
                 "children": [
                   {
-                    "id": "ch15-exec-thought-l-0",
-                    "label": "你会在 Thought 阶段要求模型输出哪些内容？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-1",
-                    "label": "你怎么避免模型在 Thought 阶段发散？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-2",
-                    "label": "你会不会让模型输出「为什么选择这个 Action」？为什么？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-3",
-                    "label": "如果模型 Thought 的结论没有证据，你怎么处理？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-4",
-                    "label": "如果模型已经可以回答用户问题了，但它还继续调用工具，你认为是什么问题？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-5",
-                    "label": "你怎么判断一个 Thought 的质量好不好？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-6",
-                    "label": "如果 Thought 判断「需要查日志」，但系统没有日志工具，你会让 Agent 怎么做？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-thought-l-7",
-                    "label": "Thought 是否应该允许模型修改用户目标？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-action",
-                "label": "Action（或者 Tool，工具，Skill）",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-action-l-0",
-                    "label": "Action 的粒度是什么？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-1",
-                    "label": "工具粒度太细会有什么问题？工具粒度太粗又会有什么问题？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-2",
-                    "label": "怎么划定 Action 的边界？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-3",
-                    "label": "Action 的名称会不会影响/怎么影响大模型选择 Action 的准确率？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-4",
-                    "label": "怎么给 Action 取一个好名字？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-5",
-                    "label": "一个 Action 描述里面至少应该包含哪些字段？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-6",
-                    "label": "Action 描述和 API 文档有什么区别？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-7",
-                    "label": "你的 Agent 有多少个 Action？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-8",
-                    "label": "Action 太多时，怎么办？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-9",
-                    "label": "如果模型连续选错 Action，你怎么排查？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-action-l-10",
-                    "label": "如何评估 Action 选择准确率？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-obs",
-                "label": "Observation",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-obs-l-0",
-                    "label": "如果 Observation 和模型原来的假设冲突，Agent 应该怎么办？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-obs-l-1",
-                    "label": "如果工具返回空结果，模型应该怎么解释？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-obs-l-2",
-                    "label": "如果多个工具返回结果互相矛盾，你怎么仲裁？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-loop",
-                "label": "循环本体",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-loop-l-0",
-                    "label": "让你实现一个最小 TAO Runtime，你会怎么设计？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-1",
-                    "label": "TAO 循环的状态要存哪些内容？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-2",
-                    "label": "每一轮 Thought、Action、Observation 是否都要落库？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-3",
-                    "label": "如果任务中断了，怎么恢复？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-4",
-                    "label": "如何限制最大 Action 调用 / Thinking / 循环次数？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-5",
-                    "label": "在多 Agent 协作架构里面，怎么控制整体的循环次数 / thinking 次数？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-6",
-                    "label": "怎么确定最大循环次数的阈值？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-7",
-                    "label": "如何限制总 token 消耗？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-8",
-                    "label": "如何避免 TAO 死循环？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-9",
-                    "label": "如何处理工具调用超时？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-10",
-                    "label": "工具调用怎么容错？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-loop-l-11",
-                    "label": "工具失败后，怎么办？",
-                    "kind": "leaf"
-                  }
-                ]
-              },
-              {
-                "id": "ch15-exec-b-tao-eval",
-                "label": "工程化与评估",
-                "kind": "branch",
-                "children": [
-                  {
-                    "id": "ch15-exec-tao-eval-l-0",
-                    "label": "如果意图识别错了，TAO 循环能不能自动纠正？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-1",
-                    "label": "你怎么评估一个 TAO Agent 的效果？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-2",
-                    "label": "Thought 质量怎么评估？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-3",
-                    "label": "Action 选择准确率怎么评估？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-4",
-                    "label": "Observation 解释质量怎么评估？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-5",
-                    "label": "如何构建 TAO 的测试集？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-6",
-                    "label": "线上反馈怎么反哺 TAO Prompt 和工具描述？",
-                    "kind": "leaf"
-                  },
-                  {
-                    "id": "ch15-exec-tao-eval-l-7",
-                    "label": "如果评估结果显示 Action 选择准确率低，你会怎么优化？",
+                    "id": "ch15-60",
+                    "label": "Checkpoint 应该怎么设计？每一步都要有 Checkpoint 吗？",
                     "kind": "leaf"
                   }
                 ]
               }
             ]
+          },
+          {
+            "id": "ch15-64",
+            "label": "Plan 生成之后，你会直接执行吗？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch15-63",
+                "label": "在 Plan Prompt 里，如何要求模型设计 Checkpoint？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch15-65",
+            "label": "Plan 完成了，是否代表用户目标一定完成了？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch15-66",
+                "label": "怎么评估 Checkpoint 是否足够？检查点是不是越多越好？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch15-67",
+            "label": "DAG Plan 适合解决什么问题？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch15-68",
+                "label": "如果某个节点失败了，怎么判断哪些下游节点需要重新执行？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch15-69",
+            "label": "你怎么理解 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-70",
+            "label": "什么情况下应该触发 Replan？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-71",
+            "label": "Replan Prompt 怎么写？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-72",
+            "label": "你提到过类似 TCC 的 Replan 思路，核心是什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch15-73",
+            "label": "你怎么理解 TAO？T、A、O 分别是什么？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch15-74",
+                "label": "TAO 和 ReAct 是什么关系？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-75",
+                    "label": "TAO 循环什么时候应该停止？你会设计哪些停止条件？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch15-78",
+                "label": "工具太多时，怎么办？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch15-76",
+                "label": "让你实现一个最小 TAO Runtime，你会怎么设计？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-79",
+                    "label": "如果 Observation 和模型原来的假设冲突，Agent 应该怎么办？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ch15-77",
+            "label": "如何避免 TAO 死循环？",
+            "kind": "leaf"
           }
         ]
       },
       {
-        "id": "ch15-b-ctx",
+        "id": "ch15-ctx",
         "label": "上下文管理",
         "kind": "branch",
         "children": [
           {
-            "id": "ch15-ctx-b-0",
-            "label": "整体设计",
+            "id": "ch15-80",
+            "label": "你的 Agent 中一共有哪些类型的 Context？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-ctx-0-l-0",
-                "label": "你的 Agent 中一共有哪些类型的 Context？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-0-l-1",
-                "label": "你的上下文里面究竟有哪些内容？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-0-l-2",
-                "label": "请完整描述一条 Context 的生命周期",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-0-l-3",
+                "id": "ch15-81",
                 "label": "上下文管理是一个独立模块，还是分散在意图识别、Plan、ReAct、RAG 等模块里面？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-ctx-0-l-4",
+                "id": "ch15-82",
                 "label": "假设让你从零设计一个通用 Agent 的上下文管理系统，你会怎么划分核心模块和数据结构？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-83",
+                    "label": "你的上下文为什么要分层？全部放在一个数据库或者一个大 JSON 里面有什么问题？",
+                    "kind": "leaf"
+                  }
+                ]
               }
             ]
           },
           {
-            "id": "ch15-ctx-b-1",
-            "label": "分层上下文与统一抽象",
+            "id": "ch15-85",
+            "label": "你具体是怎么动态编排的？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-ctx-1-l-0",
-                "label": "你的上下文为什么要分层？全部放在一个数据库或者一个大 JSON 里面有什么问题？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-1-l-1",
-                "label": "你提到可以用 Context Window = f(Context) 来统一抽象，那么这个函数 f 具体做什么？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-1-l-2",
-                "label": "同一条信息是否可能同时存在于多个层级？如何避免数据重复和版本冲突？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-1-l-3",
+                "id": "ch15-84",
                 "label": "分层越多是不是越好？层次过多会带来什么复杂度？",
                 "kind": "leaf"
               },
               {
-                "id": "ch15-ctx-1-l-4",
-                "label": "那么一般需要多少层比较好？",
-                "kind": "leaf"
-              }
-            ]
-          },
-          {
-            "id": "ch15-ctx-b-2",
-            "label": "上下文窗口的动态编排",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-ctx-2-l-0",
-                "label": "动态编排中，你怎么决定哪些信息完整保留、哪些进行压缩、哪些完全不加载？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-2-l-1",
-                "label": "你具体是怎么动态编排的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-2-l-2",
-                "label": "除了剩余窗口大小，你还会考虑哪些信号？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-2-l-3",
+                "id": "ch15-86",
                 "label": "假设模型支持 128K Context Window，你会直接放满吗？",
                 "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-2-l-4",
-                "label": "你怎么判断当前步骤真正需要哪些上下文？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-2-l-5",
-                "label": "你怎么分配 Token Budget？",
-                "kind": "leaf"
               }
             ]
           },
           {
-            "id": "ch15-ctx-b-3",
-            "label": "摘要、压缩与细节召回",
+            "id": "ch15-87",
+            "label": "你怎么分配 Token Budget？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-ctx-3-l-0",
+                "id": "ch15-88",
                 "label": "为什么摘要必然会丢失细节？有没有一种摘要算法能够做到完全无损？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-3-l-1",
-                "label": "多轮对话摘要、Agent 输出摘要、任务状态摘要和关键事实提取有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-3-l-2",
-                "label": "为什么你会优先保留用户原始输入，而不是优先保留 Agent 的历史回答？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-3-l-3",
-                "label": "摘要内容与召回出来的原始细节发生冲突时，你相信哪一个？怎么做仲裁？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-89",
+                    "label": "用户说「刚才那个」「第一个」「之前推荐的那个」，你的 Agent 如何完成指代消解？",
+                    "kind": "leaf"
+                  }
+                ]
               }
             ]
           },
           {
-            "id": "ch15-ctx-b-4",
-            "label": "指代消解与关键事实管理",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-ctx-4-l-0",
-                "label": "跨越数天甚至数周的指代问题，怎么解决？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-4-l-1",
-                "label": "用户输入规范化和上下文管理的边界在哪里？哪些问题应该前置处理，哪些必须进入 ReAct 阶段处理？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-4-l-2",
-                "label": "指代关系的推理结果应该怎么处理？",
-                "kind": "leaf"
-              }
-            ]
+            "id": "ch15-90",
+            "label": "用户画像应该放在 System Prompt 的什么位置？",
+            "kind": "leaf"
           },
           {
-            "id": "ch15-ctx-b-5",
-            "label": "用户画像",
+            "id": "ch15-91",
+            "label": "上下文污染和细节丢失有什么区别？",
             "kind": "branch",
             "children": [
               {
-                "id": "ch15-ctx-5-l-0",
-                "label": "你的用户画像包含哪些维度？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-1",
-                "label": "用户画像怎么提取？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-2",
-                "label": "为什么要采用实时提取与离线提取相结合的方式？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-3",
-                "label": "用户说一次「我最近不喜欢苹果」，你怎么判断这是偶发情绪，还是长期偏好变化？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-4",
-                "label": "短期、中期和长期用户画像分别解决什么问题？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-5",
-                "label": "你设计的画像稳定性评分会考虑哪些信号？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-6",
-                "label": "不同来源的画像冲突了，你怎么裁决？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-7",
-                "label": "新画像与旧画像发生冲突时，怎么裁决？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-8",
-                "label": "用户画像应该放在 System Prompt 的什么位置？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-9",
-                "label": "用户画像内容很多怎么办？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-10",
-                "label": "怎么动态筛选用户画像？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-5-l-11",
-                "label": "怎么评估用户画像质量？",
-                "kind": "leaf"
-              }
-            ]
-          },
-          {
-            "id": "ch15-ctx-b-6",
-            "label": "长任务与上下文漂移",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-ctx-6-l-0",
-                "label": "长任务漂移的原因是什么？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-6-l-1",
-                "label": "你的解决方案是什么？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-6-l-2",
-                "label": "上下文污染和细节丢失有什么区别？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-6-l-3",
-                "label": "为什么错误会不断积累？怎么缓解？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-6-l-4",
-                "label": "怎样防止恢复任务时把一个错误中间结果当成可信事实继续使用？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-6-l-5",
+                "id": "ch15-92",
                 "label": "Checkpoint 中应该保存哪些运行时状态，才能支持任务恢复？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-6-l-6",
-                "label": "任务中断后恢复时，你如何判断哪些 Context 仍然有效，哪些已经过期？",
-                "kind": "leaf"
-              }
-            ]
-          },
-          {
-            "id": "ch15-ctx-b-7",
-            "label": "评估与测试",
-            "kind": "branch",
-            "children": [
-              {
-                "id": "ch15-ctx-7-l-0",
-                "label": "你怎么知道自己的上下文选择策略是有效的？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-7-l-1",
-                "label": "你会设计哪些上下文管理指标？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-7-l-2",
-                "label": "怎样评估一条被注入窗口的 Context 是否真正对最终决策产生了价值？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-7-l-3",
-                "label": "上下文召回的 Precision 和 Recall 哪一个更重要？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-7-l-4",
-                "label": "如何构建上下文管理测试集？",
-                "kind": "leaf"
-              },
-              {
-                "id": "ch15-ctx-7-l-5",
-                "label": "线上如何发现 Agent「记错了上下文」的问题，而不是模型本身能力不足？",
-                "kind": "leaf"
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch15-93",
+                    "label": "上下文召回的 Precision 和 Recall 哪一个更重要？",
+                    "kind": "leaf"
+                  }
+                ]
               }
             ]
           }
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 4483
+  }
 }

@@ -4,896 +4,1033 @@
   "sectionId": "1.21",
   "title": "检索面试题",
   "shortTitle": "检索",
-  "imageSrc": "/mindmaps/ch20.jpg",
   "tree": {
     "id": "ch20-root",
     "label": "检索面试题",
     "kind": "root",
     "children": [
       {
-        "id": "ch20-b-0",
+        "id": "ch20-m-a",
         "label": "文档入库",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-0-l-0",
+            "id": "ch20-s0",
             "label": "你刚才说文档入库，具体入库流程是什么？",
             "kind": "leaf"
           },
           {
-            "id": "ch20-0-l-1",
+            "id": "ch20-s1",
             "label": "什么类型的文档？PDF、Word、网页、图片都支持吗？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s2",
+                "label": "图片怎么处理？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s3",
+                "label": "视频怎么处理？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s4",
+                "label": "语音怎么处理？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s5",
+                "label": "表格怎么处理？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s6",
+                    "label": "Excel 怎么处理？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s7",
+                    "label": "影印版 PDF 怎么处理？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-0-l-2",
-            "label": "图片怎么处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-3",
-            "label": "视频怎么处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-4",
-            "label": "语音怎么处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-5",
-            "label": "表格怎么处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-6",
-            "label": "Excel 怎么处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-7",
-            "label": "影印版 PDF 怎么处理？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-8",
+            "id": "ch20-s8",
             "label": "文档解析之后直接 Chunk 吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-9",
-            "label": "Metadata 有哪些？为什么需要这些 Metadata？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-0-l-10",
-            "label": "Chunk 之后存了哪些字段？只存正文和 Vector？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s10",
+                "label": "Chunk 之后存了哪些字段？只存正文和 Vector？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s9",
+                    "label": "Metadata 有哪些？为什么需要这些 Metadata？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-1",
+        "id": "ch20-m-b",
         "label": "检索链路总览",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-1-l-0",
+            "id": "ch20-s11",
             "label": "用户 Query 是直接拿去 Embedding 的吗？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s13",
+                "label": "这些结果怎么从几百、几千条缩减到最终 3~10 条？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-1-l-1",
+            "id": "ch20-s12",
             "label": "一次检索最终会召回多少条？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s14",
+                "label": "最终交给大模型的是 Chunk 还是原文？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-1-l-2",
-            "label": "这些结果怎么从几百、几千条缩减到最终 3~10 条？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-1-l-3",
-            "label": "最终交给大模型的是 Chunk 还是原文？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-1-l-4",
+            "id": "ch20-s15",
             "label": "整个链路最容易出问题的是哪个环节？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-1-l-5",
-            "label": "你刚才讲的这些东西，跟网上随便一个 RAG Demo 有什么区别？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s16",
+                "label": "你刚才讲的这些东西，跟网上随便一个 RAG Demo 有什么区别？",
+                "kind": "leaf"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-2",
-        "label": "Query Rewrite",
-        "kind": "branch",
-        "children": [
-          {
-            "id": "ch20-2-l-0",
-            "label": "用户的问题进来之后，你们是直接拿原始 Query 检索吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-1",
-            "label": "为什么要 Rewrite？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-2",
-            "label": "Rewrite 具体改什么？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-3",
-            "label": "怎么防止 Query Drift？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-4",
-            "label": "有没有遇到 Rewrite 之后反而把原意改错的情况？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-5",
-            "label": "Rewrite 的 Query 和原始 Query 是二选一，还是都搜？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-6",
-            "label": "原始 Query 要不要保留？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-2-l-7",
-            "label": "如果都搜，结果怎么融合？",
-            "kind": "leaf"
-          }
-        ]
-      },
-      {
-        "id": "ch20-b-3",
+        "id": "ch20-m-d",
         "label": "问题拆解与缺什么",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-3-l-0",
+            "id": "ch20-s25",
             "label": "怎么拆解问题？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s26",
+                "label": "谁来拆，大模型还是规则引擎？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s29",
+                    "label": "一个问题拆出十几个子问题怎么办？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-3-l-1",
-            "label": "谁来拆，大模型还是规则引擎？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-2",
-            "label": "一个复杂问题，你怎么判断应该查什么？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-3",
+            "id": "ch20-s28",
             "label": "拆成几个算合适？",
             "kind": "leaf"
           },
           {
-            "id": "ch20-3-l-4",
-            "label": "一个问题拆出十几个子问题怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-5",
-            "label": "怎么判断某个子问题其实根本不需要检索？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-6",
-            "label": "每个子问题都发起一次检索吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-7",
-            "label": "如果是，那检索延迟和召回结果岂不是直接爆炸？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-8",
-            "label": "你刚才一直在讲「搜什么」，那你怎么判断当前到底「缺什么」？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-9",
-            "label": "缺失信息是谁判断？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-10",
-            "label": "怎么判断所有需要的信息已经查齐了？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-11",
-            "label": "如果一开始对「缺什么」的判断就是错的怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-3-l-12",
-            "label": "后续检索结果能不能反过来修改检索目标？",
-            "kind": "leaf"
+            "id": "ch20-s27",
+            "label": "一个复杂问题，你怎么判断应该查什么？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s30",
+                "label": "怎么判断某个子问题其实根本不需要检索？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s31",
+                "label": "每个子问题都发起一次检索吗？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s32",
+                    "label": "如果是，那检索延迟和召回结果岂不是直接爆炸？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s33",
+                        "label": "你刚才一直在讲「搜什么」，那你怎么判断当前到底「缺什么」？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s35",
+                "label": "怎么判断所有需要的信息已经查齐了？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s34",
+                    "label": "缺失信息是谁判断？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s36",
+                        "label": "如果一开始对「缺什么」的判断就是错的怎么办？",
+                        "kind": "leaf"
+                      },
+                      {
+                        "id": "ch20-s37",
+                        "label": "后续检索结果能不能反过来修改检索目标？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-4",
+        "id": "ch20-m-e",
         "label": "Query Set",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-4-l-0",
-            "label": "你提到了 Query Set，为什么不只生成一个 Query？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-4-l-1",
+            "id": "ch20-s39",
             "label": "Query Set 的不同 Query 应该有什么差异？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s40",
+                "label": "Query Set 中的问题是简单同义改写，还是寻找不同证据路径？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-4-l-2",
-            "label": "Query Set 中的问题是简单同义改写，还是寻找不同证据路径？",
-            "kind": "leaf"
+            "id": "ch20-s38",
+            "label": "你提到了 Query Set，为什么不只生成一个 Query？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s41",
+                "label": "多个 Query 全都检索，会不会召回很多重复结果？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s42",
+                    "label": "怎么做去重？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-4-l-3",
-            "label": "多个 Query 全都检索，会不会召回很多重复结果？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-4-l-4",
-            "label": "怎么做去重？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-4-l-5",
-            "label": "不同 Query 应该使用相同的数据源吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-4-l-6",
+            "id": "ch20-s44",
             "label": "Query 之间有优先级吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-4-l-7",
-            "label": "不同 Query 排序算法一样吗？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s43",
+                "label": "不同 Query 应该使用相同的数据源吗？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s45",
+                "label": "不同 Query 排序算法一样吗？",
+                "kind": "leaf"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-5",
+        "id": "ch20-m-f",
         "label": "Chunking",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-5-l-0",
-            "label": "你们 Chunk 是怎么切的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-1",
+            "id": "ch20-s47",
             "label": "Chunk Size 是多少？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s48",
+                "label": "为什么是这个值？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s49",
+                    "label": "这个参数是拍脑袋定的，还是测出来的？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s50",
+                "label": "500 和 800 有什么区别？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s51",
+                "label": "Chunk 越小是不是召回越准确？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s52",
+                    "label": "那为什么不切成一句话？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s53",
+                "label": "Chunk 太大会出现什么问题？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s54",
+                "label": "你怎么判断两个句子是不是同一个语义块？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-5-l-2",
-            "label": "为什么是这个值？",
-            "kind": "leaf"
+            "id": "ch20-s46",
+            "label": "你们 Chunk 是怎么切的？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s55",
+                "label": "大模型切还是 Embedding 切？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s56",
+                    "label": "如果用大模型，离线入库成本是不是很高？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s57",
+                "label": "文档更新的时候是不是又要重新切？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-5-l-3",
-            "label": "这个参数是拍脑袋定的，还是测出来的？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-4",
-            "label": "500 和 800 有什么区别？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-5",
-            "label": "Chunk 越小是不是召回越准确？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-6",
-            "label": "那为什么不切成一句话？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-7",
-            "label": "Chunk 太大会出现什么问题？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-8",
-            "label": "你怎么判断两个句子是不是同一个语义块？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-9",
-            "label": "大模型切还是 Embedding 切？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-10",
-            "label": "如果用大模型，离线入库成本是不是很高？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-11",
-            "label": "文档更新的时候是不是又要重新切？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-12",
+            "id": "ch20-s58",
             "label": "语义切割一定比长度切割好吗？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s59",
+                "label": "有没有哪种文档反而更适合按结构切？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s61",
+                    "label": "一张表如果跨页怎么办？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s62",
+                        "label": "表头是不是每个 Chunk 都要保留？为什么？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-5-l-13",
-            "label": "有没有哪种文档反而更适合按结构切？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-14",
+            "id": "ch20-s60",
             "label": "表格怎么切？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-15",
-            "label": "一张表如果跨页怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-16",
-            "label": "表头是不是每个 Chunk 都要保留？为什么？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-17",
-            "label": "一个单元格引用上一行怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-18",
-            "label": "表格转 Markdown 后直接 Embedding 行不行？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-19",
-            "label": "查询一个具体数字的时候向量检索好用吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-5-l-20",
-            "label": "是否应该同时建立结构化索引？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s63",
+                "label": "一个单元格引用上一行怎么办？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s64",
+                "label": "表格转 Markdown 后直接 Embedding 行不行？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s65",
+                "label": "查询一个具体数字的时候向量检索好用吗？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s66",
+                "label": "是否应该同时建立结构化索引？",
+                "kind": "leaf"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-6",
-        "label": "父子文档",
-        "kind": "branch",
-        "children": [
-          {
-            "id": "ch20-6-l-0",
-            "label": "你为什么要使用父子文档？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-1",
-            "label": "为什么不直接召回父 Chunk？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-2",
-            "label": "为什么不直接扩大 Chunk Size？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-3",
-            "label": "父 Chunk 非常大怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-4",
-            "label": "子 Chunk 命中以后一定返回整个父 Chunk 吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-5",
-            "label": "一个 Query 同时命中了一个父文档里的五个子 Chunk，怎么算分？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-6",
-            "label": "另外一个父文档只有一个子 Chunk，但是相关度极高，两个父文档谁排前面？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-7",
-            "label": "子块很多的父文档是不是天然占优势？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-8",
-            "label": "怎么消除这种偏差？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-9",
-            "label": "子文档排序结果怎么映射成父文档排序？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-10",
-            "label": "为什么只有父子两层？三层行不行？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-6-l-11",
-            "label": "路数越多是不是效果越好？",
-            "kind": "leaf"
-          }
-        ]
-      },
-      {
-        "id": "ch20-b-7",
+        "id": "ch20-m-h",
         "label": "多路检索与融合",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-7-l-0",
+            "id": "ch20-s79",
             "label": "为什么单纯向量检索不够？",
             "kind": "leaf"
           },
           {
-            "id": "ch20-7-l-1",
+            "id": "ch20-s80",
             "label": "检索分成几路？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s81",
+                "label": "每一路分别解决什么问题？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s82",
+                "label": "有没有一些 Query 其实只应该走某一路？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s84",
+                "label": "为什么选 RRF？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s85",
+                    "label": "RRF 为什么不需要统一不同召回器的 Score？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-7-l-2",
-            "label": "每一路分别解决什么问题？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-3",
-            "label": "有没有一些 Query 其实只应该走某一路？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-4",
+            "id": "ch20-s83",
             "label": "多路结果怎么融合？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-5",
-            "label": "为什么选 RRF？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-6",
-            "label": "RRF 为什么不需要统一不同召回器的 Score？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-7",
-            "label": "RRF 的 K 怎么定？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-8",
-            "label": "BM25 第一和 Vector 第一到底谁更重要？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-9",
-            "label": "如果一个结果只在一路排第一，另外几路完全没有出现怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-7-l-10",
-            "label": "如果某一路质量特别差，会不会污染最终结果？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s86",
+                "label": "RRF 的 K 怎么定？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s87",
+                "label": "BM25 第一和 Vector 第一到底谁更重要？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s88",
+                    "label": "如果一个结果只在一路排第一，另外几路完全没有出现怎么办？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s89",
+                    "label": "如果某一路质量特别差，会不会污染最终结果？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-8",
-        "label": "迭代式检索",
-        "kind": "branch",
-        "children": [
-          {
-            "id": "ch20-8-l-0",
-            "label": "为什么需要迭代式检索？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-1",
-            "label": "什么叫「不够好」？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-2",
-            "label": "谁判断不够好？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-3",
-            "label": "大模型说「不够」你就相信它吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-4",
-            "label": "第二轮到底搜什么？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-5",
-            "label": "第一轮哪些信息会进入第二轮 Query？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-6",
-            "label": "把所有关键词都塞进去吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-7",
-            "label": "你刚才说保留原始 Query 作为 Anchor，Anchor 有什么意义？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-8",
-            "label": "Anchor 权重怎么体现？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-9",
-            "label": "怎么避免第二轮开始偏离用户原始问题？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-10",
-            "label": "如果第一轮已经证明原始 Query 本身表达有问题呢？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-11",
-            "label": "Anchor 会不会反而限制搜索空间？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-12",
-            "label": "什么时候停止迭代？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-13",
-            "label": "固定 N 轮行不行？固定三轮行不行？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-14",
-            "label": "动态退出怎么做？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-15",
-            "label": "新文档数量少了就退出可以吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-16",
-            "label": "如果找到了很多新文档，但是都是重复信息呢？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-17",
-            "label": "谁来判断是不是新信息？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-18",
-            "label": "新增信息量怎么计算？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-19",
-            "label": "如果一直有少量新信息怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-20",
-            "label": "最大轮数有没有？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-21",
-            "label": "时间预算有没有？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-8-l-22",
-            "label": "Token 预算有没有？",
-            "kind": "leaf"
-          }
-        ]
-      },
-      {
-        "id": "ch20-b-9",
+        "id": "ch20-m-j",
         "label": "延迟、分层与缓存",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-9-l-0",
+            "id": "ch20-s113",
             "label": "你前面这一套又 Rewrite，又多路检索，又 Rerank，又迭代，延迟多少？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s116",
+                "label": "P95/P99 呢？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s114",
+                "label": "最大耗时在哪一层？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s115",
+                    "label": "每轮迭代大概增加多少延迟？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-9-l-1",
-            "label": "最大耗时在哪一层？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-2",
-            "label": "每轮迭代大概增加多少延迟？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-3",
-            "label": "P95/P99 呢？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-4",
-            "label": "简单问题和复杂问题怎么区分？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-5",
+            "id": "ch20-s118",
             "label": "为什么所有请求不直接走效果最好的链路？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s117",
+                "label": "简单问题和复杂问题怎么区分？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s119",
+                "label": "可以先走轻量检索，不够再升级吗？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s121",
+                "label": "如果已经定义了最小目标，达到这个目标是不是天然就是充分？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-9-l-6",
-            "label": "可以先走轻量检索，不够再升级吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-7",
+            "id": "ch20-s120",
             "label": "什么叫最小充分检索？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s123",
+                "label": "如果不能解决怎么办？再检索一次？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s122",
+                    "label": "要不要扩大查询空间？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s124",
+                "label": "缓存 Query 还是缓存结果？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s125",
+                "label": "语义相似 Query 能不能复用？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-9-l-8",
-            "label": "如果已经定义了最小目标，达到这个目标是不是天然就是充分？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-9",
-            "label": "要不要扩大查询空间？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-10",
-            "label": "如果不能解决怎么办？再检索一次？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-11",
-            "label": "缓存 Query 还是缓存结果？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-12",
-            "label": "语义相似 Query 能不能复用？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-13",
+            "id": "ch20-s126",
             "label": "用户权限不同怎么办？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-14",
-            "label": "文档更新以后缓存怎么失效？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-15",
-            "label": "用户画像不同还能不能复用？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-9-l-16",
-            "label": "答案缓存和检索缓存有什么区别？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s127",
+                "label": "文档更新以后缓存怎么失效？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s128",
+                "label": "用户画像不同还能不能复用？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s129",
+                    "label": "答案缓存和检索缓存有什么区别？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "id": "ch20-b-10",
+        "id": "ch20-m-k",
         "label": "评估与实验",
         "kind": "branch",
         "children": [
           {
-            "id": "ch20-10-l-0",
+            "id": "ch20-s130",
             "label": "你怎么评估检索准确率？",
             "kind": "leaf"
           },
           {
-            "id": "ch20-10-l-1",
+            "id": "ch20-s131",
             "label": "测试集怎么构建？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s133",
+                "label": "有没有容易混淆的数据？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-10-l-2",
+            "id": "ch20-s132",
             "label": "一共有多少条？哪里来的？人工写的还是线上采样？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s134",
+                "label": "有没有故意检索不到的 Query？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s135",
+                "label": "数据更新之后测试集怎么更新？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s137",
+                    "label": "Baseline 是什么？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s138",
+                    "label": "只改了 Chunk 吗？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s139",
+                        "label": "Embedding 模型有没有一起换？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-10-l-3",
-            "label": "有没有容易混淆的数据？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-4",
-            "label": "有没有故意检索不到的 Query？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-5",
-            "label": "数据更新之后测试集怎么更新？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-6",
+            "id": "ch20-s136",
             "label": "Chunk 优化之后，你怎么证明真的有效？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s140",
+                "label": "Top-K 有没有变化？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s141",
+                "label": "Rerank 有没有变化？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s142",
+                    "label": "如果同时改了五个参数，怎么证明提升来自 Chunk？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s143",
+                "label": "做过单变量实验吗？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s144",
+                "label": "有没有 A/B Test？",
+                "kind": "leaf"
+              }
+            ]
           },
           {
-            "id": "ch20-10-l-7",
-            "label": "Baseline 是什么？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-8",
-            "label": "只改了 Chunk 吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-9",
-            "label": "Embedding 模型有没有一起换？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-10",
-            "label": "Top-K 有没有变化？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-11",
-            "label": "Rerank 有没有变化？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-12",
-            "label": "如果同时改了五个参数，怎么证明提升来自 Chunk？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-13",
-            "label": "做过单变量实验吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-14",
-            "label": "有没有 A/B Test？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-15",
+            "id": "ch20-s145",
             "label": "怎么评估迭代式检索？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s147",
+                "label": "平均需要几轮？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s148",
+                    "label": "第二轮召回的新文档比例是多少？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s146",
+                    "label": "第一轮完成率多少？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s149",
+                "label": "第二轮带来的边际收益多少？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s151",
+                    "label": "这 0.5% 对应多少业务请求？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s152",
+                    "label": "增加多少延迟和 Token 成本？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s153",
+                    "label": "是否会拉高 P95/P99？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s150",
+                    "label": "如果第三轮只有 0.5% 的收益，还有必要吗？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s154",
+                        "label": "检索正确是不是就代表最终答案正确？",
+                        "kind": "branch",
+                        "children": [
+                          {
+                            "id": "ch20-s155",
+                            "label": "最终答案错误，怎么判断是检索错还是生成错？",
+                            "kind": "leaf"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-10-l-16",
-            "label": "第一轮完成率多少？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-17",
-            "label": "平均需要几轮？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-18",
-            "label": "第二轮召回的新文档比例是多少？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-19",
-            "label": "第二轮带来的边际收益多少？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-20",
-            "label": "如果第三轮只有 0.5% 的收益，还有必要吗？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-21",
-            "label": "这 0.5% 对应多少业务请求？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-22",
-            "label": "增加多少延迟和 Token 成本？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-23",
-            "label": "是否会拉高 P95/P99？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-24",
-            "label": "检索正确是不是就代表最终答案正确？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-25",
-            "label": "最终答案错误，怎么判断是检索错还是生成错？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-26",
+            "id": "ch20-s156",
             "label": "离线指标很好，用户还是觉得答案很烂怎么办？",
-            "kind": "leaf"
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s157",
+                "label": "用户点赞能不能说明检索好？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s158",
+                    "label": "用户点踩怎么归因到具体 Evidence？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "ch20-10-l-27",
-            "label": "用户点赞能不能说明检索好？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-28",
-            "label": "用户点踩怎么归因到具体 Evidence？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-29",
-            "label": "能不能自动沉淀 Hard/Bad Case？",
-            "kind": "leaf"
-          },
-          {
-            "id": "ch20-10-l-30",
+            "id": "ch20-s160",
             "label": "错误样本会不会回流测试集？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s159",
+                "label": "能不能自动沉淀 Hard/Bad Case？",
+                "kind": "leaf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ch20-m-c",
+        "label": "Query Rewrite",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch20-s18",
+            "label": "为什么要 Rewrite？",
             "kind": "leaf"
+          },
+          {
+            "id": "ch20-s19",
+            "label": "Rewrite 具体改什么？",
+            "kind": "leaf"
+          },
+          {
+            "id": "ch20-s17",
+            "label": "用户的问题进来之后，你们是直接拿原始 Query 检索吗？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s21",
+                "label": "有没有遇到 Rewrite 之后反而把原意改错的情况？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s20",
+                    "label": "怎么防止 Query Drift？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s23",
+                "label": "原始 Query 要不要保留？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s22",
+                    "label": "Rewrite 的 Query 和原始 Query 是二选一，还是都搜？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s24",
+                    "label": "如果都搜，结果怎么融合？",
+                    "kind": "leaf"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ch20-m-g",
+        "label": "父子文档",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch20-s67",
+            "label": "你为什么要使用父子文档？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s68",
+                "label": "为什么不直接召回父 Chunk？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s69",
+                "label": "为什么不直接扩大 Chunk Size？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch20-s71",
+            "label": "子 Chunk 命中以后一定返回整个父 Chunk 吗？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s70",
+                "label": "父 Chunk 非常大怎么办？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s72",
+                "label": "一个 Query 同时命中了一个父文档里的五个子 Chunk，怎么算分？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s73",
+                    "label": "另外一个父文档只有一个子 Chunk，但是相关度极高，两个父文档谁排前面？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s74",
+                        "label": "子块很多的父文档是不是天然占优势？",
+                        "kind": "leaf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ch20-s76",
+            "label": "子文档排序结果怎么映射成父文档排序？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s75",
+                "label": "怎么消除这种偏差？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch20-s77",
+            "label": "为什么只有父子两层？三层行不行？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s78",
+                "label": "路数越多是不是效果越好？",
+                "kind": "leaf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ch20-m-i",
+        "label": "迭代式检索",
+        "kind": "branch",
+        "children": [
+          {
+            "id": "ch20-s90",
+            "label": "为什么需要迭代式检索？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s92",
+                "label": "谁判断不够好？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch20-s91",
+            "label": "什么叫「不够好」？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s93",
+                "label": "大模型说「不够」你就相信它吗？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s95",
+                "label": "第一轮哪些信息会进入第二轮 Query？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s96",
+                "label": "把所有关键词都塞进去吗？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch20-s94",
+            "label": "第二轮到底搜什么？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s97",
+                "label": "你刚才说保留原始 Query 作为 Anchor，Anchor 有什么意义？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s99",
+                "label": "怎么避免第二轮开始偏离用户原始问题？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s98",
+                    "label": "Anchor 权重怎么体现？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s100",
+                    "label": "如果第一轮已经证明原始 Query 本身表达有问题呢？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s101",
+                    "label": "Anchor 会不会反而限制搜索空间？",
+                    "kind": "branch",
+                    "children": [
+                      {
+                        "id": "ch20-s105",
+                        "label": "新文档数量少了就退出可以吗？",
+                        "kind": "branch",
+                        "children": [
+                          {
+                            "id": "ch20-s106",
+                            "label": "如果找到了很多新文档，但是都是重复信息呢？",
+                            "kind": "leaf"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ch20-s102",
+            "label": "什么时候停止迭代？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s104",
+                "label": "动态退出怎么做？",
+                "kind": "leaf"
+              }
+            ]
+          },
+          {
+            "id": "ch20-s103",
+            "label": "固定 N 轮行不行？固定三轮行不行？",
+            "kind": "branch",
+            "children": [
+              {
+                "id": "ch20-s108",
+                "label": "新增信息量怎么计算？",
+                "kind": "branch",
+                "children": [
+                  {
+                    "id": "ch20-s107",
+                    "label": "谁来判断是不是新信息？",
+                    "kind": "leaf"
+                  },
+                  {
+                    "id": "ch20-s109",
+                    "label": "如果一直有少量新信息怎么办？",
+                    "kind": "leaf"
+                  }
+                ]
+              },
+              {
+                "id": "ch20-s110",
+                "label": "最大轮数有没有？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s111",
+                "label": "时间预算有没有？",
+                "kind": "leaf"
+              },
+              {
+                "id": "ch20-s112",
+                "label": "Token 预算有没有？",
+                "kind": "leaf"
+              }
+            ]
           }
         ]
       }
     ]
-  },
-  "imageWidth": 1800,
-  "imageHeight": 14707
+  }
 }
