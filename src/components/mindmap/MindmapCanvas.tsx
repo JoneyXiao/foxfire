@@ -28,7 +28,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   ancestorsToExpand,
-  collectExpandableIds,
+  collectOverviewCollapsedIds,
   findMatchingNodeIds,
   indexMindmapTree,
   layoutMindmap,
@@ -69,7 +69,9 @@ function getCoarsePointerSnapshot() {
 
 function MindmapCanvasInner({ tree, title, className }: MindmapCanvasProps) {
   const { fitView, setCenter, getNode } = useReactFlow();
-  const [collapsedIds, setCollapsedIds] = useState<Set<string>>(() => new Set());
+  const [collapsedIds, setCollapsedIds] = useState<Set<string>>(() =>
+    collectOverviewCollapsedIds(tree),
+  );
   const [query, setQuery] = useState("");
   const isCoarse = useSyncExternalStore(
     subscribeCoarsePointer,
@@ -78,8 +80,6 @@ function MindmapCanvasInner({ tree, title, className }: MindmapCanvasProps) {
   );
 
   const { parentOf } = useMemo(() => indexMindmapTree(tree), [tree]);
-  const expandableIds = useMemo(() => collectExpandableIds(tree), [tree]);
-
   const matchIds = useMemo(
     () => findMatchingNodeIds(tree, query),
     [tree, query],
@@ -169,10 +169,9 @@ function MindmapCanvasInner({ tree, title, className }: MindmapCanvasProps) {
   }, []);
 
   const collapseBranches = useCallback(() => {
-    // Keep root open; collapse every other expandable node.
-    const next = new Set(expandableIds.filter((id) => id !== tree.id));
-    setCollapsedIds(next);
-  }, [expandableIds, tree.id]);
+    // Reset to overview: root open, level-2 branches collapsed.
+    setCollapsedIds(collectOverviewCollapsedIds(tree));
+  }, [tree]);
 
   if (!mounted) {
     return (
@@ -305,7 +304,7 @@ function MindmapCanvasInner({ tree, title, className }: MindmapCanvasProps) {
             </Button>
           </div>
           <p className="hidden rounded-md border border-border/80 bg-card/90 px-2.5 py-1.5 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground sm:block">
-            点击 ▾ 折叠 · 搜索高亮 · {isCoarse ? "单指平移 · 双指缩放" : "拖拽 · 滚轮缩放"}
+            默认二级概览 · 点击 ▾ 折叠 · 搜索高亮 · {isCoarse ? "单指平移 · 双指缩放" : "拖拽 · 滚轮缩放"}
           </p>
         </Panel>
       </ReactFlow>

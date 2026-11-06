@@ -118,6 +118,28 @@ export function layoutMindmap(
   return { nodes, edges };
 }
 
+
+/** Ids to collapse for an overview: expand through `keepExpandedThroughDepth` (0 = root only). */
+export function collectCollapsedBeyondDepth(
+  tree: MindmapTreeNode,
+  keepExpandedThroughDepth: number,
+): Set<string> {
+  const collapsed = new Set<string>();
+  function walk(node: MindmapTreeNode, depth: number) {
+    const children = node.children ?? [];
+    if (!children.length) return;
+    if (depth > keepExpandedThroughDepth) collapsed.add(node.id);
+    children.forEach((child) => walk(child, depth + 1));
+  }
+  walk(tree, 0);
+  return collapsed;
+}
+
+/** Default chapter open: root expanded, level-2 branches visible but collapsed. */
+export function collectOverviewCollapsedIds(tree: MindmapTreeNode): Set<string> {
+  return collectCollapsedBeyondDepth(tree, 0);
+}
+
 /** Collect every node id that has children (eligible for collapse). */
 export function collectExpandableIds(tree: MindmapTreeNode): string[] {
   const ids: string[] = [];
