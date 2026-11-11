@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
+import { AuthProvider } from "@/components/AuthProvider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -52,7 +53,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
       </head>
-      <body className="min-h-full bg-background text-foreground pb-[env(safe-area-inset-bottom)]">{children}</body>
+      <body className="min-h-full bg-background text-foreground pb-[env(safe-area-inset-bottom)]">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

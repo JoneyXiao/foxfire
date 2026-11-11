@@ -6,6 +6,7 @@ import { Drawer } from "@base-ui/react/drawer";
 import { MenuIcon, XIcon } from "lucide-react";
 import { SidebarNav } from "@/components/AppSidebar";
 import { buttonVariants } from "@/components/ui/button";
+import { AuthControls } from "@/components/AuthControls";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -59,8 +60,9 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
 
   return (
     <>
-      {/* Desktop: GitHub mark + appearance only — primary nav lives in the sidebar. */}
+      {/* Desktop: account + GitHub mark + appearance — primary nav lives in the sidebar. */}
       <nav className="hidden items-center gap-0.5 md:flex" aria-label="主要">
+        <AuthControls />
         <a
           href={GITHUB_HREF}
           target="_blank"
@@ -77,6 +79,7 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
       </nav>
 
       <div className="flex items-center gap-1 md:hidden">
+        <AuthControls />
         <ThemeToggle />
         <Drawer.Root
           open={open}
@@ -153,6 +156,7 @@ export function SiteNav({ current, showSidebarGroups = true }: SiteNavProps) {
                     className="mt-auto flex flex-col border-t border-border/80 pt-3"
                     aria-label="全局"
                   >
+                    <AuthControls variant="drawer" onNavigate={closeDrawer} />
                     {DRAWER_GLOBAL_LINKS.map((item) => (
                       <Link
                         key={item.id}
