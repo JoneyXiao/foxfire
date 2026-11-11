@@ -102,6 +102,9 @@ export function LoginForm() {
       provider: "github",
       options: {
         redirectTo: getAuthCallbackUrl(),
+        // GitHub hides emails by default; without this scope GoTrue cannot
+        // fetch /user/emails and login fails after Authorize.
+        scopes: "read:user user:email",
       },
     });
     if (oauthError) {

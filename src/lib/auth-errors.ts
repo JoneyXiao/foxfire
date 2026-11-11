@@ -36,6 +36,14 @@ export function mapAuthError(message: string | null | undefined): string {
   if (m.includes("email not confirmed")) {
     return "邮箱尚未确认，请先查收登录邮件。";
   }
+  if (
+    m.includes("user profile from external provider") ||
+    m.includes("resource not accessible by integration") ||
+    (m.includes("user/emails") && (m.includes("403") || m.includes("not accessible"))) ||
+    (m.includes("email") && m.includes("accessible"))
+  ) {
+    return "GitHub 无法提供邮箱。请确认使用的是 OAuth App（不是 GitHub App），在 Supabase 的 GitHub Provider 中填写 Scopes：user:email，到 GitHub 设置撤销本次授权后再登录，并确保账号有已验证邮箱。";
+  }
   if (!raw) {
     return "登录失败，请稍后重试。";
   }

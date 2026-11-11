@@ -15,6 +15,8 @@ npm install && npm run dev
 
 可选登录需要公开环境变量。复制 `.env.example` 为 `.env.local`，填写 `NEXT_PUBLIC_SUPABASE_URL` 和 `NEXT_PUBLIC_SUPABASE_ANON_KEY`（只放可公开的 publishable / anon key，不要写入 `service_role`）。不配置也可以照常刷题和复习导图。
 
+用 GitHub 登录时，请创建 **OAuth App**（不是 GitHub App），Authorization callback 填 `https://<project-ref>.supabase.co/auth/v1/callback`，并在 Supabase Auth → Providers → GitHub 的 Scopes 中填写 `user:email`（GitHub 默认不返回邮箱，缺少该权限会在 Authorize 后失败）。若曾授权过，到 GitHub Settings → Applications 撤销后再登录。
+
 浏览器打开 [http://localhost:3000](http://localhost:3000)。生产构建：
 
 ```bash
