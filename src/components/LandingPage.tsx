@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
-import mark from "@/assets/foxfire-mark.png";
+import heroVisualDark from "@/assets/foxfire-hero-visual-dark.jpg";
+import heroVisualLight from "@/assets/foxfire-hero-visual-light.jpg";
 import { buttonVariants } from "@/components/ui/button";
 import { categories } from "@/lib/categories";
 import type { CategoryId } from "@/lib/types";
@@ -94,30 +95,26 @@ function KindBadge({ children }: { children: React.ReactNode }) {
 function HeroVisual() {
   return (
     <div className="relative hidden min-h-80 w-full overflow-hidden sm:flex">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,oklch(0.86_0.16_82)_0%,transparent_55%),radial-gradient(ellipse_at_20%_85%,oklch(0.78_0.14_45)_0%,transparent_52%),radial-gradient(ellipse_at_90%_90%,oklch(0.82_0.13_70)_0%,transparent_48%),linear-gradient(180deg,oklch(0.84_0.13_75)_0%,oklch(0.72_0.14_50)_100%)] dark:bg-[radial-gradient(ellipse_at_70%_20%,oklch(0.48_0.14_75)_0%,transparent_55%),radial-gradient(ellipse_at_20%_85%,oklch(0.38_0.12_40)_0%,transparent_52%),radial-gradient(ellipse_at_90%_90%,oklch(0.42_0.11_65)_0%,transparent_48%),linear-gradient(180deg,oklch(0.36_0.1_70)_0%,oklch(0.22_0.08_45)_100%)]"
+      <Image
+        src={heroVisualLight}
+        alt=""
+        fill
+        priority
+        sizes="(min-width: 640px) 50vw, 100vw"
+        className="object-cover object-[center_70%] dark:hidden"
+      />
+      <Image
+        src={heroVisualDark}
+        alt=""
+        fill
+        priority
+        sizes="(min-width: 640px) 50vw, 100vw"
+        className="hidden object-cover object-[center_72%] dark:block"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-10 bg-gradient-to-l from-transparent via-transparent to-background"
+        className="absolute inset-0 z-10 bg-gradient-to-l from-transparent from-35% via-background/20 to-background"
       />
-      <div className="relative z-20 flex h-full min-h-[520px] w-full flex-col items-center justify-end px-8 pb-12 pt-16">
-        <Image
-          src={mark}
-          alt=""
-          width={96}
-          height={96}
-          className="mb-5 size-20 drop-shadow-sm lg:size-24"
-          priority
-        />
-        <p className="font-heading text-[4.5rem] leading-none font-bold tracking-tight text-primary-foreground dark:text-primary lg:text-[5.75rem]">
-          狐火
-        </p>
-        <p className="mt-3 font-mono text-[11px] font-medium tracking-[0.18em] text-primary-foreground/70 uppercase dark:text-primary/80">
-          Foxfire
-        </p>
-      </div>
     </div>
   );
 }
@@ -141,8 +138,23 @@ export function LandingPage() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 overflow-hidden sm:hidden"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_10%,color-mix(in_oklch,var(--primary)_55%,transparent)_0%,transparent_58%),radial-gradient(ellipse_at_10%_90%,oklch(0.72_0.14_45_/_0.45)_0%,transparent_50%)] dark:bg-[radial-gradient(ellipse_at_80%_10%,color-mix(in_oklch,var(--primary)_40%,transparent)_0%,transparent_58%),radial-gradient(ellipse_at_10%_90%,oklch(0.45_0.1_40_/_0.35)_0%,transparent_50%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/70 to-background" />
+          <Image
+            src={heroVisualLight}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_80%] opacity-55 dark:hidden"
+          />
+          <Image
+            src={heroVisualDark}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hidden object-cover object-[center_80%] opacity-55 dark:block"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/85 to-background" />
         </div>
 
         <div className="relative z-10 flex flex-col justify-center px-4 pt-14 pb-14 sm:px-6 sm:pt-[88px] sm:pb-[72px]">
