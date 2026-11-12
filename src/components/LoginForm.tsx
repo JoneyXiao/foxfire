@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MailIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,6 +44,7 @@ function LoginHeading({
 }
 
 export function LoginForm() {
+  const router = useRouter();
   const { user, ready, signOut } = useAuth();
   const configured = isSupabaseConfigured();
   const [email, setEmail] = useState("");
@@ -108,7 +110,9 @@ export function LoginForm() {
     if (verifyError) {
       console.error("verifyOtp failed");
       setError(mapAuthError(verifyError.message));
+      return;
     }
+    router.replace("/");
   }
 
   async function signInGitHub() {
