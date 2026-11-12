@@ -214,7 +214,7 @@ export function LoginForm() {
           <label htmlFor="login-email" className="text-sm font-medium leading-none">
             邮箱
           </label>
-          <div className="relative mt-1 shadow-sm">
+          <div className="relative mt-1">
             <div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-4">
               <MailIcon className="size-5 text-muted-foreground" aria-hidden="true" />
             </div>
