@@ -101,7 +101,7 @@ function HeroVisual() {
         fill
         priority
         sizes="(min-width: 640px) 50vw, 100vw"
-        className="object-cover object-[center_70%] dark:hidden"
+        className="object-cover object-[center_72%] dark:hidden"
       />
       <Image
         src={heroVisualDark}
