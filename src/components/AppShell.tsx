@@ -18,6 +18,8 @@ type AppShellProps = {
    * Mobile drawer always keeps SidebarNav groups regardless of this flag.
    */
   sidebar?: boolean;
+  /** Drop the default main padding so a page can fill and vertically center its content (login). */
+  flush?: boolean;
 };
 
 function SiteFooter() {
@@ -39,6 +41,7 @@ export function AppShell({
   current,
   clearThumbBar = false,
   sidebar = true,
+  flush = false,
 }: AppShellProps) {
   return (
     <div
@@ -93,8 +96,14 @@ export function AppShell({
             "pl-[max(0px,env(safe-area-inset-left))] pr-[max(0px,env(safe-area-inset-right))]",
           )}
         >
-          <main id="content" className="flex-1 scroll-mt-14">
-            <div className="px-4 py-7 sm:px-11 sm:py-9">{children}</div>
+          <main id="content" className="flex flex-1 flex-col scroll-mt-14">
+            <div
+              className={
+                flush ? "flex flex-1 flex-col" : "px-4 py-7 sm:px-11 sm:py-9"
+              }
+            >
+              {children}
+            </div>
           </main>
           <SiteFooter />
         </div>

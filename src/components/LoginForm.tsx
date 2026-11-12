@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
+import { MailIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/components/AuthProvider";
@@ -17,6 +18,27 @@ function GitHubMark({ className }: { className?: string }) {
     <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" className={className}>
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
     </svg>
+  );
+}
+
+function LoginHeading({
+  title,
+  children,
+}: {
+  title: string;
+  children?: ReactNode;
+}) {
+  return (
+    <header className="space-y-3 text-center">
+      <h1 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+        {title}
+      </h1>
+      {children ? (
+        <p className="mx-auto max-w-sm text-base leading-normal text-foreground/75 text-balance sm:text-lg">
+          {children}
+        </p>
+      ) : null}
+    </header>
   );
 }
 
@@ -117,33 +139,45 @@ export function LoginForm() {
 
   if (!ready) {
     return (
-      <div className="space-y-3 py-6" aria-busy="true">
-        <div className="h-5 w-1/3 animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
-        <div className="h-10 w-full animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
+      <div className="space-y-6 py-6" aria-busy="true">
+        <div className="mx-auto h-9 w-2/3 animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
+        <div className="mx-auto h-5 w-4/5 animate-pulse rounded-md bg-muted motion-reduce:animate-none" />
+        <div className="h-14 w-full animate-pulse rounded-xl bg-muted motion-reduce:animate-none" />
       </div>
     );
   }
 
   if (!configured) {
     return (
-      <p className="text-sm text-muted-foreground">
-        登录尚未配置。本地请复制 <code className="font-mono text-xs">.env.example</code> 为{" "}
-        <code className="font-mono text-xs">.env.local</code> 并填写公开环境变量；未登录也可继续刷题和复习导图。
-      </p>
+      <div className="space-y-6">
+        <LoginHeading title="登录狐火">
+          登录尚未配置。本地请复制 <code className="font-mono text-sm">.env.example</code> 为{" "}
+          <code className="font-mono text-sm">.env.local</code> 并填写公开环境变量。未登录也可继续刷题和复习导图。
+        </LoginHeading>
+      </div>
     );
   }
 
   if (user) {
     return (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
-          已登录{user.email ? `为 ${user.email}` : ""}。刷题进度仍只保存在本机，退出不会清除进度。
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button type="button" variant="outline" className="h-11 px-3" onClick={() => void signOut()}>
+      <div className="space-y-8">
+        <LoginHeading title="已登录">
+          {user.email ? `当前账号为 ${user.email}。` : "已登录。"}
+          刷题进度仍只保存在本机，退出不会清除进度。
+        </LoginHeading>
+        <div className="flex flex-col gap-3">
+          <Button
+            type="button"
+            variant="outline"
+            className="h-14 w-full rounded-xl text-base"
+            onClick={() => void signOut()}
+          >
             退出
           </Button>
-          <Link href="/" className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
+          <Link
+            href="/"
+            className="text-center text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          >
             回到首页
           </Link>
         </div>
@@ -152,34 +186,65 @@ export function LoginForm() {
   }
 
   return (
-    <div className="max-w-md space-y-8">
-      <form onSubmit={sendLink} className="space-y-3">
-        <div className="space-y-1.5">
-          <label htmlFor="login-email" className="text-sm font-medium">
+    <div className="space-y-0">
+      <LoginHeading title="登录狐火">
+        登录可选。可用邮箱或 GitHub 创建账号。不登录也能刷题和复习导图，进度只留在本机。
+      </LoginHeading>
+
+      <div className="mt-8 space-y-2 sm:mt-10">
+        <Button
+          type="button"
+          variant="outline"
+          className="h-14 w-full rounded-xl text-base font-medium"
+          onClick={() => void signInGitHub()}
+          disabled={pending !== null}
+        >
+          <GitHubMark className="size-5" />
+          {pending === "github" ? "跳转中…" : "用 GitHub 登录"}
+        </Button>
+      </div>
+
+      <div className="relative flex items-center justify-center py-5 text-sm text-muted-foreground/80">
+        <span className="bg-border absolute left-1/2 h-px w-full -translate-x-1/2" />
+        <span className="relative z-10 bg-background px-4">或</span>
+      </div>
+
+      <form onSubmit={sendLink} className="w-full space-y-4">
+        <div className="space-y-1">
+          <label htmlFor="login-email" className="text-sm font-medium leading-none">
             邮箱
           </label>
-          <Input
-            id="login-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            inputMode="email"
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="you@example.com"
-            className="h-11 text-sm"
-          />
+          <div className="relative mt-1 shadow-sm">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-4">
+              <MailIcon className="size-5 text-muted-foreground" aria-hidden="true" />
+            </div>
+            <Input
+              id="login-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="you@example.com"
+              className="h-14 rounded-xl bg-background/80 pl-12 text-base backdrop-blur-sm"
+            />
+          </div>
         </div>
-        <Button type="submit" className="h-11 w-full sm:w-auto px-4" disabled={pending !== null}>
+        <Button
+          type="submit"
+          className="h-14 w-full rounded-xl text-base font-medium tracking-tight shadow-md"
+          disabled={pending !== null}
+        >
           {pending === "email" ? "发送中…" : "发送登录链接"}
         </Button>
       </form>
 
       {sent ? (
-        <form onSubmit={verifyCode} className="space-y-3">
-          <div className="space-y-1.5">
-            <label htmlFor="login-otp" className="text-sm font-medium">
+        <form onSubmit={verifyCode} className="mt-6 space-y-4">
+          <div className="space-y-1">
+            <label htmlFor="login-otp" className="text-sm font-medium leading-none">
               6 位验证码
             </label>
             <Input
@@ -192,13 +257,13 @@ export function LoginForm() {
               value={otp}
               onChange={(event) => setOtp(event.target.value)}
               placeholder="123456"
-              className="h-11 text-sm tracking-[0.2em]"
+              className="mt-1 h-14 rounded-xl text-base tracking-[0.2em]"
             />
           </div>
           <Button
             type="submit"
             variant="outline"
-            className="h-11 w-full sm:w-auto px-4"
+            className="h-14 w-full rounded-xl text-base"
             disabled={pending !== null}
           >
             {pending === "otp" ? "验证中…" : "用验证码登录"}
@@ -206,25 +271,9 @@ export function LoginForm() {
         </form>
       ) : null}
 
-      <div className="space-y-3">
-        <p className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-          或
-        </p>
-        <Button
-          type="button"
-          variant="outline"
-          className="h-11 w-full sm:w-auto gap-2 px-4"
-          onClick={() => void signInGitHub()}
-          disabled={pending !== null}
-        >
-          <GitHubMark className="size-4" />
-          {pending === "github" ? "跳转中…" : "用 GitHub 登录"}
-        </Button>
-      </div>
-
-      {message ? <p className="text-sm text-muted-foreground">{message}</p> : null}
+      {message ? <p className="mt-4 text-center text-sm text-muted-foreground">{message}</p> : null}
       {error ? (
-        <p className="text-sm text-destructive" role="alert">
+        <p className="mt-4 text-center text-sm text-destructive" role="alert">
           {error}
         </p>
       ) : null}
